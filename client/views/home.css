@@ -18,26 +18,27 @@
   width: 4em;
   margin: 10px;
   text-align: center;
-  color: LightGray;  
+  color: Gray;  
 }
 
 #home input[type='button'] {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -khtml-border-radius: 10px;
-  border-radius: 10px;  
+  border-radius: 10px;
   
   font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;  
   font-size: 2.5em;
-  text-align: center;  
+  text-align: center;
   
   padding: 0.4em;
+  cursor: pointer;  
 }
 
 #home input[id='start_a_new_game'] {
-  color: DarkGray;
+  color: Gray;
 }
 
 #home input[id='join_an_existing_game'] {
-  color: DarkGray;
+  color: Gray;
 }
