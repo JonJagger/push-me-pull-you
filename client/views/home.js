@@ -7,10 +7,7 @@ home.greeting = function () {
 
 home.events({
   'click input#start_a_new_game' : function () {
-    var hex = 16;
-    var gid = 'xxxxxx'.replace(/[x]/g, function() {      
-        return (Math.random() * hex | 0).toString(hex);
-    });          
+    var gid = Random.hexString(6);
     Games.insert({ gid: gid });
     $('#gid').val(gid);
   }
