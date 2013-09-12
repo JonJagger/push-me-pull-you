@@ -1,0 +1,10 @@
+
+#status-bar-div {
+  position: absolute;
+  bottom: 0;
+}
+
+#status-bar {
+  width: 1000px;  
+}
+
