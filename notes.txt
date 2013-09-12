@@ -1,0 +1,26 @@
+
+o) pull only
+o) auto backlog. if you push an empty tray size=5 upstream then it will come back with story size=5
+o) no done?
+o) drop ones onto story to do work on it
+o) drop story onto a split-area to split it
+   this will offer selection of possibilities. click to select
+   eg story 4-7
+      options are
+          1-7 and 3-7
+          2-7 and 2-7
+      no that's not right because there is twice the amount of work
+      4-7 options are
+          1-1=done and 3-6       2-2=done  and  2-5
+          1-2 and 3-5            2-3       and  2-4
+          1-3 and 3-4            2-4       and  2-3=same as 2-3 2-4
+          1-4 and 3-3=done       2-5       and  2-2=same as 2-2 2-5
+          1-5 and 3-2=illegal    2-6       and  2-1=illegal
+          that's it for 4 since only splits are 1-3 and 2-2
+          
+o) how does the tray it is in split?
+    size of story must be less than or equal to the size of the tray
+    so I can create a deterministic algorithm for this.
+o) drop an empty tray onto split-area to split it
+   again this shows the options and you click on one of them to select it
+
