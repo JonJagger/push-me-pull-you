@@ -2,9 +2,7 @@
 var edge = Template.edge;
 
 edge.stories = function() {
-  var result = Stories.find({ gid: this.gid, colour: this.colour });
-  //console.log(EJSON.stringify(result));
-  return result;
+  return Stories.find({ gid: this.gid, color: this.color });
 };
 
 edge.rendered = function () {
@@ -47,7 +45,7 @@ var dropFn = function(event, ui) {
 
 var oneDroppedOnStory = function(one,story) {
   var kanban = story.parent();
-  if (!story.isDone() && kanban.colour() === one.colour()) {
+  if (!story.isDone() && kanban.color() === one.color()) {
     one.detach();
     story.addOne();
   }
@@ -75,10 +73,10 @@ $.fn.addOne = function() {
   Stories.update(id, { $set: { ones: ones+1 }});
 };
 
-$.fn.colour = function() {
+$.fn.color = function() {
   var element = this;
-  return _.find(edgeColours(), function(colour) {
-    return element.attr('class').indexOf(colour) !== -1;
+  return _.find(edgeColors(), function(color) {
+    return element.attr('class').indexOf(color) !== -1;
   });
 };
 

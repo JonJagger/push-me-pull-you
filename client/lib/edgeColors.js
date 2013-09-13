@@ -1,4 +1,4 @@
 
-edgeColours = function(noOfDigits) {
+edgeColors = function(noOfDigits) {
   return [ 'red', 'orange', 'blue', 'green'];
 };

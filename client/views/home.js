@@ -23,14 +23,14 @@ home.events({
       openDialog(gid + ' ?', message);
     } else {
       //need to pick an edge, atomic?
-      var colour = _.find(edgeColours(), function(c) {
-        return Edges.findOne({ gid: gid, colour: c }) === undefined;
+      var color = _.find(edgeColors(), function(c) {
+        return Edges.findOne({ gid: gid, color: c }) === undefined;
       });
-      var edge = { gid: gid, colour: colour };
+      var edge = { gid: gid, color: color };
       Edges.insert(edge);
-      Stories.insert({ gid: gid, colour: colour, ones: "1", size: "1" });
-      Stories.insert({ gid: gid, colour: colour, ones: "2", size: "2" });
-      Stories.insert({ gid: gid, colour: colour, ones: "0", size: "5" });      
+      Stories.insert({ gid: gid, color: color, ones: "1", size: "1" });
+      Stories.insert({ gid: gid, color: color, ones: "2", size: "2" });
+      Stories.insert({ gid: gid, color: color, ones: "0", size: "5" });      
       Router.go('edge', edge);
     }
   }

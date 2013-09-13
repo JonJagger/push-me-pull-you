@@ -10,11 +10,11 @@ Router.map(function() {
   this.route('home', {path: '/'});
   
   this.route('edge', {
-    path: '/edge/:gid/:colour',
+    path: '/edge/:gid/:color',
     data: function() {
       return {
         gid: this.params.gid,
-        colour: this.params.colour
+        color: this.params.color
       }
     }
   });

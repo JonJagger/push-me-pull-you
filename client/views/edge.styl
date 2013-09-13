@@ -17,13 +17,20 @@
     font-size 1.2em
     color White
 
-#edge .one:before
-    content "\2022" /* single bullet */
+single-bullet = "\2022"
 
-#edge .red.one    { background: Red;     }    
-#edge .orange.one { background: #FFBF00; }    
-#edge .blue.one   { background: Blue;    }
-#edge .green.one  { background: Green;   }
+#edge .one:before
+    content single-bullet
+
+orange-color = #FFBF00
+red-color    = Red
+blue-color   = Blue
+green-color  = Green
+
+#edge .red.one    { background: red-color;    }    
+#edge .orange.one { background: orange-color; }    
+#edge .blue.one   { background: blue-color;   }
+#edge .green.one  { background: green-color;  }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -32,15 +39,21 @@
     padding 1em
     display inline-block
 
-#edge #team.red     { background: Red;     border-color: Red;     }  
-#edge #team.orange  { background: #FFBF00; border-color: #FFBF00; }
-#edge #team.blue    { background: Blue;    border-color: Blue;    }
-#edge #team.green   { background: Green;   border-color: Green;   }
+#edge #team.red     { background: red-color;    border-color: red-color;    }  
+#edge #team.orange  { background: orange-color; border-color: orange-color; }
+#edge #team.blue    { background: blue-color;   border-color: blue-color;   }
+#edge #team.green   { background: green-color;  border-color: green-color;   }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+droppable-border-width = 6px
+droppable-border-style = dashed
+droppable-border-color = Gray
+
 #edge .portal 
-    border 6px solid DarkGray 
+    border-width droppable-border-width
+    border-style solid
+    border-color White 
     border-radius 4px
     margin 2px
     padding 2px
@@ -50,28 +63,26 @@
     display inline-block
     
 #edge div[class~=portal][data-to~=red] 
-    background Red
-    border-color Red
+    background red-color
 
 #edge div[class~=portal][data-to~=orange] 
-    background #FFBF00
-    border-color #FFBF00
+    background orange-color
 
 #edge div[class~=portal][data-to~=blue] 
-    background Blue
-    border-color Blue
+    background blue-color
 
 #edge div[class~=portal][data-to~=green] 
-    background Green
-    border-color Green
+    background green-color
     
 #edge div[class~=portal].hover 
-    border 6px dashed Gray
+    border-width droppable-border-width
+    border-style droppable-border-style
+    border-color droppable-border-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #edge .wip
-    border White
+    border-color White
     border-radius 6px
     border-width 3px
     border-style solid
@@ -93,18 +104,17 @@
     margin 8px
     display block
     
-#edge .red.kanban     { background: Red;      border-color: Red;      }
-#edge .orange.kanban  { background: #FFBF00;  border-color: #FFBF00;  }    
-#edge .blue.kanban    { background: Blue;     border-color: Blue;     }
-#edge .green.kanban   { background: Green;    border-color: Green;    }    
-#edge .done.kanban    { background: DarkGray; border-color: DarkGray; }
+#edge .red.kanban     { background: red-color;    border-color: red-color;    }
+#edge .orange.kanban  { background: orange-color; border-color: orange-color; }    
+#edge .blue.kanban    { background: blue-color;   border-color: blue-color;   }
+#edge .green.kanban   { background: green-color;  border-color: green-color;  }    
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #edge .story, #edge .null-story
     border LightGray
     border-radius 8px
-    border-width 6px
+    border-width droppable-border-width
     border-style solid
     font-size 1.4em
     margin 2px
@@ -112,31 +122,33 @@
     text-align center
 
 #edge .story.hover, #edge .null-story.hover 
-    border 6px dashed Gray
+    border-width droppable-border-width
+    border-style droppable-border-style
+    border-color droppable-border-color
 
 #edge .kanban .null-story 
     border-style solid
     border-width 3px
     
 #edge .red.kanban .null-story 
-    background Red
-    color Red
-    border-color Red
+    background red-color
+    color red-color
+    border-color red-color
 
 #edge .orange.kanban .null-story 
-    background #FFBF00
-    color #FFBF00
-    border-color #FFBF00
+    background orange-color
+    color orange-color
+    border-color orange-color
 
 #edge .blue.kanban .null-story 
-    background Blue
-    color Blue
-    border-color Blue
+    background blue-color
+    color blue-color
+    border-color blue-color
 
 #edge .green.kanban .null-story 
-    backgroun: Green
-    color Green
-    border-color Green
+    background: green-color
+    color green-color
+    border-color green-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
