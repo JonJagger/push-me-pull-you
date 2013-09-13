@@ -3,7 +3,7 @@ var edge = Template.edge;
 
 edge.stories = function() {
   var result = Stories.find({ gid: this.gid, colour: this.colour });
-  console.log(EJSON.stringify(result));
+  //console.log(EJSON.stringify(result));
   return result;
 };
 
@@ -54,11 +54,11 @@ var oneDroppedOnStory = function(one,story) {
 };
 
 $.fn.getOnes = function() {
-  return this.attr('data-ones').length;
+  return $(this).data('ones');
 };
 
 $.fn.getSize = function() {
-  return this.attr('data-size').length;
+  return $(this).data('size');
 };
 
 $.fn.display = function(/*story*/) {
@@ -70,10 +70,9 @@ $.fn.isDone = function() {
 };        
 
 $.fn.addOne = function() {
-  this.attr('data-ones', this.attr('data-ones') + '1');                    
+  var ones = parseInt(this.getOnes(), 10);
   var id = $(this).data('id');
-  //TODO: update it instead
-  Stories.remove(id);  // this updates on other browsers :-)
+  Stories.update(id, { $set: { ones: ones+1 }});
 };
 
 $.fn.colour = function() {

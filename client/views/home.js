@@ -28,9 +28,9 @@ home.events({
       });
       var edge = { gid: gid, colour: colour };
       Edges.insert(edge);
-      Stories.insert({ gid: gid, colour: colour, ones: "1",  size: "1"     });
-      Stories.insert({ gid: gid, colour: colour, ones: "11", size: "11"    });
-      Stories.insert({ gid: gid, colour: colour, ones: "",   size: "11111" });      
+      Stories.insert({ gid: gid, colour: colour, ones: "1", size: "1" });
+      Stories.insert({ gid: gid, colour: colour, ones: "2", size: "2" });
+      Stories.insert({ gid: gid, colour: colour, ones: "0", size: "5" });      
       Router.go('edge', edge);
     }
   }
