@@ -6,7 +6,7 @@ home.greeting = function () {
 };
 
 home.events({
-  'click input#start_a_new_game' : function () {
+  'click input#new_game' : function () {
     var gid = Random.hexString(6);
     var game = { gid: gid };
     Games.insert(game);
@@ -15,7 +15,7 @@ home.events({
 });
 
 home.events({
-  'click input#join_an_existing_game': function() {
+  'click input#join_game': function() {
     var gid = $('#gid').val();
     var game = Games.findOne({ gid: gid });
     if (game === undefined) {
