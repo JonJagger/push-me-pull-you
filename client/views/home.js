@@ -6,7 +6,7 @@ home.greeting = function () {
 };
 
 home.events({
-  'click input#new_game' : function () {
+  'click #new_game' : function () {
     var gid = Random.hexString(6);
     var game = { gid: gid };
     Games.insert(game);
@@ -15,7 +15,7 @@ home.events({
 });
 
 home.events({
-  'click input#join_game': function() {
+  'click #join_game': function() {
     var gid = $('#gid').val();
     var game = Games.findOne({ gid: gid });
     if (game === undefined) {
@@ -23,8 +23,17 @@ home.events({
       setStatus(message);
       openDialog(gid + ' ?', message);
     } else {
-      //need to pick an edge, needs to be atomic
-      Router.go('edge', { gid: gid });
+      //need to pick an edge, atomic?
+      var colour = _.find([ 'red', 'orange', 'blue', 'green'], function(c) {
+        return Edges.findOne({ gid: gid, colour: c }) === undefined;
+      });
+      var edge = {
+        gid: gid,
+        colour: colour
+      };
+      console.log(EJSON.stringify(edge));
+      Edges.insert(edge);
+      Router.go('edge', { gid: gid, colour: colour });
     }
   }
 });

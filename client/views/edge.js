@@ -1,6 +1,6 @@
 
 var edge = Template.edge;
 
-edge.showGid = function() {
-  return this.gid;
+edge.view = function() {
+  return this.gid + " " + this.colour;
 };

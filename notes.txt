@@ -22,6 +22,8 @@ o) create initial stories when game is created.
    I don't. So don't use clocks. Use tick data that is held in collection.
    How to update it? From the server. In which case it might as well be a
    time stamp!
+   
+o) will need resume/review buttons like in cyber-dojo
 
 o) auto backlog. if you push an empty tray size=5 upstream then it will come back with story size=5
 
