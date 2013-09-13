@@ -7,10 +7,9 @@ home.greeting = function () {
 
 home.events({
   'click #new_game' : function () {
-    var gid = Random.hexString(6);
-    var game = { gid: gid };
+    var game = { gid: newId(6) };
     Games.insert(game);
-    $('#gid').val(gid);
+    $('#gid').val(game.gid);
   }
 });
 
@@ -29,9 +28,9 @@ home.events({
       });
       var edge = { gid: gid, colour: colour };
       Edges.insert(edge);
-      Stories.insert({ gid: gid, colour: colour, ones: "1",  size: "1"     });
-      Stories.insert({ gid: gid, colour: colour, ones: "11", size: "11"    });
-      Stories.insert({ gid: gid, colour: colour, ones: "",   size: "11111" });
+      Stories.insert({ gid: gid, sid: newId(), colour: colour, ones: "1",  size: "1"     });
+      Stories.insert({ gid: gid, sid: newId(), colour: colour, ones: "11", size: "11"    });
+      Stories.insert({ gid: gid, sid: newId(), colour: colour, ones: "",   size: "11111" });      
       Router.go('edge', edge);
     }
   }
