@@ -15,12 +15,15 @@
           {{> story}}
         {{/each}}
         <div class="draggable {{colour}} kanban">                
-            <div class="null-story" ones="" size=""></div>
+            <div class="null-story"
+                 data-ones=""
+                 data-size="">            
+            </div>
         </div>        
       </div>      
       <div class="droppable downstream portal"
-            data-from="{{colour}}"
-            data-to="orange">      
+           data-from="{{colour}}"
+           data-to="orange">      
       </div>
     </div>
   </div>
@@ -34,7 +37,10 @@
 
 <template name="story">
   <div class="draggable {{colour}} kanban">
-      <div class="droppable story" ones="{{ones}}" size="{{size}}">
+      <div class="droppable story"
+           data-ones="{{ones}}"
+           data-size="{{size}}"
+           data-id="{{_id}}">
       </div>
   </div>
 </template>

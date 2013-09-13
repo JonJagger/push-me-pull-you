@@ -54,11 +54,11 @@ var oneDroppedOnStory = function(one,story) {
 };
 
 $.fn.getOnes = function() {
-  return this.attr('ones').length;
+  return this.attr('data-ones').length;
 };
 
 $.fn.getSize = function() {
-  return this.attr('size').length;
+  return this.attr('data-size').length;
 };
 
 $.fn.display = function(/*story*/) {
@@ -70,14 +70,10 @@ $.fn.isDone = function() {
 };        
 
 $.fn.addOne = function() {
-  this.attr('ones', this.attr('ones') + '1');                    
-  this.display();
-  //TODO: here I need to update the story in the Stories.Collection
-  //      and somehow get it to redisplay() automatically
-  //      as viewed in another browser.
-  //      This means each Story is going to need a unique ID
-  //      I think this is _id
-  console.log(this._id);
+  this.attr('data-ones', this.attr('data-ones') + '1');                    
+  var id = $(this).data('id');
+  //TODO: update it instead
+  Stories.remove(id);  // this updates on other browsers :-)
 };
 
 $.fn.colour = function() {
