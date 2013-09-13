@@ -1,4 +1,54 @@
 
 <template name="edge">
-  {{view}}
+  <div id="edge">  
+    <table cellspacing="12" align="center">
+      <tr valign="bottom">
+        <td id="{{colour}}-dice" class="{{colour}}">
+          {{> dice}}
+        </td>
+      </tr>
+      <tr>
+        <td class="{{colour}}-team">
+          {{> workplace}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</template>
+
+<template name="dice">
+  <div class="draggable {{colour}} one"></div>
+  <div class="draggable {{colour}} one"></div>
+  <div class="draggable {{colour}} one"></div>
+</template>
+
+<template name="workplace">
+  <table>
+    <tr>              
+      <td>
+        <div class="droppable upstream portal" from="{{colour}}" to="backlog"></div>
+      </td>        
+      <td>
+        <div class="wip area" id="{{colour}}">
+          
+                    <div class="draggable {{colour}} kanban">
+                        <div class="droppable story" ones="1" size="1"></div>
+                    </div>
+                    <div class="draggable {{colour}} kanban">
+                        <div class="droppable story" ones="11" size="11"></div>
+                    </div>
+                    <div class="draggable {{colour}} kanban">                
+                        <div class="droppable story" ones="" size="11111"></div>
+                    </div>
+                    <div class="draggable {{colour}} kanban">                
+                        <div class="null-story" ones="" size=""></div>
+                    </div>
+                    
+        </div>
+      </td>
+      <td>
+        <div class="droppable downstream portal" from="{{colour}}" to="orange"></div>
+      </td>  
+    </tr>
+  </table>
 </template>

@@ -29,7 +29,12 @@ home.events({
       });
       var edge = {
         gid: gid,
-        colour: colour
+        colour: colour,
+        stories: [
+          { ones: 1, size: 1 },
+          { ones: 2, size: 2 },
+          { ones: 0, size: 5 }
+        ]
       };
       console.log(EJSON.stringify(edge));
       Edges.insert(edge);

@@ -1,0 +1,141 @@
+
+#edge tr
+    vertical-align top
+    
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .team 
+    border-radius 6px
+    padding 6px
+
+#edge .red.team     { background: Red;      }    
+#edge .orange.team  { background: #FFBF00;  }
+#edge .blue.team    { background: Blue;     }
+#edge .green.team   { background: Green;    }
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .portal 
+    border White
+    border-radius 4px
+    border-width 6px
+    border-style solid
+    margin 2px
+    padding 2px
+    width 3em
+    height 100em
+    float left
+    background DarkGray
+    
+#edge .hover 
+    border 6px dashed Gray
+    
+#edge div[class~=portal][to~=red] 
+    background Red
+
+#edge div[class~=portal][to~=orange] 
+    background #FFBF00
+
+#edge div[class~=portal][to~=blue] 
+    background Blue
+
+#edge div[class~=portal][to~=green] 
+    background Green
+    
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        
+#edge #red-dice, #edge #orange-dice, #edge #blue-dice, #edge #green-dice
+    vertical-align bottom
+    text-align center
+
+#edge .one
+    border-radius 4px
+    display inline
+    padding-top 2px
+    padding-right 12px
+    padding-bottom 4px
+    padding-left 12px
+    font-size 1.2em
+    color White
+
+#edge .one:before
+    content "\2022" /* single bullet */
+
+#edge .red.one    { background: Red;     }    
+#edge .orange.one { background: #FFBF00; }    
+#edge .blue.one   { background: Blue;    }
+#edge .green.one  { background: Green;   }
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .wip.area
+    border White
+    border-radius 6px
+    border-width 3px
+    border-style solid
+    margin 2px
+    padding 2px
+    width 5em
+    height 100em
+    float left
+    background White
+    
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    
+#edge .kanban 
+    border-radius 8px
+    border-width 1px
+    border-style solid
+    padding 8px
+    margin 8px
+    
+#edge .red.kanban     { background: Red;      border-color: Red;      }
+#edge .orange.kanban  { background: #FFBF00;  border-color: #FFBF00;  }    
+#edge .blue.kanban    { background: Blue;     border-color: Blue;     }
+#edge .green.kanban   { background: Green;    border-color: Green;    }    
+#edge .done.kanban    { background: DarkGray; border-color: DarkGray; }
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .story, #edge .null-story
+    border LightGray
+    border-radius 8px
+    border-width 3px
+    border-style solid
+    font-size 1.4em
+    margin 2px
+    background LightGray
+    text-align center
+
+#edge .kanban .null-story 
+    border-style solid
+    border-width 3px
+    
+#edge .red.kanban .null-story 
+    background Red
+    color Red
+    border-color Red
+
+#edge .orange.kanban .null-story 
+    background #FFBF00
+    color #FFBF00
+    border-color #FFBF00
+
+#edge .blue.kanban .null-story 
+    background Blue
+    color Blue
+    border-color Blue
+
+#edge .green.kanban .null-story 
+    backgroun: Green
+    color Green
+    border-color Green
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .ui-draggable-dragging.kanban
+    border 1px solid Black
+    
+#edge .ui-draggable-dragging.one
+    border 1px solid Black
+
