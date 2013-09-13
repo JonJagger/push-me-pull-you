@@ -1,8 +1,41 @@
 
-o) pull only
+o) [New game] needs to somehow have [pull][push] options?
+   Or should I put that on each Edge?!
+   Like that.
+   And wip limits can go on each Edge too.
+   Can have two kinds of wip constraint.
+      Number of trays.
+      Total size of tray sizes.
+   Very self-organizing!
+   This does not cater for an overall wip limit for the whole board though.
+   
+o) maybe have squares of red/orange/blue/green (in that order) below the
+   [start game] button so you can see how many teams have joined. And make it
+   a bit more colourful.
+
+o) create initial stories when game is created.
+   need to make a copy of that. My idea is that events will be stored in
+   an events collection each with a timestamp. The original board could
+   then be used to replay the events in a review. And the events could
+   be used to create a dashboard.
+   Events are created on clients. How do I know their clocks are synchronized?
+   I don't. So don't use clocks. Use tick data that is held in collection.
+   How to update it? From the server. In which case it might as well be a
+   time stamp!
+
 o) auto backlog. if you push an empty tray size=5 upstream then it will come back with story size=5
-o) no done?
-o) drop ones onto story to do work on it
+
+o) backlog have dice too? But they have no upstream. And new stories are automatically added.
+
+o) no done? except on dashboard
+
+o) drop [1] onto a story to do work on that story.
+   capture in jQuery and update the Meteor collection directly.
+
+o) drop [1] onto [unused] area to enable you to reroll the dice
+   I like this. If days are not tied edge to edge then a team with an unusable [1]
+   have a choice of losing the [1] or waiting for a story to arrive!
+
 o) drop story onto a split-area to split it
    this will offer selection of possibilities. click to select
    eg story 4-7
@@ -19,14 +52,19 @@ o) drop story onto a split-area to split it
           that's it for 4 since only splits are 1-3 and 2-2
           
    there is another possibility... split to create an empty tray!
+   (useful for a pull)
       4-7
           0-1 and 4-6
           0-2 and 4-5
           0-3 and 4-4
           
+o) make maximum size of a story/tray 6 to match the sides on a dice
+   and to reduce the number of split options that need to be presented.
+   
 o) how does the tray it is in split?
     size of story must be less than or equal to the size of the tray
     so I can create a deterministic algorithm for this.
+    
 o) drop an empty tray onto split-area to split it
    again this shows the options and you click on one of them to select it
 
@@ -34,3 +72,18 @@ o) don't synchronize the 'days' ?
    each edge can rethrow dice as often as it likes (but these are recorded).
    In other words, the time periods would be real time periods. One minute say.
    I like this idea. What would happen. Would the edges naturally "equalize"?
+   It would also mean that the dashboard could attempt to show the moment an
+   event took place by placing it at the relevant horizontal position.
+   
+o) option to have a single tray colour!?
+
+o) crucial point is that different edges will have different numbers of dice.
+
+o) make all edges get processed and all are invisible by default.
+   then make the edge matching your own colour visible.
+   No that's stupid. Only need to process the collection into html for
+   dom insertion for your own colour.
+   
+o) drop dice into a portal too?
+
+

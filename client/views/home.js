@@ -8,7 +8,8 @@ home.greeting = function () {
 home.events({
   'click input#start_a_new_game' : function () {
     var gid = Random.hexString(6);
-    Games.insert({ gid: gid });
+    var game = { gid: gid };
+    Games.insert(game);
     $('#gid').val(gid);
   }
 });
@@ -18,7 +19,7 @@ home.events({
     var gid = $('#gid').val();
     var game = Games.findOne({ gid: gid });
     if (game === undefined) {
-      var message = "Sorry. No game with that id";
+      var message = "There is no game with that id.";
       setStatus(message);
       openDialog(gid + ' ?', message);
     } else {
