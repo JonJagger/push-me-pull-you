@@ -27,18 +27,12 @@ home.events({
       var colour = _.find([ 'red', 'orange', 'blue', 'green'], function(c) {
         return Edges.findOne({ gid: gid, colour: c }) === undefined;
       });
-      var edge = {
-        gid: gid,
-        colour: colour,
-        stories: [
-          { ones: 1, size: 1 },
-          { ones: 2, size: 2 },
-          { ones: 0, size: 5 }
-        ]
-      };
-      console.log(EJSON.stringify(edge));
+      var edge = { gid: gid, colour: colour };
       Edges.insert(edge);
-      Router.go('edge', { gid: gid, colour: colour });
+      Stories.insert({ gid: gid, colour: colour, ones: "1",  size: "1"     });
+      Stories.insert({ gid: gid, colour: colour, ones: "11", size: "11"    });
+      Stories.insert({ gid: gid, colour: colour, ones: "",   size: "11111" });
+      Router.go('edge', edge);
     }
   }
 });

@@ -1,52 +1,11 @@
 
-#edge tr
-    vertical-align top
-    
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .team 
-    border-radius 6px
-    padding 6px
-
-#edge .red.team     { background: Red;      }    
-#edge .orange.team  { background: #FFBF00;  }
-#edge .blue.team    { background: Blue;     }
-#edge .green.team   { background: Green;    }
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .portal 
-    border White
-    border-radius 4px
-    border-width 6px
-    border-style solid
-    margin 2px
-    padding 2px
-    width 3em
-    height 100em
-    float left
-    background DarkGray
-    
-#edge .hover 
-    border 6px dashed Gray
-    
-#edge div[class~=portal][to~=red] 
-    background Red
-
-#edge div[class~=portal][to~=orange] 
-    background #FFBF00
-
-#edge div[class~=portal][to~=blue] 
-    background Blue
-
-#edge div[class~=portal][to~=green] 
-    background Green
+#edge
+    text-align center
     
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         
-#edge #red-dice, #edge #orange-dice, #edge #blue-dice, #edge #green-dice
-    vertical-align bottom
-    text-align center
+#edge #dice
+    margin 10px
 
 #edge .one
     border-radius 4px
@@ -68,7 +27,50 @@
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#edge .wip.area
+#edge #team
+    border-radius 6px
+    padding 1em
+    display inline-block
+
+#edge #team.red     { background: Red;     border-color: Red;     }  
+#edge #team.orange  { background: #FFBF00; border-color: #FFBF00; }
+#edge #team.blue    { background: Blue;    border-color: Blue;    }
+#edge #team.green   { background: Green;   border-color: Green;   }
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .portal 
+    border 6px solid DarkGray 
+    border-radius 4px
+    margin 2px
+    padding 2px
+    width 3em
+    height 100em
+    background DarkGray
+    display inline-block
+    
+#edge div[class~=portal][data-to~=red] 
+    background Red
+    border-color Red
+
+#edge div[class~=portal][data-to~=orange] 
+    background #FFBF00
+    border-color #FFBF00
+
+#edge div[class~=portal][data-to~=blue] 
+    background Blue
+    border-color Blue
+
+#edge div[class~=portal][data-to~=green] 
+    background Green
+    border-color Green
+    
+#edge div[class~=portal].hover 
+    border 6px dashed Gray
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .wip
     border White
     border-radius 6px
     border-width 3px
@@ -77,8 +79,9 @@
     padding 2px
     width 5em
     height 100em
-    float left
     background White
+    display inline-block
+    vertical-align top
     
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     
@@ -88,6 +91,7 @@
     border-style solid
     padding 8px
     margin 8px
+    display block
     
 #edge .red.kanban     { background: Red;      border-color: Red;      }
 #edge .orange.kanban  { background: #FFBF00;  border-color: #FFBF00;  }    
