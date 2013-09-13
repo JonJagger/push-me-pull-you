@@ -23,7 +23,7 @@ home.events({
       openDialog(gid + ' ?', message);
     } else {
       //need to pick an edge, atomic?
-      var colour = _.find([ 'red', 'orange', 'blue', 'green'], function(c) {
+      var colour = _.find(edgeColours(), function(c) {
         return Edges.findOne({ gid: gid, colour: c }) === undefined;
       });
       var edge = { gid: gid, colour: colour };

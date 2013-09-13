@@ -77,7 +77,7 @@ $.fn.addOne = function() {
 
 $.fn.colour = function() {
   var element = this;
-  return _.find(['red','orange','blue','green'], function(colour) {
+  return _.find(edgeColours(), function(colour) {
     return element.attr('class').indexOf(colour) !== -1;
   });
 };
