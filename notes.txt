@@ -9,6 +9,9 @@ o) [New game] needs to somehow have [pull][push] options?
    Very self-organizing!
    This does not cater for an overall wip limit for the whole board though.
    
+o) When 1s have been used the dice div collapses and the team div jumps up.
+   Need to make sure the dice div stays the same size.
+
 o) maybe have squares of red/orange/blue/green (in that order) below the
    [start game] button so you can see how many teams have joined. And make it
    a bit more colourful.
