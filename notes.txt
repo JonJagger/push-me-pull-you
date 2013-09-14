@@ -30,7 +30,11 @@ o) will need resume/review buttons like in cyber-dojo
 
 o) auto backlog. if you push an empty tray size=5 upstream then it will come back with story size=5
 
-o) backlog have dice too? But they have no upstream. And new stories are automatically added.
+o) backlog as a team which have dice too?
+   But they have no upstream.
+   And new stories are automatically added.
+   Or... they do have an upstream, but when they pull from it, it always succeeds immediately.
+   But what if they are in push only mode?
 
 o) no done? except on dashboard
 
@@ -83,12 +87,13 @@ o) don't synchronize the 'days' ?
 o) option to have a single tray colour!?
 
 o) crucial point is that different edges will have different numbers of dice.
+   make earlier teams have more dice, later teams have fewer dice.
 
 o) make all edges get processed and all are invisible by default.
    then make the edge matching your own colour visible.
    No that's stupid. Only need to process the collection into html for
-   dom insertion for your own colour.
+   dom creation for your own colour.
    
-o) drop dice into a portal too?
+o) allow dice to be dropped into portals too?
 
 
