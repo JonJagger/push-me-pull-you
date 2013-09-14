@@ -13,22 +13,20 @@ home.events({'click #new_game' : function () {
 
 home.events({'click #join_game': function() {
   var gid = $('#gid').val();
-  if (gid === 'id' || gid === undefined) {
-    openDialog(gid + ' ?', "Press [New&nbsp;game] to get an id.");
+  if (gid === 'id' || gid === '') {
+    openDialog(gid + ' ?', 'Press [New&nbsp;game] to get an id.');
     return;
   } 
-  // TODO: if gid contains now 0-9a-z characters give specific dialog
   var game = Games.findOne({ gid: gid });
   if (game === undefined) {
-    openDialog(gid + ' ?', "There is no game with that id.");
+    openDialog(gid + ' ?', 'There is no game with that id.');
     return
   } 
   //TODO: atomic?
-  var teamColor = _.find(teamColors(), function(c) {
-    return Edges.findOne({ gid: gid, color: c }) === undefined;
+  var teamColor = _.find(teamColors(), function(color) {
+    return Edges.findOne({ gid: gid, teamColor: color }) === undefined;
   });
-  //TODO: if color === undefined
-  //  game already has N players dialog
+  //TODO: if color === undefined, then game already has 4 players dialog
   var edge = { gid: gid, teamColor: teamColor };
   Edges.insert(edge);
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "1" });

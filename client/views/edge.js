@@ -41,10 +41,16 @@ var dragDrop = function(dragged, dragClass, dropped, dropClass) {
 
 var dropHandler = function(event, ui) {
   var dragged = $(ui.draggable);
-  var dropped = $(this);  
+  var dropped = $(this);
+  
   if (dragDrop(dragged, 'one', dropped, 'story')) {
     oneDroppedOnStory(dragged,dropped);
-  }                
+  }
+  else if (dragDrop(dragged, 'kanban', dropped, 'downstream portal')) {
+    kanbanDroppedOnDownstreamPortal(dragged, dropped);
+  }
+    
+  
 };
 
 var oneDroppedOnStory = function(one,story) {
@@ -55,10 +61,28 @@ var oneDroppedOnStory = function(one,story) {
   }
 };
 
+var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
+  var story = kanban.story();
+  var toColor = portal.attr('data-to');
+  var fromColor = portal.attr('data-from');
+  if (story.isDone()) {
+    if (kanban.color() === fromColor) { // pushing a done kanban
+      Stories.update(story.id(), { $set: {
+        ones: 0,
+        teamColor: toColor
+      }});
+    }
+  }
+};
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $.fn.hasClass = function(klass) {
   return this.attr('class').indexOf(klass) !== -1;
+};
+
+$.fn.story = function(/*kanban*/) {
+  return $(this.children()[0]);
 };
 
 $.fn.isDone = function(/*story*/) {
