@@ -3,7 +3,7 @@ var edge = Template.edge;
 var story = Template.story;
 
 edge.stories = function() {
-  return Stories.find({ gid: this.gid, color: this.color });
+  return Stories.find({ gid: this.gid, teamColor: this.teamColor });
 };
 
 story.isNull = function() {
@@ -79,7 +79,7 @@ $.fn.id = function(/*story*/) {
 
 $.fn.color = function() {
   var element = this;
-  return _.find(edgeColors(), function(color) {
+  return _.find(teamColors(), function(color) {
     return element.hasClass(color);
   });
 };

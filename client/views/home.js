@@ -24,20 +24,22 @@ home.events({'click #join_game': function() {
     return
   } 
   //TODO: atomic?
-  var color = _.find(edgeColors(), function(c) {
+  var teamColor = _.find(teamColors(), function(c) {
     return Edges.findOne({ gid: gid, color: c }) === undefined;
   });
   //TODO: if color === undefined
   //  game already has N players dialog
-  var edge = { gid: gid, color: color };
+  var edge = { gid: gid, teamColor: teamColor };
   Edges.insert(edge);
+  
   //TODO: I need the color of the edge (eColour?)
   //      and the colour of the kanban holding the story (kColour?)
   //      The gid+edgeColour is really an edgeId
-  Stories.insert({ gid: gid, color: color, ones: "1", size: "1" });
-  Stories.insert({ gid: gid, color: color, ones: "2", size: "2" });
-  Stories.insert({ gid: gid, color: color, ones: "0", size: "5" });      
-  Stories.insert({ gid: gid, color: color, ones: "0", size: "0" });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "1", size: "1" });
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "2", size: "2" });
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "5" });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'orange', ones: "0", size: "0" });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "0" });      
   Router.go('edge', edge);
 }});
 

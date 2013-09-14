@@ -4,9 +4,9 @@
     <div id="dice">
       {{> dice}}
     </div>
-    <div id="team" class="{{color}}">        
+    <div id="team" class="{{teamColor}}">        
       <div class="droppable upstream portal"
-           data-from="{{color}}"
+           data-from="{{teamColor}}"
            data-to="backlog">      
       </div>
       <div class="wip">
@@ -15,7 +15,7 @@
         {{/each}}
       </div>      
       <div class="droppable downstream portal"
-           data-from="{{color}}"
+           data-from="{{teamColor}}"
            data-to="orange">      
       </div>
     </div>
@@ -23,13 +23,13 @@
 </template>
 
 <template name="dice">
-  <div class="draggable {{color}} one"></div>
-  <div class="draggable {{color}} one"></div>
-  <div class="draggable {{color}} one"></div>
+  <div class="draggable {{teamColor}} one"></div>
+  <div class="draggable {{teamColor}} one"></div>
+  <div class="draggable {{teamColor}} one"></div>
 </template>
 
 <template name="story">
-  <div class="draggable {{color}} kanban">                
+  <div class="draggable {{kanbanColor}} kanban">                
     {{#if isNull}}
       <div class="null-story"
            data-ones="0"
