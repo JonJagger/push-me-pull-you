@@ -26,17 +26,19 @@ o) create initial stories when game is created.
    How to update it? From the server. In which case it might as well be a
    time stamp!
    
-o) will need resume/review buttons like in cyber-dojo
-
-o) auto backlog. if you push an empty tray size=5 upstream then it will come back with story size=5
+o) ultimately I will need resume/review buttons like in cyber-dojo
 
 o) backlog as a team which have dice too?
-   But they have no upstream.
+   They have no upstream.
    And new stories are automatically added.
    Or... they do have an upstream, but when they pull from it, it always succeeds immediately.
    But what if they are in push only mode?
+   How about they have dice and a [new story] button which they can use to create
+   a new story at any time (no 1 required). Size comes back at random.
+   They then need to do size lots of 1s on it before it can be sent downstream.
+   I like this.
 
-o) no done? except on dashboard
+o) no done? except on dashboard? or last colour?
 
 o) drop [1] onto a story to do work on that story.
    capture in jQuery and update the Meteor collection directly.
@@ -83,6 +85,11 @@ o) don't synchronize the 'days' ?
    I like this idea. What would happen. Would the edges naturally "equalize"?
    It would also mean that the dashboard could attempt to show the moment an
    event took place by placing it at the relevant horizontal position.
+   If a 1 was worked, a 1 could appear in its colour.
+   It a story was finished. The story could appear in its kanban.
+   How to show portal movement?
+   How to show 1 being discarded?
+   How to show dice being rolled?
    
 o) option to have a single tray colour!?
 
