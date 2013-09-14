@@ -6,17 +6,12 @@ edge.stories = function() {
   return Stories.find({ gid: this.gid, teamColor: this.teamColor });
 };
 
-// In the following two functions...
-// this.ones.constructor is Number because it has been incremented
-// this.size.constructor is String because it hasn't
-// thus I need to use != instead of !==  
-
 story.droppableKanban = function() {
-  return (this.ones != this.size) ? 'droppable' : '';
+  return (this.ones !== this.size) ? 'droppable' : '';
 };
 
 story.draggableKanban = function() {
-  return (this.ones == this.size) ? 'draggable' : '';
+  return (this.ones === this.size) ? 'draggable' : '';
 };
 
 story.isNull = function() {
@@ -39,7 +34,8 @@ edge.rendered = function () {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var nOnes = function(n) {
-  return _(n).times(function() { return '1'; });
+  // nOnes(3) --> [ 1, 1, 1 ]
+  return _(n).times(function() { return 1; });
 };
 
 var makeDraggable = function(nodes) {
