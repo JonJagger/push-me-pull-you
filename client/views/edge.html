@@ -23,8 +23,11 @@
 </template>
 
 <template name="dice">
+  <div class="draggable {{teamColor}} not-one"></div>
   <div class="draggable {{teamColor}} one"></div>
-  <div class="draggable {{teamColor}} one"></div>
+  <div class="draggable {{teamColor}} not-one"></div>
+  <div class="draggable {{teamColor}} not-one"></div>
+  <div class="draggable {{teamColor}} not-one"></div>
   <div class="draggable {{teamColor}} one"></div>
 </template>
 
@@ -41,7 +44,8 @@
            data-ones="{{ones}}"
            data-size="{{size}}"
            data-id="{{_id}}">
-        {{ones}}/{{size}}
+        {{#each gap}}<div class='todo-one'>&nbsp;</div>{{/each}}
+        {{#each one}}<div class='done-one'>&nbsp;</div>{{/each}}
       </div>
     {{/if}}
     </div>

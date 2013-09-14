@@ -1,4 +1,9 @@
 
+o) Is there a way to make the physical appearance of a story proportional
+   to its size? This would make a very effective visualization.
+   If the kanban were also proportional it would clearly visualize the idea
+   that only a story of the same (or smaller) size can be put into the kanban.
+
 o) [New game] needs to somehow have [pull][push] options?
    Or should I put that on each Edge?!
    Like that.
@@ -9,6 +14,10 @@ o) [New game] needs to somehow have [pull][push] options?
    Very self-organizing!
    This does not cater for an overall wip limit for the whole board though.
    
+o) make dice a Meteor collection so dashboard can see changes there.
+   make al dice (not just the 1s) show up so anyone watching the dashboard
+   can see what is happening much better.
+
 o) When 1s have been used the dice div collapses and the team div jumps up.
    Need to make sure the dice div stays the same size.
 

@@ -3,11 +3,23 @@ var edge = Template.edge;
 var story = Template.story;
 
 edge.stories = function() {
+  var ss = _(5).times(function() { return '1'; });
+  console.log(EJSON.stringify(ss));
   return Stories.find({ gid: this.gid, teamColor: this.teamColor });
 };
 
 story.isNull = function() {
   return this.size === "0";
+};
+
+story.gap = function() {
+  var n = this.size - this.ones;
+  return _(n).times(function() { return '1';});
+};
+
+story.one = function() {
+  var n = this.ones;
+  return _(n).times(function() { return '1';});
 };
 
 edge.rendered = function () {
@@ -56,7 +68,7 @@ var dropHandler = function(event, ui) {
 var oneDroppedOnStory = function(one,story) {
   var kanban = story.parent();
   if (!story.isDone() && kanban.color() === one.color()) {
-    one.detach();
+    one.detach(); // TODO: make dice a Meteor.collection
     story.addOne();
   }
 };

@@ -7,13 +7,13 @@
 #edge #dice
     margin 10px
 
-#edge .one
+#edge .one, #edge .not-one
     border-radius 4px
     display inline
     padding-top 2px
-    padding-right 12px
+    padding-right 14px
     padding-bottom 4px
-    padding-left 12px
+    padding-left 14px
     font-size 1.2em
     color White
 
@@ -21,16 +21,24 @@ single-bullet = "\2022"
 
 #edge .one:before
     content single-bullet
+    
+#edge .not-one:before
+    content single-bullet
 
 orange-color = #FFBF00
 red-color    = Red
 blue-color   = Blue
 green-color  = Green
 
-#edge .red.one    { background: red-color;    }    
-#edge .orange.one { background: orange-color; }    
-#edge .blue.one   { background: blue-color;   }
-#edge .green.one  { background: green-color;  }
+#edge .red.one,    #edge .red.not-one    { background: red-color;    }    
+#edge .orange.one, #edge .orange.not-one { background: orange-color; }    
+#edge .blue.one,   #edge .blue.not-one   { background: blue-color;   }
+#edge .green.one,  #edge .green.not-one  { background: green-color;  }
+
+#edge .red.not-one    { color: red-color;    }
+#edge .orange.not-one { color: orange-color; }
+#edge .blue.not-one   { color: blue-color;   }
+#edge .green.not-one  { color: green-color;  }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -130,25 +138,15 @@ droppable-border-color = Gray
     border-style solid
     border-width 3px
     
-#edge .red.kanban .null-story 
-    background red-color
-    color red-color
-    border-color red-color
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#edge .orange.kanban .null-story 
-    background orange-color
-    color orange-color
-    border-color orange-color
+#edge .done-one, #edge .todo-one
+    border-radius 8px
+    border 1px solid Black    
+  
+#edge .todo-one { border: 1px solid Black; background: LightGray; }
 
-#edge .blue.kanban .null-story 
-    background blue-color
-    color blue-color
-    border-color blue-color
-
-#edge .green.kanban .null-story 
-    background: green-color
-    color green-color
-    border-color green-color
+#edge .red.kanban .done-one { background: red-color; }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
