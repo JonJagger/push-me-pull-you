@@ -15,7 +15,7 @@ story.draggableKanban = function() {
 };
 
 story.isNull = function() {
-  return this.size === "0";
+  return this.size === 0;
 };
 
 story.gap = function() {
