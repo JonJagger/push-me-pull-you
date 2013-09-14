@@ -18,12 +18,12 @@ story.isNull = function() {
   return this.size === 0;
 };
 
-story.gap = function() {
-  return nOnes(this.size - this.ones); // see {{#each gap}} in edge.html
+story.gap = function() { // see {{#each gap}} in edge.html
+  return nOnes(this.size - this.ones);
 };
 
-story.one = function() {
-  return nOnes(this.ones); // see {{#each one}} in edge.html
+story.one = function() { // see {{#each one}} in edge.html
+  return nOnes(this.ones);
 };
 
 edge.rendered = function () {
@@ -33,8 +33,7 @@ edge.rendered = function () {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var nOnes = function(n) {
-  // nOnes(3) --> [ 1, 1, 1 ]
+var nOnes = function(n) { // nOnes(3) --> [ 1, 1, 1 ]
   return _(n).times(function() { return 1; });
 };
 
@@ -58,25 +57,18 @@ var makeDroppable = function(nodes) {
 
 var newDropHandler = function(dragged,dropped) {
   return {
-    dragDrop: function(from,to) {
-      return dragged.hasClass(from) && dropped.hasClass(to);
-    },
-    call: function(f) {
-      f(dragged,dropped);
+    dragDrop: function(from,to,f) {
+      if (dragged.hasClass(from) && dropped.hasClass(to)) {
+        f(dragged,dropped);
+      }
     }
-  };
+  }
 };
 
-var dropHandler = function(event, ui) {
+var dropHandler = function(event,ui) {
   var handler = newDropHandler($(ui.draggable), $(this));
-  
-  if (handler.dragDrop('one','kanban')) {
-    handler.call(oneDroppedOnKanban);
-  }
-  else if (handler.dragDrop('kanban', 'downstream portal')) {
-    handler.call(kanbanDroppedOnDownstreamPortal);
-  }
-  
+  handler.dragDrop('one','kanban',oneDroppedOnKanban);
+  handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
 };
 
 var oneDroppedOnKanban = function(one,kanban) {
@@ -92,12 +84,13 @@ var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
   var toColor = portal.attr('data-to');
   var fromColor = portal.attr('data-from');
   if (story.isDone()) {
-    if (kanban.color() === fromColor) { // pushing a done kanban
-      Stories.update(story.id(), { $set: {
-        ones: 0,
-        teamColor: toColor,
-        kanbanColor: toColor
-      }});
+    if (kanban.color() === fromColor) { // push
+      Stories.update(story.id(), {
+        $set: {
+          ones: 0,
+          teamColor: toColor,
+          kanbanColor: toColor
+        }});
     }
   }
 };
