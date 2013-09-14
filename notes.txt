@@ -3,6 +3,9 @@ o) Is there a way to make the physical appearance of a story proportional
    to its size? This would make a very effective visualization.
    If the kanban were also proportional it would clearly visualize the idea
    that only a story of the same (or smaller) size can be put into the kanban.
+   I like this idea. Tried it. Works ok, but it creates vertical space pressure.
+   So how about extending the width of the wip area so several kanban can appear
+   in a row.
 
 o) [New game] needs to somehow have [pull][push] options?
    Or should I put that on each Edge?!

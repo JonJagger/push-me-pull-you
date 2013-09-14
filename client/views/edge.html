@@ -23,16 +23,16 @@
 </template>
 
 <template name="dice">
-  <div class="draggable {{teamColor}} not-one"></div>
-  <div class="draggable {{teamColor}} one"></div>
-  <div class="draggable {{teamColor}} not-one"></div>
-  <div class="draggable {{teamColor}} not-one"></div>
-  <div class="draggable {{teamColor}} not-one"></div>
-  <div class="draggable {{teamColor}} one"></div>
+  <div class="{{teamColor}} not-one"></div>
+  <div class="{{teamColor}} draggable one"></div>
+  <div class="{{teamColor}} not-one"></div>
+  <div class="{{teamColor}} not-one"></div>
+  <div class="{{teamColor}} not-one"></div>
+  <div class="{{teamColor}} draggable one"></div>
 </template>
 
 <template name="story">
-  <div class="draggable {{kanbanColor}} kanban">                
+  <div class="{{draggableKanban}} {{droppableKanban}} {{kanbanColor}} kanban">                
     {{#if isNull}}
       <div class="null-story"
            data-ones="0"
@@ -40,7 +40,7 @@
         &nbsp;
       </div>
     {{else}}
-      <div class="droppable story"
+      <div class="story"
            data-ones="{{ones}}"
            data-size="{{size}}"
            data-id="{{_id}}">

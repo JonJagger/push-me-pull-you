@@ -32,6 +32,9 @@ home.events({'click #join_game': function() {
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "1" });
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "2", size: "2" });
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "5" });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "2", size: "3" });
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "5" });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "1", size: "1" });      
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'orange', ones: "0", size: "0" });      
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: "0", size: "0" });      
   Router.go('edge', edge);

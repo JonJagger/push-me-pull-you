@@ -3,9 +3,20 @@ var edge = Template.edge;
 var story = Template.story;
 
 edge.stories = function() {
-  var ss = _(5).times(function() { return '1'; });
-  console.log(EJSON.stringify(ss));
   return Stories.find({ gid: this.gid, teamColor: this.teamColor });
+};
+
+// In the following two functions...
+// this.ones.constructor is Number because it has been incremented
+// this.size.constructor is String because it hasn't
+// thus I need to use != instead of !==  
+
+story.droppableKanban = function() {
+  return (this.ones != this.size) ? 'droppable' : '';
+};
+
+story.draggableKanban = function() {
+  return (this.ones == this.size) ? 'draggable' : '';
 };
 
 story.isNull = function() {
@@ -13,13 +24,11 @@ story.isNull = function() {
 };
 
 story.gap = function() {
-  var n = this.size - this.ones;
-  return _(n).times(function() { return '1';});
+  return nOnes(this.size - this.ones); // see {{#each gap}} in edge.html
 };
 
 story.one = function() {
-  var n = this.ones;
-  return _(n).times(function() { return '1';});
+  return nOnes(this.ones); // see {{#each one}} in edge.html
 };
 
 edge.rendered = function () {
@@ -28,6 +37,10 @@ edge.rendered = function () {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var nOnes = function(n) {
+  return _(n).times(function() { return '1'; });
+};
 
 var makeDraggable = function(nodes) {
   nodes.draggable({
@@ -55,20 +68,19 @@ var dropHandler = function(event, ui) {
   var dragged = $(ui.draggable);
   var dropped = $(this);
   
-  if (dragDrop(dragged, 'one', dropped, 'story')) {
-    oneDroppedOnStory(dragged,dropped);
+  if (dragDrop(dragged, 'one', dropped, 'kanban')) {
+    oneDroppedOnKanban(dragged,dropped);
   }
   else if (dragDrop(dragged, 'kanban', dropped, 'downstream portal')) {
     kanbanDroppedOnDownstreamPortal(dragged, dropped);
   }
-    
   
 };
 
-var oneDroppedOnStory = function(one,story) {
-  var kanban = story.parent();
+var oneDroppedOnKanban = function(one,kanban) {
+  var story = kanban.story();
   if (!story.isDone() && kanban.color() === one.color()) {
-    one.detach(); // TODO: make dice a Meteor.collection
+    one.detach();
     story.addOne();
   }
 };

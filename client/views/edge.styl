@@ -1,9 +1,17 @@
 
-#edge
-    text-align center
-    
+single-bullet = "\2022"
+
+orange-color = #FFBF00
+red-color    = Red
+blue-color   = Blue
+green-color  = Green
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         
+#edge
+    text-align center
+    font-size 0.75em
+    
 #edge #dice
     margin 10px
 
@@ -17,18 +25,8 @@
     font-size 1.2em
     color White
 
-single-bullet = "\2022"
-
-#edge .one:before
+#edge .one:before, #edge .not-one:before
     content single-bullet
-    
-#edge .not-one:before
-    content single-bullet
-
-orange-color = #FFBF00
-red-color    = Red
-blue-color   = Blue
-green-color  = Green
 
 #edge .red.one,    #edge .red.not-one    { background: red-color;    }    
 #edge .orange.one, #edge .orange.not-one { background: orange-color; }    
@@ -96,7 +94,7 @@ droppable-border-color = Gray
     border-style solid
     margin 2px
     padding 2px
-    width 5em
+    width 20em
     height 100em
     background White
     display inline-block
@@ -106,28 +104,36 @@ droppable-border-color = Gray
     
 #edge .kanban 
     border-radius 8px
-    border-width 1px
-    border-style solid
+    border-width droppable-border-width
+    border-style droppable-border-style
     padding 8px
     margin 8px
-    display block
+    width 2em
+    display inline-block
+    vertical-align top
     
 #edge .red.kanban     { background: red-color;    border-color: red-color;    }
 #edge .orange.kanban  { background: orange-color; border-color: orange-color; }    
 #edge .blue.kanban    { background: blue-color;   border-color: blue-color;   }
 #edge .green.kanban   { background: green-color;  border-color: green-color;  }    
 
+#edge .kanban.hover
+    border-width droppable-border-width
+    border-style droppable-border-style
+    border-color droppable-border-color
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #edge .story, #edge .null-story
-    border LightGray
-    border-radius 8px
-    border-width droppable-border-width
-    border-style solid
+    Xborder LightGray
+    Xborder-radius 8px
+    Xborder-width droppable-border-width
+    Xborder-style solid
     font-size 1.4em
-    margin 2px
-    background LightGray
+    Xmargin 2px
+    Xbackground LightGray
     text-align center
+    border-width 0
 
 #edge .story.hover, #edge .null-story.hover 
     border-width droppable-border-width
@@ -142,17 +148,14 @@ droppable-border-color = Gray
 
 #edge .done-one, #edge .todo-one
     border-radius 8px
-    border 1px solid Black    
+    border 2px solid Gray    
   
-#edge .todo-one { border: 1px solid Black; background: LightGray; }
+#edge .todo-one { background: LightGray; }
 
 #edge .red.kanban .done-one { background: red-color; }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#edge .ui-draggable-dragging.kanban
-    border 1px solid Black
-    
 #edge .ui-draggable-dragging.one
     border 1px solid Black
 
