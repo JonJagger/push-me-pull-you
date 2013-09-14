@@ -31,19 +31,19 @@ var makeDroppable = function(nodes) {
   nodes.droppable({
     hoverClass: 'hover',
     //accept: ...
-    drop: dropFn
+    drop: dropHandler
   });            
 };
-        
-var dropFn = function(event, ui) {
+
+var dragDrop = function(dragged, dragClass, dropped, dropClass) {
+  return dragged.hasClass(dragClass) && dropped.hasClass(dropClass);
+};
+
+var dropHandler = function(event, ui) {
   var dragged = $(ui.draggable);
-  var dropped = $(this);
-  var draggedClass = dragged.attr('class');
-  var droppedClass = dropped.attr('class');
-  if (draggedClass.indexOf('one') !== -1) {
-    if (droppedClass.indexOf('story') !== -1) {
-      oneDroppedOnStory(dragged,dropped);
-    }
+  var dropped = $(this);  
+  if (dragDrop(dragged, 'one', dropped, 'story')) {
+    oneDroppedOnStory(dragged,dropped);
   }                
 };
 
@@ -55,29 +55,38 @@ var oneDroppedOnStory = function(one,story) {
   }
 };
 
-$.fn.getOnes = function(/*story*/) {
-  return $(this).data('ones');
-};
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$.fn.getSize = function(/*story*/) {
-  return $(this).data('size');
+$.fn.hasClass = function(klass) {
+  return this.attr('class').indexOf(klass) !== -1;
 };
 
 $.fn.isDone = function(/*story*/) {
-  return this.getOnes() === this.getSize();
+  return this.ones() === this.size();
 };        
 
-$.fn.addOne = function(/*story*/) {
-  var ones = parseInt(this.getOnes(), 10);
-  var id = $(this).data('id');
-  Stories.update(id, { $set: { ones: ones+1 }});
+$.fn.ones = function(/*story*/) {
+  return $(this).data('ones');
+};
+
+$.fn.size = function(/*story*/) {
+  return $(this).data('size');
+};
+
+$.fn.id = function(/*story*/) {
+  return $(this).data('id');  
 };
 
 $.fn.color = function() {
-  var klass = this.attr('class');
+  var element = this;
   return _.find(edgeColors(), function(color) {
-    return klass.indexOf(color) !== -1;
+    return element.hasClass(color);
   });
+};
+
+$.fn.addOne = function(/*story*/) {
+  var ones = parseInt(this.ones(), 10);
+  Stories.update(this.id(), { $set: { ones: ones+1 }});
 };
 
 
