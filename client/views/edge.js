@@ -56,19 +56,25 @@ var makeDroppable = function(nodes) {
   });            
 };
 
-var dragDrop = function(dragged, dragClass, dropped, dropClass) {
-  return dragged.hasClass(dragClass) && dropped.hasClass(dropClass);
+var newDropHandler = function(dragged,dropped) {
+  return {
+    dragDrop: function(from,to) {
+      return dragged.hasClass(from) && dropped.hasClass(to);
+    },
+    call: function(f) {
+      f(dragged,dropped);
+    }
+  };
 };
 
 var dropHandler = function(event, ui) {
-  var dragged = $(ui.draggable);
-  var dropped = $(this);
+  var handler = newDropHandler($(ui.draggable), $(this));
   
-  if (dragDrop(dragged, 'one', dropped, 'kanban')) {
-    oneDroppedOnKanban(dragged,dropped);
+  if (handler.dragDrop('one','kanban')) {
+    handler.call(oneDroppedOnKanban);
   }
-  else if (dragDrop(dragged, 'kanban', dropped, 'downstream portal')) {
-    kanbanDroppedOnDownstreamPortal(dragged, dropped);
+  else if (handler.dragDrop('kanban', 'downstream portal')) {
+    handler.call(kanbanDroppedOnDownstreamPortal);
   }
   
 };
