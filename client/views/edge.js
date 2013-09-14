@@ -69,7 +69,8 @@ var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
     if (kanban.color() === fromColor) { // pushing a done kanban
       Stories.update(story.id(), { $set: {
         ones: 0,
-        teamColor: toColor
+        teamColor: toColor,
+        kanbanColor: toColor
       }});
     }
   }
