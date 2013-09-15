@@ -31,7 +31,7 @@ home.events({'click #join_game': function() {
   Edges.insert(edge);
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: [ ] });
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 2, ones: ['red','red'] });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 5, ones: [ ] });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 4, ones: ['blue'] });      
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 3, ones: ['red','red'] });
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 5, ones: [ ] });      
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: ['red'] });      
