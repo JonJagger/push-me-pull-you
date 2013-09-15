@@ -7,23 +7,20 @@ edge.stories = function() {
 };
 
 story.droppableKanban = function() {
-  return (this.ones !== this.size) ? 'droppable' : '';
+  return (this.ones.length !== this.size) ? 'droppable' : '';
 };
 
 story.draggableKanban = function() {
-  return (this.ones === this.size) ? 'draggable' : '';
+  return (this.ones.length === this.size) ? 'draggable' : '';
 };
 
-story.isNull = function() {
-  return this.size === 0;
+story.gaps = function() { // see {{#each gaps}} in edge.html
+  var n = this.size - this.ones.length;          // eg 3
+  return _(n).times(function() { return 1; });   // eg [1,1,1]
 };
 
-story.gap = function() { // see {{#each gap}} in edge.html
-  return nOnes(this.size - this.ones);
-};
-
-story.one = function() { // see {{#each one}} in edge.html
-  return nOnes(this.ones);
+story.ones = function() { // see {{#each ones}} in edge.html
+  return this.ones;
 };
 
 edge.rendered = function () {
@@ -32,10 +29,6 @@ edge.rendered = function () {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var nOnes = function(n) { // nOnes(3) --> [ 1, 1, 1 ]
-  return _(n).times(function() { return 1; });
-};
 
 var makeDraggable = function(nodes) {
   nodes.draggable({
@@ -51,7 +44,6 @@ var makeDraggable = function(nodes) {
 var makeDroppable = function(nodes) {
   nodes.droppable({
     hoverClass: 'hover',
-    //accept: ...
     drop: dropHandler
   });            
 };
@@ -74,9 +66,9 @@ var newDropHandler = function(dragged,dropped) {
 
 var oneDroppedOnKanban = function(one,kanban) {
   var story = kanban.story();
-  if (!story.isDone() && kanban.color() === one.color()) {
+  if (!story.isDone()) {
     one.detach();
-    story.addOne();
+    story.addOne(one.color());
   }
 };
 
@@ -88,7 +80,7 @@ var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
         $set: {
-          ones: 0,
+          ones: [ ],
           teamColor: toColor,
           kanbanColor: toColor
         }
@@ -107,10 +99,6 @@ $.fn.story = function(/*kanban*/) {
   return $(this.children()[0]);
 };
 
-$.fn.isDone = function(/*story*/) {
-  return this.ones() === this.size();
-};        
-
 $.fn.ones = function(/*story*/) {
   return $(this).data('ones');
 };
@@ -118,6 +106,10 @@ $.fn.ones = function(/*story*/) {
 $.fn.size = function(/*story*/) {
   return $(this).data('size');
 };
+
+$.fn.isDone = function(/*story*/) {
+  return this.ones() === this.size();
+};        
 
 $.fn.id = function(/*story*/) {
   return $(this).data('id');  
@@ -130,9 +122,13 @@ $.fn.color = function() {
   });
 };
 
-$.fn.addOne = function(/*story*/) {
-  var ones = parseInt(this.ones(), 10);
-  Stories.update(this.id(), { $set: { ones: ones+1 }});
+$.fn.addOne = function(/*story*/ color) {
+  var ones = this.ones();
+  ones = (ones === "") ? [ ] : ones.split(',');
+  ones.unshift(color);
+  Stories.update(this.id(), {
+    $set: { ones: ones }
+  });
 };
 
 

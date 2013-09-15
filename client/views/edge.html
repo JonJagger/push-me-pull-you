@@ -29,24 +29,17 @@
   <div class="{{teamColor}} not-one"></div>
   <div class="{{teamColor}} not-one"></div>
   <div class="{{teamColor}} draggable one"></div>
+  <div class="orange draggable one"></div>
 </template>
 
 <template name="story">
   <div class="{{draggableKanban}} {{droppableKanban}} {{kanbanColor}} kanban">                
-    {{#if isNull}}
-      <div class="null-story"
-           data-ones="0"
-           data-size="0">
-        &nbsp;
-      </div>
-    {{else}}
-      <div class="story"
-           data-ones="{{ones}}"
-           data-size="{{size}}"
-           data-id="{{_id}}">
-        {{#each gap}}<div class='todo-one'>&nbsp;</div>{{/each}}
-        {{#each one}}<div class='done-one'>&#8226;</div>{{/each}}
-      </div>
-    {{/if}}
+    <div class="story"
+         data-ones="{{ones}}"
+         data-size="{{size}}"
+         data-id="{{_id}}">
+      {{#each gaps}}<div class='todo-one'>&nbsp;</div>{{/each}}
+      {{#each ones}}<div class='{{this}} done-one'>&#8226;</div>{{/each}}
     </div>
+  </div>
 </template>

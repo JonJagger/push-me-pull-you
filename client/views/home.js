@@ -29,14 +29,12 @@ home.events({'click #join_game': function() {
   //TODO: if color === undefined, then game already has 4 players dialog
   var edge = { gid: gid, teamColor: teamColor };
   Edges.insert(edge);
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 0, size: 1 });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 2, size: 2 });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 0, size: 5 });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 2, size: 3 });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 0, size: 5 });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 1, size: 1 });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'orange', ones: 0, size: 0 });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red',    ones: 0, size: 0 });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: [ ] });
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 2, ones: ['red','red'] });
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 5, ones: [ ] });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 3, ones: ['red','red'] });
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 5, ones: [ ] });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: ['red'] });      
   Router.go('edge', edge);
 }});
 
