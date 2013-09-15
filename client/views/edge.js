@@ -7,12 +7,8 @@ edge.events({'click #roll' : function () {
   var dice = Dice.find({ gid: this.gid, teamColor: this.teamColor });
   var ids = dice.map(function(die) { return die._id; });  
   _.each(ids, function(id) {
-    Dice.update(id, {
-      $set: {
-       value: _.shuffle([1,2,3,4,5,6])[0]
-      }});
-    }
-  );
+    Dice.update(id, { $set: { value: rollDie() }});
+  });
 }});
 
 edge.dice = function() {

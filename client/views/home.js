@@ -37,7 +37,7 @@ home.events({'click #join_game': function() {
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: ['red'] });
   
   _(6).times(function() {
-      Dice.insert({ gid: gid, teamColor: teamColor, color: 'red', value: _.shuffle([1,2,3,4,5,6])[0] });
+      Dice.insert({ gid: gid, teamColor: teamColor, color: 'red', value: rollDie() });
   });
   
   Router.go('edge', edge);
