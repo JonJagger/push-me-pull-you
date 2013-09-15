@@ -24,3 +24,13 @@ Stories = new Meteor.Collection('stories');
  *          size: '3'        // number of 1s on this story
  * });
  */
+
+Dice = new Meteor.Collection('dice');
+/*
+  * Dice.insert({
+ *         gid: '138ef8',
+ *   teamColor: 'blue'
+ *       color: 'red',
+ *       value: '3'
+ * });
+ */

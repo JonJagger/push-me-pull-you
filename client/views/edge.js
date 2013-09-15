@@ -1,6 +1,11 @@
 
-var edge = Template.edge;
+var edge  = Template.edge;
+var die   = Template.die;
 var story = Template.story;
+
+edge.dice = function() {
+  return Dice.find({ gid: this.gid, teamColor: this.teamColor });  
+};
 
 edge.stories = function() {
   return Stories.find({ gid: this.gid, teamColor: this.teamColor });
@@ -21,6 +26,14 @@ story.gaps = function() { // see {{#each gaps}} in edge.html
 
 story.ones = function() { // see {{#each ones}} in edge.html
   return this.ones;
+};
+
+die.draggable = function() {
+  return this.value === 1 ? 'draggable' : '';
+};
+
+die.one = function() {
+  return this.value === 1 ? 'one' : 'not-one';  
 };
 
 edge.rendered = function () {
@@ -66,9 +79,11 @@ var newDropHandler = function(dragged,dropped) {
 
 var oneDroppedOnKanban = function(one,kanban) {
   var story = kanban.story();
-  if (!story.isDone()) {
-    one.detach();
-    story.addOne(one.color());
+  if (!story.isDone()) {    
+    Dice.update(one.id(), { $set: { value: 6 }});    
+    var ones = story.ones();
+    ones.unshift(one.color());
+    Stories.update(story.id(), { $set: { ones: ones } });
   }
 };
 
@@ -101,7 +116,7 @@ $.fn.story = function(/*kanban*/) {
 
 $.fn.ones = function(/*story*/) {  
   var ones = $(this).data('ones');
-  return (ones === "") ? [ ] : ones.split(',');  
+  return (ones === '') ? [ ] : ones.split(',');  
 };
 
 $.fn.size = function(/*story*/) {
@@ -112,7 +127,7 @@ $.fn.isDone = function(/*story*/) {
   return this.ones().length === this.size();
 };        
 
-$.fn.id = function(/*story*/) {
+$.fn.id = function() {
   return $(this).data('id');  
 };
 
@@ -120,14 +135,6 @@ $.fn.color = function() {
   var element = this;
   return _.find(teamColors(), function(color) {
     return element.hasClass(color);
-  });
-};
-
-$.fn.addOne = function(/*story*/ color) {
-  var ones = this.ones();
-  ones.unshift(color);
-  Stories.update(this.id(), {
-    $set: { ones: ones }
   });
 };
 

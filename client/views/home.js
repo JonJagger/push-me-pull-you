@@ -34,7 +34,12 @@ home.events({'click #join_game': function() {
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 4, ones: ['blue'] });      
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 3, ones: ['red','red'] });
   Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 5, ones: [ ] });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: ['red'] });      
+  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: 'red', size: 1, ones: ['red'] });
+  
+  _(6).times(function() {
+      Dice.insert({ gid: gid, teamColor: teamColor, color: 'red', value: _.shuffle([1,2,3,4,5,6])[0] });
+  });
+  
   Router.go('edge', edge);
 }});
 

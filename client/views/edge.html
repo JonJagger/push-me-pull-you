@@ -2,7 +2,9 @@
 <template name="edge">
   <div id="edge">
     <div id="dice">
-      {{> dice}}
+      {{#each dice}}
+        {{> die}}
+      {{/each}}
     </div>
     <div id="team" class="{{teamColor}}">        
       <div class="droppable upstream portal"
@@ -22,15 +24,8 @@
   </div>
 </template>
 
-<template name="dice">
-  <div class="{{teamColor}} not-one"></div>
-  <div class="{{teamColor}} draggable one"></div>
-  <div class="{{teamColor}} not-one"></div>
-  <div class="{{teamColor}} not-one"></div>
-  <div class="{{teamColor}} not-one"></div>
-  <div class="{{teamColor}} draggable one"></div>
-  <div class="orange draggable one"></div>
-  <div class="blue draggable one"></div>
+<template name="die">
+  <div class="{{color}} {{draggable}} {{one}}" data-id="{{_id}}"></div> 
 </template>
 
 <template name="story">
