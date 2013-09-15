@@ -1,64 +1,47 @@
 
-o) Is there a way to make the physical appearance of a story proportional
-   to its size? This would make a very effective visualization.
-   If the kanban were also proportional it would clearly visualize the idea
-   that only a story of the same (or smaller) size can be put into the kanban.
-   I like this idea. Tried it. Works ok, but it creates vertical space pressure.
-   So how about extending the width of the wip area so several kanban can appear
-   in a row.
+o) I just figured out a nice way to do dice teleporting.
+   When a team teleports a dice, they also lose a dice.
+   When an incoming teleported dice is the same colour as
+   the team receiving it they get the dice back!
+   Now I can simply allow any [1] of any colour to be used
+   to do [1] unit of work on a story! Love it.
 
-o) [New game] needs to somehow have [pull][push] options?
-   Or should I put that on each Edge?!
-   Like that.
-   And wip limits can go on each Edge too.
-   Can have two kinds of wip constraint.
-      Number of trays.
-      Total size of tray sizes.
-   Very self-organizing!
-   This does not cater for an overall wip limit for the whole board though.
+o) when a [1] is played, it is changed to a not-one on the display
+   at the top. This will the ui because when a team presses the
+   [roll] button the number of dice will remain the same.
+
+o) use http://arunoda.github.io/laika/   test framework.
+
+o) when the cursor hovers over a [1] or a done kanban it should
+   change appearance (just like on droppability). Done this.
+   However, if you drag a [1] and then release it so it is
+   not dropped, the dragging-style stays in place.
+
+o) make done-one and todo-one have same fixed size as a dice-one
+   drop width of wip
    
-o) make dice a Meteor collection so dashboard can see changes there.
-   make al dice (not just the 1s) show up so anyone watching the dashboard
-   can see what is happening much better.
-
-o) When 1s have been used the dice div collapses and the team div jumps up.
-   Need to make sure the dice div stays the same size.
-
-o) maybe have squares of red/orange/blue/green (in that order) below the
-   [start game] button so you can see how many teams have joined. And make it
-   a bit more colourful.
-
-o) create initial stories when game is created.
-   need to make a copy of that. My idea is that events will be stored in
-   an events collection each with a timestamp. The original board could
-   then be used to replay the events in a review. And the events could
-   be used to create a dashboard.
-   Events are created on clients. How do I know their clocks are synchronized?
-   I don't. So don't use clocks. Use tick data that is held in collection.
-   How to update it? From the server. In which case it might as well be a
-   time stamp!
+o) Each game needs to somehow have [pull][push] options?
+   Or should I put that on _each_ Edge?!
+   I like that.
+   Does it creates a conflict? Suppose red feeds orange.
+   If orange cannot pull [cannot pass empty kanban of their color upstream]
+   and red cannot push [cannot pass full kanban of their color downstream]
+   Does this mean no stories will ever pass from red to orange?
+   I don't think so.
+   red pushing is not the exact mirror of orange pulling.
+   red pushing is about what red can do.
+   orange pulling is about what orange can do.
    
-o) ultimately I will need resume/review buttons like in cyber-dojo
-
-o) backlog as a team which have dice too?
-   They have no upstream.
-   And new stories are automatically added.
-   Or... they do have an upstream, but when they pull from it, it always succeeds immediately.
-   But what if they are in push only mode?
-   How about they have dice and a [new story] button which they can use to create
-   a new story at any time (no 1 required). Size comes back at random.
-   They then need to do size lots of 1s on it before it can be sent downstream.
-   I like this.
-
-o) no done? except on dashboard? or last colour?
-
-o) drop [1] onto a story to do work on that story.
-   capture in jQuery and update the Meteor collection directly.
-
-o) drop [1] onto [unused] area to enable you to reroll the dice
-   I like this. If days are not tied edge to edge then a team with an unusable [1]
-   have a choice of losing the [1] or waiting for a story to arrive!
-
+o) simpler version of splitting (below).
+   When you split a kanban you
+   1. are in a controlled sandbox...
+   2. put all the kanban's done-one's back as dice
+      these dice do not go back to the top of the edge,
+      they remain inside the sandbox, usable only in the sandbox
+   3. split the empty kanban - much simpler - fewer choices
+   4. now the player can play the sandboxed 1s back onto
+      the split kanban in any combination they want.
+   
 o) drop story onto a split-area to split it
    this will offer selection of possibilities. click to select
    eg story 4-7
@@ -80,6 +63,75 @@ o) drop story onto a split-area to split it
           0-1 and 4-6
           0-2 and 4-5
           0-3 and 4-4
+   
+o) Is there a way to make the physical appearance of a story proportional
+   to its size? This would make a very effective visualization.
+   If the kanban were also proportional it would clearly visualize the idea
+   that only a story of the same (or smaller) size can be put into the kanban.
+   I like this idea. Tried it. Works ok, but it creates vertical space pressure.
+   So how about extending the width of the wip area so several kanban can appear
+   in a row.
+
+o) And wip limits can go on each Edge too.
+   Can have two kinds of wip constraint.
+      Number of trays.
+      Total of of tray sizes.
+   Very self-organizing!
+   This does not cater for an overall wip limit for the whole board though.
+   I was thinking this (overall wip limit for the whole board, conwip) would
+   be an option visible on a _separate_ single config page, shared by all the
+   edges. But how about the option being duplicated on _each_ edges
+   config page/tab! Simpler. More self-organizing too.
+   If a player uses this control to reduce the conwip what effect does this
+   actually have? Which kanbans jettisoned/abandoned/shrunk?
+   
+o) make dice a Meteor collection so dashboard can see changes there.
+   make al dice (not just the 1s) show up so anyone watching the dashboard
+   can see what is happening much better.
+
+o) When 1s have been used the dice div collapses and the team div jumps up.
+   Need to make sure the dice div stays the same size.
+
+o) maybe have squares of red/orange/blue/green (in that order) below the
+   [start game] button so you can see how many teams have joined. And make it
+   a bit more colourful.
+
+o) create initial stories when game is created.
+   need to make a snapshot of the initial edge state. My idea is that events
+   will be stored in an events collection each with a timestamp. The original
+   board could then be used to replay the events in a review.
+   And the events could be used to create a dashboard.
+   Events are created on clients. How do I know their clocks are synchronized?
+   I don't. So don't use clocks. Use tick data that is held in collection.
+   How to update it? From the server. In which case it might as well be a
+   time stamp!
+   
+o) ultimately I will need resume/review buttons like in cyber-dojo
+
+o) backlog as a team which have dice too?
+   They have no upstream.
+   And new stories are automatically added.
+   Or... they _do_ have an upstream, but when they pull from it, it always succeeds immediately.
+   But what if they are in push only mode?
+   How about they have dice and a [new story] button which they can use to create
+   a new story at any time (a [1] is not required). Size comes back at random.
+   They then need to do size lots of 1s on it before it can be sent downstream.
+   I like this. But how does it relate to kanban limits?
+   How about the backlog area does not behave like a portal. Instead it just has
+   a magically auto-updating collection of stories.
+   And the [new story] button becomes a [new kanban] button (which is only enabled
+   if the wip is below the limit). Clicking it creates a new _empty_ kanban (of a
+   certain size) which they can they use to drag stories from the backlog onto.
+   Could have different buttons for creating different sized kanbans.
+
+o) no done? except on dashboard? or last colour?
+
+o) drop [1] onto a story to do work on that story.
+   capture in jQuery and update the Meteor collection directly.
+
+o) drop [1] onto [unused] area to enable you to reroll the dice
+   I like this. If days are not tied edge to edge then a team with an unusable [1]
+   have a choice of losing the [1] or waiting for a story to arrive!
           
 o) make maximum size of a story/tray 6 to match the sides on a dice
    and to reduce the number of split options that need to be presented.
@@ -107,12 +159,29 @@ o) option to have a single tray colour!?
 
 o) crucial point is that different edges will have different numbers of dice.
    make earlier teams have more dice, later teams have fewer dice.
-
-o) make all edges get processed and all are invisible by default.
-   then make the edge matching your own colour visible.
-   No that's stupid. Only need to process the collection into html for
-   dom creation for your own colour.
    
 o) allow dice to be dropped into portals too?
 
+o) make the kanban/stories get darker as they get older.
 
+o) make a cumulative-flow-diagram where the kanban from all edges
+   are stacked vertically on top of each other. Because each kanban's height
+   is proportional to their size the greater the wip the greater the height
+   of each 'column'. What is a column? What unit is that? I think if the
+   rolling of each team is not synchronized (other than via the natural flow
+   of work) then it has to be actual elapsed time.
+   
+o) tool-tip for a kanban shows its history in a graph.
+
+o) dashboard display can be live and reactive.
+   Like cyber-dojo I will need some way to limit the horizontal space.
+   There are a couple of aspects/layouts for dashboard.
+   During the game I can just show all the edges without the portals.
+   For charts used in the retrospective I'd like a horizontal scroll-bar that
+   acts as a time-slider (perhaps with << < > >> controls for controlled movement).
+   Sliding the control jumps in time. The idea is that there isn't a diff-style
+   display, the difference is more that you're seeing the chart one moment and the
+   next you're seeing it an instant later and your memory of the previous one
+   allows your brain to form the diff. Much more qualitative than quantitative.
+
+o) cumulative-flow-diagram 

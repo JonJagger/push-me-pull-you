@@ -39,6 +39,7 @@ var nOnes = function(n) { // nOnes(3) --> [ 1, 1, 1 ]
 
 var makeDraggable = function(nodes) {
   nodes.draggable({
+    //cursor: 'crosshair',  // This does not reset when the drop completes.
     stack: 'div',
     revert: true,
     revertDuration: 0,
@@ -55,6 +56,12 @@ var makeDroppable = function(nodes) {
   });            
 };
 
+var dropHandler = function(event,ui) {
+  var handler = newDropHandler($(ui.draggable), $(this));
+  handler.dragDrop('one','kanban',oneDroppedOnKanban);
+  handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
+};
+
 var newDropHandler = function(dragged,dropped) {
   return {
     dragDrop: function(from,to,f) {
@@ -63,12 +70,6 @@ var newDropHandler = function(dragged,dropped) {
       }
     }
   }
-};
-
-var dropHandler = function(event,ui) {
-  var handler = newDropHandler($(ui.draggable), $(this));
-  handler.dragDrop('one','kanban',oneDroppedOnKanban);
-  handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
 };
 
 var oneDroppedOnKanban = function(one,kanban) {
@@ -90,7 +91,8 @@ var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
           ones: 0,
           teamColor: toColor,
           kanbanColor: toColor
-        }});
+        }
+      });
     }
   }
 };

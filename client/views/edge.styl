@@ -6,6 +6,14 @@ red-color    = Red
 blue-color   = Blue
 green-color  = Green
 
+droppable-border-width = 3px
+droppable-border-style = dotted
+droppable-border-color = Black
+
+draggable-border-width = 3px
+draggable-border-style = dotted
+draggable-border-color = Black
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         
 #edge
@@ -24,14 +32,16 @@ green-color  = Green
     padding-left 14px
     font-size 1.2em
     color White
+    border-width draggable-border-width
+    border-style solid
 
 #edge .one:before, #edge .not-one:before
     content single-bullet
 
-#edge .red.one,    #edge .red.not-one    { background: red-color;    }    
-#edge .orange.one, #edge .orange.not-one { background: orange-color; }    
-#edge .blue.one,   #edge .blue.not-one   { background: blue-color;   }
-#edge .green.one,  #edge .green.not-one  { background: green-color;  }
+#edge .red.one,    #edge .red.not-one    { background: red-color;    border-color: red-color;    }    
+#edge .orange.one, #edge .orange.not-one { background: orange-color; border-color: orange-color; }    
+#edge .blue.one,   #edge .blue.not-one   { background: blue-color;   border-color: blue-color;   }
+#edge .green.one,  #edge .green.not-one  { background: green-color;  border-color: green-color;  }
 
 #edge .red.not-one    { color: red-color;    }
 #edge .orange.not-one { color: orange-color; }
@@ -51,10 +61,6 @@ green-color  = Green
 #edge #team.green   { background: green-color;  border-color: green-color;   }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-droppable-border-width = 6px
-droppable-border-style = dashed
-droppable-border-color = Gray
 
 #edge .portal 
     border-width droppable-border-width
@@ -81,8 +87,7 @@ droppable-border-color = Gray
     background green-color
     
 #edge div[class~=portal].hover 
-    border-width droppable-border-width
-    border-style droppable-border-style
+    border-style solid
     border-color droppable-border-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -118,8 +123,7 @@ droppable-border-color = Gray
 #edge .green.kanban   { background: green-color;  border-color: green-color;  }    
 
 #edge .kanban.hover
-    border-width droppable-border-width
-    border-style droppable-border-style
+    border-style solid
     border-color droppable-border-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -154,7 +158,12 @@ droppable-border-color = Gray
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#edge .ui-draggable-dragging.one
-    border 1px solid Black
+#edge .draggable:hover
+    border-width draggable-border-width
+    border-style draggable-border-style
+    border-color draggable-border-color
+
+#edge .ui-draggable-dragging.one, #edge .ui-draggable-dragging.kanban
+    border-style solid
 
 
