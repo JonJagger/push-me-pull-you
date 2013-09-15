@@ -33,6 +33,12 @@ story.droppableKanban = function() {
   return (this.size === 0 || this.ones.length !== this.size) ? 'droppable' : '';
 };
 
+story.oneDroppable = function() {
+  var result = this.size !== 0 && this.ones.length < this.size ? 'oneDroppable' : '';
+  console.log('oneDroppable==' + result);
+  return result;
+};
+
 story.draggableKanban = function() {
   return (this.ones.length === this.size) ? 'draggable' : '';
 };
@@ -57,6 +63,10 @@ var isOne = function(die) {
   return die.value === 1;  
 };
 
+die.draggableOne = function() {
+  return isOne(this) ? 'draggableOne' : '';
+};
+
 die.draggable = function() {
   return isOne(this) ? 'draggable' : '';
 };
@@ -66,12 +76,46 @@ die.one = function() {
 };
 
 edge.rendered = function () {
-  makeDraggable($('.draggable'));
-  makeDroppable($('.droppable'));
+  //makeDraggable($('.draggable'));
+  //makeDroppable(); //$('.droppable'));
+  
+  $('.draggableOne').draggable({
+    drag: function(event,ui) {
+      //ui.helper is being dragged
+      console.log("SET droppable to kanban");      
+      console.log("  BEFORE: $('.oneDroppable').length==" + $('.oneDroppable').length);
+      console.log("  BEFORE: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
+      $('.oneDroppable').addClass('oneDroppableYes');
+      console.log("   AFTER: $('.oneDroppable').length==" + $('.oneDroppable').length);
+      console.log("   AFTER: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
+      
+      $('.oneDroppableYes').droppable({
+        //accept: '.draggable.one',
+        //hoverClass: 'oneDroppableYesHover',
+        drop: oneDroppedOnKanban    
+      });      
+    },
+    stop: function(event,ui) {
+      console.log("UNSET droppable to kanban");
+      console.log("  BEFORE: $('.oneDroppable').length==" + $('.oneDroppable').length);
+      console.log("  BEFORE: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
+      $('.oneDroppable').removeClass('oneDroppableYes');
+      console.log("   AFTER: $('.oneDroppable').length==" + $('.oneDroppable').length);
+      console.log("   AFTER: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
+    },
+    cursor: 'crosshair',
+    stack: 'div',
+    revert: true,
+    revertDuration: 0,
+    helper: 'original',
+    opacity: 0.75
+  });            
+  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*
 var makeDraggable = function(nodes) {
   nodes.draggable({
     cursor: 'crosshair',
@@ -82,17 +126,35 @@ var makeDraggable = function(nodes) {
     opacity: 0.75
   });            
 };
+*/
 
-var makeDroppable = function(nodes) {
-  nodes.droppable({
+/*
+var makeDroppable = function() {
+  $('.droppable').droppable({
+    //accept: 'css' eg #id or .one
     hoverClass: 'hover',
     drop: dropHandler
-  });            
+  });
+  
+  $('.droppable.kanban').droppable({
+    accept: '.draggable.one',
+    hoverClass: 'hover',
+    drop: oneDroppedOnKanban    
+  });
+  
+  // You can't have two .droppables, the second one seems to cancel the first one
+  // Starting to think that the best way is to hook into the drag and dynamically
+  // figure out what the droppable is once the drag starts...
+  
+  $('.droppable.kanban').droppable({
+    accept: '.draggable.kanban',
+    hoverClass: 'hover',
+    drop: kanbanDroppedOnKanban    
+  });  
 };
 
 var dropHandler = function(event,ui) {
   var handler = newDropHandler($(ui.draggable), $(this));
-  handler.dragDrop('one','kanban',oneDroppedOnKanban);
   handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
   handler.dragDrop('kanban','upstream portal',kanbanDroppedOnUpstreamPortal);
   handler.dragDrop('kanban','kanban',kanbanDroppedOnKanban);
@@ -107,16 +169,22 @@ var newDropHandler = function(dragged,dropped) {
     }
   }
 };
+*/
 
-var oneDroppedOnKanban = function(one,kanban) {
+var oneDroppedOnKanban = function(event,ui) {
+  console.log("oneDroppedOnKanban");
+  var one = $(ui.draggable);
+  var kanban = $(this);
+  
   var story = kanban.story();
-  if (!story.isDone()) {    
+  //if (!story.isDone()) {    
     Dice.update(one.id(), { $set: { value: 6 }});    
     var ones = story.ones();
     ones.unshift(one.color());
     Stories.update(story.id(), { $set: { ones: ones } });
-  }
+  //}
 };
+
 
 var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
   var story = kanban.story();
@@ -149,8 +217,10 @@ var kanbanDroppedOnUpstreamPortal = function(kanban,portal) {
   }
 };
 
-var kanbanDroppedOnKanban = function(dragged,dropped) {
-  alert("full kanban dropped onto empty kanban");
+var kanbanDroppedOnKanban = function(event,ui) {
+  var from = $(ui.draggable);
+  var to = $(this);
+  alert("[full?] kanban dropped onto [empty?] kanban");
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -

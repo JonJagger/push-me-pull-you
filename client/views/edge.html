@@ -26,11 +26,11 @@
 </template>
 
 <template name="die">
-  <div class="{{color}} {{draggable}} {{one}}" data-id="{{_id}}"></div> 
+  <div class="{{color}} {{draggableOne}} {{one}}" data-id="{{_id}}"></div> 
 </template>
 
 <template name="story">
-  <div class="{{draggableKanban}} {{droppableKanban}} {{kanbanColor}} kanban">                
+  <div class=" {{oneDroppable}} {{kanbanColor}} kanban">   
     <div class="story"
          data-ones="{{ones}}"
          data-size="{{size}}"
