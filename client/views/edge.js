@@ -30,7 +30,7 @@ edge.upstreamPortalColor = function() {
 };
 
 story.droppableKanban = function() {
-  return (this.ones.length !== this.size) ? 'droppable' : '';
+  return (this.size === 0 || this.ones.length !== this.size) ? 'droppable' : '';
 };
 
 story.draggableKanban = function() {
@@ -95,7 +95,7 @@ var dropHandler = function(event,ui) {
   handler.dragDrop('one','kanban',oneDroppedOnKanban);
   handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
   handler.dragDrop('kanban','upstream portal',kanbanDroppedOnUpstreamPortal);
-  //'kanban','kanban'    (to xfer full onto empty)
+  handler.dragDrop('kanban','kanban',kanbanDroppedOnKanban);
 };
 
 var newDropHandler = function(dragged,dropped) {
@@ -147,6 +147,10 @@ var kanbanDroppedOnUpstreamPortal = function(kanban,portal) {
       });      
     }
   }
+};
+
+var kanbanDroppedOnKanban = function(dragged,dropped) {
+  alert("full kanban dropped onto empty kanban");
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
