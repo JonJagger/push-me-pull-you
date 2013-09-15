@@ -19,12 +19,27 @@ edge.stories = function() {
   return Stories.find({ gid: this.gid, teamColor: this.teamColor });
 };
 
+edge.downstreamPortalColor = function() {
+  if (this.teamColor === 'red')    return 'orange';
+  if (this.teamColor === 'orange') return 'blue';
+};
+
+edge.upstreamPortalColor = function() {
+  if (this.teamColor === 'red')    return 'backlog';
+  if (this.teamColor === 'orange') return 'red';
+};
+
 story.droppableKanban = function() {
   return (this.ones.length !== this.size) ? 'droppable' : '';
 };
 
 story.draggableKanban = function() {
   return (this.ones.length === this.size) ? 'draggable' : '';
+};
+
+story.holes = function() { // see {{#each holes}} in edge.html
+  var n = this.kanbanSize - this.size;
+  return _(n).times(function() { return 1; });
 };
 
 story.gaps = function() { // see {{#each gaps}} in edge.html

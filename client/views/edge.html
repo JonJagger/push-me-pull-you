@@ -10,7 +10,7 @@
     <div id="team" class="{{teamColor}}">        
       <div class="droppable upstream portal"
            data-from="{{teamColor}}"
-           data-to="backlog">      
+           data-to="{{upstreamPortalColor}}">      
       </div>
       <div class="wip">
         {{#each stories}}
@@ -19,7 +19,7 @@
       </div>      
       <div class="droppable downstream portal"
            data-from="{{teamColor}}"
-           data-to="orange">      
+           data-to="{{downstreamPortalColor}}">      
       </div>
     </div>
   </div>
@@ -35,8 +35,9 @@
          data-ones="{{ones}}"
          data-size="{{size}}"
          data-id="{{_id}}">
-      {{#each gaps}}<div class='todo-one'>&nbsp;</div>{{/each}}
-      {{#each ones}}<div class='{{this}} done-one'>&#8226;</div>{{/each}}
+      {{#each holes}}<div class='hole'>&nbsp;</div>{{/each}}
+      {{#each gaps }}<div class='todo-one'>&nbsp;</div>{{/each}}
+      {{#each ones }}<div class='{{this}} done-one'>&#8226;</div>{{/each}}
     </div>
   </div>
 </template>

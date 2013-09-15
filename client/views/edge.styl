@@ -1,4 +1,6 @@
 
+fonts = Trebuchet MS, Tahoma, Verdana, Arial, sans-serif
+
 single-bullet = '\2022'
 
 orange-color = #FFBF00
@@ -20,11 +22,19 @@ draggable-border-color = Black
     text-align center
     font-size 0.75em
     
+#edge #roll
+  border-radius 2px
+  font 0.8em fonts
+  text-align center
+  padding 0.4em
+  cursor pointer
+  color Gray
+      
 #edge #dice
     margin 10px
 
 #edge .one, #edge .not-one
-    border-radius 4px
+    border-radius 8px
     display inline
     padding-top 2px
     padding-right 12px
@@ -132,20 +142,31 @@ draggable-border-color = Black
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#edge .story, #edge .null-story
+#edge .story
     font-size 1.4em
     text-align center
     border-width 0
 
-#edge .story.hover, #edge .null-story.hover 
+#edge .story.hover
     border-width droppable-border-width
     border-style droppable-border-style
     border-color droppable-border-color
 
-#edge .kanban .null-story 
+#edge .kanban
     border-style solid
     border-width 3px
     
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#edge .hole
+    border-radius 8px
+    border 2px dotted Gray
+
+#edge .red    .hole { background: red-color;    }
+#edge .orange .hole { background: orange-color; }
+#edge .blue   .hole { background: blue-color;   }
+#edge .green  .hole { background: green-color;  }
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #edge .done-one, #edge .todo-one

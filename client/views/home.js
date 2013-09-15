@@ -37,13 +37,38 @@ var setupTeam = function(gid,teamColor) {
   var kanbanColor = teamColor;
   var oneColor = teamColor;
   
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: kanbanColor, size: 1, ones: [ ] });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: kanbanColor, size: 2, ones: [oneColor,oneColor] });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: kanbanColor, size: 4, ones: [oneColor] });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: kanbanColor, size: 3, ones: [oneColor,oneColor] });
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: kanbanColor, size: 5, ones: [ ] });      
-  Stories.insert({ gid: gid, teamColor: teamColor, kanbanColor: kanbanColor, size: 1, ones: [oneColor] });
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: kanbanColor, kanbanSize: 1,
+                   size: 1, ones: [ ] });
   
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: kanbanColor, kanbanSize: 2,
+                   size: 2, ones: [oneColor,oneColor] });
+  
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: kanbanColor, kanbanSize: 5,
+                   size: 5, ones: [oneColor] });
+  
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: kanbanColor, kanbanSize: 3,
+                   size: 3, ones: [oneColor,oneColor] });
+  
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: 'orange', kanbanSize: 5,
+                   size: 0, ones: [ ] });
+  
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: kanbanColor, kanbanSize: 4,
+                   size: 4, ones: [ ] });
+
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: kanbanColor, kanbanSize: 1,
+                   size: 1, ones: [oneColor] });
+  
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: 'orange', kanbanSize: 1,
+                   size: 0, ones: [ ] });
+
   _(6).times(function() {
       Dice.insert({ gid: gid, teamColor: teamColor, color: teamColor, value: rollDie() });
   });
