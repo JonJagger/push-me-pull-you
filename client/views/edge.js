@@ -73,6 +73,8 @@ var dropHandler = function(event,ui) {
   var handler = newDropHandler($(ui.draggable), $(this));
   handler.dragDrop('one','kanban',oneDroppedOnKanban);
   handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
+  //'kanban','upstream portal'
+  //'kanban','kanban'    (to xfer full onto empty)
 };
 
 var newDropHandler = function(dragged,dropped) {
