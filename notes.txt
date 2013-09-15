@@ -5,6 +5,13 @@ o) I just figured out a nice way to do dice teleporting.
    the team receiving it they get the dice back!
    Now I can simply allow any [1] of any colour to be used
    to do [1] unit of work on a story! Love it.
+   However, this is quite a big change because it will mean I
+   need a StoryDice.Collection since a story could be made up of
+   different coloured dice. Or does it? Can I replace
+   Stories.insert({ .... ones: 3 ... });
+   with something like this...
+   Stories.insert({ .... ones: ['red','red','orange'] ... });
+   I don't see why not.
 
 o) when a [1] is played, it is changed to a not-one on the display
    at the top. This will the ui because when a team presses the

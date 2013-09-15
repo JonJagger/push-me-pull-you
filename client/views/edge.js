@@ -39,12 +39,12 @@ var nOnes = function(n) { // nOnes(3) --> [ 1, 1, 1 ]
 
 var makeDraggable = function(nodes) {
   nodes.draggable({
-    //cursor: 'crosshair',  // This does not reset when the drop completes.
+    cursor: 'crosshair',
     stack: 'div',
     revert: true,
     revertDuration: 0,
     helper: 'original',
-    opacity: 0.75                        
+    opacity: 0.75
   });            
 };
 
