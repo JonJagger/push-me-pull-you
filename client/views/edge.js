@@ -99,8 +99,9 @@ $.fn.story = function(/*kanban*/) {
   return $(this.children()[0]);
 };
 
-$.fn.ones = function(/*story*/) {
-  return $(this).data('ones');
+$.fn.ones = function(/*story*/) {  
+  var ones = $(this).data('ones');
+  return (ones === "") ? [ ] : ones.split(',');  
 };
 
 $.fn.size = function(/*story*/) {
@@ -108,7 +109,7 @@ $.fn.size = function(/*story*/) {
 };
 
 $.fn.isDone = function(/*story*/) {
-  return this.ones() === this.size();
+  return this.ones().length === this.size();
 };        
 
 $.fn.id = function(/*story*/) {
@@ -124,7 +125,6 @@ $.fn.color = function() {
 
 $.fn.addOne = function(/*story*/ color) {
   var ones = this.ones();
-  ones = (ones === "") ? [ ] : ones.split(',');
   ones.unshift(color);
   Stories.update(this.id(), {
     $set: { ones: ones }
