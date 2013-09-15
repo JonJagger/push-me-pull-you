@@ -125,20 +125,17 @@ draggable-border-color = Black
     border-radius 8px
     border-width droppable-border-width
     border-style solid
+    border-color White
     padding 8px
     margin 8px
     width 2em
     display inline-block
     vertical-align top
     
-#edge .red.kanban     { background: red-color;    border-color: White;    }
-#edge .orange.kanban  { background: orange-color; border-color: orange-color; }    
-#edge .blue.kanban    { background: blue-color;   border-color: blue-color;   }
-#edge .green.kanban   { background: green-color;  border-color: green-color;  }    
-
-#edge .kanban.Xhover
-    border-style solid
-    border-color droppable-border-color
+#edge .red.kanban     { background: red-color;    }
+#edge .orange.kanban  { background: orange-color; }    
+#edge .blue.kanban    { background: blue-color;   }
+#edge .green.kanban   { background: green-color;  }    
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -146,11 +143,6 @@ draggable-border-color = Black
     font-size 1.4em
     text-align center
     border-width 0
-
-#edge .story.Xhover
-    border-width droppable-border-width
-    border-style droppable-border-style
-    border-color droppable-border-color
 
 #edge .kanban
     border-style solid
@@ -183,28 +175,19 @@ draggable-border-color = Black
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// Initial selection of draggable
 #edge .draggableOne:hover
     border-width draggable-border-width
     border-style draggable-border-style
     border-color draggable-border-color
 
-#edge .oneDroppableYes
-    border-width draggable-border-width
-    border-style draggable-border-style
-    border-color draggable-border-style
-
-
+// Once dragging starts
 #edge .ui-draggable-dragging.one, #edge .ui-draggable-dragging.kanban
     border-style solid
 
-.XoneDroppableYes
-    border-width draggable-border-width
-    border-style draggable-border-style
+// Dynamically activated drop targets
+#edge .oneDroppableYes
+    border-style solid
     border-color draggable-border-color
 
-
-.Xwip .red.kanban.oneDroppableYes
-    border-width draggable-border-width
-    border-style draggable-border-style
-    border-color draggable-border-color
 

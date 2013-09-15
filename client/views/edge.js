@@ -81,27 +81,13 @@ edge.rendered = function () {
   
   $('.draggableOne').draggable({
     drag: function(event,ui) {
-      //ui.helper is being dragged
-      console.log("SET droppable to kanban");      
-      console.log("  BEFORE: $('.oneDroppable').length==" + $('.oneDroppable').length);
-      console.log("  BEFORE: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
       $('.oneDroppable').addClass('oneDroppableYes');
-      console.log("   AFTER: $('.oneDroppable').length==" + $('.oneDroppable').length);
-      console.log("   AFTER: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
-      
       $('.oneDroppableYes').droppable({
-        //accept: '.draggable.one',
-        //hoverClass: 'oneDroppableYesHover',
         drop: oneDroppedOnKanban    
       });      
     },
     stop: function(event,ui) {
-      console.log("UNSET droppable to kanban");
-      console.log("  BEFORE: $('.oneDroppable').length==" + $('.oneDroppable').length);
-      console.log("  BEFORE: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
       $('.oneDroppable').removeClass('oneDroppableYes');
-      console.log("   AFTER: $('.oneDroppable').length==" + $('.oneDroppable').length);
-      console.log("   AFTER: $('.oneDroppableYes').length==" + $('.oneDroppableYes').length);
     },
     cursor: 'crosshair',
     stack: 'div',
