@@ -34,9 +34,7 @@ story.droppableKanban = function() {
 };
 
 story.oneDroppable = function() {
-  var result = this.size !== 0 && this.ones.length < this.size ? 'oneDroppable' : '';
-  console.log('oneDroppable==' + result);
-  return result;
+  return this.size !== 0 && this.ones.length < this.size ? 'oneDroppable' : '';
 };
 
 story.draggableKanban = function() {
@@ -80,7 +78,7 @@ edge.rendered = function () {
   //makeDroppable(); //$('.droppable'));
   
   $('.draggableOne').draggable({
-    drag: function(event,ui) {
+    start: function(event,ui) {
       $('.oneDroppable').addClass('oneDroppableYes');
       $('.oneDroppableYes').droppable({
         drop: oneDroppedOnKanban    
@@ -99,6 +97,15 @@ edge.rendered = function () {
   
 };
 
+var oneDroppedOnKanban = function(event,ui) {
+  var one = $(ui.draggable);  
+  var story = $(this).story();
+  Dice.update(one.id(), { $set: { value: 6 }});    
+  var ones = story.ones();
+  ones.unshift(one.color());
+  Stories.update(story.id(), { $set: { ones: ones } });
+};
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 /*
@@ -112,9 +119,7 @@ var makeDraggable = function(nodes) {
     opacity: 0.75
   });            
 };
-*/
 
-/*
 var makeDroppable = function() {
   $('.droppable').droppable({
     //accept: 'css' eg #id or .one
@@ -155,22 +160,6 @@ var newDropHandler = function(dragged,dropped) {
     }
   }
 };
-*/
-
-var oneDroppedOnKanban = function(event,ui) {
-  console.log("oneDroppedOnKanban");
-  var one = $(ui.draggable);
-  var kanban = $(this);
-  
-  var story = kanban.story();
-  //if (!story.isDone()) {    
-    Dice.update(one.id(), { $set: { value: 6 }});    
-    var ones = story.ones();
-    ones.unshift(one.color());
-    Stories.update(story.id(), { $set: { ones: ones } });
-  //}
-};
-
 
 var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
   var story = kanban.story();
@@ -208,6 +197,7 @@ var kanbanDroppedOnKanban = function(event,ui) {
   var to = $(this);
   alert("[full?] kanban dropped onto [empty?] kanban");
 };
+*/
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
