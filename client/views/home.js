@@ -42,7 +42,7 @@ var setupTeam = function(gid,teamColor) {
                    size: 1, ones: [ ] });
   
   Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 2,
+                   kanbanColor: kanbanColor, kanbanSize: 3,
                    size: 2, ones: [oneColor,oneColor] });
   
   Stories.insert({ gid: gid, teamColor: teamColor,

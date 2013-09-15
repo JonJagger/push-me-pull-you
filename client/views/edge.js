@@ -37,26 +37,32 @@ story.draggableKanban = function() {
   return (this.ones.length === this.size) ? 'draggable' : '';
 };
 
+var nOnes = function(n) { // eg 3
+  return _(n).times(function() { return 1; });  // eg [1,1,1]
+};
+
 story.holes = function() { // see {{#each holes}} in edge.html
-  var n = this.kanbanSize - this.size;
-  return _(n).times(function() { return 1; });
+  return nOnes(this.kanbanSize - this.size);
 };
 
 story.gaps = function() { // see {{#each gaps}} in edge.html
-  var n = this.size - this.ones.length;          // eg 3
-  return _(n).times(function() { return 1; });   // eg [1,1,1]
+  return nOnes(this.size - this.ones.length);
 };
 
 story.ones = function() { // see {{#each ones}} in edge.html
-  return this.ones;
+  return this.ones; // eg ['red','red','blue']
+};
+
+var isOne = function(die) {
+  return die.value === 1;  
 };
 
 die.draggable = function() {
-  return this.value === 1 ? 'draggable' : '';
+  return isOne(this) ? 'draggable' : '';
 };
 
 die.one = function() {
-  return this.value === 1 ? 'one' : 'not-one';  
+  return isOne(this) ? 'one' : 'not-one';  
 };
 
 edge.rendered = function () {
@@ -88,7 +94,7 @@ var dropHandler = function(event,ui) {
   var handler = newDropHandler($(ui.draggable), $(this));
   handler.dragDrop('one','kanban',oneDroppedOnKanban);
   handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
-  //'kanban','upstream portal'
+  handler.dragDrop('kanban','upstream portal',kanbanDroppedOnUpstreamPortal);
   //'kanban','kanban'    (to xfer full onto empty)
 };
 
@@ -114,8 +120,8 @@ var oneDroppedOnKanban = function(one,kanban) {
 
 var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
   var story = kanban.story();
-  var toColor = portal.attr('data-to');
-  var fromColor = portal.attr('data-from');
+  var fromColor = $(portal).data('from');
+  var toColor = $(portal).data('to');  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -129,6 +135,20 @@ var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
   }
 };
 
+var kanbanDroppedOnUpstreamPortal = function(kanban,portal) {
+  var story = kanban.story();
+  var toColor = $(portal).data('to');
+  if (story.size() === 0) {
+    if (kanban.team().color() === kanban.color()) {
+      Stories.update(story.id(), {
+        $set: {
+          teamColor: toColor
+        }
+      });      
+    }
+  }
+};
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $.fn.hasClass = function(klass) {
@@ -137,6 +157,10 @@ $.fn.hasClass = function(klass) {
 
 $.fn.story = function(/*kanban*/) {
   return $(this.children()[0]);
+};
+
+$.fn.team = function(/*kanban*/) {
+  return this.closest('#team');
 };
 
 $.fn.ones = function(/*story*/) {  
