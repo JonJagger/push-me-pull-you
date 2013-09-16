@@ -1,4 +1,6 @@
 
+o) Nothing showing up in Opera
+
 o) I just figured out a nice way to do dice teleporting.
    When a team teleports a dice, they also lose a dice.
    When an incoming teleported dice is the same colour as
