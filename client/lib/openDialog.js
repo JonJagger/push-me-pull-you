@@ -8,7 +8,8 @@ openDialog = function(title, html) {
       },
       title: title,
       autoOpen: false,
-      modal: true
+      modal: true,
+      dialogClass: 'noTitle'
     }).dialog('open');   
 };
 

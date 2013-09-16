@@ -2,24 +2,26 @@
 var home = Template.home;
 
 home.greeting = function () {
-  return 'The Kanban Ones Game';
+  return "The Kanban Ones Game";
 };
 
-home.events({'click #start' : function () {
+home.events({"click #start" : function () {
   var game = { gid: newId(6) };
   Games.insert(game);
-  $('#gid').val(game.gid);
+  $("#gid").val(game.gid);
 }});
 
 home.events({'click #join': function() {
   var gid = $('#gid').val();
-  if (gid === 'id' || gid === '') {
-    openDialog(gid + ' ?', 'Press [New&nbsp;game] to get an id.');
+  //console.log('gid=:'+gid+':');
+  //console.log('  '+gid.constructor);
+  if (gid === "id" || gid === "") {
+    openDialog(gid + " ?", "Press [start] to get an id.");
     return;
   } 
   var game = Games.findOne({ gid: gid });
   if (game === undefined) {
-    openDialog(gid + ' ?', 'There is no game with that id.');
+    openDialog(gid + " ?", "There is no game with that id.");
     return
   } 
   //TODO: atomic?
@@ -30,7 +32,7 @@ home.events({'click #join': function() {
   var edge = { gid: gid, teamColor: teamColor };
   Edges.insert(edge);
   setupTeam(gid,teamColor);  
-  Router.go('edge', edge);
+  Router.go("edge", edge);
 }});
 
 var setupTeam = function(gid,teamColor) {
@@ -52,8 +54,8 @@ var setupTeam = function(gid,teamColor) {
   makeStory(1, 0, [ ]);
 
   Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: 'orange', kanbanSize: 3,
-                   size: 2, ones: ['red'] });    
+                   kanbanColor: "orange", kanbanSize: 3,
+                   size: 2, ones: ["red"] });    
   
   _(6).times(function() {
       Dice.insert({ gid: gid, teamColor: teamColor, color: teamColor, value: rollDie() });

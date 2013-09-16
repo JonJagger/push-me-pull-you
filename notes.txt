@@ -21,6 +21,25 @@ o) when a [1] is played, it is changed to a not-one on the display
    at the top. This will the ui because when a team presses the
    [roll] button the number of dice will remain the same.
 
+o) How about making the downstream portal have potentially two colours.
+   If pushing is [on] for this team, the teams own color is present on their
+   downstream portal.
+   If the downstream team has pulling [on], their color is also present
+   on this teams portal.
+   What about the upstream portal?
+   If the upstream team has pushing [on], their colour is present on this
+   teams upstream portal.
+   If pulling is [on] for this team, the teams own color is present on their
+   upstream portal.
+   Does this mean that flow could be blocked in both direction at a portal?
+   I guess so! But that's ok. More self-organizing fodder.
+
+o) The act of pushing a done story through a portal could be the event
+   that causes automatic error [bug] checking to take place.
+
+o) What to do if one of the teams (egdes) has to retire?
+   Have a resume button.
+
 o) use http://arunoda.github.io/laika/   test framework.
 
 o) when the cursor hovers over a [1] or a done kanban it should
