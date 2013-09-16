@@ -12,6 +12,10 @@ o) Extension to the above idea. Above the dice have a dice-pool.
    Pulling one of your dice from the dice-pool means you get the lost dice back.
    Thus dice have their own "teleport-pool" and kanbans have their own separate
    teleports.
+   This would be interesting as it would create a shared resource that
+   all teams could see. Thus there could be concurrency issues.
+   Suppose two teams try to drag a dice into their playing area
+   at the same time.
 
 o) when a [1] is played, it is changed to a not-one on the display
    at the top. This will the ui because when a team presses the
