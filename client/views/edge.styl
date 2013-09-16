@@ -33,7 +33,8 @@ draggable-border-color = Black
 #edge #dice
     margin 10px
 
-#edge .one, #edge .not-one
+#edge .one
+#edge .not-one
     border-radius 8px
     display inline
     padding-top 2px
@@ -49,7 +50,8 @@ draggable-border-color = Black
     color DarkGray
     background DarkGray
 
-#edge .one:before, #edge .not-one:before
+#edge .one:before
+#edge .not-one:before
     content single-bullet
 
 #edge .red.one    { background: red-color;    border-color: red-color;    }    
@@ -68,11 +70,10 @@ draggable-border-color = Black
     border-radius 6px
     padding 1em
     display inline-block
-
-#edge #team.red     { background: red-color;    border-color: red-color;    }  
-#edge #team.orange  { background: orange-color; border-color: orange-color; }
-#edge #team.blue    { background: blue-color;   border-color: blue-color;   }
-#edge #team.green   { background: green-color;  border-color: green-color;   }
+    &.red     { background: red-color;    border-color: red-color;    }  
+    &.orange  { background: orange-color; border-color: orange-color; }
+    &.blue    { background: blue-color;   border-color: blue-color;   }
+    &.green   { background: green-color;  border-color: green-color;   }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -86,23 +87,15 @@ draggable-border-color = Black
     width 3em
     height 100em
     background DarkGray
-    display inline-block
-    
-#edge div[class~=portal][data-to=red] 
-    background red-color
-
-#edge div[class~=portal][data-to=orange] 
-    background orange-color
-
-#edge div[class~=portal][data-to=blue] 
-    background blue-color
-
-#edge div[class~=portal][data-to=green] 
-    background green-color
-    
-#edge div[class~=portal].hover 
-    border-style solid
-    border-color droppable-border-color
+    display inline-block    
+    &[data-to=red] 
+        background red-color
+    &[data-to=orange] 
+        background orange-color
+    &[data-to=blue] 
+        background blue-color
+    &[data-to=green] 
+        background green-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -157,7 +150,8 @@ draggable-border-color = Black
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#edge .done-one, #edge .todo-one
+#edge .done-one
+#edge .todo-one
     border-radius 8px
     border 2px solid Gray
     color White
