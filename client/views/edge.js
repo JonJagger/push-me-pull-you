@@ -24,13 +24,13 @@ Template.edge.storiesQuarter = function(n) {
 Template.edge.rendered = function () {  
   $('.draggableOne').draggable({
     start: function(event,ui) {
-      $('.oneDroppable').addClass('oneDroppableYes');
-      $('.oneDroppableYes').droppable({
+      $('.storyIsInProgress').addClass('storyIsInProgressDroppable');
+      $('.storyIsInProgressDroppable').droppable({
         drop: oneDroppedOnKanban    
       });      
     },
     stop: function(event,ui) {
-      $('.oneDroppable').removeClass('oneDroppableYes');
+      $('.storyIsInProgress').removeClass('storyIsInProgressDroppable');
     },
     cursor: 'crosshair',
     stack: 'div',
@@ -68,8 +68,13 @@ Template.upstreamPortal.color = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.story.oneDroppable = function() {
-  return this.size !== 0 && this.ones.length < this.size ? 'oneDroppable' : '';
+Template.story.kanbanState = function() {
+  if (this.size === 0)
+    return 'kanbanIsEmpty';
+  if (this.ones.length < this.size)
+    return 'storyIsInProgress';
+  if (this.ones.length === this.size)
+    return 'storyIsDone';
 };
 
 Template.story.holes = function() { // see {{#each holes}} in edge.html
