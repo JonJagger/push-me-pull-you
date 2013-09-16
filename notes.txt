@@ -34,6 +34,10 @@ o) How about making the downstream portal have potentially two colours.
    Does this mean that flow could be blocked in both direction at a portal?
    I guess so! But that's ok. More self-organizing fodder.
 
+o) When a [1] is being dragged, instead of highlighting the target kanban
+   I could highlight they target _hole_ it will drop into. Or perhaps
+   highlight both.
+
 o) The act of pushing a done story through a portal could be the event
    that causes automatic error [bug] checking to take place.
 
