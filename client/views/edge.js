@@ -38,7 +38,28 @@ Template.edge.rendered = function () {
     revertDuration: 0,
     helper: 'original',
     opacity: 0.75
-  });              
+  });
+  
+
+  $('.storyIsDone').draggable({
+    start: function(event,ui) {
+      $('#downstreamPortal').addClass('downstreamPortalDroppable');
+      log($('.downstreamPortalDroppable').length);
+      $('.downstreamPortalDroppable').droppable({
+        drop: doneStoryDroppedOnDownstreamPortal
+      });      
+    },
+    stop: function(event,ui) {
+      $('#downstreamPortal').removeClass('downstreamPortalDroppable');
+    },
+    cursor: 'crosshair',
+    stack: 'div',
+    revert: true,
+    revertDuration: 0,
+    helper: 'original',
+    opacity: 0.75
+  });  
+  
 };
 
 var oneDroppedOnKanban = function(event,ui) {
@@ -48,6 +69,10 @@ var oneDroppedOnKanban = function(event,ui) {
   var ones = story.ones();
   ones.unshift(one.color());
   Stories.update(story.id(), { $set: { ones: ones } });
+};
+
+var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
+  log("DROPPED");  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -109,8 +134,12 @@ Template.die.one = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var log = function(name,o) {
-  console.log(name + " = " + EJSON.stringify(o));  
+var log = function(msg,arg) {
+  if (arg === undefined) {
+    console.log(EJSON.stringify(msg));
+  } else {
+    console.log(msg + " = " + EJSON.stringify(arg));
+  }
 };
 
 var getDice = function(gid, teamColor) {

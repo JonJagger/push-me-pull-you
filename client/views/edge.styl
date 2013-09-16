@@ -117,7 +117,7 @@ wip-color = Moccasin
         &[data-to=red] 
             background red-color
             border-color red-color            
-        &[data-to=orange] 
+        &[data-to=orange]
             background orange-color
             border-color orange-color            
         &[data-to=blue] 
@@ -188,15 +188,19 @@ wip-color = Moccasin
 
     // - - - - - - - - - - - - - - - - Initial selection of draggable
     .one:hover
+    .storyIsDone:hover
         border-width draggable-border-width
         border-style draggable-border-style
         border-color draggable-border-color
 
     // - - - - - - - - - - - - - - - - Once dragging starts
-    .ui-draggable-dragging.one
+    .ui-draggable-dragging.one    
         border-style solid
 
     // - - - - - - - - - - - - - - - - Dynamically activated drop targets
-    .storyIsInProgressDroppable
+    //                                 Their CSS must be sufficiently specific 
+    //                                 for them to take precedence.
+    #wip .kanban.storyIsInProgressDroppable
+    #downstreamPortal.downstreamPortalDroppable
         border-style solid
         border-color draggable-border-color
