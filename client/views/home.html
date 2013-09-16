@@ -1,38 +1,30 @@
 <template name="home">
   <div id="home">
-    <div id="greeting">
-      <table>
+    <div>
+      <table id="greeting">
         <tr>
           <td><span id="the">the</span></td>
-          <td>{{> rightArrowTd}}</td>
+          <td>{{> leftRightArrow}}</td>
           <td><span id="kanban">kanban</span></td>
-          <td>{{> rightArrowTd}}</td>
+          <td>{{> leftRightArrow}}</td>
           <td><span id="ones">ones</span></td>
-          <td>{{> rightArrowTd}}</td>
+          <td>{{> leftRightArrow}}</td>
           <td><span id="game">game</span></td>
         </tr>
       </table>
-    </div>
-    <div>
-      <input type="button" value="start" id="start">
-    </div>
-    <div class="arrow">
-      &darr;
-    </div>  
-    <div>
-      <input type="text" id="gid" value="id">
-    </div>
-    <div class="arrow">
-      &uarr;
-    </div>  
-    <div>
-      <input type="button" value="join" id="join">
+      <table>
+        <tr>
+          <td><input type="button" value="start" id="start"></td>
+          <td><div class="arrow">&rarr;</div></td>
+          <td><input type="text" id="gid" value="id"></td>
+          <td><div class="arrow">&larr;</div></td>
+          <td><input type="button" value="join" id="join"></td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
 
-<template name="rightArrowTd">
-  <div class="rightArrow">
-    &rarr;
-  </div>
+<template name="leftRightArrow">
+  <div class="arrow">&harr;</div>
 </template>
