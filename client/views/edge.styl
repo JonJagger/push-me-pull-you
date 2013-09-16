@@ -8,13 +8,13 @@ blue-color    = Blue
 green-color   = Green
 done-color    = LightGray
 
-droppable-border-width = 3px
+droppable-border-width = 5px
 droppable-border-style = dotted
-droppable-border-color = Black
+droppable-border-color = DarkGray
 
-draggable-border-width = 3px
+draggable-border-width = 5px
 draggable-border-style = dotted
-draggable-border-color = Black
+draggable-border-color = DarkGray
 
 wip-color = Moccasin
 
@@ -196,7 +196,7 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .one:hover
-    .storyIsDone:hover
+    .kanban.storyIsDone:hover
         border-width draggable-border-width
         border-style draggable-border-style
         border-color draggable-border-color
@@ -206,7 +206,8 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .ui-draggable-dragging.one    
-        border-style solid
+    .ui-draggable-dragging.kanban    
+        border-style dotted
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Dynamically activated drop targets
@@ -217,5 +218,5 @@ wip-color = Moccasin
     //
     #wip .kanban.storyIsInProgress.droppable
     #team #downstreamPortal.droppable
-        border-style solid
+        border-style dotted
         border-color draggable-border-color
