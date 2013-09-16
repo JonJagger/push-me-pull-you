@@ -1,11 +1,4 @@
 
-Router.configure({
-  layout: 'layout',
-  renderTemplates: {
-    'statusBar': { to: 'statusBar' }
-  }
-});
-
 Router.map(function() { 
   this.route('home', { path: '/' });
   
