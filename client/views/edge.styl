@@ -22,187 +22,176 @@ draggable-border-color = Black
     text-align center
     font-size 0.75em
     
-#edge #roll
-  border-radius 2px
-  font 0.8em fonts
-  text-align center
-  padding 0.4em
-  cursor pointer
-  color Gray
+    #roll
+        border-radius 2px
+        font 0.8em fonts
+        text-align center
+        padding 0.4em
+        cursor pointer
+        color Gray
       
-#edge #dice
-    margin 10px
+    #dice
+        margin 10px
 
-#edge .one
-#edge .not-one
-    border-radius 8px
-    display inline
-    padding-top 2px
-    padding-right 12px
-    padding-bottom 4px
-    padding-left 12px
-    font-size 1.2em
-    color White
-    border-width draggable-border-width
-    border-style solid
+    .one
+    .not-one
+        border-radius 8px
+        display inline
+        padding-top 2px
+        padding-right 12px
+        padding-bottom 4px
+        padding-left 12px
+        font-size 1.2em
+        color White
+        border-width draggable-border-width
+        border-style solid
 
-#edge .one:before
-#edge .not-one:before
-    content single-bullet
+    .one:before
+    .not-one:before
+        content single-bullet
 
-#edge .not-one
-    color DarkGray
-    background DarkGray
-    &.red
-        border-color red-color
-    &.orange
-        border-color orange-color
-    &.blue
-        border-color blue-color
-    &.green
-        border-color green-color
+    .not-one
+        color DarkGray
+        background DarkGray
+        &.red
+            border-color red-color
+        &.orange
+            border-color orange-color
+        &.blue
+            border-color blue-color
+        &.green
+            border-color green-color
 
-#edge .one
-    &.red
-        background   red-color
-        border-color red-color
-    &.orange
-        background   orange-color
-        border-color orange-color    
-    &.blue
-        background   blue-color
-        border-color blue-color
-    &.green
-        background   green-color
-        border-color green-color
+    .one
+        &.red
+            background   red-color
+            border-color red-color
+        &.orange
+            background   orange-color
+            border-color orange-color    
+        &.blue
+            background   blue-color
+            border-color blue-color
+        &.green
+            background   green-color
+            border-color green-color
 
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #team
+        border-radius 6px
+        padding 1em
+        display inline-block
+        &.red
+            background   red-color
+            border-color red-color
+        &.orange
+            background   orange-color
+            border-color orange-color
+        &.blue
+            background   blue-color
+            border-color blue-color
+        &.green
+            background   green-color
+            border-color green-color
 
-#edge #team
-    border-radius 6px
-    padding 1em
-    display inline-block
-    &.red
-        background   red-color
-        border-color red-color
-    &.orange
-        background   orange-color
-        border-color orange-color
-    &.blue
-        background   blue-color
-        border-color blue-color
-    &.green
-        background   green-color
-        border-color green-color
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .portal 
+        border-width droppable-border-width
+        border-style solid
+        border-color White 
+        border-radius 4px
+        margin 2px
+        padding 2px
+        width 3em
+        height 100em
+        background DarkGray
+        display inline-block    
+        &[data-to=red] 
+            background red-color
+        &[data-to=orange] 
+            background orange-color
+        &[data-to=blue] 
+            background blue-color
+        &[data-to=green] 
+            background green-color
 
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .portal 
-    border-width droppable-border-width
-    border-style solid
-    border-color White 
-    border-radius 4px
-    margin 2px
-    padding 2px
-    width 3em
-    height 100em
-    background DarkGray
-    display inline-block    
-    &[data-to=red] 
-        background red-color
-    &[data-to=orange] 
-        background orange-color
-    &[data-to=blue] 
-        background blue-color
-    &[data-to=green] 
-        background green-color
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .wip
-    border-color White
-    border-radius 6px
-    border-width 3px
-    border-style solid
-    margin 2px
-    padding 2px
-    width 20em
-    height 100em
-    background White
-    display inline-block
-    vertical-align top
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .wip
+        border-color White
+        border-radius 6px
+        border-width 3px
+        border-style solid
+        margin 2px
+        padding 2px
+        width 20em
+        height 100em
+        background White
+        display inline-block
+        vertical-align top
     
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .kanban 
+        border-radius 12px
+        border-width droppable-border-width
+        border-style solid
+        border-color White
+        padding 8px
+        margin 8px
+        width 2em
+        display inline-block
+        vertical-align top
+        &.red
+            background red-color
+        &.orange
+            background orange-color
+        &.blue
+            background blue-color
+        &.green
+            background green-color
+
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .story
+        font-size 1.4em
+        text-align center
+        border-width 0
     
-#edge .kanban 
-    border-radius 12px
-    border-width droppable-border-width
-    border-style solid
-    border-color White
-    padding 8px
-    margin 8px
-    width 2em
-    display inline-block
-    vertical-align top
-    &.red
-        background red-color
-    &.orange
-        background orange-color
-    &.blue
-        background blue-color
-    &.green
-        background green-color
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .hole
+        border-radius 8px
+        border 2px dotted Gray
 
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .story
-    font-size 1.4em
-    text-align center
-    border-width 0
-    
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .hole
-    border-radius 8px
-    border 2px dotted Gray
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-#edge .done-one
-#edge .todo-one
-    border-radius 8px
-    border 2px solid Gray
-    color White
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .done-one
+    .todo-one
+        border-radius 8px
+        border 2px solid Gray
+        color White
   
-#edge .todo-one
-    background LightGray
+    .todo-one
+        background LightGray
 
-#edge .done-one
-    &.red
-        background red-color
-    &.orange
-        background orange-color
-    &.blue
-        background blue-color
-    &.green
-        background green-color
+    .done-one
+        &.red
+            background red-color
+        &.orange
+            background orange-color
+        &.blue
+            background blue-color
+        &.green
+            background green-color
 
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - - - - - - - - - - - - - - Initial selection of draggable
+    .draggableOne:hover
+        border-width draggable-border-width
+        border-style draggable-border-style
+        border-color draggable-border-color
 
-// Initial selection of draggable
-#edge .draggableOne:hover
-    border-width draggable-border-width
-    border-style draggable-border-style
-    border-color draggable-border-color
+    // - - - - - - - - - - - - - - - - Once dragging starts
+    .ui-draggable-dragging.one
+    .ui-draggable-dragging.kanban
+        border-style solid
 
-// Once dragging starts
-#edge .ui-draggable-dragging.one
-#edge .ui-draggable-dragging.kanban
-    border-style solid
-
-// Dynamically activated drop targets
-#edge .oneDroppableYes
-    border-style solid
-    border-color draggable-border-color
-
-
+    // - - - - - - - - - - - - - - - - Dynamically activated drop targets
+    .oneDroppableYes
+        border-style solid
+        border-color draggable-border-color
