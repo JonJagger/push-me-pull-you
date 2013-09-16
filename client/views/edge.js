@@ -1,5 +1,5 @@
 
-Template.edge.events({'click #roll' : function () {
+Template.edge.events({"click #roll" : function () {
   var ids = getDice(this.gid, this.teamColor).map(function(die) { return die._id; });  
   _.each(ids, function(id) {
     Dice.update(id, { $set: { value: rollDie() }});
@@ -22,11 +22,11 @@ Template.edge.storiesQuarter = function(n) {
 };
 
 Template.edge.rendered = function () {
-  dragDropSetup('#dice .die.one',
-                '#wip .kanban.storyIsInProgress',
+  dragDropSetup("#dice .die.one",
+                "#wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
-  dragDropSetup('#wip .kanban.storyIsDone',
-                '#downstreamPortal',
+  dragDropSetup("#wip .kanban.storyIsDone",
+                "#downstreamPortal",
                 doneStoryDroppedOnDownstreamPortal);    
 };
 
@@ -36,17 +36,17 @@ var dragDropSetup = function(from,to,handler) {
   $(from).draggable({
     start: function(event,ui) {
       var targets = $(to);
-      targets.addClass('droppable')
+      targets.addClass("droppable")
              .droppable({ drop: handler });      
     },
     stop: function(event,ui) {
-      $(to).removeClass('droppable');
+      $(to).removeClass("droppable");
     },
-    cursor: 'crosshair',
-    stack: 'div',
+    cursor: "crosshair",
+    stack: "div",
     revert: true,
     revertDuration: 0,
-    helper: 'original',
+    helper: "original",
     opacity: 0.75
   });  
 };
@@ -65,13 +65,8 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban = $(ui.draggable); 
   var portal = $(this);
   var story = kanban.story();  
-
-  log("done story dropped on downstream portal");  
-  log('  story.id()', story.id());
-  log('  portal.color()', portal.color());
-
-  var fromColor = $(portal).data('from');
-  var toColor = $(portal).data('to');  
+  var fromColor = $(portal).data("from");
+  var toColor = $(portal).data("to");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -90,27 +85,27 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
 // slimed
 
 Template.downstreamPortal.color = function() {
-  if (this.teamColor === 'red')    return 'orange';
-  if (this.teamColor === 'orange') return 'blue';
+  if (this.teamColor === "red")    return "orange";
+  if (this.teamColor === "orange") return "blue";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // slimed
 
 Template.upstreamPortal.color = function() {
-  if (this.teamColor === 'red')    return 'backlog';
-  if (this.teamColor === 'orange') return 'red';
+  if (this.teamColor === "red")    return "backlog";
+  if (this.teamColor === "orange") return "red";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.story.kanbanState = function() {
   if (this.size === 0)
-    return 'kanbanIsEmpty';
+    return "kanbanIsEmpty";
   if (this.ones.length < this.size)
-    return 'storyIsInProgress';
+    return "storyIsInProgress";
   if (this.ones.length === this.size)
-    return 'storyIsDone';
+    return "storyIsDone";
 };
 
 Template.story.holes = function() { // see {{#each holes}} in edge.html
@@ -132,7 +127,7 @@ Template.story.ones = function() { // see {{#each ones}} in edge.html
 //};
 
 Template.die.one = function() {
-  return isOne(this) ? 'one' : 'not-one';  
+  return isOne(this) ? "one" : "not-one";  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,16 +163,16 @@ $.fn.story = function(/*kanban*/) {
 };
 
 $.fn.team = function(/*kanban*/) {
-  return this.closest('#team');
+  return this.closest("#team");
 };
 
 $.fn.ones = function(/*story*/) {  
-  var ones = $(this).data('ones');
-  return (ones === '') ? [ ] : ones.split(',');  
+  var ones = $(this).data("ones");
+  return (ones === "") ? [ ] : ones.split(",");  
 };
 
 $.fn.size = function(/*story*/) {
-  return $(this).data('size');
+  return $(this).data("size");
 };
 
 $.fn.isDone = function(/*story*/) {
@@ -185,7 +180,7 @@ $.fn.isDone = function(/*story*/) {
 };        
 
 $.fn.id = function() {
-  return $(this).data('id');  
+  return $(this).data("id");  
 };
 
 $.fn.color = function() {
