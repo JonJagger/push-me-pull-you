@@ -21,6 +21,17 @@ Template.edge.storiesQuarter = function(n) {
   return quarter;
 };
 
+Template.edge.rendered = function () {
+  dragDropSetup('#dice .die.one',
+                '#wip .kanban.storyIsInProgress',
+                oneDroppedOnKanban);
+  dragDropSetup('#wip .kanban.storyIsDone',
+                '#downstreamPortal',
+                doneStoryDroppedOnDownstreamPortal);    
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 var dragDropSetup = function(from,to,handler) {
   $(from).draggable({
     start: function(event,ui) {
@@ -40,18 +51,10 @@ var dragDropSetup = function(from,to,handler) {
   });  
 };
 
-Template.edge.rendered = function () {
-  dragDropSetup('#dice .die.one',
-                '#wip .kanban.storyIsInProgress',
-                oneDroppedOnKanban);
-  dragDropSetup('#wip .kanban.storyIsDone',
-                '#downstreamPortal',
-                doneStoryDroppedOnDownstreamPortal);    
-};
-
 var oneDroppedOnKanban = function(event,ui) {
-  var one = $(ui.draggable);  
-  var story = $(this).story();
+  var one = $(ui.draggable);
+  var kanban = $(this);
+  var story = kanban.story();
   Dice.update(one.id(), { $set: { value: 6 }});    
   var ones = story.ones();
   ones.unshift(one.color());
@@ -59,7 +62,28 @@ var oneDroppedOnKanban = function(event,ui) {
 };
 
 var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
+  var kanban = $(ui.draggable); 
+  var portal = $(this);
+  var story = kanban.story();  
+
   log("done story dropped on downstream portal");  
+  log('  story.id()', story.id());
+  log('  portal.color()', portal.color());
+
+  var fromColor = $(portal).data('from');
+  var toColor = $(portal).data('to');  
+  if (story.isDone()) {
+    if (kanban.color() === fromColor) { // push
+      Stories.update(story.id(), {
+        $set: {
+          ones: [ ],
+          teamColor: toColor,
+          kanbanColor: toColor
+        }
+      });
+    }
+  }
+
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,14 +124,6 @@ Template.story.gaps = function() { // see {{#each gaps}} in edge.html
 Template.story.ones = function() { // see {{#each ones}} in edge.html
   return this.ones; // eg ['red','red','blue']
 };
-
-//Template.story.droppableKanban = function() {
-//  return (this.size === 0 || this.ones.length !== this.size) ? 'droppable' : '';
-//};
-
-//Template.story.draggableKanban = function() {
-//  return (this.ones.length === this.size) ? 'draggable' : '';
-//};
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -181,75 +197,6 @@ $.fn.color = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /*
-var makeDraggable = function(nodes) {
-  nodes.draggable({
-    cursor: 'crosshair',
-    stack: 'div',
-    revert: true,
-    revertDuration: 0,
-    helper: 'original',
-    opacity: 0.75
-  });            
-};
-
-var makeDroppable = function() {
-  $('.droppable').droppable({
-    //accept: 'css' eg #id or .one
-    hoverClass: 'hover',
-    drop: dropHandler
-  });
-  
-  $('.droppable.kanban').droppable({
-    accept: '.draggable.one',
-    hoverClass: 'hover',
-    drop: oneDroppedOnKanban    
-  });
-  
-  // You can't have two .droppables, the second one seems to cancel the first one
-  // Starting to think that the best way is to hook into the drag and dynamically
-  // figure out what the droppable is once the drag starts...
-  
-  $('.droppable.kanban').droppable({
-    accept: '.draggable.kanban',
-    hoverClass: 'hover',
-    drop: kanbanDroppedOnKanban    
-  });  
-};
-
-var dropHandler = function(event,ui) {
-  var handler = newDropHandler($(ui.draggable), $(this));
-  handler.dragDrop('kanban','downstream portal',kanbanDroppedOnDownstreamPortal);
-  handler.dragDrop('kanban','upstream portal',kanbanDroppedOnUpstreamPortal);
-  handler.dragDrop('kanban','kanban',kanbanDroppedOnKanban);
-};
-
-var newDropHandler = function(dragged,dropped) {
-  return {
-    dragDrop: function(from,to,f) {
-      if (dragged.hasClass(from) && dropped.hasClass(to)) {
-        f(dragged,dropped);
-      }
-    }
-  }
-};
-
-var kanbanDroppedOnDownstreamPortal = function(kanban,portal) {
-  var story = kanban.story();
-  var fromColor = $(portal).data('from');
-  var toColor = $(portal).data('to');  
-  if (story.isDone()) {
-    if (kanban.color() === fromColor) { // push
-      Stories.update(story.id(), {
-        $set: {
-          ones: [ ],
-          teamColor: toColor,
-          kanbanColor: toColor
-        }
-      });
-    }
-  }
-};
-
 var kanbanDroppedOnUpstreamPortal = function(kanban,portal) {
   var story = kanban.story();
   var toColor = $(portal).data('to');

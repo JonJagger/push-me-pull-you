@@ -186,20 +186,30 @@ wip-color = Moccasin
         &.green
             background green-color
 
-    // - - - - - - - - - - - - - - - - Initial selection of draggable
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Initial selection of draggable
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //
     .one:hover
     .storyIsDone:hover
         border-width draggable-border-width
         border-style draggable-border-style
         border-color draggable-border-color
 
-    // - - - - - - - - - - - - - - - - Once dragging starts
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Once dragging starts
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //
     .ui-draggable-dragging.one    
         border-style solid
 
-    // - - - - - - - - - - - - - - - - Dynamically activated drop targets
-    //                                 Their CSS must be sufficiently specific 
-    //                                 for them to take precedence.
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Dynamically activated drop targets
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //
+    // Their CSS must be sufficiently specific for them to take
+    // precedence over the defaults above.
+    //
     #wip .kanban.storyIsInProgress.droppable
     #team #downstreamPortal.droppable
         border-style solid
