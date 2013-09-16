@@ -46,23 +46,35 @@ draggable-border-color = Black
     border-width draggable-border-width
     border-style solid
 
-#edge .not-one
-    color DarkGray
-    background DarkGray
-
 #edge .one:before
 #edge .not-one:before
     content single-bullet
 
-#edge .red.one    { background: red-color;    border-color: red-color;    }    
-#edge .orange.one { background: orange-color; border-color: orange-color; }    
-#edge .blue.one   { background: blue-color;   border-color: blue-color;   }
-#edge .green.one  { background: green-color;  border-color: green-color;  }
+#edge .not-one
+    color DarkGray
+    background DarkGray
+    &.red
+        border-color red-color
+    &.orange
+        border-color orange-color
+    &.blue
+        border-color blue-color
+    &.green
+        border-color green-color
 
-#edge .red.not-one    { border-color: red-color; }
-#edge .orange.not-one { border-color: orange-color; }
-#edge .blue.not-one   { border-color: blue-color;   }
-#edge .green.not-one  { border-color: green-color;  }
+#edge .one
+    &.red
+        background   red-color
+        border-color red-color
+    &.orange
+        background   orange-color
+        border-color orange-color    
+    &.blue
+        background   blue-color
+        border-color blue-color
+    &.green
+        background   green-color
+        border-color green-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -70,10 +82,18 @@ draggable-border-color = Black
     border-radius 6px
     padding 1em
     display inline-block
-    &.red     { background: red-color;    border-color: red-color;    }  
-    &.orange  { background: orange-color; border-color: orange-color; }
-    &.blue    { background: blue-color;   border-color: blue-color;   }
-    &.green   { background: green-color;  border-color: green-color;   }
+    &.red
+        background   red-color
+        border-color red-color
+    &.orange
+        background   orange-color
+        border-color orange-color
+    &.blue
+        background   blue-color
+        border-color blue-color
+    &.green
+        background   green-color
+        border-color green-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -124,11 +144,14 @@ draggable-border-color = Black
     width 2em
     display inline-block
     vertical-align top
-    
-#edge .red.kanban     { background: red-color;    }
-#edge .orange.kanban  { background: orange-color; }    
-#edge .blue.kanban    { background: blue-color;   }
-#edge .green.kanban   { background: green-color;  }    
+    &.red
+        background red-color
+    &.orange
+        background orange-color
+    &.blue
+        background blue-color
+    &.green
+        background green-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -143,11 +166,6 @@ draggable-border-color = Black
     border-radius 8px
     border 2px dotted Gray
 
-#edge .red    .hole { background: red-color;    }
-#edge .orange .hole { background: orange-color; }
-#edge .blue   .hole { background: blue-color;   }
-#edge .green  .hole { background: green-color;  }
-
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #edge .done-one
@@ -156,12 +174,18 @@ draggable-border-color = Black
     border 2px solid Gray
     color White
   
-#edge .todo-one { background: LightGray; }
+#edge .todo-one
+    background LightGray
 
-#edge .red.done-one    { background: red-color;    }
-#edge .orange.done-one { background: orange-color; }
-#edge .blue.done-one   { background: blue-color;   }
-#edge .green.done-one  { background: green-color;  }
+#edge .done-one
+    &.red
+        background red-color
+    &.orange
+        background orange-color
+    &.blue
+        background blue-color
+    &.green
+        background green-color
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -172,7 +196,8 @@ draggable-border-color = Black
     border-color draggable-border-color
 
 // Once dragging starts
-#edge .ui-draggable-dragging.one, #edge .ui-draggable-dragging.kanban
+#edge .ui-draggable-dragging.one
+#edge .ui-draggable-dragging.kanban
     border-style solid
 
 // Dynamically activated drop targets
