@@ -8,11 +8,11 @@ blue-color    = Blue
 green-color   = Green
 done-color    = LightGray
 
-droppable-border-width = 5px
+droppable-border-width = 4px
 droppable-border-style = dotted
 droppable-border-color = DarkGray
 
-draggable-border-width = 5px
+draggable-border-width = 4px
 draggable-border-style = dotted
 draggable-border-color = DarkGray
 
@@ -57,32 +57,27 @@ wip-color = Moccasin
         padding-bottom 4px
         padding-left 12px
         font-size 1.2em
-        color White
         border-width draggable-border-width
         border-style solid
+        border-color White
+        color White
 
     .one:before
     .not-one:before
         content single-bullet
 
     .not-one
-        background Gray
-        color Gray
-        border-color Gray
+        background White
 
     .one
         &.red
             background   red-color
-            border-color red-color
         &.orange
             background   orange-color
-            border-color orange-color    
         &.blue
             background   blue-color
-            border-color blue-color
         &.green
             background   green-color
-            border-color green-color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #team
@@ -167,20 +162,24 @@ wip-color = Moccasin
         
     .hole
         border-radius border-radius-width
-        border 3px dotted LightGray
+        border-width 2px
+        border-style dotted
+        border-color White
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .done-one
     .todo-one
         border-radius border-radius-width
-        border 3px solid White
+        border-width 2px
+        border-style solid
+        border-color White
         color White
   
     .todo-one
         background White
 
     .done-one
-        border-color LightGray
+        border-color White
         &.red
             background red-color
         &.orange
