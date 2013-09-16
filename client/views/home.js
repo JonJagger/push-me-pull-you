@@ -13,15 +13,13 @@ home.events({"click #start" : function () {
 
 home.events({'click #join': function() {
   var gid = $('#gid').val();
-  //console.log('gid=:'+gid+':');
-  //console.log('  '+gid.constructor);
   if (gid === "id" || gid === "") {
-    openDialog(gid + " ?", "Press [start] to get an id.");
+    openDialog("Press [start] to get an id.");
     return;
   } 
   var game = Games.findOne({ gid: gid });
   if (game === undefined) {
-    openDialog(gid + " ?", "There is no game with that id.");
+    openDialog("There is no game with that id.");
     return
   } 
   //TODO: atomic?
