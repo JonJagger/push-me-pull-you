@@ -37,38 +37,19 @@ var setupTeam = function(gid,teamColor) {
   var kanbanColor = teamColor;
   var oneColor = teamColor;
   
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 1,
-                   size: 1, ones: [ ] });
-  
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 3,
-                   size: 2, ones: [oneColor,oneColor] });
-  
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 5,
-                   size: 5, ones: [oneColor] });
-  
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 3,
-                   size: 3, ones: [oneColor,oneColor] });
-  
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: 'orange', kanbanSize: 5,
-                   size: 0, ones: [ ] });
-  
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 4,
-                   size: 4, ones: [ ] });
-
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: kanbanColor, kanbanSize: 1,
-                   size: 1, ones: [oneColor] });
-  
-  Stories.insert({ gid: gid, teamColor: teamColor,
-                   kanbanColor: 'orange', kanbanSize: 1,
-                   size: 0, ones: [ ] });
-
+  var makeStory = function(kanbanSize, size, ones) {
+    Stories.insert({ gid: gid, teamColor: teamColor,
+                     kanbanColor: kanbanColor, kanbanSize: kanbanSize,
+                     size: size, ones: ones });    
+  };
+  makeStory(1, 1, [ ]);
+  makeStory(3, 2, [oneColor,oneColor]);
+  makeStory(5, 5, [oneColor,'orange']);
+  makeStory(3, 3, [oneColor,oneColor]);
+  makeStory(5, 0, [ ]);
+  makeStory(4, 4, [ ]);  
+  makeStory(1, 1, [oneColor]);
+  makeStory(1, 0, [ ]);
   _(6).times(function() {
       Dice.insert({ gid: gid, teamColor: teamColor, color: teamColor, value: rollDie() });
   });
