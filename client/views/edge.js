@@ -25,11 +25,11 @@ Template.edge.rendered = function () {
   $('.one').draggable({
     start: function(event,ui) {
       var targets = $('.storyIsInProgress');
-      targets.addClass('storyIsInProgressDroppable')
+      targets.addClass('droppable')
              .droppable({ drop: oneDroppedOnKanban });      
     },
     stop: function(event,ui) {
-      $('.storyIsInProgress').removeClass('storyIsInProgressDroppable');
+      $('.storyIsInProgress').removeClass('droppable');
     },
     cursor: 'crosshair',
     stack: 'div',
