@@ -25,9 +25,20 @@ Template.edge.rendered = function () {
   dragDropSetup("#dice .die.one",
                 "#wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
+  
+  //TODO: Pushing[on]
+  log('teamColor',this.teamColor); // undefined?
+  //            "#wip .red.kanban.storyIsDone"    (for read team)
   dragDropSetup("#wip .kanban.storyIsDone",
                 "#downstreamPortal",
-                doneStoryDroppedOnDownstreamPortal);    
+                doneStoryDroppedOnDownstreamPortal);
+  
+  //TODO Pulling[on]  
+  //            "#wip .red.kanban.isEmpty"  (for read team)
+  dragDropSetup("#wip .kanban.IsEmpty",
+                "#upstreamPortal",
+                emptyKanbanDroppedOnUpstreamPortal);
+  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -78,7 +89,10 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
       });
     }
   }
+};
 
+var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
+  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,7 +119,7 @@ Template.upstreamPortal.color = function() {
 
 Template.story.kanbanState = function() {
   if (this.size === 0)
-    return "kanbanIsEmpty";
+    return "IsEmpty";
   if (this.ones.length < this.size)
     return "storyIsInProgress";
   if (this.ones.length === this.size)
