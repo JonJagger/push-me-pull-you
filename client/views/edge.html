@@ -2,10 +2,18 @@
 <template name="edge">
   <div id="edge">
     <div id="dice">
-      <input type="button" value="Roll" id="roll"> &nbsp;&nbsp;     
-      {{#each dice}}
-        {{> die}}
-      {{/each}}
+      <table>
+        <tr>
+          <td>
+             <input type="button" value="Roll" id="roll"> &nbsp;&nbsp;
+          </td>
+          {{#each dice}}
+          <td>
+            {{> die}}
+          </td>
+          {{/each}}
+        </tr>
+      </table>
     </div>
 
     <div id="team" class="{{teamColor}}">
@@ -15,7 +23,7 @@
             {{> upstreamPortal}}
           </td>
           <td>      
-            <div class="wip">
+            <div id="wip">
               <table>
                 <tr>
                   <td class="quarterColumn">
