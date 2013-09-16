@@ -65,8 +65,8 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban = $(ui.draggable); 
   var portal = $(this);
   var story = kanban.story();  
-  var fromColor = $(portal).data("from");
-  var toColor = $(portal).data("to");  
+  var fromColor = $(portal).data("fromColor");
+  var toColor = $(portal).data("toColor");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -121,10 +121,6 @@ Template.story.ones = function() { // see {{#each ones}} in edge.html
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//Template.die.draggableOne = function() {
-//  return isOne(this) ? 'draggableOne' : '';
-//};
 
 Template.die.one = function() {
   return isOne(this) ? "one" : "not-one";  
