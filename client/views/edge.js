@@ -87,6 +87,8 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
 Template.downstreamPortal.color = function() {
   if (this.teamColor === "red")    return "orange";
   if (this.teamColor === "orange") return "blue";
+  if (this.teamColor === "blue")   return "green";
+  if (this.teamColor === "green")  return "done";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,6 +97,8 @@ Template.downstreamPortal.color = function() {
 Template.upstreamPortal.color = function() {
   if (this.teamColor === "red")    return "backlog";
   if (this.teamColor === "orange") return "red";
+  if (this.teamColor === "blue")   return "orange";
+  if (this.teamColor === "green")  return "blue";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -6,6 +6,7 @@ red-color     = Red
 orange-color  = #FFBF00
 blue-color    = Blue
 green-color   = Green
+done-color    = LightGray
 
 droppable-border-width = 3px
 droppable-border-style = dotted
@@ -126,6 +127,9 @@ wip-color = Moccasin
         &[data-toColor=green] 
             background green-color
             border-color green-color            
+        &[data-toColor=done] 
+            background done-color
+            border-color done-color            
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #wip
@@ -164,7 +168,7 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .hole
         border-radius 8px
-        border 2px dotted Gray
+        border 2px dotted LightGray
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .done-one
@@ -177,6 +181,7 @@ wip-color = Moccasin
         background White
 
     .done-one
+        border-color LightGray
         &.red
             background red-color
         &.orange
