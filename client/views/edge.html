@@ -1,66 +1,46 @@
 
 <template name="edge">
   <div id="edge">
+          
     <div id="dice">
       <table>
         <tr>
-          <td>
-             <input type="button" value="Roll" id="roll"> &nbsp;&nbsp;
-          </td>
+          <td><input type="button" value="Roll" id="roll"> &nbsp;&nbsp;</td>
           {{#each dice}}
-          <td>
-            {{> die}}
-          </td>
+          <td>{{> die}}</td>
           {{/each}}
         </tr>
       </table>
     </div>
-
+  
     <div id="team" class="{{teamColor}}">
       <table>
         <tr valign="top">
-          <td>
-            {{> upstreamPortal}}
-          </td>
+          <td>{{> upstreamPortal}}</td>
           <td>      
             <div id="wip">
               <table>
                 <tr>
-                  <td class="quarterColumn">
-                    {{#each storiesQuarter "0"}}
-                      {{> story}}
-                    {{/each}}
-                  </td>
-                  <td class="quarterColumn">
-                    {{#each storiesQuarter "1"}}
-                      {{> story}}
-                    {{/each}}
-                  </td>
-                  <td class="quarterColumn">
-                    {{#each storiesQuarter "2"}}
-                      {{> story}}
-                    {{/each}}
-                  </td>
-                  <td class="quarterColumn">
-                    {{#each storiesQuarter "3"}}
-                      {{> story}}
-                    {{/each}}
-                  </td>
+                  <td class="quarterColumn">{{#each storiesQuarter "0"}}{{> story}}{{/each}}</td>
+                  <td class="quarterColumn">{{#each storiesQuarter "1"}}{{> story}}{{/each}}</td>
+                  <td class="quarterColumn">{{#each storiesQuarter "2"}}{{> story}}{{/each}}</td>
+                  <td class="quarterColumn">{{#each storiesQuarter "3"}}{{> story}}{{/each}}</td>
                 </tr>
               </table>
             </div>
           </td>
-          <td>      
-            {{> downstreamPortal}}
-          </td>
+          <td>{{> downstreamPortal}}</td>
         </tr>
       </table>
     </div>
+    
   </div>
 </template>
 
 <template name="die">
-  <div class="{{color}} {{draggableOne}} {{one}}" data-id="{{_id}}"></div> 
+  <div class="{{color}} {{draggableOne}} {{one}}"
+       data-id="{{_id}}">
+  </div> 
 </template>
 
 <template name="upstreamPortal">
