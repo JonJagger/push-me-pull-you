@@ -41,8 +41,8 @@ var dragDropSetup = function(from,to,handler) {
 };
 
 Template.edge.rendered = function () {
-  dragDropSetup('.one',
-                '.storyIsInProgress',
+  dragDropSetup('#dice .die.one',
+                '#wip .kanban.storyIsInProgress',
                 oneDroppedOnKanban);
   dragDropSetup('#wip .kanban.storyIsDone',
                 '#downstreamPortal',
