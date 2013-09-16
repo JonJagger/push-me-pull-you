@@ -8,9 +8,9 @@ blue-color    = Blue
 green-color   = Green
 done-color    = LightGray
 
-draggable-border-width = 4px
-draggable-border-style = dotted
-draggable-border-color = DarkGray
+drag-drop-border-width = 4px
+drag-drop-border-style = dotted
+drag-drop-border-color = DarkGray
 
 border-radius-width = 8px
 
@@ -53,7 +53,7 @@ wip-color = Moccasin
         padding-bottom 4px
         padding-left 12px
         font-size 1.2em
-        border-width draggable-border-width
+        border-width drag-drop-border-width
         border-style solid
         border-color White
         color White
@@ -94,7 +94,7 @@ wip-color = Moccasin
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .portal 
-        border-width draggable-border-width
+        border-width drag-drop-border-width
         border-style solid
         border-radius border-radius-width
         width 2em
@@ -131,7 +131,7 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .kanban
         border-radius 18px
-        border-width draggable-border-width
+        border-width drag-drop-border-width
         border-style solid
         border-color wip-color
         padding 8px
@@ -192,9 +192,9 @@ wip-color = Moccasin
     .one:hover
     .kanban.storyIsDone:hover
     .kanban.IsEmpty:hover
-        border-width draggable-border-width
-        border-style draggable-border-style
-        border-color draggable-border-color
+        border-width drag-drop-border-width
+        border-style drag-drop-border-style
+        border-color drag-drop-border-color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Once dragging starts
@@ -202,7 +202,7 @@ wip-color = Moccasin
     //
     .ui-draggable-dragging.one    
     .ui-draggable-dragging.kanban    
-        border-style dotted
+        border-style drag-drop-border-style
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Dynamically activated drop targets
@@ -214,5 +214,5 @@ wip-color = Moccasin
     #wip .kanban.storyIsInProgress.droppable
     #team #downstreamPortal.droppable
     #team #upstreamPortal.droppable    
-        border-style dotted
-        border-color draggable-border-color
+        border-style drag-drop-border-style
+        border-color drag-drop-border-color
