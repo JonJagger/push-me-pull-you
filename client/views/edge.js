@@ -1,25 +1,16 @@
 
-var log = function(name,o) {
-  console.log(name + " = " + EJSON.stringify(o));  
-};
-
-var edge  = Template.edge;
-var die   = Template.die;
-var story = Template.story;
-
-edge.events({'click #roll' : function () {
-  var dice = Dice.find({ gid: this.gid, teamColor: this.teamColor });
-  var ids = dice.map(function(die) { return die._id; });  
+Template.edge.events({'click #roll' : function () {
+  var ids = getDice(this.gid, this.teamColor).map(function(die) { return die._id; });  
   _.each(ids, function(id) {
     Dice.update(id, { $set: { value: rollDie() }});
   });
 }});
 
-edge.dice = function() {
-  return Dice.find({ gid: this.gid, teamColor: this.teamColor });  
+Template.edge.dice = function() {
+  return getDice(this.gid, this.teamColor);
 };
 
-edge.storiesQuarter = function(n) {
+Template.edge.storiesQuarter = function(n) {
   var stories = Stories.find({ gid: this.gid, teamColor: this.teamColor }).fetch();
   var quarter = [ ];
   _.each(stories, function(story,index) {
@@ -30,62 +21,7 @@ edge.storiesQuarter = function(n) {
   return quarter;
 };
 
-Template.downstreamPortal.color = function() {
-  if (this.teamColor === 'red')    return 'orange';
-  if (this.teamColor === 'orange') return 'blue';
-};
-
-Template.upstreamPortal.color = function() {
-  if (this.teamColor === 'red')    return 'backlog';
-  if (this.teamColor === 'orange') return 'red';
-};
-
-story.droppableKanban = function() {
-  return (this.size === 0 || this.ones.length !== this.size) ? 'droppable' : '';
-};
-
-story.oneDroppable = function() {
-  return this.size !== 0 && this.ones.length < this.size ? 'oneDroppable' : '';
-};
-
-story.draggableKanban = function() {
-  return (this.ones.length === this.size) ? 'draggable' : '';
-};
-
-var nOnes = function(n) { // eg 3
-  return _(n).times(function() { return 1; });  // eg [1,1,1]
-};
-
-story.holes = function() { // see {{#each holes}} in edge.html
-  return nOnes(this.kanbanSize - this.size);
-};
-
-story.gaps = function() { // see {{#each gaps}} in edge.html
-  return nOnes(this.size - this.ones.length);
-};
-
-story.ones = function() { // see {{#each ones}} in edge.html
-  return this.ones; // eg ['red','red','blue']
-};
-
-var isOne = function(die) {
-  return die.value === 1;  
-};
-
-die.draggableOne = function() {
-  return isOne(this) ? 'draggableOne' : '';
-};
-
-die.draggable = function() {
-  return isOne(this) ? 'draggable' : '';
-};
-
-die.one = function() {
-  return isOne(this) ? 'one' : 'not-one';  
-};
-
-edge.rendered = function () {
-  
+Template.edge.rendered = function () {  
   $('.draggableOne').draggable({
     start: function(event,ui) {
       $('.oneDroppable').addClass('oneDroppableYes');
@@ -102,8 +38,7 @@ edge.rendered = function () {
     revertDuration: 0,
     helper: 'original',
     opacity: 0.75
-  });            
-  
+  });              
 };
 
 var oneDroppedOnKanban = function(event,ui) {
@@ -116,7 +51,114 @@ var oneDroppedOnKanban = function(event,ui) {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// slimed
 
+Template.downstreamPortal.color = function() {
+  if (this.teamColor === 'red')    return 'orange';
+  if (this.teamColor === 'orange') return 'blue';
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// slimed
+
+Template.upstreamPortal.color = function() {
+  if (this.teamColor === 'red')    return 'backlog';
+  if (this.teamColor === 'orange') return 'red';
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.story.oneDroppable = function() {
+  return this.size !== 0 && this.ones.length < this.size ? 'oneDroppable' : '';
+};
+
+Template.story.holes = function() { // see {{#each holes}} in edge.html
+  return nOnes(this.kanbanSize - this.size);
+};
+
+Template.story.gaps = function() { // see {{#each gaps}} in edge.html
+  return nOnes(this.size - this.ones.length);
+};
+
+Template.story.ones = function() { // see {{#each ones}} in edge.html
+  return this.ones; // eg ['red','red','blue']
+};
+
+//Template.story.droppableKanban = function() {
+//  return (this.size === 0 || this.ones.length !== this.size) ? 'droppable' : '';
+//};
+
+//Template.story.draggableKanban = function() {
+//  return (this.ones.length === this.size) ? 'draggable' : '';
+//};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.die.draggableOne = function() {
+  return isOne(this) ? 'draggableOne' : '';
+};
+
+Template.die.one = function() {
+  return isOne(this) ? 'one' : 'not-one';  
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var log = function(name,o) {
+  console.log(name + " = " + EJSON.stringify(o));  
+};
+
+var getDice = function(gid, teamColor) {
+  return Dice.find({ gid: gid, teamColor: teamColor });    
+};
+
+var nOnes = function(n) { // eg 3
+  return _(n).times(function() { return 1; });  // eg [1,1,1]
+};
+
+var isOne = function(die) {
+  return die.value === 1;  
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$.fn.hasClass = function(klass) {
+  return this.attr('class').indexOf(klass) !== -1;
+};
+
+$.fn.story = function(/*kanban*/) {
+  return $(this.children()[0]);
+};
+
+$.fn.team = function(/*kanban*/) {
+  return this.closest('#team');
+};
+
+$.fn.ones = function(/*story*/) {  
+  var ones = $(this).data('ones');
+  return (ones === '') ? [ ] : ones.split(',');  
+};
+
+$.fn.size = function(/*story*/) {
+  return $(this).data('size');
+};
+
+$.fn.isDone = function(/*story*/) {
+  return this.ones().length === this.size();
+};        
+
+$.fn.id = function() {
+  return $(this).data('id');  
+};
+
+$.fn.color = function() {
+  var element = this;
+  return _.find(teamColors(), function(color) {
+    return element.hasClass(color);
+  });
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /*
 var makeDraggable = function(nodes) {
   nodes.draggable({
@@ -208,42 +250,5 @@ var kanbanDroppedOnKanban = function(event,ui) {
 };
 */
 
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-$.fn.hasClass = function(klass) {
-  return this.attr('class').indexOf(klass) !== -1;
-};
-
-$.fn.story = function(/*kanban*/) {
-  return $(this.children()[0]);
-};
-
-$.fn.team = function(/*kanban*/) {
-  return this.closest('#team');
-};
-
-$.fn.ones = function(/*story*/) {  
-  var ones = $(this).data('ones');
-  return (ones === '') ? [ ] : ones.split(',');  
-};
-
-$.fn.size = function(/*story*/) {
-  return $(this).data('size');
-};
-
-$.fn.isDone = function(/*story*/) {
-  return this.ones().length === this.size();
-};        
-
-$.fn.id = function() {
-  return $(this).data('id');  
-};
-
-$.fn.color = function() {
-  var element = this;
-  return _.find(teamColors(), function(color) {
-    return element.hasClass(color);
-  });
-};
 
 
