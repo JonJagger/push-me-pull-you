@@ -74,8 +74,6 @@ die.one = function() {
 };
 
 edge.rendered = function () {
-  //makeDraggable($('.draggable'));
-  //makeDroppable(); //$('.droppable'));
   
   $('.draggableOne').draggable({
     start: function(event,ui) {
