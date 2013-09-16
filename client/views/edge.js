@@ -27,8 +27,6 @@ edge.storiesQuarter = function(n) {
       quarter.push(story);
     }
   });  
-  log("n", n);
-  log("quarter=",quarter);
   return quarter;
 };
 
