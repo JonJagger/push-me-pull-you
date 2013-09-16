@@ -21,34 +21,15 @@ Template.edge.storiesQuarter = function(n) {
   return quarter;
 };
 
-Template.edge.rendered = function () {  
-  $('.one').draggable({
+var dragDropSetup = function(from,to,handler) {
+  $(from).draggable({
     start: function(event,ui) {
-      var targets = $('.storyIsInProgress');
+      var targets = $(to);
       targets.addClass('droppable')
-             .droppable({ drop: oneDroppedOnKanban });      
+             .droppable({ drop: handler });      
     },
     stop: function(event,ui) {
-      $('.storyIsInProgress').removeClass('droppable');
-    },
-    cursor: 'crosshair',
-    stack: 'div',
-    revert: true,
-    revertDuration: 0,
-    helper: 'original',
-    opacity: 0.75
-  });
-  
-  $('#wip .kanban.storyIsDone').draggable({
-    start: function(event,ui) {
-      $('#downstreamPortal').addClass('downstreamPortalDroppable');
-      log($('.downstreamPortalDroppable').length);
-      $('.downstreamPortalDroppable').droppable({
-        drop: doneStoryDroppedOnDownstreamPortal
-      });      
-    },
-    stop: function(event,ui) {
-      $('#downstreamPortal').removeClass('downstreamPortalDroppable');
+      $(to).removeClass('droppable');
     },
     cursor: 'crosshair',
     stack: 'div',
@@ -57,7 +38,15 @@ Template.edge.rendered = function () {
     helper: 'original',
     opacity: 0.75
   });  
-  
+};
+
+Template.edge.rendered = function () {
+  dragDropSetup('.one',
+                '.storyIsInProgress',
+                oneDroppedOnKanban);
+  dragDropSetup('#wip .kanban.storyIsDone',
+                '#downstreamPortal',
+                doneStoryDroppedOnDownstreamPortal);    
 };
 
 var oneDroppedOnKanban = function(event,ui) {
@@ -70,7 +59,7 @@ var oneDroppedOnKanban = function(event,ui) {
 };
 
 var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
-  log("DROPPED");  
+  log("done story dropped on downstream portal");  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
