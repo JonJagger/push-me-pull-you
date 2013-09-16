@@ -24,10 +24,9 @@ Template.edge.storiesQuarter = function(n) {
 Template.edge.rendered = function () {  
   $('.one').draggable({
     start: function(event,ui) {
-      $('.storyIsInProgress').addClass('storyIsInProgressDroppable');
-      $('.storyIsInProgressDroppable').droppable({
-        drop: oneDroppedOnKanban    
-      });      
+      var targets = $('.storyIsInProgress');
+      targets.addClass('storyIsInProgressDroppable')
+             .droppable({ drop: oneDroppedOnKanban });      
     },
     stop: function(event,ui) {
       $('.storyIsInProgress').removeClass('storyIsInProgressDroppable');
@@ -40,8 +39,7 @@ Template.edge.rendered = function () {
     opacity: 0.75
   });
   
-
-  $('.storyIsDone').draggable({
+  $('#wip .kanban.storyIsDone').draggable({
     start: function(event,ui) {
       $('#downstreamPortal').addClass('downstreamPortalDroppable');
       log($('.downstreamPortalDroppable').length);
