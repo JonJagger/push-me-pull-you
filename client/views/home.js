@@ -5,13 +5,13 @@ home.greeting = function () {
   return 'The Kanban Ones Game';
 };
 
-home.events({'click #new_game' : function () {
+home.events({'click #start' : function () {
   var game = { gid: newId(6) };
   Games.insert(game);
   $('#gid').val(game.gid);
 }});
 
-home.events({'click #join_game': function() {
+home.events({'click #join': function() {
   var gid = $('#gid').val();
   if (gid === 'id' || gid === '') {
     openDialog(gid + ' ?', 'Press [New&nbsp;game] to get an id.');

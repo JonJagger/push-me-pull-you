@@ -1,32 +1,43 @@
 
 @import 'nib'
-   
+
+button-color = #996666
+
 #home 
-  text-align center
-
-#home #greeting 
-  font-size 2em
-  color Gray
-  padding 0.25em
-
-#home .arrow 
-  color Gray
+    text-align center
+    #greeting
+        font-size 2.5em
+        padding 0.25em
+        #the
+            color Red
+        #kanban
+            color #FFBF00   
+        #ones
+            color Blue
+        #game
+            color Green
+        .rightArrow 
+            color LightGray
+            font-size 0.25em
+            vertical-align center
   
-#home input[id=gid] 
-  font-size 2em 
-  width 4em
-  text-align center
-  color Gray
+    input[type=button] 
+        border-radius 10px
+        font-size 2em 
+        text-align center
+        padding 0.4em
+        cursor pointer
+        background button-color
+        color LightGray
 
-#home input[type=button] 
-  border-radius 10px
-  font-size 2em 
-  text-align center
-  padding 0.4em
-  cursor pointer
+    .arrow 
+        color Gray
+        font-size 1em
+  
+    input[id=gid] 
+        font-size 2em 
+        width 4em
+        text-align center
+        background LightGray
+        color button-color
 
-#home input[id=new_game] 
-  color Gray
-
-#home input[id=join_game] 
-  color Gray

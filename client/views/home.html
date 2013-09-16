@@ -1,10 +1,20 @@
 <template name="home">
   <div id="home">
     <div id="greeting">
-      {{greeting}}
+      <table>
+        <tr>
+          <td><span id="the">the</span></td>
+          <td>{{> rightArrowTd}}</td>
+          <td><span id="kanban">kanban</span></td>
+          <td>{{> rightArrowTd}}</td>
+          <td><span id="ones">ones</span></td>
+          <td>{{> rightArrowTd}}</td>
+          <td><span id="game">game</span></td>
+        </tr>
+      </table>
     </div>
     <div>
-      <input type="button" value="New game" id="new_game">
+      <input type="button" value="start" id="start">
     </div>
     <div class="arrow">
       &darr;
@@ -16,8 +26,13 @@
       &uarr;
     </div>  
     <div>
-      <input type="button" value="Join game" id="join_game">
+      <input type="button" value="join" id="join">
     </div>
   </div>
 </template>
 
+<template name="rightArrowTd">
+  <div class="rightArrow">
+    &rarr;
+  </div>
+</template>
