@@ -17,10 +17,14 @@ draggable-border-style = dotted
 draggable-border-color = Black
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-     
-#edge
+
+body
     text-align center
+
+#edge
     font-size 0.75em
+    display table
+    margin 0 auto
     
     #roll
         border-radius 8px
@@ -33,7 +37,7 @@ draggable-border-color = Black
       
     #dice
         margin 10px
-        display inline-block        
+        display table-row
 
     .one
     .not-one
@@ -82,7 +86,7 @@ draggable-border-color = Black
     #team
         border-radius 6px
         padding 1em
-        display inline-block
+        display table-row
         vertical-align top
         &.red
             background   red-color
