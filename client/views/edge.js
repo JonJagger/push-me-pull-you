@@ -22,7 +22,7 @@ Template.edge.storiesQuarter = function(n) {
 };
 
 Template.edge.rendered = function () {  
-  $('.draggableOne').draggable({
+  $('.one').draggable({
     start: function(event,ui) {
       $('.storyIsInProgress').addClass('storyIsInProgressDroppable');
       $('.storyIsInProgressDroppable').droppable({
@@ -99,9 +99,9 @@ Template.story.ones = function() { // see {{#each ones}} in edge.html
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.die.draggableOne = function() {
-  return isOne(this) ? 'draggableOne' : '';
-};
+//Template.die.draggableOne = function() {
+//  return isOne(this) ? 'draggableOne' : '';
+//};
 
 Template.die.one = function() {
   return isOne(this) ? 'one' : 'not-one';  
