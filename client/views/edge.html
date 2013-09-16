@@ -5,7 +5,11 @@
     <div id="dice">
       <table id="dice_container">
         <tr>
-          <td><input type="button" value="Roll" id="roll"> &nbsp;&nbsp;</td>
+          <td><input type="button"
+                     class="{{teamColor}}"
+                     value="Roll"
+                     id="roll"> &nbsp;&nbsp;
+          </td>
           {{#each dice}}
           <td>{{> die}}</td>
           {{/each}}

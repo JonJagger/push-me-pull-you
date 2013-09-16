@@ -1,12 +1,11 @@
 
-fonts = Trebuchet MS, Tahoma, Verdana, Arial, sans-serif
-
 single-bullet = '\2022'
 
-orange-color = #FFBF00
-red-color    = Red
-blue-color   = Blue
-green-color  = Green
+backlog-color = LightGray
+orange-color  = #FFBF00
+red-color     = Red
+blue-color    = Blue
+green-color   = Green
 
 droppable-border-width = 3px
 droppable-border-style = dotted
@@ -16,10 +15,9 @@ draggable-border-width = 3px
 draggable-border-style = dotted
 draggable-border-color = Black
 
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+wip-color = Moccasin
 
-body
-    text-align center
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 #edge
     font-size 0.75em
@@ -28,15 +26,20 @@ body
     
     #roll
         border-radius 8px
-        font 1em fonts
+        font-size 1em
         text-align center
         padding-left 0.5em
         padding-right 0.5em
         cursor pointer
-        color Gray
+        color White
       
     #dice
         display table-row
+        #roll    
+            &.red
+                background red-color
+            &.orange
+                background orange-color
 
     #dice_container
         margin 0 auto
@@ -60,8 +63,8 @@ body
         content single-bullet
 
     .not-one
-        color DarkGray
-        background DarkGray
+        xcolor LightGray
+        background White
         &.red
             border-color red-color
         &.orange
@@ -106,19 +109,24 @@ body
     .portal 
         border-width droppable-border-width
         border-style solid
-        border-color White 
         border-radius 4px
         width 3em
         height 18em
-        background DarkGray
+        &[data-to=backlog] 
+            background backlog-color
+            border-color backlog-color            
         &[data-to=red] 
             background red-color
+            border-color red-color            
         &[data-to=orange] 
             background orange-color
+            border-color orange-color            
         &[data-to=blue] 
             background blue-color
+            border-color blue-color            
         &[data-to=green] 
             background green-color
+            border-color green-color            
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #wip
@@ -126,7 +134,7 @@ body
         margin-left  0.5em
         margin-right 0.5em        
         height 40em
-        background White
+        background wip-color
         & .quarterColumn
             vertical-align top
     
@@ -135,7 +143,7 @@ body
         border-radius 12px
         border-width droppable-border-width
         border-style solid
-        border-color White
+        border-color wip-color
         padding 8px
         margin 8px
         width 2em
@@ -167,7 +175,7 @@ body
         color White
   
     .todo-one
-        background LightGray
+        background White
 
     .done-one
         &.red
