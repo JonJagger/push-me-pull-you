@@ -9,36 +9,44 @@
     </div>
 
     <div id="team" class="{{teamColor}}">
-      {{> upstreamPortal}}
-      
-      <div class="wip">
-        <table>
-          <tr>
-            <td class="quarterColumn">
-              {{#each storiesQuarter "0"}}
-                {{> story}}
-              {{/each}}
-            </td>
-            <td class="quarterColumn">
-              {{#each storiesQuarter "1"}}
-                {{> story}}
-              {{/each}}
-            </td>
-            <td class="quarterColumn">
-              {{#each storiesQuarter "2"}}
-                {{> story}}
-              {{/each}}
-            </td>
-            <td class="quarterColumn">
-              {{#each storiesQuarter "3"}}
-                {{> story}}
-              {{/each}}
-            </td>
-          </tr>
-        </table>
-      </div>
-      
-      {{> downstreamPortal}}
+      <table>
+        <tr>
+          <td>
+            {{> upstreamPortal}}
+          </td>
+          <td>      
+            <div class="wip">
+              <table>
+                <tr>
+                  <td class="quarterColumn">
+                    {{#each storiesQuarter "0"}}
+                      {{> story}}
+                    {{/each}}
+                  </td>
+                  <td class="quarterColumn">
+                    {{#each storiesQuarter "1"}}
+                      {{> story}}
+                    {{/each}}
+                  </td>
+                  <td class="quarterColumn">
+                    {{#each storiesQuarter "2"}}
+                      {{> story}}
+                    {{/each}}
+                  </td>
+                  <td class="quarterColumn">
+                    {{#each storiesQuarter "3"}}
+                      {{> story}}
+                    {{/each}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td>      
+            {{> downstreamPortal}}
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
