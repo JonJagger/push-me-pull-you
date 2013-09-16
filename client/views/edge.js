@@ -26,15 +26,18 @@ Template.edge.rendered = function () {
                 "#wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
   
-  //TODO: Pushing[on]
-  log('teamColor',this.teamColor); // undefined?
-  //            "#wip .red.kanban.storyIsDone"    (for read team)
+  // TODO: Pushing[on]
+  //
+  // log('teamColor',this.teamColor); // undefined?
+  //
+  //            "#wip .red.kanban.storyIsDone"    (for red team)
   dragDropSetup("#wip .kanban.storyIsDone",
                 "#downstreamPortal",
                 doneStoryDroppedOnDownstreamPortal);
   
-  //TODO Pulling[on]  
-  //            "#wip .red.kanban.isEmpty"  (for read team)
+  // TODO Pulling[on]
+  //
+  //            "#wip .red.kanban.isEmpty"  (for red team)
   dragDropSetup("#wip .kanban.IsEmpty",
                 "#upstreamPortal",
                 emptyKanbanDroppedOnUpstreamPortal);
@@ -76,8 +79,8 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban = $(ui.draggable); 
   var portal = $(this);
   var story = kanban.story();  
-  var fromColor = $(portal).data("fromColor");
-  var toColor = $(portal).data("toColor");  
+  var fromColor = $(portal).data("from-color");
+  var toColor = $(portal).data("to-color");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -98,7 +101,7 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // slimed
 
-Template.downstreamPortal.color = function() {
+Template.downstreamPortal.toColor = function() {
   if (this.teamColor === "red")    return "orange";
   if (this.teamColor === "orange") return "blue";
   if (this.teamColor === "blue")   return "green";
@@ -108,7 +111,7 @@ Template.downstreamPortal.color = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // slimed
 
-Template.upstreamPortal.color = function() {
+Template.upstreamPortal.toColor = function() {
   if (this.teamColor === "red")    return "backlog";
   if (this.teamColor === "orange") return "red";
   if (this.teamColor === "blue")   return "orange";
