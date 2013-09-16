@@ -50,6 +50,11 @@ var setupTeam = function(gid,teamColor) {
   makeStory(4, 4, [ ]);  
   makeStory(1, 1, [oneColor]);
   makeStory(1, 0, [ ]);
+
+  Stories.insert({ gid: gid, teamColor: teamColor,
+                   kanbanColor: 'orange', kanbanSize: 3,
+                   size: 2, ones: ['red'] });    
+  
   _(6).times(function() {
       Dice.insert({ gid: gid, teamColor: teamColor, color: teamColor, value: rollDie() });
   });

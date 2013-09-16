@@ -17,16 +17,17 @@ draggable-border-style = dotted
 draggable-border-color = Black
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        
+     
 #edge
     text-align center
     font-size 0.75em
     
     #roll
-        border-radius 2px
-        font 0.8em fonts
+        border-radius 8px
+        font 1em fonts
         text-align center
-        padding 0.4em
+        padding-left 0.5em
+        padding-right 0.5em
         cursor pointer
         color Gray
       
@@ -123,7 +124,6 @@ draggable-border-color = Black
         border-style solid
         margin 2px
         padding 2px
-        width 20em
         height 100em
         background White
         display inline-block
@@ -138,7 +138,7 @@ draggable-border-color = Black
         padding 8px
         margin 8px
         width 2em
-        display inline-block
+        display block
         vertical-align top
         &.red
             background red-color
@@ -149,6 +149,10 @@ draggable-border-color = Black
         &.green
             background green-color
 
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .quarter
+        vertical-align top
+    
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .story
         font-size 1.4em

@@ -1,4 +1,8 @@
 
+var log = function(name,o) {
+  console.log(name + " = " + EJSON.stringify(o));  
+};
+
 var edge  = Template.edge;
 var die   = Template.die;
 var story = Template.story;
@@ -15,8 +19,17 @@ edge.dice = function() {
   return Dice.find({ gid: this.gid, teamColor: this.teamColor });  
 };
 
-edge.stories = function() {
-  return Stories.find({ gid: this.gid, teamColor: this.teamColor });
+edge.storiesQuarter = function(n) {
+  var stories = Stories.find({ gid: this.gid, teamColor: this.teamColor }).fetch();
+  var quarter = [ ];
+  _.each(stories, function(story,index) {
+    if (index % 4 == n) {
+      quarter.push(story);
+    }
+  });  
+  log("n", n);
+  log("quarter=",quarter);
+  return quarter;
 };
 
 edge.downstreamPortalColor = function() {

@@ -2,21 +2,45 @@
 <template name="edge">
   <div id="edge">
     <div id="dice">
-      <input type="button" value="Roll" id="roll">      
+      <input type="button" value="Roll" id="roll"> &nbsp;&nbsp;     
       {{#each dice}}
         {{> die}}
       {{/each}}
     </div>
+
     <div id="team" class="{{teamColor}}">        
       <div class="droppable upstream portal"
            data-from="{{teamColor}}"
            data-to="{{upstreamPortalColor}}">      
       </div>
+      
       <div class="wip">
-        {{#each stories}}
-          {{> story}}
-        {{/each}}
-      </div>      
+        <table>
+          <tr>
+            <td class="quarter">
+              {{#each storiesQuarter "0"}}
+                {{> story}}
+              {{/each}}
+            </td>
+            <td class="quarter">
+              {{#each storiesQuarter "1"}}
+                {{> story}}
+              {{/each}}
+            </td>
+            <td class="quarter">
+              {{#each storiesQuarter "2"}}
+                {{> story}}
+              {{/each}}
+            </td>
+            <td class="quarter">
+              {{#each storiesQuarter "3"}}
+                {{> story}}
+              {{/each}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      
       <div class="droppable downstream portal"
            data-from="{{teamColor}}"
            data-to="{{downstreamPortalColor}}">      
