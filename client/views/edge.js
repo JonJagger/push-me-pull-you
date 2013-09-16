@@ -32,12 +32,12 @@ edge.storiesQuarter = function(n) {
   return quarter;
 };
 
-edge.downstreamPortalColor = function() {
+Template.downstreamPortal.color = function() {
   if (this.teamColor === 'red')    return 'orange';
   if (this.teamColor === 'orange') return 'blue';
 };
 
-edge.upstreamPortalColor = function() {
+Template.upstreamPortal.color = function() {
   if (this.teamColor === 'red')    return 'backlog';
   if (this.teamColor === 'orange') return 'red';
 };

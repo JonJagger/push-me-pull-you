@@ -8,11 +8,8 @@
       {{/each}}
     </div>
 
-    <div id="team" class="{{teamColor}}">        
-      <div class="droppable upstream portal"
-           data-from="{{teamColor}}"
-           data-to="{{upstreamPortalColor}}">      
-      </div>
+    <div id="team" class="{{teamColor}}">
+      {{> upstreamPortal}}
       
       <div class="wip">
         <table>
@@ -41,16 +38,27 @@
         </table>
       </div>
       
-      <div class="droppable downstream portal"
-           data-from="{{teamColor}}"
-           data-to="{{downstreamPortalColor}}">      
-      </div>
+      {{> downstreamPortal}}
     </div>
   </div>
 </template>
 
 <template name="die">
   <div class="{{color}} {{draggableOne}} {{one}}" data-id="{{_id}}"></div> 
+</template>
+
+<template name="upstreamPortal">
+  <div class="droppable upstream portal"
+       data-from="{{teamColor}}"
+       data-to="{{color}}">      
+  </div>
+</template>
+
+<template name="downstreamPortal">
+  <div class="droppable downstream portal"
+       data-from="{{teamColor}}"
+       data-to="{{color}}">      
+  </div>
 </template>
 
 <template name="story">
