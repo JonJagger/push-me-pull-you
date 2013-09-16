@@ -16,6 +16,8 @@ draggable-border-width = 5px
 draggable-border-style = dotted
 draggable-border-color = DarkGray
 
+border-radius-width = 8px
+
 wip-color = Moccasin
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -26,7 +28,7 @@ wip-color = Moccasin
     margin 0 auto
     
     #roll
-        border-radius 8px
+        border-radius border-radius-width
         font-size 1em
         text-align center
         padding-left 0.5em
@@ -48,7 +50,7 @@ wip-color = Moccasin
 
     .one
     .not-one
-        border-radius 8px
+        border-radius border-radius-width
         display inline
         padding-top 2px
         padding-right 12px
@@ -84,7 +86,7 @@ wip-color = Moccasin
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #team
-        border-radius 8px
+        border-radius border-radius-width
         padding 0.5em
         &.red
             background   red-color
@@ -103,7 +105,7 @@ wip-color = Moccasin
     .portal 
         border-width droppable-border-width
         border-style solid
-        border-radius 4px
+        border-radius border-radius-width
         width 2em
         height 18em
         &[data-toColor=backlog] 
@@ -127,7 +129,7 @@ wip-color = Moccasin
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #wip
-        border-radius 8px
+        border-radius border-radius-width
         margin-left  0.5em
         margin-right 0.5em        
         height 40em
@@ -136,8 +138,8 @@ wip-color = Moccasin
             vertical-align top
     
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    .kanban 
-        border-radius 12px
+    .kanban
+        border-radius 18px
         border-width droppable-border-width
         border-style solid
         border-color wip-color
@@ -160,15 +162,18 @@ wip-color = Moccasin
         border-width 0
     
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    .one_container
+        padding 2px
+        
     .hole
-        border-radius 8px
-        border 2px dotted LightGray
+        border-radius border-radius-width
+        border 3px dotted LightGray
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .done-one
     .todo-one
-        border-radius 8px
-        border 2px solid Gray
+        border-radius border-radius-width
+        border 3px solid White
         color White
   
     .todo-one

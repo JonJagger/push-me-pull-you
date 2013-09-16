@@ -67,9 +67,21 @@
          data-ones="{{ones}}"
          data-size="{{size}}"
          data-id="{{_id}}">
-      {{#each holes}}<div class='hole'>&nbsp;</div>{{/each}}
-      {{#each gaps }}<div class='todo-one'>&nbsp;</div>{{/each}}
-      {{#each ones }}<div class='{{this}} done-one'>&#8226;</div>{{/each}}
+      {{#each holes}}
+        <div class="one_container">
+          <div class='hole'>&nbsp;</div>
+        </div>
+      {{/each}}
+      {{#each gaps }}
+        <div class="one_container">      
+          <div class='todo-one'>&nbsp;</div>
+        </div>
+      {{/each}}
+      {{#each ones }}
+        <div class="one_container">            
+          <div class='{{this}} done-one'>&#8226;</div>
+        </div>
+      {{/each}}
     </div>
   </div>
 </template>
