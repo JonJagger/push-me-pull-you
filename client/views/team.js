@@ -55,7 +55,6 @@ var dragDropSetup = function(from,to,handler) {
                        .droppable({ drop: handler });      
     },
     stop: function(event,ui) {
-      log("STOP");
       droppables(event).removeClass("droppable");
     },
     stack: "div",
@@ -80,7 +79,7 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
   var portal = $(this);
   var story = kanban.story();  
-  var fromColor = portal.data("from-team");
+  var fromColor = portal.team().color(); //data("from-team");
   var toColor = portal.data("to-team");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
