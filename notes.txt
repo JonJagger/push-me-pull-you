@@ -27,6 +27,7 @@ o) How about making the downstream portal have potentially two colours.
    How... perhaps make both portals have the same background and use
    a container div so I can effectively get two colors on the border.
    In dashed style this should be quite visible.
+   ...
    If pushing is [on] for this team, the teams own color is present on their
    downstream portal.
    If the downstream team has pulling [on], their color is also present

@@ -1,15 +1,21 @@
 
 var page = {
   gid: function(arg) {
-    var node = $("#gid");
-    if (arg === undefined) {
-      return node.val();
+    if (!arg) {
+      return $("#gid").val();
     } else {
-      node.val(arg);
+      $("#gid").val(arg);
     }
   },
-  join_button: function() {
-    return $("#join");
+  join: function() {
+    var button = $("#join");
+    button.enable = function() {
+      this.removeAttr("disabled");
+    };
+    button.disable = function() {
+      this.attr("disabled", "disabled");
+    }
+    return button;
   }
 };
 
@@ -19,17 +25,17 @@ Template.home.events({"click #start" : function () {
   var game = { gid: newId(6) };
   Games.insert(game);
   page.gid(game.gid);
-  page.join_button().removeAttr("disabled");
+  page.join().enable();
 }});
 
 Template.home.events({"keyup #gid" : function() {
   var gid = page.gid();
   // TODO: check gid.length == 6 and all chars 0-9a-e
   //       if not, disable without doing Games.findOne()
-  if (Games.findOne({ gid: gid }) === undefined) {
-    page.join_button().attr("disabled", "disabled");
+  if (!Games.findOne({ gid: gid })) {
+    page.join().disable();
   } else {
-    page.join_button().removeAttr("disabled");
+    page.join().enable();
   }
 }});
 
@@ -42,9 +48,9 @@ Template.home.events({'click #join': function() {
   } 
   //TODO: atomic?
   var teamColor = _.find(teamColors(), function(color) {
-    return Edges.findOne({ gid: gid, teamColor: color }) === undefined;
+    return !Edges.findOne({ gid: gid, teamColor: color });
   });
-  //TODO: if color === undefined, then open dialog(game already has 4 players)
+  //TODO: if teamColor === undefined, then openDialog(game already has 4 players)
   Edges.insert({ gid: gid, teamColor: teamColor });
   setupTeam(gid,teamColor);  
   window.open("edge/" + gid + "/" + teamColor, "_blank");  

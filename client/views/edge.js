@@ -11,6 +11,7 @@ Template.edge.dice = function() {
 };
 
 Template.edge.storiesQuarter = function(n) {
+  // Each quarter goes into a <td> so there is no vertical gap between kanbans 
   var stories = Stories.find({ gid: this.gid, teamColor: this.teamColor }).fetch();
   var quarter = [ ];
   _.each(stories, function(story,index) {
@@ -65,7 +66,7 @@ var dragDropSetup = function(from,to,handler) {
 };
 
 var oneDroppedOnKanban = function(event,ui) {
-  var one = $(ui.draggable);
+  var one = ui.draggable;
   var kanban = $(this);
   var story = kanban.story();
   Dice.update(one.id(), { $set: { value: 6 }});    
@@ -75,11 +76,11 @@ var oneDroppedOnKanban = function(event,ui) {
 };
 
 var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
-  var kanban = $(ui.draggable); 
+  var kanban = ui.draggable; 
   var portal = $(this);
   var story = kanban.story();  
-  var fromColor = $(portal).data("from-color");
-  var toColor = $(portal).data("to-color");  
+  var fromColor = portal.data("from-color");
+  var toColor = portal.data("to-color");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -98,7 +99,6 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// slimed
 
 Template.downstreamPortal.toColor = function() {
   if (this.teamColor === "red")    return "orange";
@@ -108,7 +108,6 @@ Template.downstreamPortal.toColor = function() {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// slimed
 
 Template.upstreamPortal.toColor = function() {
   if (this.teamColor === "red")    return "backlog";
@@ -200,7 +199,7 @@ $.fn.color = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /*
-var kanbanDroppedOnUpstreamPortal = function(kanban,portal) {
+var emptyKanbanDroppedOnUpstreamPortal = function(kanban,portal) { // PULL
   var story = kanban.story();
   var toColor = $(portal).data('to');
   if (story.size() === 0) {
@@ -215,6 +214,7 @@ var kanbanDroppedOnUpstreamPortal = function(kanban,portal) {
 };
 
 var kanbanDroppedOnKanban = function(event,ui) {
+  // xfer full kanban to pull requested empty kanban
   var from = $(ui.draggable);
   var to = $(this);
   alert("[full?] kanban dropped onto [empty?] kanban");
