@@ -3,6 +3,9 @@ o) How to do [split]
    Have a split button that is enabled when a [1] is available.
    This can be dragged over the kanban you would like to split!
 
+o) don't have to give different numbers of dice to different teams.
+   Can bias the dice so later teams have slightly less chance of getting a [1]!
+
 o) Make the mini-logo that appears in the browser tab be a [o] via a dice 1
    in the color of that team.
    http://stackoverflow.com/questions/260857/changing-website-favicon-dynamically

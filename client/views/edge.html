@@ -1,45 +1,48 @@
 
 <template name="edge">
   <!-- if this is being rendered from the dashboard "edge" will not be unique -->
-  <div id="edge">
-          
+  <div id="edge">          
     <div id="dice">
       <table id="dice_container">
         <tr>
-          <td><input type="button"
-                     class="{{teamColor}}"
-                     value="r&bull;ll"
-                     id="roll"> &nbsp;&nbsp;
-          </td>
+          <td>{{> roll}}</td>
+          <td>&nbsp;&nbsp;</td>          
           {{#each dice}}
           <td>{{> die}}</td>
           {{/each}}
         </tr>
       </table>
-    </div>
-  
+    </div>  
     <div id="team" class="{{teamColor}}">
-      <table id="Xteam_container">
+      <table>
         <tr valign="top">
           <td>{{> upstreamPortal}}</td>
-          <td>      
-            <div id="wip">
-              <table>
-                <tr>
-                  <td class="quarterColumn">{{#each storiesQuarter "0"}}{{> story}}{{/each}}</td>
-                  <td class="quarterColumn">{{#each storiesQuarter "1"}}{{> story}}{{/each}}</td>
-                  <td class="quarterColumn">{{#each storiesQuarter "2"}}{{> story}}{{/each}}</td>
-                  <td class="quarterColumn">{{#each storiesQuarter "3"}}{{> story}}{{/each}}</td>
-                </tr>
-              </table>
-            </div>
-          </td>
+          <td>{{> wip}}</td>
           <td>{{> downstreamPortal}}</td>
         </tr>
       </table>
       </div>
-    </div>
-    
+    </div>    
+  </div>
+</template>
+
+<template name="roll">
+  <input type="button"
+         class="{{teamColor}}"
+         value="r&bull;ll"
+         id="roll">
+</template>
+
+<template name="wip">
+  <div id="wip">
+    <table>
+      <tr>
+        <td class="quarterColumn">{{#each storiesQuarter "0"}}{{> story}}{{/each}}</td>
+        <td class="quarterColumn">{{#each storiesQuarter "1"}}{{> story}}{{/each}}</td>
+        <td class="quarterColumn">{{#each storiesQuarter "2"}}{{> story}}{{/each}}</td>
+        <td class="quarterColumn">{{#each storiesQuarter "3"}}{{> story}}{{/each}}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -74,12 +77,12 @@
           <div class='hole'>&nbsp;</div>
         </div>
       {{/each}}
-      {{#each gaps }}
+      {{#each gaps}}
         <div class="one_container">      
           <div class='todo-one'>&nbsp;</div>
         </div>
       {{/each}}
-      {{#each ones }}
+      {{#each ones}}
         <div class="one_container">            
           <div class='{{this}} done-one'>&#8226;</div>
         </div>

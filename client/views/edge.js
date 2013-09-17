@@ -10,7 +10,7 @@ Template.edge.dice = function() {
   return getDice(this.gid, this.teamColor);
 };
 
-Template.edge.storiesQuarter = function(n) {
+Template.wip.storiesQuarter = function(n) {
   // Each quarter goes into a <td> so there is no vertical gap between kanbans 
   var stories = Stories.find({ gid: this.gid, teamColor: this.teamColor }).fetch();
   var quarter = [ ];
