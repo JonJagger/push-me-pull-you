@@ -192,9 +192,9 @@ wip-color = Moccasin
     .one:hover
     .kanban.storyIsDone:hover
     .kanban.IsEmpty:hover
-        border-width drag-drop-border-width
-        border-style drag-drop-border-style
+        border-style solid
         border-color drag-drop-border-color
+        cursor move
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Once dragging starts
@@ -203,6 +203,8 @@ wip-color = Moccasin
     .ui-draggable-dragging.one    
     .ui-draggable-dragging.kanban    
         border-style drag-drop-border-style
+        border-color drag-drop-border-color
+        cursor crosshair
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Dynamically activated drop targets

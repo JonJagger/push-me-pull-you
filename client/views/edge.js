@@ -56,7 +56,6 @@ var dragDropSetup = function(from,to,handler) {
     stop: function(event,ui) {
       $(to).removeClass("droppable");
     },
-    cursor: "crosshair",
     stack: "div",
     revert: true,
     revertDuration: 0,
