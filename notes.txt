@@ -1,8 +1,5 @@
 
 o) try target=_blank in URL  if that fails google
-
-o) hook into keydown on entering ID. Once 6 chars and all 0-9a-z
-   enable 3 buttons
    
 o) [start] button will eventually need to go to setup page
 
@@ -26,11 +23,10 @@ o) Extension to the above idea. Above the dice have a dice-pool.
    Suppose two teams try to drag a dice into their playing area
    at the same time.
 
-o) when a [1] is played, it is changed to a not-one on the display
-   at the top. This will the ui because when a team presses the
-   [roll] button the number of dice will remain the same.
-
 o) How about making the downstream portal have potentially two colours.
+   How... perhaps make both portals have the same background and use
+   a container div so I can effectively get two colors on the border.
+   In dashed style this should be quite visible.
    If pushing is [on] for this team, the teams own color is present on their
    downstream portal.
    If the downstream team has pulling [on], their color is also present

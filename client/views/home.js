@@ -1,53 +1,58 @@
 
-var Page = {
-  gid: function() {
-    return $("#gid").val();
+var page = {
+  gid: function(arg) {
+    var node = $("#gid");
+    if (arg === undefined) {
+      return node.val();
+    } else {
+      node.val(arg);
+    }
+  },
+  join_button: function() {
+    return $("#join");
   }
 };
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 
-Template.home.greeting = function () {
-  return "The Kanban Ones Game";
-};
-
 Template.home.events({"click #start" : function () {
   var game = { gid: newId(6) };
   Games.insert(game);
-  $("#gid").val(game.gid);
-  $("#join").removeAttr("disabled");
+  page.gid(game.gid);
+  page.join_button().removeAttr("disabled");
 }});
 
-Template.home.events({"keyup #gid" : function() {  
-  if (Games.findOne({ gid: Page.gid() }) === undefined) {
-    $("#join").attr("disabled", "disabled");
+Template.home.events({"keyup #gid" : function() {
+  var gid = page.gid();
+  // TODO: check gid.length == 6 and all chars 0-9a-e
+  //       if not, disable without doing Games.findOne()
+  if (Games.findOne({ gid: gid }) === undefined) {
+    page.join_button().attr("disabled", "disabled");
   } else {
-    $("#join").removeAttr("disabled");
+    page.join_button().removeAttr("disabled");
   }
 }});
 
 Template.home.events({'click #join': function() {
-  var gid = Page.gid();
-  if (gid === "id" || gid === "") {
-    openDialog("Press [start] to get an id.");
-    return;
-  } 
+  var gid = page.gid();
   var game = Games.findOne({ gid: gid });
   if (game === undefined) {
     openDialog("There is no game with that id.");
-    return
+    return;
   } 
   //TODO: atomic?
   var teamColor = _.find(teamColors(), function(color) {
     return Edges.findOne({ gid: gid, teamColor: color }) === undefined;
   });
-  //TODO: if color === undefined, then game already has 4 players dialog
-  var edge = { gid: gid, teamColor: teamColor };
-  Edges.insert(edge);
+  //TODO: if color === undefined, then open dialog(game already has 4 players)
+  Edges.insert({ gid: gid, teamColor: teamColor });
   setupTeam(gid,teamColor);  
-  Router.go("edge", edge);
+  window.open("edge/" + gid + "/" + teamColor, "_blank");  
 }});
 
+// - - - - - - - - - - - - - - - - - - - - - - - - 
+// slimed
+//
 var setupTeam = function(gid,teamColor) {
   var kanbanColor = teamColor;
   var oneColor = teamColor;
@@ -59,7 +64,7 @@ var setupTeam = function(gid,teamColor) {
   };
   makeStory(1, 1, [ ]);
   makeStory(3, 2, [oneColor,oneColor]);
-  makeStory(5, 5, [oneColor,'orange']);
+  makeStory(5, 5, [oneColor,"orange"]);
   makeStory(3, 3, [oneColor,oneColor]);
   makeStory(5, 0, [ ]);
   makeStory(4, 4, [ ]);  
