@@ -1,14 +1,13 @@
 
 openDialog = function(html) {
   $("<div>")
-    .html("<div class='dialog'>" + html + "</div>")    
+    .html(html)    
     .dialog({
       buttons: { ok: function() {
         $(this).dialog("close"); }
       },
-      autoOpen: false,
       modal: true,
-      dialogClass: "noTitle"
+      dialogClass: "no-title"
     }).dialog("open");   
 };
 

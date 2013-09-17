@@ -9,6 +9,8 @@ var enableDisable = function(button) {
   return button;
 };
 
+// - - - - - - - - - - - - - - - - - - - - - - - - 
+
 var page = {  
   gid: function(arg) {
     if (!arg) {
@@ -35,30 +37,30 @@ Template.home.events({"click #start" : function () {
   page.dashboard().enable();
 }});
 
+// - - - - - - - - - - - - - - - - - - - - - - - -
+
 Template.home.events({"keyup #gid" : function() {
   var gid = page.gid();
-  // TODO: check gid.length == 6 and all chars 0-9a-e
-  //       if not, disable without doing Games.findOne()
   if (!Games.findOne({ gid: gid })) {
     page.join().disable();
     page.dashboard().disable();
   } else {
+    // TODO: if 4 teams already joined do not enable join
     page.join().enable();
     page.dashboard().enable();
   }
 }});
 
+// - - - - - - - - - - - - - - - - - - - - - - - - 
+
 Template.home.events({"click #join": function() {
   var gid = page.gid();
   var game = Games.findOne({ gid: gid });
-  if (game === undefined) {
-    openDialog("There is no game with that id.");
-    return;
-  } 
   //TODO: atomic?
   var color = _.find(teamColors(), function(teamColor) {
     return !Teams.findOne({ gid: gid, color: teamColor });
   });
+  //NB: this could happen because of concurrency
   if (!color) {
     openDialog("Game already has 4 players");
     return;

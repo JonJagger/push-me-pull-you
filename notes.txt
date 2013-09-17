@@ -1,4 +1,8 @@
 
+o) center the dashboard display.
+
+o) refactor the _container centralizer.
+
 o) How to do [split]
    Have a split button that is enabled when a [1] is available.
    This can be dragged over the kanban you would like to split!
