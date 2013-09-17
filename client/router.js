@@ -2,8 +2,8 @@
 Router.map(function() { 
   this.route('home', { path: '/' });
   
-  this.route('edge', {
-    path: '/edge/:gid/:teamColor',
+  this.route('team', {
+    path: '/team/:gid/:teamColor',
     data: function() {
       return {
         gid: this.params.gid,

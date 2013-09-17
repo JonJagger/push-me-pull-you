@@ -1,4 +1,5 @@
 
+Template.dashboard.teamColors = function() { return teamColors(); };
 Template.dashboard.red    = function() { return { gid: this.gid, teamColor: "red"    }; };
 Template.dashboard.orange = function() { return { gid: this.gid, teamColor: "orange" }; };
 Template.dashboard.blue   = function() { return { gid: this.gid, teamColor: "blue"   }; };

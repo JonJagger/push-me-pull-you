@@ -1,12 +1,12 @@
 
-Template.edge.events({"click #roll" : function () {
+Template.team.events({"click #roll" : function () {
   var ids = getDice(this.gid, this.teamColor).map(function(die) { return die._id; });  
   _.each(ids, function(id) {
     Dice.update(id, { $set: { value: rollDie() }});
   });
 }});
 
-Template.edge.dice = function() {
+Template.team.dice = function() {
   return getDice(this.gid, this.teamColor);
 };
 
@@ -22,7 +22,7 @@ Template.wip.storiesQuarter = function(n) {
   return quarter;
 };
 
-Template.edge.rendered = function() {  
+Template.team.rendered = function() {  
   dragDropSetup(".dice .die.one",
                 ".wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
@@ -30,13 +30,13 @@ Template.edge.rendered = function() {
   // TODO: Pushing[on]
   //
   dragDropSetup(".wip .kanban.storyIsDone",
-                ".downstream.portal",
+                ".board .downstream.portal",
                 doneStoryDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
   dragDropSetup(".wip .kanban.isEmpty",
-                ".upstream.portal",
+                ".board .upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
   
 };
@@ -46,7 +46,7 @@ Template.edge.rendered = function() {
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
       var dragged = $(event.target);
-      var css = ".edge." + dragged.team().color() + " " + to;
+      var css = ".team." + dragged.team().color() + " " + to;
       return $(css);
   };
   $(from).draggable({
@@ -55,11 +55,13 @@ var dragDropSetup = function(from,to,handler) {
                        .droppable({ drop: handler });      
     },
     stop: function(event,ui) {
+      log("STOP");
       droppables(event).removeClass("droppable");
     },
     stack: "div",
     revert: true,
-    revertDuration: 250,
+    revertDuration: 0,
+    helper: "original",
     opacity: 0.75
   });  
 };
@@ -100,9 +102,9 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.downstreamPortal.toColor = function() {
-  if (this.teamColor === "red")    return "orange";
-  if (this.teamColor === "orange") return "blue";
-  if (this.teamColor === "blue")   return "green";
+  if (this.teamColor === "red")    return "blue";
+  if (this.teamColor === "blue")   return "orange";
+  if (this.teamColor === "orange") return "green";
   if (this.teamColor === "green")  return "done";
 };
 
@@ -110,9 +112,9 @@ Template.downstreamPortal.toColor = function() {
 
 Template.upstreamPortal.toColor = function() {
   if (this.teamColor === "red")    return "backlog";
-  if (this.teamColor === "orange") return "red";
-  if (this.teamColor === "blue")   return "orange";
-  if (this.teamColor === "green")  return "blue";
+  if (this.teamColor === "blue")   return "red";
+  if (this.teamColor === "orange") return "blue";
+  if (this.teamColor === "green")  return "orange";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -161,9 +163,9 @@ var isOne = function(die) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $.fn.hasClass = function(klass) {
-  if (this.attr('class') === undefined) {
-    log("hasClass",this.html());
-  }
+  //if (this.attr('class') === undefined) {
+  //  log("hasClass",this.html());
+  //}
   return this.attr('class').indexOf(klass) !== -1;
 };
 
@@ -172,7 +174,7 @@ $.fn.story = function(/*kanban*/) {
 };
 
 $.fn.team = function(/*kanban*/) {
-  return this.closest(".edge"); //team");
+  return this.closest(".team");
 };
 
 $.fn.ones = function(/*story*/) {  

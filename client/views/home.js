@@ -65,7 +65,7 @@ Template.home.events({"click #join": function() {
   }
   Edges.insert({ gid: gid, teamColor: teamColor });
   setupTeam(gid,teamColor);  
-  window.open("edge/" + gid + "/" + teamColor, "_blank");  
+  window.open("team/" + gid + "/" + teamColor, "_blank");  
 }});
 
 Template.home.events({"click #dashboard": function() {
