@@ -1,15 +1,12 @@
 
 @import "client/colors"
 
-single_bullet = '\2022'
-
-drag_drop_border_width = 4px
-drag_drop_border_style = dotted
+border_radius_width    = 8px
 drag_drop_border_color = Black
-
-border_radius_width = 8px
-
-wip_color = Moccasin
+drag_drop_border_style = dotted
+drag_drop_border_width = 4px
+single_bullet          = '\2022'
+wip_color              = Moccasin
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -19,12 +16,12 @@ wip_color = Moccasin
     
     #roll
         border-radius border_radius_width
-        font-size 1.4em
-        text-align center
-        padding-left 0.5em
-        padding-right 0.5em
-        cursor pointer
         color White            
+        cursor pointer
+        font-size 1.4em
+        padding-left  0.5em
+        padding-right 0.5em
+        text-align center
       
     .dice
         #roll
@@ -49,17 +46,17 @@ wip_color = Moccasin
                 
     .one
     .not-one
+        border-color  White
         border-radius border_radius_width
-        display inline
-        padding-top 2px
-        padding-right 12px
-        padding-bottom 4px
-        padding-left 12px
-        font-size 1.2em
-        border-width drag_drop_border_width
-        border-style solid
-        border-color White
+        border-style  solid
+        border-width  drag_drop_border_width
         color White
+        display inline
+        font-size 1.2em
+        padding-top     2px
+        padding-right  12px
+        padding-bottom  4px
+        padding-left   12px
 
     .one:before
     .not-one:before
@@ -85,36 +82,36 @@ wip_color = Moccasin
         &.red
             background   red_color
             border-color red_color
-        &.orange
-            background   orange_color
-            border-color orange_color
         &.blue
             background   blue_color
             border-color blue_color
+        &.orange
+            background   orange_color
+            border-color orange_color
         &.green
             background   green_color
             border-color green_color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .portal 
-        border-width drag_drop_border_width
-        border-style solid
         border-radius border_radius_width
-        width 2em
+        border-style  solid
+        border-width  drag_drop_border_width
         height 18em
-        &[data-to-team=backlog] 
+        width 2em
+        &[data-to-team = backlog] 
             background   backlog_color
             border-color backlog_color    
-        &[data-to-team=red] 
+        &[data-to-team = red] 
             background   red_color
             border-color red_color            
-        &[data-to-team=orange]
-            background   orange_color
-            border-color orange_color            
-        &[data-to-team=blue] 
+        &[data-to-team = blue] 
             background   blue_color
             border-color blue_color            
-        &[data-to-team=green] 
+        &[data-to-team = orange]
+            background   orange_color
+            border-color orange_color            
+        &[data-to-team = green] 
             background   green_color
             border-color green_color            
         &[data-to-team = done] 
@@ -124,25 +121,25 @@ wip_color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .wip
         border-radius border_radius_width
-        padding 4px
-        margin-left 4px
-        margin-right 4px
-        height 60em
         background wip_color
+        height 60em
+        margin-left  4px
+        margin-right 4px
+        padding 4px
         & .quarter-column
             vertical-align top
         table
-            border-spacing 0
+            border-spacing  0
             border-collapse collapse
     
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .kanban
+        border-color  wip_color
         border-radius 18px
-        border-width drag_drop_border_width
-        border-style solid
-        border-color wip_color
-        padding 4px
+        border-style  solid
+        border-width  drag_drop_border_width
         margin 0px
+        padding 4px
         width 2em
         &.red
             background red_color
@@ -155,27 +152,27 @@ wip_color = Moccasin
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .story
+        border-width 0
         font-size 1.4em
         text-align center
-        border-width 0
     
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .one_container
         padding 2px
         
     .hole
+        border-color  White
         border-radius border_radius_width
-        border-width 2px
-        border-style dotted
-        border-color White
+        border-style  dotted
+        border-width  2px
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .done-one
     .todo-one
+        border-color  White
         border-radius border_radius_width
-        border-width 2px
-        border-style solid
-        border-color White
+        border-style  solid
+        border-width  2px
         color White
   
     .todo-one
@@ -204,8 +201,8 @@ wip_color = Moccasin
     .one:hover
     .kanban.storyIsDone:hover
     .kanban.isEmpty:hover
-        border-style solid
         border-color drag_drop_border_color
+        border-style solid
         cursor move
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -215,8 +212,8 @@ wip_color = Moccasin
     .ui-draggable-dragging.one    
     .ui-draggable-dragging.kanban.isEmpty
     .ui-draggable-dragging.kanban.storyIsDone  
-        border-style drag_drop_border_style
         border-color drag_drop_border_color
+        border-style drag_drop_border_style
         cursor crosshair
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -226,5 +223,5 @@ wip_color = Moccasin
     .wip .kanban.storyIsInProgress.droppable
     .board .downstream.portal.droppable
     .board .upstream.portal.droppable    
-        border-style drag_drop_border_style
         border-color drag_drop_border_color
+        border-style drag_drop_border_style
