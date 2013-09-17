@@ -50,7 +50,10 @@ Template.home.events({'click #join': function() {
   var teamColor = _.find(teamColors(), function(color) {
     return !Edges.findOne({ gid: gid, teamColor: color });
   });
-  //TODO: if teamColor === undefined, then openDialog(game already has 4 players)
+  if (!teamColor) {
+    openDialog("Game already has 4 players");
+    return;
+  }
   Edges.insert({ gid: gid, teamColor: teamColor });
   setupTeam(gid,teamColor);  
   window.open("edge/" + gid + "/" + teamColor, "_blank");  
