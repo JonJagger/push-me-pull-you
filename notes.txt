@@ -1,7 +1,15 @@
 
-o) try target=_blank in URL  if that fails google
-   
-o) [start] button will eventually need to go to setup page
+o) Make the mini-logo that appears in the browser tab be a [o] via a dice 1
+   in the color of that team.
+   http://stackoverflow.com/questions/260857/changing-website-favicon-dynamically
+
+o) Put CSS entries inside a rule in alphaetical order?
+
+o) will [start] button eventually need to go to setup page?
+   eg push, pull defaults
+   eg wip limits
+   eg allow splitting
+   eg allow dice sharing
 
 o) Nothing showing up in Opera
 
@@ -27,6 +35,8 @@ o) How about making the downstream portal have potentially two colours.
    How... perhaps make both portals have the same background and use
    a container div so I can effectively get two colors on the border.
    In dashed style this should be quite visible.
+   Perhaps add someindication of which is upstream portal and which
+   is downstream portal if both have same background?
    ...
    If pushing is [on] for this team, the teams own color is present on their
    downstream portal.

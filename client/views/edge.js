@@ -22,7 +22,7 @@ Template.edge.storiesQuarter = function(n) {
   return quarter;
 };
 
-Template.edge.rendered = function () {
+Template.edge.rendered = function () {  
   dragDropSetup("#dice .die.one",
                 "#wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
