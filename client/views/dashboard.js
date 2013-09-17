@@ -1,21 +1,20 @@
 
-Template.dashboard.id = function() {
-  log("inside Template.review.id");  
-  return this.gid;
+var reactiveTeam = function(gid, teamColor) {
+  return Template["edge"]({ gid: gid, teamColor: teamColor });  
 };
 
 Template.dashboard.redTeam = function() {
-  return Template["edge"]({ gid: this.gid, teamColor: "red" });
+  return reactiveTeam(this.gid, "red");
 };
 
 Template.dashboard.orangeTeam = function() {
-  return Template["edge"]({ gid: this.gid, teamColor: "orange" });
+  return reactiveTeam(this.gid, "orange");
 };
 
 Template.dashboard.blueTeam = function() {
-  return Template["edge"]({ gid: this.gid, teamColor: "blue" });
+  return reactiveTeam(this.gid, "blue");
 };
 
 Template.dashboard.greenTeam = function() {
-  return Template["edge"]({ gid: this.gid, teamColor: "green" });
+  return reactiveTeam(this.gid, "green");
 };
