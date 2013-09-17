@@ -29,16 +29,12 @@ Template.edge.rendered = function() {
   
   // TODO: Pushing[on]
   //
-  // log('teamColor',this.teamColor); // undefined?
-  //
-  //            "#wip .red.kanban.storyIsDone"    (for red team)
   dragDropSetup(".wip .kanban.storyIsDone",
                 ".downstream.portal",
                 doneStoryDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
-  //            "#team-red .kanban.isEmpty"  (for red team)
   dragDropSetup(".wip .kanban.isEmpty",
                 ".upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
@@ -54,7 +50,6 @@ var dragDropSetup = function(from,to,handler) {
       return $(css);
   };
   $(from).draggable({
-    appendTo: "parent",
     start: function(event,ui) {
       droppables(event).addClass("droppable")
                        .droppable({ drop: handler });      
@@ -64,8 +59,7 @@ var dragDropSetup = function(from,to,handler) {
     },
     stack: "div",
     revert: true,
-    revertDuration: 0,
-    helper: "original",
+    revertDuration: 250,
     opacity: 0.75
   });  
 };
