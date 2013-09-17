@@ -228,34 +228,33 @@ wip_color              = Moccasin
 
 
 .team
-    &.red .downstream.portal
-        border-color blue_color
-        background: linear-gradient(top, blue_color 50%, red_color 50%);
-        background-size: 10px 10px;
-.team
-    &.blue .upstream.portal
-        border-color red_color
-        background: linear-gradient(top, red_color 50%, blue_color 50%);
-        background-size: 10px 10px;
-.team
-    &.blue .downstream.portal
-        border-color orange_color
-        background: linear-gradient(top, orange_color 50%, blue_color 50%);
-        background-size: 10px 10px;
-.team
-    &.orange .upstream.portal
-        border-color blue_color
-        background: linear-gradient(top, blue_color 50%, orange_color 50%);
-        background-size: 10px 10px;
-.team
-    &.orange .downstream.portal
-        border-color green_color
-        background: linear-gradient(top, green_color 50%, orange_color 50%);
-        background-size: 10px 10px;
-.team
-    &.green .upstream.portal
-        border-color orange_color
-        background: linear-gradient(top, orange_color 50%, green_color 50%);
-        background-size: 10px 10px;
+    &.red .portal
+        &.downstream
+            background: linear-gradient(top, blue_color 50%, red_color 50%);
+            background-size: 10px 10px;
+            border-color blue_color
+    &.blue .portal
+        &.upstream
+            background: linear-gradient(top, red_color 50%, blue_color 50%);
+            background-size: 10px 10px;
+            border-color red_color
+        &.downstream
+            background: linear-gradient(top, orange_color 50%, blue_color 50%);
+            background-size: 10px 10px;
+            border-color orange_color
+    &.orange .portal
+        &.upstream
+            background: linear-gradient(top, blue_color 50%, orange_color 50%);
+            background-size: 10px 10px;
+            border-color blue_color
+        &.downstream
+            background: linear-gradient(top, green_color 50%, orange_color 50%);
+            background-size: 10px 10px;
+            border-color green_color
+    &.green .portal
+        &.upstream
+            background: linear-gradient(top, orange_color 50%, green_color 50%);
+            background-size: 10px 10px;
+            border-color orange_color
 
 
