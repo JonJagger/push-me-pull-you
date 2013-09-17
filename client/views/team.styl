@@ -199,8 +199,8 @@ wip_color              = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .one:hover
-    .kanban.storyIsDone:hover
-    .kanban.isEmpty:hover
+    .kanban.story-is-done:hover
+    .kanban.is-empty:hover
         border-color drag_drop_border_color
         border-style solid
         cursor move
@@ -210,8 +210,8 @@ wip_color              = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .ui-draggable-dragging.one    
-    .ui-draggable-dragging.kanban.isEmpty
-    .ui-draggable-dragging.kanban.storyIsDone  
+    .ui-draggable-dragging.kanban.is-empty
+    .ui-draggable-dragging.kanban.story-is-done  
         border-color drag_drop_border_color
         border-style drag_drop_border_style
         cursor crosshair
@@ -220,7 +220,7 @@ wip_color              = Moccasin
     // Dynamically activated drop targets
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
-    .wip .kanban.storyIsInProgress.droppable
+    .wip .kanban.story-is-in-progress.droppable
     .board .downstream.portal.droppable
     .board .upstream.portal.droppable    
         border-color drag_drop_border_color

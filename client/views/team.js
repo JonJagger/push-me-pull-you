@@ -24,18 +24,18 @@ Template.wip.storiesQuarter = function(n) {
 
 Template.team.rendered = function() {  
   dragDropSetup(".dice .die.one",
-                ".wip .kanban.storyIsInProgress",
+                ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
   
   // TODO: Pushing[on]
   //
-  dragDropSetup(".wip .kanban.storyIsDone",
+  dragDropSetup(".wip .kanban.story-is-done",
                 ".board .downstream.portal",
                 doneStoryDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
-  dragDropSetup(".wip .kanban.isEmpty",
+  dragDropSetup(".wip .kanban.is-empty",
                 ".board .upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
   
@@ -120,11 +120,11 @@ Template.upstreamPortal.toColor = function() {
 
 Template.story.kanbanState = function() {
   if (this.size === 0)
-    return "isEmpty";
+    return "is-empty";
   if (this.ones.length < this.size)
-    return "storyIsInProgress";
+    return "story-is-in-progress";
   if (this.ones.length === this.size)
-    return "storyIsDone";
+    return "story-is-done";
 };
 
 Template.story.holes = function() { // see {{#each holes}} in team.html
