@@ -11,5 +11,10 @@ Router.map(function() {
       }
     }
   });
+
+  this.route('dashboard', {
+    path: '/dashboard/:gid',
+    data: function() { return { gid: this.params.gid } }
+  });
   
 });

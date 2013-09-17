@@ -11,14 +11,27 @@
           <td>{{> leftRightArrow}}</td>
           <td><span id="game">game</span></td>
         </tr>
-      </table>
-      <table>
-        <tr>
+      </table>      
+      <table id="control" align="center" cellspacing="0" cellpadding="0">
+        <tr align="center">
           <td><input type="button" value="start" id="start"></td>
-          <td><div class="arrow">&rarr;</div></td>
-          <td><input type="text" id="gid" value="id"></td>
-          <td><div class="arrow">&larr;</div></td>
-          <td><input type="button" value="join" id="join" disabled="disabled"></td>
+        </tr>
+        <tr align="center">
+          <td><div class="arrow">&darr;</div></td>
+        </tr>
+        <tr align="center">
+          <td><input type="text" id="gid" value=""></td>
+        </tr>
+        <tr align="center">
+          <td><div class="arrow">&uarr;</div></td>
+        </tr>
+        <tr align="center">
+          <td>
+            <div id="join_resume_review">
+              <input type="button" value="join"      id="join"      disabled="disabled">
+              <input type="button" value="dashboard" id="dashboard" disabled="disabled">                
+            </div>
+          </td>
         </tr>
       </table>
     </div>

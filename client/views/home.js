@@ -1,5 +1,15 @@
 
-var page = {
+var enableDisable = function(button) {
+  button.enable = function() {
+    this.removeAttr("disabled");
+  };
+  button.disable = function() {
+    this.attr("disabled", "disabled");
+  };
+  return button;
+};
+
+var page = {  
   gid: function(arg) {
     if (!arg) {
       return $("#gid").val();
@@ -8,14 +18,10 @@ var page = {
     }
   },
   join: function() {
-    var button = $("#join");
-    button.enable = function() {
-      this.removeAttr("disabled");
-    };
-    button.disable = function() {
-      this.attr("disabled", "disabled");
-    }
-    return button;
+    return enableDisable($("#join"));
+  },
+  dashboard: function() {
+    return enableDisable($("#dashboard"));    
   }
 };
 
@@ -26,6 +32,7 @@ Template.home.events({"click #start" : function () {
   Games.insert(game);
   page.gid(game.gid);
   page.join().enable();
+  page.dashboard().enable();
 }});
 
 Template.home.events({"keyup #gid" : function() {
@@ -34,12 +41,14 @@ Template.home.events({"keyup #gid" : function() {
   //       if not, disable without doing Games.findOne()
   if (!Games.findOne({ gid: gid })) {
     page.join().disable();
+    page.dashboard().disable();
   } else {
     page.join().enable();
+    page.dashboard().enable();
   }
 }});
 
-Template.home.events({'click #join': function() {
+Template.home.events({"click #join": function() {
   var gid = page.gid();
   var game = Games.findOne({ gid: gid });
   if (game === undefined) {
@@ -57,6 +66,10 @@ Template.home.events({'click #join': function() {
   Edges.insert({ gid: gid, teamColor: teamColor });
   setupTeam(gid,teamColor);  
   window.open("edge/" + gid + "/" + teamColor, "_blank");  
+}});
+
+Template.home.events({"click #dashboard": function() {
+  window.open("dashboard/" + page.gid(), "_blank");    
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 
