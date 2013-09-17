@@ -1,4 +1,12 @@
 
+o) try target=_blank in URL  if that fails google
+
+o) hook into keydown on entering ID. Once 6 chars and all 0-9a-z
+   enable 3 buttons
+   
+o) [start] button will eventually need to go to setup page
+
+
 o) Nothing showing up in Opera
 
 o) I just figured out a nice way to do dice teleporting.

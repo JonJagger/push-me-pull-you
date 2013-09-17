@@ -1,17 +1,32 @@
 
-var home = Template.home;
+var log = function(msg,arg) {
+  if (arg === undefined) {
+    console.log(EJSON.stringify(msg));
+  } else {
+    console.log(msg + " = " + EJSON.stringify(arg));
+  }
+};
 
-home.greeting = function () {
+Template.home.greeting = function () {
   return "The Kanban Ones Game";
 };
 
-home.events({"click #start" : function () {
+Template.home.events({"click #start" : function () {
   var game = { gid: newId(6) };
   Games.insert(game);
   $("#gid").val(game.gid);
 }});
 
-home.events({'click #join': function() {
+Template.home.events({"keyup #gid" : function() {
+  var gid = $('#gid').val();
+  if (Games.findOne({ gid: gid }) === undefined) {
+    $("#join").attr("disabled", "disabled");
+  } else {
+    $("#join").removeAttr("disabled");
+  }
+}});
+
+Template.home.events({'click #join': function() {
   var gid = $('#gid').val();
   if (gid === "id" || gid === "") {
     openDialog("Press [start] to get an id.");
