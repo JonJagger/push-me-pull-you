@@ -229,6 +229,10 @@ wip_color              = Moccasin
 
 .team
     &.red .portal
+        &.upstream
+            background: linear-gradient(top, backlog_color 50%, red_color 50%);
+            background-size: 10px 10px;
+            border-color backlog_color        
         &.downstream
             background: linear-gradient(top, blue_color 50%, red_color 50%);
             background-size: 10px 10px;
@@ -256,5 +260,9 @@ wip_color              = Moccasin
             background: linear-gradient(top, orange_color 50%, green_color 50%);
             background-size: 10px 10px;
             border-color orange_color
+        &.downstream
+            background: linear-gradient(top, done_color 50%, green_color 50%);
+            background-size: 10px 10px;
+            border-color done_color
 
 
