@@ -19,7 +19,7 @@ Template.wip.storiesColumn = function(n) {
   var stories = Stories.find({ gid:this.gid, teamColor:this.color }).fetch();
   var column = [ ];
   _.each(stories, function(story,index) {
-    if (index % 4 == n) {
+    if (index % 3 == n) {
       column.push(story);
     }
   });
