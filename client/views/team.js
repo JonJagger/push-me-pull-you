@@ -138,6 +138,10 @@ Template.story.ones = function() { // see {{#each ones}} in team.html
   return this.ones; // eg ['red','red','blue']
 };
 
+Template.story.doneOne = function() {
+  return "8226"; // bullet
+};
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.die.one = function() {

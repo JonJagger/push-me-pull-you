@@ -17,13 +17,13 @@
           <td><input type="button" value="start" id="start"></td>
         </tr>
         <tr align="center">
-          <td><div class="arrow">&darr;</div></td>
+          <td>{{> downArrow}}</td>
         </tr>
         <tr align="center">
           <td><input type="text" id="gid" value=""></td>
         </tr>
         <tr align="center">
-          <td><div class="arrow">&uarr;</div></td>
+          <td>{{> upArrow}}</td>
         </tr>
         <tr align="center">
           <td>
@@ -40,4 +40,12 @@
 
 <template name="leftRightArrow">
   <div class="arrow">&harr;</div>
+</template>
+
+<template name="downArrow">
+  <div class="arrow">&darr;</div>
+</template>
+
+<template name="upArrow">
+  <div class="arrow">&uarr;</div>
 </template>

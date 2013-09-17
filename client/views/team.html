@@ -71,17 +71,17 @@
          data-id="{{_id}}">
       {{#each holes}}
         <div class="one_container">
-          <div class='hole'>&nbsp;</div>
+          <div class="hole">&nbsp;</div>
         </div>
       {{/each}}
       {{#each gaps}}
         <div class="one_container">      
-          <div class='todo-one'>&nbsp;</div>
+          <div class="todo-one">&nbsp;</div>
         </div>
       {{/each}}
       {{#each ones}}
         <div class="one_container">            
-          <div class='{{this}} done-one'>&#8226;</div>
+          <div class="{{this}} done-one">&#{{doneOne}};</div>
         </div>
       {{/each}}
     </div>
