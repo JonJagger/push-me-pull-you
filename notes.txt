@@ -1,12 +1,17 @@
 
+o) How to do [split]
+   Have a split button that is enabled when a [1] is available.
+   This can be dragged over the kanban you would like to split!
+
 o) Make the mini-logo that appears in the browser tab be a [o] via a dice 1
    in the color of that team.
    http://stackoverflow.com/questions/260857/changing-website-favicon-dynamically
 
 o) Put CSS entries inside a rule in alphaetical order?
 
-o) will [start] button eventually need to go to setup page?
+o) will [start] button eventually need to go to a setup page?
    eg push, pull defaults
+   eg initial allocation of dice
    eg wip limits
    eg allow splitting
    eg allow dice sharing
@@ -61,11 +66,6 @@ o) What to do if one of the teams (egdes) has to retire?
    Have a resume button.
 
 o) use http://arunoda.github.io/laika/   test framework.
-
-o) when the cursor hovers over a [1] or a done kanban it should
-   change appearance (just like on droppability). Done this.
-   However, if you drag a [1] and then release it so it is
-   not dropped, the dragging-style stays in place.
 
 o) make done-one and todo-one have same fixed size as a dice-one
    drop width of wip
@@ -135,13 +135,6 @@ o) And wip limits can go on each Edge too.
    If a player uses this control to reduce the conwip what effect does this
    actually have? Which kanbans jettisoned/abandoned/shrunk?
    
-o) make dice a Meteor collection so dashboard can see changes there.
-   make al dice (not just the 1s) show up so anyone watching the dashboard
-   can see what is happening much better.
-
-o) When 1s have been used the dice div collapses and the team div jumps up.
-   Need to make sure the dice div stays the same size.
-
 o) maybe have squares of red/orange/blue/green (in that order) below the
    [start game] button so you can see how many teams have joined. And make it
    a bit more colourful.
@@ -156,8 +149,6 @@ o) create initial stories when game is created.
    How to update it? From the server. In which case it might as well be a
    time stamp!
    
-o) ultimately I will need resume/review buttons like in cyber-dojo
-
 o) backlog as a team which have dice too?
    They have no upstream.
    And new stories are automatically added.
@@ -224,6 +215,10 @@ o) make a cumulative-flow-diagram where the kanban from all edges
 o) tool-tip for a kanban shows its history in a graph.
 
 o) dashboard display can be live and reactive.
+   Just shows view of all the teams.
+   
+o) cumulative-flow-diagram
+   Different kind of dashboard.
    Like cyber-dojo I will need some way to limit the horizontal space.
    There are a couple of aspects/layouts for dashboard.
    During the game I can just show all the edges without the portals.
@@ -234,4 +229,3 @@ o) dashboard display can be live and reactive.
    next you're seeing it an instant later and your memory of the previous one
    allows your brain to form the diff. Much more qualitative than quantitative.
 
-o) cumulative-flow-diagram 
