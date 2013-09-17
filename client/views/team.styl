@@ -1,5 +1,6 @@
 
 @import "client/colors"
+@import "nib/gradients"
 
 border_radius_width    = 8px
 drag_drop_border_color = Black
@@ -51,11 +52,11 @@ wip_color              = Moccasin
         border-width  drag_drop_border_width
         color White
         display inline
-        font-size 1.2em
-        padding-top     2px
-        padding-right  12px
-        padding-bottom  4px
-        padding-left   12px
+        font-size 1em
+        padding-bottom 2px
+        padding-left   4px
+        padding-right  4px
+        padding-top    2px
 
     .one:before
     .not-one:before
@@ -106,7 +107,7 @@ wip_color              = Moccasin
             border-color red_color            
         &[data-to-team = blue] 
             background   blue_color
-            border-color blue_color            
+            border-color blue_color
         &[data-to-team = orange]
             background   orange_color
             border-color orange_color            
@@ -224,3 +225,37 @@ wip_color              = Moccasin
     .board .upstream.portal.droppable    
         border-color drag_drop_border_color
         border-style drag_drop_border_style
+
+
+.team
+    &.red .downstream.portal
+        border-color blue_color
+        background: linear-gradient(top, blue_color 50%, red_color 50%);
+        background-size: 10px 10px;
+.team
+    &.blue .upstream.portal
+        border-color red_color
+        background: linear-gradient(top, red_color 50%, blue_color 50%);
+        background-size: 10px 10px;
+.team
+    &.blue .downstream.portal
+        border-color orange_color
+        background: linear-gradient(top, orange_color 50%, blue_color 50%);
+        background-size: 10px 10px;
+.team
+    &.orange .upstream.portal
+        border-color blue_color
+        background: linear-gradient(top, blue_color 50%, orange_color 50%);
+        background-size: 10px 10px;
+.team
+    &.orange .downstream.portal
+        border-color green_color
+        background: linear-gradient(top, green_color 50%, orange_color 50%);
+        background-size: 10px 10px;
+.team
+    &.green .upstream.portal
+        border-color orange_color
+        background: linear-gradient(top, orange_color 50%, green_color 50%);
+        background-size: 10px 10px;
+
+

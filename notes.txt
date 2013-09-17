@@ -16,8 +16,19 @@ o) When a Kanban is moved downstream I don't want it to disrupt the
    _in_ the downstream team's upstream portal!
    Quite like this. More more transparent. Nice symmetry with empty
    kanban's going upstream to signal a pull.
+   In fact, when B drop an an empty kanban on B's upstream portal
+   it could appear in A's downstream portal.
+   Complete symmetry!
    But is this just delaying... What about when the downstream team
    drags the new kanban from their upstream portal onto the board?
+
+o) Looking at the dashboard, it would be nice if the appearance of
+   A's downstream portal matches B's upstream portal. How about
+   hatch shading them both in both colors?
+   See http://lea.verou.me/demos/css3-patterns.html
+   No. Too complicated. How about inside the portal just have a
+   ladder of divs than form rungs of opposite colours!
+   How would the kanbans appear on that? float:?
 
 o) How to do [split]
    Have a split button that is enabled when a [1] is available.
