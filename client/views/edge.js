@@ -6,6 +6,11 @@ Template.edge.events({"click #roll" : function () {
   });
 }});
 
+Template.edge.red = function() {
+  log("Template.edge.red CALLED");
+  //return Template
+};
+
 Template.edge.dice = function() {
   return getDice(this.gid, this.teamColor);
 };
