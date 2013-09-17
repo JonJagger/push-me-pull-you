@@ -1,12 +1,4 @@
 
-var log = function(msg,arg) {
-  if (arg === undefined) {
-    console.log(EJSON.stringify(msg));
-  } else {
-    console.log(msg + " = " + EJSON.stringify(arg));
-  }
-};
-
 Template.home.greeting = function () {
   return "The Kanban Ones Game";
 };
@@ -17,7 +9,7 @@ Template.home.events({"click #start" : function () {
   $("#gid").val(game.gid);
 }});
 
-Template.home.events({"keyup #gid" : function() {
+Template.home.events({"keyup #gid" : function() {  
   var gid = $('#gid').val();
   if (Games.findOne({ gid: gid }) === undefined) {
     $("#join").attr("disabled", "disabled");

@@ -17,7 +17,7 @@ Template.edge.storiesQuarter = function(n) {
     if (index % 4 == n) {
       quarter.push(story);
     }
-  });  
+  });
   return quarter;
 };
 
@@ -148,14 +148,6 @@ Template.die.one = function() {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var log = function(msg,arg) {
-  if (arg === undefined) {
-    console.log(EJSON.stringify(msg));
-  } else {
-    console.log(msg + " = " + EJSON.stringify(arg));
-  }
-};
 
 var getDice = function(gid, teamColor) {
   return Dice.find({ gid: gid, teamColor: teamColor });    
