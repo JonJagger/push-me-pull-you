@@ -1,20 +1,22 @@
 
-var reactiveTeam = function(gid, teamColor) {
-  return Template["edge"]({ gid: gid, teamColor: teamColor });  
-};
+Template.dashboard.red    = function() { return { gid: this.gid, teamColor: "red"    }; };
+Template.dashboard.orange = function() { return { gid: this.gid, teamColor: "orange" }; };
+Template.dashboard.blue   = function() { return { gid: this.gid, teamColor: "blue"   }; };
+Template.dashboard.green  = function() { return { gid: this.gid, teamColor: "green"  }; };
 
-Template.dashboard.redTeam = function() {
-  return reactiveTeam(this.gid, "red");
-};
-
-Template.dashboard.orangeTeam = function() {
-  return reactiveTeam(this.gid, "orange");
-};
-
-Template.dashboard.blueTeam = function() {
-  return reactiveTeam(this.gid, "blue");
-};
-
-Template.dashboard.greenTeam = function() {
-  return reactiveTeam(this.gid, "green");
-};
+/*
+ * An alternative way to do this is as follows...
+ *
+ *    Template.dashboard.redTeam = function() {
+ *      return Template["edge"]({ gid: gid, teamColor: "red" });  
+ *    };
+ *
+ * and then instead of doing this in dashboard.html
+ * 
+ *    {{> edge red}}
+ *    
+ * you do this instead
+ *
+ *    {{readTeam}}
+ *    
+ */
