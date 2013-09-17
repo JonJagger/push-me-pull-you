@@ -2,15 +2,15 @@
 single-bullet = '\2022'
 
 backlog-color = LightGray
-red-color     = Red
-orange-color  = #FFBF00
-blue-color    = Blue
-green-color   = Green
+red-color     = #FF2800
+orange-color  = #FF7400
+blue-color    = #009999
+green-color   = #00BB3F
 done-color    = LightGray
 
 drag-drop-border-width = 4px
 drag-drop-border-style = dotted
-drag-drop-border-color = DarkGray
+drag-drop-border-color = Black
 
 border-radius-width = 8px
 
@@ -31,6 +31,7 @@ wip-color = Moccasin
         padding-right 0.5em
         cursor pointer
         color White
+            
       
     #dice
         display table-row
@@ -39,6 +40,10 @@ wip-color = Moccasin
                 background red-color
             &.orange
                 background orange-color
+            &.blue
+                background blue-color
+            &.green
+                background green-color
 
     #dice_container
         margin 0 auto
@@ -186,12 +191,17 @@ wip-color = Moccasin
             background green-color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // DRAG DROP
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // The CSS must be sufficiently specific for them to take
+    // precedence over the defaults above.
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Initial selection of draggable
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .one:hover
     .kanban.storyIsDone:hover
-    .kanban.IsEmpty:hover
+    .kanban.isEmpty:hover
         border-style solid
         border-color drag-drop-border-color
         cursor move
@@ -201,7 +211,8 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .ui-draggable-dragging.one    
-    .ui-draggable-dragging.kanban    
+    .ui-draggable-dragging.kanban.isEmpty
+    .ui-draggable-dragging.kanban.storyIsDone  
         border-style drag-drop-border-style
         border-color drag-drop-border-color
         cursor crosshair
@@ -209,9 +220,6 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Dynamically activated drop targets
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //
-    // Their CSS must be sufficiently specific for them to take
-    // precedence over the defaults above.
     //
     #wip .kanban.storyIsInProgress.droppable
     #team #downstreamPortal.droppable

@@ -38,7 +38,7 @@ Template.edge.rendered = function () {
   // TODO Pulling[on]
   //
   //            "#wip .red.kanban.isEmpty"  (for red team)
-  dragDropSetup("#wip .kanban.IsEmpty",
+  dragDropSetup("#wip .kanban.isEmpty",
                 "#upstreamPortal",
                 emptyKanbanDroppedOnUpstreamPortal);
   
@@ -121,7 +121,7 @@ Template.upstreamPortal.toColor = function() {
 
 Template.story.kanbanState = function() {
   if (this.size === 0)
-    return "IsEmpty";
+    return "isEmpty";
   if (this.ones.length < this.size)
     return "storyIsInProgress";
   if (this.ones.length === this.size)
