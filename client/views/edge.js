@@ -33,14 +33,14 @@ Template.edge.rendered = function() {
   //
   //            "#wip .red.kanban.storyIsDone"    (for red team)
   dragDropSetup(".wip .kanban.storyIsDone",
-                "#downstreamPortal",
+                ".downstream.portal",
                 doneStoryDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
   //            "#team-red .kanban.isEmpty"  (for red team)
   dragDropSetup(".wip .kanban.isEmpty",
-                "#upstreamPortal",
+                ".upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
   
 };
