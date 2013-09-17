@@ -1,15 +1,29 @@
 
-
 o) When a Kanban is moved downstream I don't want it to disrupt the
    display of the downstream team too much. The code right now _does_
    disrupt them because the new Kanban appears as the first entry.
    This is because of the db.update() not having a sort option.
+   Think it through... A -> B -> C  all Stories have to start at
+   A (in theory anyway). So when A moves to B it's likely to be newer
+   than any Story already in B. So newer _ids appear before older _ids.
+   Reversing the order should help. Viz
+      _.each(stories.reverse(), function(story,index) {
+        if (index % 4 == n) {
+          quarters.push(story);
+        }
+      });
+   However, another option is that the xferred kanban could appear
+   _in_ the downstream team's upstream portal!
+   Quite like this. More more transparent. Nice symmetry with empty
+   kanban's going upstream to signal a pull.
+   But is this just delaying... What about when the downstream team
+   drags the new kanban from their upstream portal onto the board?
 
 o) How to do [split]
    Have a split button that is enabled when a [1] is available.
    This can be dragged over the kanban you would like to split!
 
-o) don't have to give different numbers of dice to different teams.
+o) Don't have to give different numbers of dice to different teams.
    Can bias the dice so later teams have slightly less chance of getting a [1]!
 
 o) Make the mini-logo that appears in the browser tab be a [o] via a dice 1
@@ -18,7 +32,7 @@ o) Make the mini-logo that appears in the browser tab be a [o] via a dice 1
 
 o) Put CSS entries inside a rule in alphaetical order?
 
-o) will [start] button eventually need to go to a setup page?
+o) Will [start] button eventually need to go to a setup page?
    eg push, pull defaults
    eg initial allocation of dice
    eg wip limits
@@ -74,9 +88,9 @@ o) The act of pushing a done story through a portal could be the event
 o) What to do if one of the teams (egdes) has to retire?
    Have a resume button.
 
-o) use http://arunoda.github.io/laika/   test framework.
+o) Use http://arunoda.github.io/laika/   test framework.
 
-o) make done-one and todo-one have same fixed size as a dice-one
+o) Make done-one and todo-one have same fixed size as a dice-one
    drop width of wip
    
 o) Each game needs to somehow have [pull][push] options?
@@ -91,7 +105,7 @@ o) Each game needs to somehow have [pull][push] options?
    red pushing is about what red can do.
    orange pulling is about what orange can do.
    
-o) simpler version of splitting (below).
+o) Simpler version of splitting (below).
    When you split a kanban you
    1. are in a controlled sandbox...
    2. put all the kanban's done-one's back as dice
@@ -101,7 +115,7 @@ o) simpler version of splitting (below).
    4. now the player can play the sandboxed 1s back onto
       the split kanban in any combination they want.
    
-o) drop story onto a split-area to split it
+o) Drop story onto a split-area to split it
    this will offer selection of possibilities. click to select
    eg story 4-7
       options are
