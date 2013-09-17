@@ -77,12 +77,15 @@ Template.home.events({"click #dashboard": function() {
 //
 var setupTeam = function(gid,teamColor) {
   var kanbanColor = teamColor;
-  var oneColor = teamColor;
+  var oneColor    = teamColor;
   
   var makeStory = function(kanbanSize, size, ones) {
-    Stories.insert({ gid: gid, teamColor: teamColor,
-                     kanbanColor: kanbanColor, kanbanSize: kanbanSize,
-                     size: size, ones: ones });    
+    Stories.insert({ gid: gid,
+                     teamColor: teamColor,
+                     kanbanColor: kanbanColor,
+                     kanbanSize: kanbanSize,
+                     size: size,
+                     ones: ones });    
   };
   makeStory(1, 1, [ ]);
   makeStory(3, 2, [oneColor,oneColor]);

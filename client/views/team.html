@@ -1,7 +1,7 @@
 
 <template name="team">
   <!-- if this is being rendered from the dashboard "edge" will not be unique -->
-  <div class="team {{color}}">          
+  <div class="{{color}} team">          
     <div class="dice_container">
       <table class="dice">
         <tr>
@@ -14,7 +14,7 @@
       </table>
     </div>  
     <div class="board_container">
-      <table class="board {{color}}">
+      <table class="{{color}} board">
         <tr valign="top">
           <td>{{> upstreamPortal}}</td>
           <td>{{> wip}}</td>

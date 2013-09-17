@@ -38,7 +38,6 @@ Template.team.rendered = function() {
   dragDropSetup(".wip .kanban.is-empty",
                 ".board .upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
-  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,21 +65,21 @@ var dragDropSetup = function(from,to,handler) {
 };
 
 var oneDroppedOnKanban = function(event,ui) {
-  var one = ui.draggable;
+  var one    = ui.draggable;
   var kanban = $(this);
-  var story = kanban.story();
-  Dice.update(one.id(), { $set: { value: 6 }});    
+  var story  = kanban.story();
   var ones = story.ones();
+  Dice.update(one.id(), { $set: { value: 6 }});    
   ones.unshift(one.color());
   Stories.update(story.id(), { $set: { ones: ones } });
 };
 
 var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
-  var kanban = ui.draggable; 
-  var portal = $(this);
-  var story = kanban.story();  
+  var kanban    = ui.draggable; 
+  var portal    = $(this);
+  var story     = kanban.story();  
   var fromColor = portal.team().color();
-  var toColor = portal.data("to-team");  
+  var toColor   = portal.data("to-team");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -101,19 +100,19 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.downstreamPortal.toColor = function() {
-  if (this.color === "red")    return "blue";
-  if (this.color === "blue")   return "orange";
+  if (this.color === "red"   ) return "blue";
+  if (this.color === "blue"  ) return "orange";
   if (this.color === "orange") return "green";
-  if (this.color === "green")  return "done";
+  if (this.color === "green" ) return "done";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.upstreamPortal.toColor = function() {
-  if (this.color === "red")    return "backlog";
-  if (this.color === "blue")   return "red";
+  if (this.color === "red"   ) return "backlog";
+  if (this.color === "blue"  ) return "red";
   if (this.color === "orange") return "blue";
-  if (this.color === "green")  return "orange";
+  if (this.color === "green" ) return "orange";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -162,7 +161,7 @@ var isOne = function(die) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $.fn.hasClass = function(klass) {
-  return this.attr('class').indexOf(klass) !== -1;
+  return this.attr("class").indexOf(klass) !== -1;
 };
 
 $.fn.story = function(/*kanban*/) {
