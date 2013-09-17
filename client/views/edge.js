@@ -49,7 +49,11 @@ Template.edge.rendered = function() {
 
 var dragDropSetup = function(from,to,handler) {
   $(from).draggable({
+    appendTo: "parent",
     start: function(event,ui) {
+      var dragged = $(event.target);
+      log("teamColor=", dragged.team().color());
+      
       var targets = $(to);
       targets.addClass("droppable")
              .droppable({ drop: handler });      
@@ -162,6 +166,9 @@ var isOne = function(die) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $.fn.hasClass = function(klass) {
+  if (this.attr('class') === undefined) {
+    log("hasClass",this.html());
+  }
   return this.attr('class').indexOf(klass) !== -1;
 };
 
@@ -170,7 +177,7 @@ $.fn.story = function(/*kanban*/) {
 };
 
 $.fn.team = function(/*kanban*/) {
-  return this.closest("#team");
+  return this.closest(".edge"); //team");
 };
 
 $.fn.ones = function(/*story*/) {  
