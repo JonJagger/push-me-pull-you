@@ -15,7 +15,6 @@ wip-color = Moccasin
 
 #edge
     font-size 0.75em
-    display table
     margin 0 auto
     
     #roll
@@ -27,8 +26,7 @@ wip-color = Moccasin
         cursor pointer
         color White            
       
-    #dice
-        display table-row
+    .dice
         #roll
             &.red
                 background red-color
@@ -39,10 +37,16 @@ wip-color = Moccasin
             &.green
                 background green-color
 
-    #dice_container
+    .dice_container
+    .team_container
+        margin 0 auto
+        padding 0
+        
+    .dice
+    .team
         margin 0 auto
         padding 10px
-        
+                
     .one
     .not-one
         border-radius border-radius-width
@@ -75,7 +79,7 @@ wip-color = Moccasin
             background   green-color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    #team
+    .team
         border-radius border-radius-width        
         padding 0.5em
         &.red
@@ -118,7 +122,7 @@ wip-color = Moccasin
             border-color done-color            
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    #wip
+    .wip
         border-radius border-radius-width
         padding 4px
         margin-left 4px
@@ -219,8 +223,8 @@ wip-color = Moccasin
     // Dynamically activated drop targets
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
-    #wip .kanban.storyIsInProgress.droppable
-    #team #downstreamPortal.droppable
-    #team #upstreamPortal.droppable    
+    .wip .kanban.storyIsInProgress.droppable
+    .team #downstreamPortal.droppable
+    .team #upstreamPortal.droppable    
         border-style drag-drop-border-style
         border-color drag-drop-border-color

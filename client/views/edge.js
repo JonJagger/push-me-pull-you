@@ -23,8 +23,8 @@ Template.wip.storiesQuarter = function(n) {
 };
 
 Template.edge.rendered = function() {  
-  dragDropSetup("#dice .die.one",
-                "#wip .kanban.storyIsInProgress",
+  dragDropSetup(".dice .die.one",
+                ".wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
   
   // TODO: Pushing[on]
@@ -32,14 +32,14 @@ Template.edge.rendered = function() {
   // log('teamColor',this.teamColor); // undefined?
   //
   //            "#wip .red.kanban.storyIsDone"    (for red team)
-  dragDropSetup("#wip .kanban.storyIsDone",
+  dragDropSetup(".wip .kanban.storyIsDone",
                 "#downstreamPortal",
                 doneStoryDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
   //            "#team-red .kanban.isEmpty"  (for red team)
-  dragDropSetup("#wip .kanban.isEmpty",
+  dragDropSetup(".wip .kanban.isEmpty",
                 "#upstreamPortal",
                 emptyKanbanDroppedOnUpstreamPortal);
   

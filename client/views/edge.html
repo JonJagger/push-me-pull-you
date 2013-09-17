@@ -2,8 +2,8 @@
 <template name="edge">
   <!-- if this is being rendered from the dashboard "edge" will not be unique -->
   <div id="edge">          
-    <div id="dice">
-      <table id="dice_container">
+    <div class="dice_container">
+      <table class="dice">
         <tr>
           <td>{{> roll}}</td>
           <td>&nbsp;&nbsp;</td>          
@@ -13,8 +13,8 @@
         </tr>
       </table>
     </div>  
-    <div id="team" class="{{teamColor}}">
-      <table>
+    <div class="team_container">
+      <table class="team {{teamColor}}">
         <tr valign="top">
           <td>{{> upstreamPortal}}</td>
           <td>{{> wip}}</td>
@@ -34,7 +34,7 @@
 </template>
 
 <template name="wip">
-  <div id="wip">
+  <div class="wip">
     <table>
       <tr>
         <td class="quarterColumn">{{#each storiesQuarter "0"}}{{> story}}{{/each}}</td>
