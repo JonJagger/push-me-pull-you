@@ -3,11 +3,11 @@ Router.map(function() {
   this.route('home', { path: '/' });
   
   this.route('team', {
-    path: '/team/:gid/:teamColor',
+    path: '/team/:gid/:color',
     data: function() {
       return {
         gid: this.params.gid,
-        teamColor: this.params.teamColor
+        color: this.params.color
       }
     }
   });

@@ -56,16 +56,16 @@ Template.home.events({"click #join": function() {
     return;
   } 
   //TODO: atomic?
-  var teamColor = _.find(teamColors(), function(color) {
-    return !Edges.findOne({ gid: gid, teamColor: color });
+  var color = _.find(teamColors(), function(teamColor) {
+    return !Teams.findOne({ gid: gid, color: teamColor });
   });
-  if (!teamColor) {
+  if (!color) {
     openDialog("Game already has 4 players");
     return;
   }
-  Edges.insert({ gid: gid, teamColor: teamColor });
-  setupTeam(gid,teamColor);  
-  window.open("team/" + gid + "/" + teamColor, "_blank");  
+  Teams.insert({ gid: gid, color: color });
+  setupTeam(gid,color);  
+  window.open("team/" + gid + "/" + color, "_blank");  
 }});
 
 Template.home.events({"click #dashboard": function() {

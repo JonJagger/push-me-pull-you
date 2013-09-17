@@ -6,11 +6,11 @@ Games = new Meteor.Collection('games');
  * });
  */    
 
-Edges = new Meteor.Collection('edges');
+Teams = new Meteor.Collection('teams');
 /*
- * Edges.insert({
- *         gid: '138ef8',
- *   teamColor: 'red'
+ * Teams.insert({
+ *     gid: '138ef8',
+ *   color: 'red'
  * });
  */
 
@@ -20,8 +20,8 @@ Stories = new Meteor.Collection('stories');
  *           gid: '138ef8',
  *     teamColor: 'blue' 
  *   kanbanColor: 'red',
- *          ones: '2',       // number of 1s already worked
  *          size: '3'        // number of 1s on this story
+ *          ones: '2',       // number of 1s already worked
  * });
  */
 

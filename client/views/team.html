@@ -1,7 +1,7 @@
 
 <template name="team">
   <!-- if this is being rendered from the dashboard "edge" will not be unique -->
-  <div class="team {{teamColor}}">          
+  <div class="team {{color}}">          
     <div class="dice_container">
       <table class="dice">
         <tr>
@@ -14,7 +14,7 @@
       </table>
     </div>  
     <div class="board_container">
-      <table class="board {{teamColor}}">
+      <table class="board {{color}}">
         <tr valign="top">
           <td>{{> upstreamPortal}}</td>
           <td>{{> wip}}</td>
@@ -28,7 +28,7 @@
 
 <template name="roll">
   <input type="button"
-         class="{{teamColor}}"
+         class="{{color}}"
          value="roll"
          id="roll">
 </template>
@@ -53,16 +53,16 @@
 </template>
 
 <template name="upstreamPortal">
-  <div class="upstream portal {{teamColor}}"
-       data-from-color="{{teamColor}}"
-       data-to-color="{{toColor}}">      
+  <div class="upstream portal {{color}}"
+       data-from-team="{{color}}"
+       data-to-team="{{toTeam}}">      
   </div>
 </template>
 
 <template name="downstreamPortal">
-  <div class="downstream portal {{teamColor}}"
-       data-from-color="{{teamColor}}"
-       data-to-color="{{toColor}}">      
+  <div class="downstream portal {{color}}"
+       data-from-team="{{color}}"
+       data-to-team="{{toTeam}}">      
   </div>
 </template>
 

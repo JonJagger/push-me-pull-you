@@ -1,18 +1,18 @@
 
 Template.team.events({"click #roll" : function () {
-  var ids = getDice(this.gid, this.teamColor).map(function(die) { return die._id; });  
+  var ids = getDice(this.gid, this.color).map(function(die) { return die._id; });  
   _.each(ids, function(id) {
     Dice.update(id, { $set: { value: rollDie() }});
   });
 }});
 
 Template.team.dice = function() {
-  return getDice(this.gid, this.teamColor);
+  return getDice(this.gid, this.color);
 };
 
 Template.wip.storiesQuarter = function(n) {
   // Each quarter goes into a <td> so there is no vertical gap between kanbans 
-  var stories = Stories.find({ gid: this.gid, teamColor: this.teamColor }).fetch();
+  var stories = Stories.find({ gid: this.gid, teamColor: this.color }).fetch();
   var quarter = [ ];
   _.each(stories, function(story,index) {
     if (index % 4 == n) {
@@ -80,8 +80,8 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
   var portal = $(this);
   var story = kanban.story();  
-  var fromColor = portal.data("from-color");
-  var toColor = portal.data("to-color");  
+  var fromColor = portal.data("from-team");
+  var toColor = portal.data("to-team");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
@@ -101,20 +101,20 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.downstreamPortal.toColor = function() {
-  if (this.teamColor === "red")    return "blue";
-  if (this.teamColor === "blue")   return "orange";
-  if (this.teamColor === "orange") return "green";
-  if (this.teamColor === "green")  return "done";
+Template.downstreamPortal.toTeam = function() {
+  if (this.color === "red")    return "blue";
+  if (this.color === "blue")   return "orange";
+  if (this.color === "orange") return "green";
+  if (this.color === "green")  return "done";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.upstreamPortal.toColor = function() {
-  if (this.teamColor === "red")    return "backlog";
-  if (this.teamColor === "blue")   return "red";
-  if (this.teamColor === "orange") return "blue";
-  if (this.teamColor === "green")  return "orange";
+Template.upstreamPortal.toTeam = function() {
+  if (this.color === "red")    return "backlog";
+  if (this.color === "blue")   return "red";
+  if (this.color === "orange") return "blue";
+  if (this.color === "green")  return "orange";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -128,15 +128,15 @@ Template.story.kanbanState = function() {
     return "storyIsDone";
 };
 
-Template.story.holes = function() { // see {{#each holes}} in edge.html
+Template.story.holes = function() { // see {{#each holes}} in team.html
   return nOnes(this.kanbanSize - this.size);
 };
 
-Template.story.gaps = function() { // see {{#each gaps}} in edge.html
+Template.story.gaps = function() { // see {{#each gaps}} in team.html
   return nOnes(this.size - this.ones.length);
 };
 
-Template.story.ones = function() { // see {{#each ones}} in edge.html
+Template.story.ones = function() { // see {{#each ones}} in team.html
   return this.ones; // eg ['red','red','blue']
 };
 
@@ -163,9 +163,6 @@ var isOne = function(die) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $.fn.hasClass = function(klass) {
-  //if (this.attr('class') === undefined) {
-  //  log("hasClass",this.html());
-  //}
   return this.attr('class').indexOf(klass) !== -1;
 };
 
