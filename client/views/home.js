@@ -1,4 +1,12 @@
 
+var Page = {
+  gid: function() {
+    return $("#gid").val();
+  }
+};
+
+// - - - - - - - - - - - - - - - - - - - - - - - - 
+
 Template.home.greeting = function () {
   return "The Kanban Ones Game";
 };
@@ -10,8 +18,7 @@ Template.home.events({"click #start" : function () {
 }});
 
 Template.home.events({"keyup #gid" : function() {  
-  var gid = $('#gid').val();
-  if (Games.findOne({ gid: gid }) === undefined) {
+  if (Games.findOne({ gid: Page.gid() }) === undefined) {
     $("#join").attr("disabled", "disabled");
   } else {
     $("#join").removeAttr("disabled");
@@ -19,7 +26,7 @@ Template.home.events({"keyup #gid" : function() {
 }});
 
 Template.home.events({'click #join': function() {
-  var gid = $('#gid').val();
+  var gid = Page.gid();
   if (gid === "id" || gid === "") {
     openDialog("Press [start] to get an id.");
     return;
