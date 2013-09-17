@@ -14,16 +14,16 @@ Template.team.dice = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.wip.storiesQuarter = function(n) {
+Template.wip.storiesColumn = function(n) {
   // Each quarter goes into a <td> so there is no vertical gap between kanbans 
   var stories = Stories.find({ gid:this.gid, teamColor:this.color }).fetch();
-  var quarters = [ ];
+  var column = [ ];
   _.each(stories, function(story,index) {
     if (index % 4 == n) {
-      quarters.push(story);
+      column.push(story);
     }
   });
-  return quarters;
+  return column;
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
