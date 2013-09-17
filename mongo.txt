@@ -1,0 +1,56 @@
+
+// Clearing out old database table afterrenaming "edges" to "teams"
+$meteor mongo
+
+MongoDB shell version: 2.4.4
+connecting to: 127.0.0.1:3002/meteor
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+>
+
+
+>db.edges.find({})
+...
+...
+...
+>db.edges.remove({})
+>db.edges.find({})
+>help
+    db.help()                    help on db methods
+	db.mycoll.help()             help on collection methods
+	sh.help()                    sharding helpers
+	rs.help()                    replica set helpers
+	help admin                   administrative help
+	help connect                 connecting to a db help
+	help keys                    key shortcuts
+	help misc                    misc things to know
+	help mr                      mapreduce
+
+	show dbs                     show database names
+	show collections             show collections in current database
+	show users                   show users in current database
+	show profile                 show most recent system.profile entries with time >= 1ms
+	show logs                    show the accessible logger names
+	show log [name]              prints out the last segment of log in memory, 'global' is default
+	use <db_name>                set current database
+	db.foo.find()                list objects in collection foo
+	db.foo.find( { a : 1 } )     list objects in foo where a == 1
+	it                           result of the last line evaluated; use to further iterate
+	DBQuery.shellBatchSize = x   set default number of items to display on shell
+	exit                         quit the mongo shell
+>exit
+bye
+
+$echo "show profile" | meteor mongo
+MongoDB shell version: 2.4.4
+connecting to: 127.0.0.1:3002/meteor
+db.system.profile is empty
+Use db.setProfilingLevel(2) will enable profiling
+Use db.system.profile.find() to show raw profile entries
+bye
+$
+

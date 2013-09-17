@@ -70,15 +70,20 @@ var dragDropSetup = function(from,to,handler) {
   });  
 };
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 var oneDroppedOnKanban = function(event,ui) {
   var one    = ui.draggable;
   var kanban = $(this);
   var story  = kanban.story();
   var ones   = story.ones();
-  Dice.update(one.id(), { $set: { value:6 }});    
-  ones.unshift(one.color());
-  Stories.update(story.id(), { $set: { ones: ones } });
+  var anythingButOne = 6;
+  Dice.update(one.id(), { $set: { value:anythingButOne }});
+  ones.unshift(one.color());  
+  Stories.update(story.id(), { $set: { ones:ones } });  
 };
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban    = ui.draggable; 
@@ -99,8 +104,10 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   }
 };
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
-  
+    
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -131,6 +138,8 @@ Template.story.kanbanState = function() {
   if (this.ones.length === this.size)
     return "story-is-done";
 };
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.story.holes = function() { // see {{#each holes}} in team.html
   return nOnes(this.kanbanSize - this.size);

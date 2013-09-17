@@ -21,8 +21,8 @@ Stories = new Meteor.Collection('stories');
  *     teamColor: "blue",
  *   kanbanColor: "red",
  *    kanbanSize: "4",
- *          size: "3"        // number of 1s on this story
- *          ones: "2",       // number of 1s already worked
+ *          size: "3",       // number of 1s in this story
+ *          ones: "2"        // number of 1s played so far
  * });
  */
 

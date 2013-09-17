@@ -1,7 +1,9 @@
 
-o) center the dashboard display.
 
-o) refactor the _container centralizer.
+o) When a Kanban is moved downstream I don't want it to disrupt the
+   display of the downstream team too much. The code right now _does_
+   disrupt them because the new Kanban appears as the first entry.
+   This is because of the db.update() not having a sort option.
 
 o) How to do [split]
    Have a split button that is enabled when a [1] is available.
