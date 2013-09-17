@@ -79,7 +79,7 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
   var portal = $(this);
   var story = kanban.story();  
-  var fromColor = portal.team().color(); //data("from-team");
+  var fromColor = portal.team().color();
   var toColor = portal.data("to-team");  
   if (story.isDone()) {
     if (kanban.color() === fromColor) { // push
@@ -100,7 +100,7 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.downstreamPortal.toTeam = function() {
+Template.downstreamPortal.toColor = function() {
   if (this.color === "red")    return "blue";
   if (this.color === "blue")   return "orange";
   if (this.color === "orange") return "green";
@@ -109,7 +109,7 @@ Template.downstreamPortal.toTeam = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.upstreamPortal.toTeam = function() {
+Template.upstreamPortal.toColor = function() {
   if (this.color === "red")    return "backlog";
   if (this.color === "blue")   return "red";
   if (this.color === "orange") return "blue";

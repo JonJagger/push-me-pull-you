@@ -37,10 +37,10 @@
   <div class="wip">
     <table>
       <tr>
-        <td class="quarterColumn">{{#each storiesQuarter "0"}}{{> story}}{{/each}}</td>
-        <td class="quarterColumn">{{#each storiesQuarter "1"}}{{> story}}{{/each}}</td>
-        <td class="quarterColumn">{{#each storiesQuarter "2"}}{{> story}}{{/each}}</td>
-        <td class="quarterColumn">{{#each storiesQuarter "3"}}{{> story}}{{/each}}</td>
+        <td class="quarter-column">{{#each storiesQuarter "0"}}{{> story}}{{/each}}</td>
+        <td class="quarter-column">{{#each storiesQuarter "1"}}{{> story}}{{/each}}</td>
+        <td class="quarter-column">{{#each storiesQuarter "2"}}{{> story}}{{/each}}</td>
+        <td class="quarter-column">{{#each storiesQuarter "3"}}{{> story}}{{/each}}</td>
       </tr>
     </table>
   </div>
@@ -53,14 +53,14 @@
 </template>
 
 <template name="upstreamPortal">
-  <div class="upstream portal {{color}}"
-       data-to-team="{{toTeam}}">      
+  <div class="upstream portal"
+       data-to-team="{{toColor}}">      
   </div>
 </template>
 
 <template name="downstreamPortal">
-  <div class="downstream portal {{color}}"
-       data-to-team="{{toTeam}}">      
+  <div class="downstream portal"
+       data-to-team="{{toColor}}">      
   </div>
 </template>
 
