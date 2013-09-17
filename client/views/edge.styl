@@ -121,12 +121,16 @@ wip-color = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     #wip
         border-radius border-radius-width
-        margin-left  0.5em
-        margin-right 0.5em        
+        padding 4px
+        margin-left 4px
+        margin-right 4px
         height 60em
         background wip-color
         & .quarterColumn
             vertical-align top
+        table
+            border-spacing 0
+            border-collapse collapse
     
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .kanban
@@ -134,8 +138,8 @@ wip-color = Moccasin
         border-width drag-drop-border-width
         border-style solid
         border-color wip-color
-        padding 8px
-        margin 8px
+        padding 4px
+        margin 0px
         width 2em
         &.red
             background red-color

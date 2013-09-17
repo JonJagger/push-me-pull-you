@@ -22,7 +22,7 @@ Template.edge.storiesQuarter = function(n) {
   return quarter;
 };
 
-Template.edge.rendered = function () {  
+Template.edge.rendered = function() {  
   dragDropSetup("#dice .die.one",
                 "#wip .kanban.storyIsInProgress",
                 oneDroppedOnKanban);
@@ -38,7 +38,7 @@ Template.edge.rendered = function () {
   
   // TODO Pulling[on]
   //
-  //            "#wip .red.kanban.isEmpty"  (for red team)
+  //            "#team-red .kanban.isEmpty"  (for red team)
   dragDropSetup("#wip .kanban.isEmpty",
                 "#upstreamPortal",
                 emptyKanbanDroppedOnUpstreamPortal);
