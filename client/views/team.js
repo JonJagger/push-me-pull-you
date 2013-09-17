@@ -1,26 +1,32 @@
 
-Template.team.events({"click #roll" : function () {
+Template.team.events({"click #roll":function () {
   var ids = getDice(this.gid, this.color).map(function(die) { return die._id; });  
   _.each(ids, function(id) {
-    Dice.update(id, { $set: { value: rollDie() }});
+    Dice.update(id, { $set: { value:rollDie() }});
   });
 }});
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.team.dice = function() {
   return getDice(this.gid, this.color);
 };
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 Template.wip.storiesQuarter = function(n) {
   // Each quarter goes into a <td> so there is no vertical gap between kanbans 
-  var stories = Stories.find({ gid: this.gid, teamColor: this.color }).fetch();
-  var quarter = [ ];
+  var stories = Stories.find({ gid:this.gid, teamColor:this.color }).fetch();
+  var quarters = [ ];
   _.each(stories, function(story,index) {
     if (index % 4 == n) {
-      quarter.push(story);
+      quarters.push(story);
     }
   });
-  return quarter;
+  return quarters;
 };
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.team.rendered = function() {  
   dragDropSetup(".dice .die.one",
@@ -45,22 +51,22 @@ Template.team.rendered = function() {
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
       var dragged = $(event.target);
-      var css = ".team." + dragged.team().color() + " " + to;
+      var css  = ".team." + dragged.team().color() + " " + to;
       return $(css);
   };
   $(from).draggable({
-    start: function(event,ui) {
+    start:function(event,ui) {
       droppables(event).addClass("droppable")
-                       .droppable({ drop: handler });      
+                       .droppable({ drop:handler });      
     },
-    stop: function(event,ui) {
+    stop:function(event,ui) {
       droppables(event).removeClass("droppable");
     },
-    stack: "div",
-    revert: true,
+    stack:"div",
+    revert:true,
     revertDuration: 0,
-    helper: "original",
-    opacity: 0.75
+    helper:"original",
+    opacity:0.75
   });  
 };
 
@@ -68,8 +74,8 @@ var oneDroppedOnKanban = function(event,ui) {
   var one    = ui.draggable;
   var kanban = $(this);
   var story  = kanban.story();
-  var ones = story.ones();
-  Dice.update(one.id(), { $set: { value: 6 }});    
+  var ones   = story.ones();
+  Dice.update(one.id(), { $set: { value:6 }});    
   ones.unshift(one.color());
   Stories.update(story.id(), { $set: { ones: ones } });
 };
@@ -84,9 +90,9 @@ var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
     if (kanban.color() === fromColor) { // push
       Stories.update(story.id(), {
         $set: {
-          ones: [ ],
-          teamColor: toColor,
-          kanbanColor: toColor
+          ones:[ ],
+          teamColor:toColor,
+          kanbanColor:toColor
         }
       });
     }
@@ -151,7 +157,7 @@ Template.die.one = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var getDice = function(gid, teamColor) {
-  return Dice.find({ gid: gid, teamColor: teamColor });    
+  return Dice.find({ gid:gid, teamColor:teamColor });    
 };
 
 var nOnes = function(n) { // eg 3
@@ -209,7 +215,7 @@ var emptyKanbanDroppedOnUpstreamPortal = function(kanban,portal) { // PULL
     if (kanban.team().color() === kanban.color()) {
       Stories.update(story.id(), {
         $set: {
-          teamColor: toColor
+          teamColor:toColor
         }
       });      
     }
