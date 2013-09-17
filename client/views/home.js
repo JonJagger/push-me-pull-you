@@ -15,6 +15,7 @@ Template.home.events({"click #start" : function () {
   var game = { gid: newId(6) };
   Games.insert(game);
   $("#gid").val(game.gid);
+  $("#join").removeAttr("disabled");
 }});
 
 Template.home.events({"keyup #gid" : function() {  
