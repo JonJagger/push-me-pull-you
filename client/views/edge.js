@@ -48,18 +48,19 @@ Template.edge.rendered = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var dragDropSetup = function(from,to,handler) {
+  var droppables = function(event) {
+      var dragged = $(event.target);
+      var css = ".edge." + dragged.team().color() + " " + to;
+      return $(css);
+  };
   $(from).draggable({
     appendTo: "parent",
     start: function(event,ui) {
-      var dragged = $(event.target);
-      log("teamColor=", dragged.team().color());
-      
-      var targets = $(to);
-      targets.addClass("droppable")
-             .droppable({ drop: handler });      
+      droppables(event).addClass("droppable")
+                       .droppable({ drop: handler });      
     },
     stop: function(event,ui) {
-      $(to).removeClass("droppable");
+      droppables(event).removeClass("droppable");
     },
     stack: "div",
     revert: true,
