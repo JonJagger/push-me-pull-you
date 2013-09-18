@@ -28,6 +28,14 @@ small_stripe_gap       = 50%
         padding-left  0.5em
         padding-right 0.5em
         text-align center
+    &.red #roll
+        background red_color
+    &.blue #roll
+        background blue_color
+    &.orange #roll
+        background orange_color
+    &.green #roll
+        background green_color
       
     .dice
         display table-row
@@ -116,12 +124,24 @@ small_stripe_gap       = 50%
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .wip
         border-radius border_radius_width
-        background wip_color
         display table-cell
         margin  inter-kanban-spacing
-        padding inter-kanban-spacing
+        padding inter-kanban-spacing        
         & .stories-column
             vertical-align top
+        
+    &.red
+        & .wip
+            background lighten(red_color, 85%)
+    &.blue
+        & .wip
+            background lighten(blue_color, 85%)
+    &.orange
+        & .wip
+            background lighten(orange_color, 85%)
+    &.green
+        & .wip
+            background lighten(green_color, 85%)
         
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
     .kanban
