@@ -101,21 +101,10 @@ small_stripe_gap       = 50%
         border-width  drag_drop_border_width
         display table-cell
         width 7em
+        height 40em
         &[data-to-team = backlog] 
             background   backlog_color
             border-color backlog_color    
-        &[data-to-team = red] 
-            Xbackground   red_color
-            Xborder-color red_color            
-        &[data-to-team = blue] 
-            Xbackground   blue_color
-            Xborder-color blue_color
-        &[data-to-team = orange]
-            Xbackground   orange_color
-            Xborder-color orange_color            
-        &[data-to-team = green] 
-            Xbackground   green_color
-            Xborder-color green_color            
         &[data-to-team = done] 
             background   done_color
             border-color done_color            
@@ -280,9 +269,13 @@ small_stripe_gap       = 50%
 .portal
     &.upstream
         border-left-width 0px
+        border-bottom-left-radius 0px
+        border-top-left-radius 0px
         padding-left 0px
     &.downstream
         border-right-width 0px
+        border-bottom-right-radius 0px
+        border-top-right-radius 0px
         padding-right 0px
         
 .team .board .wip
