@@ -7,11 +7,20 @@ drag_drop_border_color = Black
 drag_drop_border_style = dotted
 drag_drop_border_width = 4px
 bullet                 = '\2022'
-wip_color              = Moccasin
 inter-kanban-spacing   = 2px
 portal_stripe_height   = 8px
 large_stripe_gap       = 50%
 small_stripe_gap       = 50%
+
+lightest_red_color    = lighten(red_color,    85%)
+lightest_blue_color   = lighten(blue_color,   85%)
+lightest_orange_color = lighten(orange_color, 85%)
+lightest_green_color  = lighten(green_color,  85%)
+
+light_red_color    = lighten(red_color,    55%)
+light_blue_color   = lighten(blue_color,   55%)
+light_orange_color = lighten(orange_color, 55%)
+light_green_color  = lighten(green_color,  55%)
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -106,17 +115,17 @@ small_stripe_gap       = 50%
             background   backlog_color
             border-color backlog_color    
         &[data-to-team = red] 
-            background   red_color
-            border-color red_color            
+            Xbackground   red_color
+            Xborder-color red_color            
         &[data-to-team = blue] 
-            background   blue_color
-            border-color blue_color
+            Xbackground   blue_color
+            Xborder-color blue_color
         &[data-to-team = orange]
-            background   orange_color
-            border-color orange_color            
+            Xbackground   orange_color
+            Xborder-color orange_color            
         &[data-to-team = green] 
-            background   green_color
-            border-color green_color            
+            Xbackground   green_color
+            Xborder-color green_color            
         &[data-to-team = done] 
             background   done_color
             border-color done_color            
@@ -132,20 +141,27 @@ small_stripe_gap       = 50%
         
     &.red
         & .wip
-            background lighten(red_color, 85%)
+            background lightest_red_color
+            & .kanban
+                border-color lightest_red_color
     &.blue
         & .wip
-            background lighten(blue_color, 85%)
+            background lightest_blue_color
+            & .kanban
+                border-color lightest_blue_color
     &.orange
         & .wip
-            background lighten(orange_color, 85%)
+            background lightest_orange_color
+            & .kanban
+                border-color lightest_orange_color
     &.green
         & .wip
-            background lighten(green_color, 85%)
+            background lightest_green_color
+            & .kanban
+                border-color lightest_green_color
         
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
     .kanban
-        border-color  wip_color
         border-radius 8px // has to be bigger?!
         border-style  solid
         border-width  drag_drop_border_width
@@ -240,49 +256,47 @@ small_stripe_gap       = 50%
 .team
     &.red .portal
         &.upstream
-            background linear-gradient(top, red_color large_stripe_gap, backlog_color small_stripe_gap)
+            background linear-gradient(top, lightest_red_color large_stripe_gap, backlog_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color backlog_color        
+            border-color lightest_red_color        
         &.downstream
-            background: linear-gradient(top, red_color large_stripe_gap, blue_color small_stripe_gap);
+            background: linear-gradient(top, lightest_blue_color large_stripe_gap, lightest_red_color small_stripe_gap);
             background-size portal_stripe_height portal_stripe_height
-            border-color blue_color
+            border-color lightest_red_color
     &.blue .portal
         &.upstream
-            background linear-gradient(top, blue_color large_stripe_gap, red_color small_stripe_gap)
+            background linear-gradient(top, lightest_blue_color large_stripe_gap, lightest_red_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color red_color
+            border-color lightest_blue_color
         &.downstream
-            background linear-gradient(top, blue_color large_stripe_gap, orange_color small_stripe_gap)
+            background linear-gradient(top, lightest_blue_color large_stripe_gap, lightest_orange_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color orange_color
+            border-color lightest_blue_color
     &.orange .portal
         &.upstream
-            background linear-gradient(top, orange_color large_stripe_gap, blue_color small_stripe_gap)
+            background linear-gradient(top, lightest_orange_color large_stripe_gap, lightest_blue_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color blue_color
+            border-color lightest_orange_color
         &.downstream
-            background linear-gradient(top, orange_color large_stripe_gap, green_color small_stripe_gap)
+            background linear-gradient(top, lightest_orange_color large_stripe_gap, lightest_green_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color green_color
+            border-color lightest_orange_color
     &.green .portal
         &.upstream
-            background linear-gradient(top, green_color large_stripe_gap, orange_color small_stripe_gap)
+            background linear-gradient(top, lightest_green_color large_stripe_gap, lightest_orange_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color orange_color
+            border-color lightest_green_color
         &.downstream
-            background linear-gradient(top, green_color large_stripe_gap, done_color small_stripe_gap)
+            background linear-gradient(top, lightest_green_color large_stripe_gap, done_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-            border-color done_color
+            border-color lightest_green_color
 
 
 .portal
     &.upstream
-        Xborder-top-right-radius 3em
         border-left-width 0px
         padding-left 0px
     &.downstream
-        Xborder-top-left-radius 3em
         border-right-width 0px
         padding-right 0px
         
