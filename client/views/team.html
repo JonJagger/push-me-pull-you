@@ -3,21 +3,19 @@
   <div class="{{color}} team">
     
     <div class="dice_container">
-    <div class="dice">
-          {{> roll}}
-          {{#each dice}}
-            {{> die}}
-          {{/each}}
-    </div>
+      <div class="dice">
+        {{> roll}}
+        {{#each dice}}
+          {{> die}}
+        {{/each}}
+      </div>
     </div>
     
-    <div class="board_container">
-      <div class="{{color}} board">
+      <div class="board">
         {{> upstreamPortal}}
         {{> wip}}
         {{> downstreamPortal}}        
       </div>
-    </div>
     
     </div>    
   </div>
