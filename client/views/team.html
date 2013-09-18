@@ -2,14 +2,12 @@
 <template name="team">
   <div class="{{color}} team">
     
-    <div class="dice_container">
       <div class="dice">
         {{> roll}}
         {{#each dice}}
           {{> die}}
         {{/each}}
       </div>
-    </div>
     
       <div class="board">
         {{> upstreamPortal}}
