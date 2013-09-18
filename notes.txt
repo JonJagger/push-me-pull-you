@@ -1,12 +1,15 @@
 
-      <table>
-        <tr>
-          <td>{{> team red   }}</td>
-          <td>{{> team blue  }}</td>
-          <td>{{> team orange}}</td>
-          <td>{{> team green }}</td>
-        </tr>
-      </table>
+  <div class="{{color}} die {{one}}">
+    <div class="dot"
+       data-id="{{_id}}">
+    </div>
+  </div>
+
+   red die one
+       dot
+   red die not-one
+       dot
+
 
 o) At first I thought that running droppables(event) inside
    the start: (as opposed to drag:) would mean that if a kanban arrived
