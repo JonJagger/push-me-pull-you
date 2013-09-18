@@ -1,4 +1,21 @@
 
+      <table>
+        <tr>
+          <td>{{> team red   }}</td>
+          <td>{{> team blue  }}</td>
+          <td>{{> team orange}}</td>
+          <td>{{> team green }}</td>
+        </tr>
+      </table>
+
+o) At first I thought that running droppables(event) inside
+   the start: (as opposed to drag:) would mean that if a kanban arrived
+   in the upstream portal while you are dragging a [1] then it would not
+   be highlit. However, it wouldn't anyway, since it (the kanban) needs to
+   be dragged onto the wip area before the [1] can be applied to it.
+   However, there could be another combination which has this concurrency
+   issue.
+
 
 o) When a Kanban is moved downstream I don't want it to disrupt the
    display of the downstream team too much. The code right now _does_
