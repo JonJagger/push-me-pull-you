@@ -100,8 +100,8 @@ small_stripe_gap       = 50%
         border-style  solid
         border-width  drag_drop_border_width
         display table-cell
-        width 7em
         height 40em
+        width 7em
         &[data-to-team = backlog] 
             background   backlog_color
             border-color backlog_color    
@@ -239,7 +239,7 @@ small_stripe_gap       = 50%
             background linear-gradient(top, backlog_color large_stripe_gap, light_red_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
         &.downstream
-            background: linear-gradient(top, light_blue_color large_stripe_gap, light_red_color small_stripe_gap);
+            background linear-gradient(top, light_blue_color large_stripe_gap, light_red_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
     &.blue .portal
         border-color light_blue_color
@@ -268,19 +268,14 @@ small_stripe_gap       = 50%
 
 .portal
     &.upstream
-        border-left-width 0px
         border-bottom-left-radius 0px
+        border-left-width 0px
         border-top-left-radius 0px
         padding-left 0px
     &.downstream
-        border-right-width 0px
         border-bottom-right-radius 0px
+        border-right-width 0px
         border-top-right-radius 0px
         padding-right 0px
-        
-.team .board .wip
-    Xbackground black   // these are specific enough to work
-    Xborder-top-left-radius 3em
-    Xborder-top-right-radius 3em
 
     
