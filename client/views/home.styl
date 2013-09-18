@@ -68,15 +68,27 @@ button_color = #996666
 
 .die
     display inline-block
+    border-color black
     border-radius 0.2em
+    border-style solid
+    border-width 0.2em
     padding 0.5em
-    &.not-one
+    &.red.not-one
         background white
+        border-color white
+    &.blue.not-one
+        background white
+        border-color white  // inherits settings from parent
     &.red.one
         background red
+        border-color red
     &.blue.one
         background blue
-
+        border-color blue
+    &.one:hover
+    &.not-one:hover
+        border-color black
+        border-style dotted
         
 
 
