@@ -2,7 +2,7 @@
 @import "client/colors"
 @import "nib/gradients"
 
-border_radius_width    = 8px
+border_radius_width    = 4px
 drag_drop_border_color = Black
 drag_drop_border_style = dotted
 drag_drop_border_width = 4px
@@ -137,7 +137,7 @@ wip_color              = Moccasin
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .kanban
         border-color  wip_color
-        border-radius 18px
+        border-radius 8px
         border-style  solid
         border-width  drag_drop_border_width
         margin 0px
@@ -271,8 +271,22 @@ small_gap = 50%
             border-color done_color
 
 
+.board
+    border-left-width  0px
+    border-right-width 0px
+    padding-left  0px
+    padding-right 0px
+
 .portal
     &.upstream
+        border-top-right-radius 3em
+        border-left-width 0px
+        padding-left 0px
     &.downstream
-        border-width 10px
+        border-top-left-radius 3em
+        border-right-width 0px
+        padding-right 0px
         
+.wip
+    border-top-left-radius 3em
+    border-top-right-radius 3em
