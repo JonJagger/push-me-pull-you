@@ -1,26 +1,24 @@
 
 <template name="team">
-  <div class="{{color}} team">          
-    <div class="center">
-      <table class="dice">
-        <tr>
-          <td>{{> roll}}</td>
-          <td>&nbsp;&nbsp;</td>          
+  <div class="{{color}} team">
+    
+    <div class="dice_container">
+    <div class="dice">
+          {{> roll}}
           {{#each dice}}
-          <td>{{> die}}</td>
+            {{> die}}
           {{/each}}
-        </tr>
-      </table>
-    </div>  
-    <div class="center">
-      <table class="{{color}} board">
-        <tr valign="top">
-          <td>{{> upstreamPortal}}</td>
-          <td>{{> wip}}</td>
-          <td>{{> downstreamPortal}}</td>
-        </tr>
-      </table>
+    </div>
+    </div>
+    
+    <div class="board_container">
+      <div class="{{color}} board">
+        {{> upstreamPortal}}
+        {{> wip}}
+        {{> downstreamPortal}}        
       </div>
+    </div>
+    
     </div>    
   </div>
 </template>
@@ -39,6 +37,7 @@
         <td class="stories-column">{{#each storiesColumn "0"}}{{> story}}{{/each}}</td>
         <td class="stories-column">{{#each storiesColumn "1"}}{{> story}}{{/each}}</td>
         <td class="stories-column">{{#each storiesColumn "2"}}{{> story}}{{/each}}</td>
+        <td class="stories-column">{{#each storiesColumn "3"}}{{> story}}{{/each}}</td>
       </tr>
     </table>
   </div>

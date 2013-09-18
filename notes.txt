@@ -1,4 +1,27 @@
 
+    <div class="center">
+      <table class="dice">
+        <tr>
+          <td>{{> roll}}</td>
+          <td>&nbsp;&nbsp;</td>          
+          {{#each dice}}
+          <td>{{> die}}</td>
+          {{/each}}
+        </tr>
+      </table>
+    </div>
+
+      <!--
+      <table class="{{color}} board">
+        <tr valign="top">
+          <td>{{> upstreamPortal}}</td>
+          <td>{{> wip}}</td>
+          <td>{{> downstreamPortal}}</td>
+        </tr>
+      </table>
+    -->
+
+
 o) When a Kanban is moved downstream I don't want it to disrupt the
    display of the downstream team too much. The code right now _does_
    disrupt them because the new Kanban appears as the first entry.
