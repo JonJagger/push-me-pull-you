@@ -1,4 +1,4 @@
 
 teamColors = function() {
-  return [ "red", "blue", "orange", "green" ];
+  return [ "red", "orange", "blue", "green" ];
 };

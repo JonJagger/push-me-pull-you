@@ -25,6 +25,13 @@
          id="roll">
 </template>
 
+<template name="die">
+  <div class="{{color}} die {{one}}"
+       data-id="{{_id}}">
+    <div class="dot"></div>    
+  </div>
+</template>
+
 <template name="wip">
   <div class="wip">
     <table>
@@ -35,13 +42,6 @@
         <td class="stories-column">{{#each storiesColumn "3"}}{{> story}}{{/each}}</td>
       </tr>
     </table>
-  </div>
-</template>
-
-<template name="die">
-  <div class="{{color}} die {{one}}"
-       data-id="{{_id}}">
-    <div class="dot"></div>    
   </div>
 </template>
 

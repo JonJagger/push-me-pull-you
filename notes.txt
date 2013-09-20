@@ -286,6 +286,7 @@ o) tool-tip for a kanban shows its history in a graph.
 
 o) dashboard display can be live and reactive.
    Just shows view of all the teams.
+   Since it is reactive can be used for demos too :-)
    
 o) cumulative-flow-diagram
    Different kind of dashboard.

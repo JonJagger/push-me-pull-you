@@ -29,25 +29,25 @@ small_stripe_gap       = 50%
         margin 0.2em
         vertical-align top
     &.red #roll
-        background red_color
-    &.blue #roll
-        background blue_color
+        background true_red_color
     &.orange #roll
-        background orange_color
+        background true_orange_color
+    &.blue #roll
+        background true_blue_color
     &.green #roll
-        background green_color
+        background true_green_color
       
     .dice
         display table-row
         #roll
             &.red
-                background red_color
-            &.blue
-                background blue_color
+                background true_red_color
             &.orange
-                background orange_color
+                background true_orange_color
+            &.blue
+                background true_blue_color
             &.green
-                background green_color
+                background true_green_color
 
     .center
         margin 0 auto
@@ -92,16 +92,16 @@ small_stripe_gap       = 50%
             background lightest_red_color
             & .kanban
                 border-color lightest_red_color
-    &.blue
-        & .wip
-            background lightest_blue_color
-            & .kanban
-                border-color lightest_blue_color
     &.orange
         & .wip
             background lightest_orange_color
             & .kanban
                 border-color lightest_orange_color
+    &.blue
+        & .wip
+            background lightest_blue_color
+            & .kanban
+                border-color lightest_blue_color
     &.green
         & .wip
             background lightest_green_color
@@ -117,13 +117,13 @@ small_stripe_gap       = 50%
         padding inter-kanban-spacing
         width 2em /* This can be dropped when gap/hole/done is finished */
         &.red
-            background red_color
-        &.blue
-            background blue_color
+            background true_red_color
         &.orange
-            background orange_color
+            background true_orange_color
+        &.blue
+            background true_blue_color
         &.green
-            background green_color
+            background true_green_color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .story
@@ -156,13 +156,13 @@ small_stripe_gap       = 50%
     .done-one
         border-color White
         &.red
-            background red_color
-        &.blue
-            background blue_color
+            background true_red_color
         &.orange
-            background orange_color
+            background true_orange_color
+        &.blue
+            background true_blue_color
         &.green
-            background green_color
+            background true_green_color
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // DRAG DROP
@@ -208,28 +208,28 @@ small_stripe_gap       = 50%
             background linear-gradient(top, backlog_color large_stripe_gap, light_red_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
         &.downstream
-            background linear-gradient(top, light_blue_color large_stripe_gap, light_red_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.blue .portal
-        border-color light_blue_color
-        &.upstream
-            background linear-gradient(top, light_red_color large_stripe_gap, light_blue_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
-            background linear-gradient(top, light_orange_color large_stripe_gap, light_blue_color small_stripe_gap)
+            background linear-gradient(top, light_orange_color large_stripe_gap, light_red_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
     &.orange .portal
         border-color light_orange_color
         &.upstream
-            background linear-gradient(top, light_blue_color large_stripe_gap, light_orange_color small_stripe_gap)
+            background linear-gradient(top, light_red_color large_stripe_gap, light_orange_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
         &.downstream
-            background linear-gradient(top, light_green_color large_stripe_gap, light_orange_color small_stripe_gap)
+            background linear-gradient(top, light_blue_color large_stripe_gap, light_orange_color small_stripe_gap)
+            background-size portal_stripe_height portal_stripe_height
+    &.blue .portal
+        border-color light_blue_color
+        &.upstream
+            background linear-gradient(top, light_orange_color large_stripe_gap, light_blue_color small_stripe_gap)
+            background-size portal_stripe_height portal_stripe_height
+        &.downstream
+            background linear-gradient(top, light_green_color large_stripe_gap, light_blue_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
     &.green .portal
         border-color light_green_color
         &.upstream
-            background linear-gradient(top, light_orange_color large_stripe_gap, light_green_color small_stripe_gap)
+            background linear-gradient(top, light_blue_color large_stripe_gap, light_green_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
         &.downstream
             background linear-gradient(top, done_color large_stripe_gap, light_green_color small_stripe_gap)
