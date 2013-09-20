@@ -15,11 +15,11 @@ Template.team.dice = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.wip.storiesColumn = function(n) {
-  // Each quarter goes into a <td> so there is no vertical gap between kanbans 
+  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
   var stories = Stories.find({ gid:this.gid, teamColor:this.color }).fetch();
   var column = [ ];
   _.each(stories, function(story,index) {
-    if (index % 3 == n) {
+    if (index % 4 == n) {
       column.push(story);
     }
   });
