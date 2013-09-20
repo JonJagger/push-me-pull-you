@@ -113,9 +113,9 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.downstreamPortal.toColor = function() {
-  if (this.color === "red"   ) return "blue";
-  if (this.color === "blue"  ) return "orange";
-  if (this.color === "orange") return "green";
+  if (this.color === "red"   ) return "orange";
+  if (this.color === "orange") return "blue";
+  if (this.color === "blue"  ) return "green";
   if (this.color === "green" ) return "done";
 };
 
@@ -123,9 +123,9 @@ Template.downstreamPortal.toColor = function() {
 
 Template.upstreamPortal.toColor = function() {
   if (this.color === "red"   ) return "backlog";
-  if (this.color === "blue"  ) return "red";
-  if (this.color === "orange") return "blue";
-  if (this.color === "green" ) return "orange";
+  if (this.color === "orange") return "red";
+  if (this.color === "blue"  ) return "orange";
+  if (this.color === "green" ) return "blue";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -151,10 +151,6 @@ Template.story.gaps = function() { // see {{#each gaps}} in team.html
 
 Template.story.ones = function() { // see {{#each ones}} in team.html
   return this.ones; // eg ['red','red','blue']
-};
-
-Template.story.doneOne = function() {
-  return "8226"; // bullet
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
