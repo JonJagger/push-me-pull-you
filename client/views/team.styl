@@ -18,7 +18,7 @@ small_stripe_gap       = 50%
     font-size 0.75em
     display table
     margin 0 auto
-    
+        
     #roll
         border-radius border_radius_width
         color White            
@@ -26,7 +26,8 @@ small_stripe_gap       = 50%
         font-size 1.4em
         padding-left  0.5em
         padding-right 0.5em
-        text-align center
+        margin 0.2em
+        vertical-align top
     &.red #roll
         background red_color
     &.blue #roll
@@ -57,37 +58,6 @@ small_stripe_gap       = 50%
         margin 0 auto
         padding 10px
                 
-    .one
-    .not-one
-        border-color  White
-        border-radius border_radius_width
-        border-style  solid
-        border-width  drag_drop_border_width
-        color White
-        display inline
-        font-size 1em
-        padding-bottom 2px
-        padding-left   4px
-        padding-right  4px
-        padding-top    2px
-
-    .one:before
-    .not-one:before
-        content bullet
-
-    .not-one
-        background White
-
-    .one
-        &.red
-            background red_color
-        &.blue
-            background blue_color
-        &.orange
-            background orange_color
-        &.green
-            background green_color
-
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .board
         border-radius border_radius_width
@@ -145,7 +115,7 @@ small_stripe_gap       = 50%
         border-width  drag_drop_border_width
         margin  inter-kanban-spacing
         padding inter-kanban-spacing
-        width 2em
+        width 2em /* This can be dropped when gap/hole/done is finished */
         &.red
             background red_color
         &.blue
@@ -159,7 +129,7 @@ small_stripe_gap       = 50%
     .story
         border-width 0
         font-size 1.4em
-        text-align center
+        text-align center  /* Need because dot is still bullet */
     
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .one-container

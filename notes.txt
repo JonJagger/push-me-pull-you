@@ -1,15 +1,21 @@
 
-  <div class="{{color}} die {{one}}">
-    <div class="dot"
-       data-id="{{_id}}">
-    </div>
-  </div>
-
-   red die one
-       dot
-   red die not-one
-       dot
-
+o) Starting to get an idea of how pull mode will work end to end.
+   Each team has an allocation (limit) of _empty_ kanbans. They live in
+   the middle wip area. They can signal a pull request by dropping an
+   empty kanban into the upstream portal. When it comes back it will
+   be filled up with "holes", meaning it will have a story in it.
+   The kanban with its story can then be dragged onto the teams wip
+   area. There it can be worked on by dragging [1]s onto it.
+   When it is done. It cannot be dragged onto the downstream portal.
+   It can only be dragged on top of an empty kanban request from
+   the downstream team, waiting in this teams downstream portal.
+   On releasing the drag, the story is xferred onto the empty
+   kanban on the downstream portal, which then teleports to the
+   downstream teams upstream portal (and it is once again an empty story).
+   The emptied kanban is now in this teams dowstream portal. From there
+   it can be dragged back into this teams wip area, and from there back
+   onto this teams upstream portal to signal a pull.
+   Is there any scope for starting in a similar way in push mode?
 
 o) At first I thought that running droppables(event) inside
    the start: (as opposed to drag:) would mean that if a kanban arrived
@@ -17,8 +23,17 @@ o) At first I thought that running droppables(event) inside
    be highlit. However, it wouldn't anyway, since it (the kanban) needs to
    be dragged onto the wip area before the [1] can be applied to it.
    However, there could be another combination which has this concurrency
-   issue.
+   issue. And besides, it's not really an issue. It's what is actually
+   happening to the player!
 
+o) recoding historic events on a kanban is easy. I can add them in the
+   html but make it invisible. And it appears in a popup tooltip.
+   
+o) finding a bug. I can make the visual appearance of this using
+   a mini graphic which attaches to the bottom right of the story.
+   A bit like in LeanKit that Absolute are using.
+   
+o) age of a kanban can be shown using a colour-gradient in CSS.
 
 o) When a Kanban is moved downstream I don't want it to disrupt the
    display of the downstream team too much. The code right now _does_
