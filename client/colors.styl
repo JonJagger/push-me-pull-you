@@ -1,31 +1,22 @@
 
 // http://colorschemedesigner.com/
-//#FF9933  orange
-//#0099FF blue
 
 backlog_color = LightGray
 
-//these do not necessarily correspond! work in progress!
-Xred_color     = darken(#FF3366, 20%)
-Xblue_color    = darken(#FF9933, 20%)   // actually orange
-Xorange_color  = darken(#00BB33, 20%)   // actually green
-Xgreen_color   = darken(#0099FF, 20%)   // actually blue
+red_color    = darken(#FF3366, 20%) 
+orange_color = darken(#FF9933, 20%)
+blue_color   = darken(#0099FF, 20%)
+green_color  = darken(#00BB33, 20%)
 
-true_red_color    = darken(#FF3366, 20%)   // red!
-true_orange_color = darken(#FF9933, 20%)   // actually orange
-true_blue_color   = darken(#0099FF, 20%)   // actually blue
-true_green_color  = darken(#00BB33, 20%)   // actually green
+light_red_color    = lighten(red_color,    25%)
+light_orange_color = lighten(orange_color, 35%)
+light_blue_color   = lighten(blue_color,   35%)
+light_green_color  = lighten(green_color,  35%)
 
-
-light_red_color    = lighten(true_red_color,    25%)
-light_orange_color = lighten(true_orange_color, 35%)
-light_blue_color   = lighten(true_blue_color,   35%)
-light_green_color  = lighten(true_green_color,  35%)
-
-lightest_red_color    = lighten(true_red_color,    85%)
-lightest_orange_color = lighten(true_orange_color, 85%)
-lightest_blue_color   = lighten(true_blue_color,   85%)
-lightest_green_color  = lighten(true_green_color,  85%)
+lightest_red_color    = lighten(red_color,    85%)
+lightest_orange_color = lighten(orange_color, 85%)
+lightest_blue_color   = lighten(blue_color,   85%)
+lightest_green_color  = lighten(green_color,  85%)
 
 done_color    = White
 
