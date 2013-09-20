@@ -64,18 +64,24 @@
          data-size="{{size}}"
          data-id="{{_id}}">
       {{#each holes}}
-        <div class="one-container">
-          <div class="hole">&nbsp;</div>
-        </div>
+        <div class="one-container">      
+          <div class="die hole-one">
+            <div class="dot"></div>
+          </div>
+        </div>        
       {{/each}}
       {{#each gaps}}
         <div class="one-container">      
-          <div class="todo-one">&nbsp;</div>
+          <div class="die not-one">
+            <div class="dot"></div>
+          </div>
         </div>
       {{/each}}
       {{#each ones}}
         <div class="one-container">            
-          <div class="{{this}} done-one">&#{{doneOne}};</div>
+          <div class="{{this}} die done-one">
+            <div class="dot"></div>            
+          </div>
         </div>
       {{/each}}
     </div>
