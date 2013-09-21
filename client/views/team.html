@@ -1,8 +1,8 @@
 
 <template name="team">
   <div class="{{color}} team">    
+      {{> roll}}
       <div class="dice">
-        {{> roll}}
         {{#each dice}}
           {{> die}}
         {{/each}}

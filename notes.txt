@@ -1,4 +1,7 @@
-      
+
+o) can the crosshair cursor (drag/drop) be position right in the center
+   of the die's dot?
+   
 o) Starting to get an idea of how pull mode will work end to end.
    Each team has an allocation (limit) of _empty_ kanbans. They live in
    the middle wip area. They can signal a pull request by dropping an
