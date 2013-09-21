@@ -83,33 +83,29 @@ small_stripe_gap       = 50%
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .wip
-        border-radius 16px; /*border_radius_width*/
+        border-radius border_radius_width * 4
         display table-cell
         margin  inter-kanban-spacing
         padding inter-kanban-spacing        
         & .stories-column
             vertical-align top
         
-    &.red
-        & .wip
-            background lightest_red_color
-            & .kanban
-                border-color lightest_red_color
-    &.orange
-        & .wip
-            background lightest_orange_color
-            & .kanban
-                border-color lightest_orange_color
-    &.blue
-        & .wip
-            background lightest_blue_color
-            & .kanban
-                border-color lightest_blue_color
-    &.green
-        & .wip
-            background lightest_green_color
-            & .kanban
-                border-color lightest_green_color
+    &.red .wip
+        background lightest_red_color
+        & .kanban
+            border-color lightest_red_color
+    &.orange .wip
+        background lightest_orange_color
+        & .kanban
+            border-color lightest_orange_color
+    &.blue .wip
+        background lightest_blue_color
+        & .kanban
+            border-color lightest_blue_color
+    &.green .wip
+        background lightest_green_color
+        & .kanban
+            border-color lightest_green_color
         
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
     .kanban
