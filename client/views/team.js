@@ -55,6 +55,12 @@ var dragDropSetup = function(from,to,handler) {
       // drag targets to the originating tea,
       var css  = ".team" + "."+dragged.team().color() + " " + to;
       return $(css);
+      // I don't think this will work if there are multiple
+      // teams on a page. How about getting the nearest team
+      // from the dragged node, and limiting the jQuery css
+      // search below that node. Something like this...
+      //   return $(dragged.team(), to);
+      // but that doesn't work. Wrong syntax?
   };
   $(from).draggable({
     start:function(event,ui) {

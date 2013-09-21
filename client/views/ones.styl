@@ -1,0 +1,89 @@
+
+@import "client/colors"
+
+dot-width = 0.25em
+
+die-one-border-width = 0.10em
+die-one-padding      = 0.55em
+
+die-border-width = 0.15em
+die-padding      = 0.50em
+
+.dot
+    border-color  white
+    border-radius dot-width
+    border-style  solid
+    border-width  dot-width
+    padding 0
+
+.die
+    border-color white
+    border-radius die-border-width * 3
+    border-style solid
+    border-width die-border-width
+    display inline-block
+    margin 0.1em
+    padding die-padding
+    &.not-one
+        background white
+        background white
+    &.red.one
+        background red_color
+        border-color red_color
+    &.orange.one
+        background orange_color
+        border-color orange_color
+    &.blue.one
+        background blue_color
+        border-color blue_color
+    &.green.one
+        background green_color
+        border-color green_color
+    &.one:hover
+        border-color black
+        border-style solid
+        
+.die.done-one
+    border-width die-one-border-width  
+    border-color white
+    padding die-one-padding
+    &.red
+        background red_color
+    &.orange
+        background orange_color        
+    &.blue
+        background blue_color
+    &.green
+        background green_color
+    
+    
+.die.hole-one
+    border-color white
+    border-style dotted
+    border-width die-one-border-width 
+    padding die-one-padding
+    &.red
+        background red_color
+        & .dot
+            border-color red_color
+    &.orange
+        background orange_color
+        & .dot
+            border-color orange_color
+    &.blue
+        background blue_color
+        & .dot
+            border-color blue_color
+    &.green
+        background green_color
+        & .dot
+            border-color green_color
+
+.red.kanban .hole-one .dot
+    border-color red_color
+.orange.kanban .hole-one .dot
+    border-color orange_color
+.blue.kanban .hole-one .dot
+    border-color blue_color
+.green.kanban .hole-one .dot
+    border-color green_color
