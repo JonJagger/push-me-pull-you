@@ -51,7 +51,7 @@ Template.team.rendered = function() {
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
       var dragged = $(event.target);
-      var css  = ".team." + dragged.team().color() + " " + to;
+      var css  = ".team" + "."+dragged.team().color() + " " + to;
       return $(css);
   };
   $(from).draggable({
@@ -62,10 +62,8 @@ var dragDropSetup = function(from,to,handler) {
     stop:function(event,ui) {
       droppables(event).removeClass("droppable");
     },
-    stack:"div",
     revert:true,
     revertDuration: 0,
-    helper:"original",
     opacity:0.75
   });  
 };
@@ -183,7 +181,7 @@ $.fn.story = function(/*kanban*/) {
   return $(this.children()[0]);
 };
 
-$.fn.team = function(/*kanban*/) {
+$.fn.team = function() {
   return this.closest(".team");
 };
 
