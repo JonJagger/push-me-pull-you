@@ -68,20 +68,6 @@ small_stripe_gap       = 50%
         padding-right 0px        
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    .portal 
-        border-radius 16px /*border_radius_width*/
-        border-style  solid
-        border-width  drag_drop_border_width
-        display table-cell
-        width 7em
-        &[data-to-team = backlog] 
-            background   backlog_color
-            border-color backlog_color    
-        &[data-to-team = done] 
-            background   done_color
-            border-color done_color            
-
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     .wip
         border-radius border_radius_width * 4
         display table-cell
@@ -170,50 +156,3 @@ small_stripe_gap       = 50%
         border-color drag_drop_border_color
         border-style drag_drop_border_style
 
-.team
-    &.red .portal
-        border-color light_red_color        
-        &.upstream
-            background linear-gradient(top, backlog_color large_stripe_gap, light_red_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
-            background linear-gradient(top, light_orange_color large_stripe_gap, light_red_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.orange .portal
-        border-color light_orange_color
-        &.upstream
-            background linear-gradient(top, light_red_color large_stripe_gap, light_orange_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
-            background linear-gradient(top, light_blue_color large_stripe_gap, light_orange_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.blue .portal
-        border-color light_blue_color
-        &.upstream
-            background linear-gradient(top, light_orange_color large_stripe_gap, light_blue_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
-            background linear-gradient(top, light_green_color large_stripe_gap, light_blue_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.green .portal
-        border-color light_green_color
-        &.upstream
-            background linear-gradient(top, light_blue_color large_stripe_gap, light_green_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
-            background linear-gradient(top, done_color large_stripe_gap, light_green_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-
-.portal
-    &.upstream
-        border-bottom-left-radius 0px
-        border-left-width 0px
-        border-top-left-radius 0px
-        padding-left 0px
-    &.downstream
-        border-bottom-right-radius 0px
-        border-right-width 0px
-        border-top-right-radius 0px
-        padding-right 0px
-
-    
