@@ -51,6 +51,8 @@ Template.team.rendered = function() {
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
       var dragged = $(event.target);
+      // when multiple teams are on dashboard, limit
+      // drag targets to the originating tea,
       var css  = ".team" + "."+dragged.team().color() + " " + to;
       return $(css);
   };
@@ -138,16 +140,32 @@ Template.story.kanbanState = function() {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.story.holes = function() { // see {{#each holes}} in team.html
+// If a kanban's size is 5 and it contains a story whose
+// size is 5 then it has no holes.
+// If a kanban's size is 5 and it contains a story whose
+// size is 4 then it has one hole.
+// see {{#each holes}} in team.html
+//
+Template.story.holes = function() {
   return nOnes(this.kanbanSize - this.size);
 };
 
-Template.story.gaps = function() { // see {{#each gaps}} in team.html
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// If a story's size is 4 and it has had 4 ones played
+// on it then it has no gaps.
+// If a story's size is 4 and it has had 3 ones played
+// on it then it has one gap.
+// see {{#each gaps}} in team.html
+//
+Template.story.gaps = function() {
   return nOnes(this.size - this.ones.length);
 };
 
-Template.story.ones = function() { // see {{#each ones}} in team.html
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// The number of ones that have been played on a story.
+// see {{#each ones}} in team.html
+//
+Template.story.ones = function() {
   return this.ones; // eg ['red','red','blue']
 };
 
