@@ -35,14 +35,14 @@ Template.team.rendered = function() {
   
   // TODO: Pushing[on]
   //
-  dragDropSetup(".wip .kanban.story-is-done",
-                ".board .downstream.portal",
+  dragDropSetup(".kanban.story-is-done",
+                ".downstream.portal",
                 doneStoryDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
-  dragDropSetup(".wip .kanban.is-empty",
-                ".board .upstream.portal",
+  dragDropSetup(".kanban.is-empty",
+                ".upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
 };
 
