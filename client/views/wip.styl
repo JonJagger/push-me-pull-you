@@ -1,0 +1,22 @@
+
+@import "client/views/colors"
+@import "client/views/variables"
+    
+.team
+    .wip
+        border-radius border_radius_width * 4
+        display table-cell
+        margin  inter-kanban-spacing
+        padding inter-kanban-spacing        
+        vertical-align top
+        & .kanbans-column
+            vertical-align top        
+    &.red .wip
+        background lightest_red_color
+    &.orange .wip
+        background lightest_orange_color
+    &.blue .wip
+        background lightest_blue_color
+    &.green .wip
+        background lightest_green_color
+        

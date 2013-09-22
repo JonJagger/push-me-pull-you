@@ -1,11 +1,6 @@
 
-@import "client/colors"
-
-border_radius_width    = 4px
-drag_drop_border_color = Black
-drag_drop_border_style = dotted
-drag_drop_border_width = 4px
-inter-kanban-spacing   = 2px
+@import "client/views/colors"
+@import "client/views/variables"
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     
@@ -58,41 +53,3 @@ inter-kanban-spacing   = 2px
         padding-left  0px
         padding-right 0px        
 
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    .wip
-        border-radius border_radius_width * 4
-        display table-cell
-        margin  inter-kanban-spacing
-        padding inter-kanban-spacing        
-        vertical-align top
-        & .kanbans-column
-            vertical-align top
-        
-    &.red .wip
-        background lightest_red_color
-    &.orange .wip
-        background lightest_orange_color
-    &.blue .wip
-        background lightest_blue_color
-    &.green .wip
-        background lightest_green_color
-        
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
-    .kanban
-        border-radius 0.75em
-        border-style  solid
-        border-width  drag_drop_border_width
-        margin  inter-kanban-spacing
-        padding 0
-        &.red
-            background   red_color
-            border-color red_color
-        &.orange
-            background   orange_color
-            border-color orange_color
-        &.blue
-            background   blue_color
-            border-color blue_color
-        &.green
-            background   green_color
-            border-color green_color
