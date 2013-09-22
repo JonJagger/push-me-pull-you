@@ -89,7 +89,8 @@ var setupTeam = function(gid,teamColor) {
                      color:kanbanColor,
                      size:kanbanSize,
                      storySize:size,
-                     ones:ones });    
+                     ones:ones,
+                     at:"wip" });    
   };
   makeKanban(1, 1, [ ]);
   makeKanban(3, 2, [oneColor,oneColor]);

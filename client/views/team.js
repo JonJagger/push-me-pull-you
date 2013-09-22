@@ -14,9 +14,43 @@ Template.team.dice = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.wip.kanbansColumn = function(n) {
+var getKanbans = function(gid,teamColor,at,n) {
   // Each column goes into a <td> so there are no horizontal gaps between kanbans 
-  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color }).fetch();
+  var kanbans = Kanbans.find({ gid:gid, teamColor:teamColor, at:at }).fetch();
+  var column = [ ];
+  _.each(kanbans, function(kanban,index) {
+    if (index % 4 === n) {
+      column.push(kanban);
+    }
+  });
+  return column;  
+};
+
+Template.wip.kanbansColumn = function(n) {
+//  return getKanbans(this.gid, this.color, n, "wip");  
+  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color, at:"wip" }).fetch();
+  var column = [ ];
+  _.each(kanbans, function(kanban,index) {
+    if (index % 4 === n) {
+      column.push(kanban);
+    }
+  });
+  return column;  
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.upstreamPortal.toColor = function() {
+  if (this.color === "red"   ) return "backlog";
+  if (this.color === "orange") return "red";
+  if (this.color === "blue"  ) return "orange";
+  if (this.color === "green" ) return "blue";
+};
+
+
+Template.upstreamPortal.kanbansColumn = function(n) {
+  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
+  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color, at:"upstream" }).fetch();
   var column = [ ];
   _.each(kanbans, function(kanban,index) {
     if (index % 4 === n) {
@@ -24,6 +58,74 @@ Template.wip.kanbansColumn = function(n) {
     }
   });
   return column;
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.downstreamPortal.toColor = function() {
+  if (this.color === "red"   ) return "orange";
+  if (this.color === "orange") return "blue";
+  if (this.color === "blue"  ) return "green";
+  if (this.color === "green" ) return "done";
+};
+
+Template.downstreamPortal.kanbansColumn = function(n) {
+  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
+  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color, at:"downstream" }).fetch();
+  var column = [ ];
+  _.each(kanbans, function(kanban,index) {
+    if (index % 4 === n) {
+      column.push(kanban);
+    }
+  });
+  return column;
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.kanban.state = function() {
+  if (this.storySize === 0)
+    return "is-empty";
+  if (this.ones.length < this.storySize)
+    return "story-is-in-progress";
+  if (this.ones.length === this.storySize)
+    return "story-is-done";
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// If a kanban's size is 5 and it contains a story whose
+// size is 5 then it has no holes.
+// If a kanban's size is 5 and it contains a story whose
+// size is 4 then it has one hole.
+// see {{#each holes}} in team.html
+//
+Template.kanban.holes = function() {
+  return nOnes(this.size - this.storySize);
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// If a story's size is 4 and it has had 4 ones played
+// on it then it has no gaps.
+// If a story's size is 4 and it has had 3 ones played
+// on it then it has one gap.
+// see {{#each gaps}} in team.html
+//
+Template.kanban.gaps = function() {
+  return nOnes(this.storySize - this.ones.length);
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// The number of ones that have been played on a story.
+// see {{#each ones}} in team.html
+//
+Template.kanban.ones = function() {
+  return this.ones; // eg ['red','red','blue']
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.die.one = function() {
+  return isOne(this) ? "one" : "not-one";  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,71 +202,6 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
 
 var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
     
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.downstreamPortal.toColor = function() {
-  if (this.color === "red"   ) return "orange";
-  if (this.color === "orange") return "blue";
-  if (this.color === "blue"  ) return "green";
-  if (this.color === "green" ) return "done";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.upstreamPortal.toColor = function() {
-  if (this.color === "red"   ) return "backlog";
-  if (this.color === "orange") return "red";
-  if (this.color === "blue"  ) return "orange";
-  if (this.color === "green" ) return "blue";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.kanban.state = function() {
-  if (this.storySize === 0)
-    return "is-empty";
-  if (this.ones.length < this.storySize)
-    return "story-is-in-progress";
-  if (this.ones.length === this.storySize)
-    return "story-is-done";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// If a kanban's size is 5 and it contains a story whose
-// size is 5 then it has no holes.
-// If a kanban's size is 5 and it contains a story whose
-// size is 4 then it has one hole.
-// see {{#each holes}} in team.html
-//
-Template.kanban.holes = function() {
-  return nOnes(this.size - this.storySize);
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// If a story's size is 4 and it has had 4 ones played
-// on it then it has no gaps.
-// If a story's size is 4 and it has had 3 ones played
-// on it then it has one gap.
-// see {{#each gaps}} in team.html
-//
-Template.kanban.gaps = function() {
-  return nOnes(this.storySize - this.ones.length);
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// The number of ones that have been played on a story.
-// see {{#each ones}} in team.html
-//
-Template.kanban.ones = function() {
-  return this.ones; // eg ['red','red','blue']
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.die.one = function() {
-  return isOne(this) ? "one" : "not-one";  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -

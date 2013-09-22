@@ -45,37 +45,28 @@
 <template name="upstreamPortal">
   <div class="upstream portal"
        data-to-team="{{toColor}}">
-    
-    <!-- sliming to see why this gets a black-border        -->
-    <!-- could it be because the CSS is specific on the     -->
-    <!-- (correctly displayed) kanban being in the wip area -->
     <table>
       <tr>
-        <td valign="top">
-          <div class="{{toColor}} kanban is-empty" >   
-            <div class="story" data-ones="" data-size="0" data-id="w2k45Gdw5Gu5ATvnY">
-              <div class="one-container">
-                <div class="{{toColor}} die done-one">
-                  <div class="dot"></div>
-                </div>
-              </div>
-              <div class="one-container">
-                <div class="{{toColor}} die done-one">
-                  <div class="dot"></div>
-                </div>    
-              </div>
-            </div>
-          </div>    
-        </td>
+        <td class="kanbans-column">{{#each kanbansColumn 0}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn 1}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn 2}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn 3}}{{> kanban}}{{/each}}</td>
       </tr>
     </table>
-    
   </div>
 </template>
 
 <template name="downstreamPortal">
   <div class="downstream portal"
        data-to-team="{{toColor}}">      
+    <table>
+      <tr>
+        <td class="kanbans-column">{{#each kanbansColumn 0}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn 1}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn 2}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn 3}}{{> kanban}}{{/each}}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
