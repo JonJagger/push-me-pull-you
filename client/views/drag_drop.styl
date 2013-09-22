@@ -1,0 +1,40 @@
+
+drag_drop_border_color = Black
+drag_drop_border_style = dotted
+
+.team
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // The CSS must be sufficiently specific for them to take
+    // precedence over other CSS.
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Initial selection of draggable
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //
+    .one:hover
+    .kanban.story-is-done:hover
+    .kanban.is-empty:hover
+        border-color drag_drop_border_color
+        border-style solid
+        cursor move
+
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Once dragging starts
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //
+    .ui-draggable-dragging.one    
+    .ui-draggable-dragging.kanban.is-empty
+    .ui-draggable-dragging.kanban.story-is-done  
+        border-color drag_drop_border_color
+        border-style drag_drop_border_style
+        cursor crosshair
+
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Dynamically activated drop targets
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //
+    .wip .kanban.story-is-in-progress.droppable
+    .board .downstream.portal.droppable
+    .board .upstream.portal.droppable    
+        border-color drag_drop_border_color
+        border-style drag_drop_border_style
+

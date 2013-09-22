@@ -70,20 +70,12 @@ inter-kanban-spacing   = 2px
         
     &.red .wip
         background lightest_red_color
-        & .kanban
-            border-color lightest_red_color
     &.orange .wip
         background lightest_orange_color
-        & .kanban
-            border-color lightest_orange_color
     &.blue .wip
         background lightest_blue_color
-        & .kanban
-            border-color lightest_blue_color
     &.green .wip
         background lightest_green_color
-        & .kanban
-            border-color lightest_green_color
         
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
     .kanban
@@ -91,54 +83,16 @@ inter-kanban-spacing   = 2px
         border-style  solid
         border-width  drag_drop_border_width
         margin  inter-kanban-spacing
-        padding inter-kanban-spacing
+        padding 0
         &.red
-            background red_color
+            background   red_color
+            border-color red_color
         &.orange
-            background orange_color
+            background   orange_color
+            border-color orange_color
         &.blue
-            background blue_color
+            background   blue_color
+            border-color blue_color
         &.green
-            background green_color
-    
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    .one-container
-        line-height 0
-
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // DRAG DROP
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // The CSS must be sufficiently specific for them to take
-    // precedence over the defaults above.
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Initial selection of draggable
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //
-    .one:hover
-    .kanban.story-is-done:hover
-    .kanban.is-empty:hover
-        border-color drag_drop_border_color
-        border-style solid
-        cursor move
-
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Once dragging starts
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //
-    .ui-draggable-dragging.one    
-    .ui-draggable-dragging.kanban.is-empty
-    .ui-draggable-dragging.kanban.story-is-done  
-        border-color drag_drop_border_color
-        border-style drag_drop_border_style
-        cursor crosshair
-
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Dynamically activated drop targets
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //
-    .wip .kanban.story-is-in-progress.droppable
-    .board .downstream.portal.droppable
-    .board .upstream.portal.droppable    
-        border-color drag_drop_border_color
-        border-style drag_drop_border_style
-
+            background   green_color
+            border-color green_color
