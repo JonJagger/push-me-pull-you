@@ -83,22 +83,22 @@ var setupTeam = function(gid,teamColor) {
   var kanbanColor = teamColor;
   var oneColor    = teamColor;
   
-  var makeStory = function(kanbanSize, size, ones) {
-    Stories.insert({ gid:gid,
+  var makeKanban = function(kanbanSize, size, ones) {
+    Kanbans.insert({ gid:gid,
                      teamColor:teamColor,
-                     kanbanColor:kanbanColor,
-                     kanbanSize:kanbanSize,
-                     size:size,
+                     color:kanbanColor,
+                     size:kanbanSize,
+                     storySize:size,
                      ones:ones });    
   };
-  makeStory(1, 1, [ ]);
-  makeStory(3, 2, [oneColor,oneColor]);
-  makeStory(5, 5, [oneColor,"orange"]);
-  makeStory(3, 3, [oneColor,oneColor]);
-  makeStory(5, 0, [ ]);
-  makeStory(4, 4, [ ]);  
-  makeStory(1, 1, [oneColor]);
-  makeStory(1, 0, [ ]);
+  makeKanban(1, 1, [ ]);
+  makeKanban(3, 2, [oneColor,oneColor]);
+  makeKanban(5, 5, [oneColor,"orange"]);
+  makeKanban(3, 3, [oneColor,oneColor]);
+  makeKanban(5, 0, [ ]);
+  makeKanban(4, 4, [ ]);  
+  makeKanban(1, 1, [oneColor]);
+  makeKanban(1, 0, [ ]);
   
   _(6).times(function() {
       Dice.insert({ gid:gid, teamColor:teamColor, color:teamColor, value:rollDie() });

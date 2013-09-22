@@ -14,15 +14,15 @@ Teams = new Meteor.Collection('teams');
  * });
  */
 
-Stories = new Meteor.Collection('stories');
+Kanbans = new Meteor.Collection('kanbans');
 /*
- * Stories.insert({
- *           gid: "138ef8",
- *     teamColor: "blue",
- *   kanbanColor: "red",
- *    kanbanSize: "4",
- *          size: "3",       // number of 1s in this story
- *          ones: "2"        // number of 1s played so far
+ * Kanbans.insert({
+ *         gid: "138ef8",
+ *   teamColor: "blue",
+ *       color: "red",     // of the kanban
+ *        size: "4",       // of the kanban
+ *   storySize: "3",       // number of 1s in this story
+ *        ones: "2"        // number of 1s played so far
  * });
  */
 

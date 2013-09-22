@@ -14,13 +14,13 @@ Template.team.dice = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.wip.storiesColumn = function(n) {
+Template.wip.kanbansColumn = function(n) {
   // Each column goes into a <td> so there are no horizontal gaps between kanbans 
-  var stories = Stories.find({ gid:this.gid, teamColor:this.color }).fetch();
+  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color }).fetch();
   var column = [ ];
-  _.each(stories, function(story,index) {
+  _.each(kanbans, function(kanban,index) {
     if (index % 4 == n) {
-      column.push(story);
+      column.push(kanban);
     }
   });
   return column;
@@ -37,7 +37,7 @@ Template.team.rendered = function() {
   //
   dragDropSetup(".kanban.story-is-done",
                 ".downstream.portal",
-                doneStoryDroppedOnDownstreamPortal);
+                doneKanbanDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
@@ -81,32 +81,28 @@ var dragDropSetup = function(from,to,handler) {
 var oneDroppedOnKanban = function(event,ui) {
   var one    = ui.draggable;
   var kanban = $(this);
-  var story  = kanban.story();
-  var ones   = story.ones();
+  var ones   = kanban.ones();
   var anythingButOne = 6;
   Dice.update(one.id(), { $set: { value:anythingButOne }});
   ones.unshift(one.color());  
-  Stories.update(story.id(), { $set: { ones:ones } });  
+  Kanbans.update(kanban.id(), { $set: { ones:ones } });  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var doneStoryDroppedOnDownstreamPortal = function(event,ui) {
+var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
   var kanban    = ui.draggable; 
   var portal    = $(this);
-  var story     = kanban.story();  
   var fromColor = portal.team().color();
-  var toColor   = portal.data("to-team");  
-  if (story.isDone()) {
-    if (kanban.color() === fromColor) { // push
-      Stories.update(story.id(), {
-        $set: {
-          ones:[ ],
-          teamColor:toColor,
-          kanbanColor:toColor
-        }
-      });
-    }
+  var toColor   = portal.data("to-team");
+  if (kanban.color() === fromColor) { // push
+    Kanbans.update(kanban.id(), {
+      $set: {
+        ones:[ ],
+        teamColor:toColor,
+        color:toColor
+      }
+    });
   }
 };
 
@@ -136,12 +132,12 @@ Template.upstreamPortal.toColor = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.story.kanbanState = function() {
+Template.kanban.state = function() {
   if (this.size === 0)
     return "is-empty";
-  if (this.ones.length < this.size)
+  if (this.ones.length < this.storySize)
     return "story-is-in-progress";
-  if (this.ones.length === this.size)
+  if (this.ones.length === this.storySize)
     return "story-is-done";
 };
 
@@ -152,8 +148,8 @@ Template.story.kanbanState = function() {
 // size is 4 then it has one hole.
 // see {{#each holes}} in team.html
 //
-Template.story.holes = function() {
-  return nOnes(this.kanbanSize - this.size);
+Template.kanban.holes = function() {
+  return nOnes(this.size - this.storySize);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -163,15 +159,15 @@ Template.story.holes = function() {
 // on it then it has one gap.
 // see {{#each gaps}} in team.html
 //
-Template.story.gaps = function() {
-  return nOnes(this.size - this.ones.length);
+Template.kanban.gaps = function() {
+  return nOnes(this.storySize - this.ones.length);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // The number of ones that have been played on a story.
 // see {{#each ones}} in team.html
 //
-Template.story.ones = function() {
+Template.kanban.ones = function() {
   return this.ones; // eg ['red','red','blue']
 };
 
@@ -201,26 +197,18 @@ $.fn.hasClass = function(klass) {
   return this.attr("class").indexOf(klass) !== -1;
 };
 
-$.fn.story = function(/*kanban*/) {
-  return $(this.children()[0]);
-};
-
 $.fn.team = function() {
   return this.closest(".team");
 };
 
-$.fn.ones = function(/*story*/) {  
+$.fn.ones = function(/*kanban*/) {  
   var ones = $(this).data("ones");
   return (ones === "") ? [ ] : ones.split(",");  
 };
 
-$.fn.size = function(/*story*/) {
-  return $(this).data("size");
+$.fn.storySize = function(/*kanban*/) {
+  return $(this).data("story-size");
 };
-
-$.fn.isDone = function(/*story*/) {
-  return this.ones().length === this.size();
-};        
 
 $.fn.id = function() {
   return $(this).data("id");  

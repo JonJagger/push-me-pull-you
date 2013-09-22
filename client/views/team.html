@@ -33,10 +33,10 @@
   <div class="wip">
     <table>
       <tr>
-        <td class="stories-column">{{#each storiesColumn "0"}}{{> story}}{{/each}}</td>
-        <td class="stories-column">{{#each storiesColumn "1"}}{{> story}}{{/each}}</td>
-        <td class="stories-column">{{#each storiesColumn "2"}}{{> story}}{{/each}}</td>
-        <td class="stories-column">{{#each storiesColumn "3"}}{{> story}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn "0"}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn "1"}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn "2"}}{{> kanban}}{{/each}}</td>
+        <td class="kanbans-column">{{#each kanbansColumn "3"}}{{> kanban}}{{/each}}</td>
       </tr>
     </table>
   </div>
@@ -45,6 +45,31 @@
 <template name="upstreamPortal">
   <div class="upstream portal"
        data-to-team="{{toColor}}">
+    
+    <!-- sliming to see why this gets a black-border        -->
+    <!-- could it be because the CSS is specific on the     -->
+    <!-- (correctly displayed) kanban being in the wip area -->
+    <table>
+      <tr>
+        <td valign="top">
+          <div class="{{toColor}} kanban is-empty" >   
+            <div class="story" data-ones="" data-size="0" data-id="w2k45Gdw5Gu5ATvnY">
+              <div class="one-container">
+                <div class="{{toColor}} die done-one">
+                  <div class="dot"></div>
+                </div>
+              </div>
+              <div class="one-container">
+                <div class="{{toColor}} die done-one">
+                  <div class="dot"></div>
+                </div>    
+              </div>
+            </div>
+          </div>    
+        </td>
+      </tr>
+    </table>
+    
   </div>
 </template>
 
@@ -54,33 +79,31 @@
   </div>
 </template>
 
-<template name="story">
-  <div class="{{kanbanColor}} kanban {{kanbanState}}">   
-    <div class="story"
-         data-ones="{{ones}}"
-         data-size="{{size}}"
-         data-id="{{_id}}">
-      {{#each holes}}
-        <div class="one-container">      
-          <div class="die hole-one">
-            <div class="dot"></div>
-          </div>
-        </div>        
-      {{/each}}
-      {{#each gaps}}
-        <div class="one-container">      
-          <div class="die not-one">
-            <div class="dot"></div>
-          </div>
+<template name="kanban">
+  <div class="{{color}} kanban {{state}}"
+       data-id="{{_id}}"
+       data-story-size="{{storySize}}"
+       data-ones="{{ones}}">
+    {{#each holes}}
+      <div class="one-container">      
+        <div class="die hole-one">
+          <div class="dot"></div>
         </div>
-      {{/each}}
-      {{#each ones}}
-        <div class="one-container">            
-          <div class="{{this}} die done-one">
-            <div class="dot"></div>
-          </div>
+      </div>        
+    {{/each}}
+    {{#each gaps}}
+      <div class="one-container">      
+        <div class="die not-one">
+          <div class="dot"></div>
         </div>
-      {{/each}}
-    </div>
+      </div>
+    {{/each}}
+    {{#each ones}}
+      <div class="one-container">            
+        <div class="{{this}} die done-one">
+          <div class="dot"></div>
+        </div>
+      </div>
+    {{/each}}
   </div>
 </template>
