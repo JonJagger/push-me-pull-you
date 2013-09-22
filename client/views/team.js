@@ -133,7 +133,7 @@ Template.upstreamPortal.toColor = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.kanban.state = function() {
-  if (this.size === 0)
+  if (this.storySize === 0)
     return "is-empty";
   if (this.ones.length < this.storySize)
     return "story-is-in-progress";

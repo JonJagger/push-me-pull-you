@@ -19,6 +19,8 @@ Questions? Try the support group
 ...
 >db.edges.remove({})
 >db.edges.find({})
+>db.edges.drop()
+true
 >help
     db.help()                    help on db methods
 	db.mycoll.help()             help on collection methods
