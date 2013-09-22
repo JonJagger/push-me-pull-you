@@ -51,16 +51,7 @@ Template.team.rendered = function() {
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
       var dragged = $(event.target);
-      // when multiple teams are on dashboard, limit
-      // drag targets to the originating tea,
-      var css  = ".team" + "."+dragged.team().color() + " " + to;
-      return $(css);
-      // I don't think this will work if there are multiple
-      // teams on a page. How about getting the nearest team
-      // from the dragged node, and limiting the jQuery css
-      // search below that node. Something like this...
-      //   return $(dragged.team(), to);
-      // but that doesn't work. Wrong syntax?
+      return $(to, dragged.team());
   };
   $(from).draggable({
     start:function(event,ui) {
