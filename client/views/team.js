@@ -19,7 +19,7 @@ Template.wip.kanbansColumn = function(n) {
   var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color }).fetch();
   var column = [ ];
   _.each(kanbans, function(kanban,index) {
-    if (index % 4 == n) {
+    if (index % 4 === n) {
       column.push(kanban);
     }
   });
@@ -50,8 +50,7 @@ Template.team.rendered = function() {
 
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
-      var dragged = $(event.target);
-      return $(to, dragged.team());
+      return $(to, $(event.target).team());
   };
   $(from).draggable({
     start:function(event,ui) {
