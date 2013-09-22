@@ -14,28 +14,8 @@ Template.team.dice = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var getKanbans = function(gid,teamColor,at,n) {
-  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
-  var kanbans = Kanbans.find({ gid:gid, teamColor:teamColor, at:at }).fetch();
-  var column = [ ];
-  _.each(kanbans, function(kanban,index) {
-    if (index % 4 === n) {
-      column.push(kanban);
-    }
-  });
-  return column;  
-};
-
 Template.wip.kanbansColumn = function(n) {
-//  return getKanbans(this.gid, this.color, n, "wip");  
-  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color, at:"wip" }).fetch();
-  var column = [ ];
-  _.each(kanbans, function(kanban,index) {
-    if (index % 4 === n) {
-      column.push(kanban);
-    }
-  });
-  return column;  
+  return getKanbans(this.gid, this.color, "wip", n);  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,15 +29,7 @@ Template.upstreamPortal.toColor = function() {
 
 
 Template.upstreamPortal.kanbansColumn = function(n) {
-  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
-  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color, at:"upstream" }).fetch();
-  var column = [ ];
-  _.each(kanbans, function(kanban,index) {
-    if (index % 4 === n) {
-      column.push(kanban);
-    }
-  });
-  return column;
+  return getKanbans(this.gid, this.color, "upstream", n);    
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,15 +42,7 @@ Template.downstreamPortal.toColor = function() {
 };
 
 Template.downstreamPortal.kanbansColumn = function(n) {
-  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
-  var kanbans = Kanbans.find({ gid:this.gid, teamColor:this.color, at:"downstream" }).fetch();
-  var column = [ ];
-  _.each(kanbans, function(kanban,index) {
-    if (index % 4 === n) {
-      column.push(kanban);
-    }
-  });
-  return column;
+  return getKanbans(this.gid, this.color, "downstream", n);      
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -205,6 +169,18 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var getKanbans = function(gid,teamColor,at,n) {
+  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
+  var kanbans = Kanbans.find({ gid:gid, teamColor:teamColor, at:at }).fetch();
+  var column = [ ];
+  _.each(kanbans, function(kanban,index) {
+    if (index % 4 === n) {
+      column.push(kanban);
+    }
+  });
+  return column;  
+};
 
 var getDice = function(gid, teamColor) {
   return Dice.find({ gid:gid, teamColor:teamColor });    
