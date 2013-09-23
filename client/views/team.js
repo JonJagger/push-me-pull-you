@@ -102,13 +102,14 @@ Template.team.rendered = function() {
   
   // TODO: Pushing[on]
   //
-  dragDropSetup(".kanban.story-is-done",
+  dragDropSetup(".wip .kanban.story-is-done",
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
   
   // TODO Pulling[on]
   //
-  dragDropSetup(".kanban.is-empty",
+  
+  dragDropSetup(".wip .kanban.is-empty",
                 ".upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
 };
