@@ -105,6 +105,9 @@ Template.team.rendered = function() {
   dragDropSetup(".wip .kanban.story-is-done",
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
+  dragDropSetup(".upstream.portal .kanban.story-is-done",
+                ".wip",
+                doneKanbanDroppedOnWip);
   
   // TODO Pulling[on]
   //
@@ -112,6 +115,7 @@ Template.team.rendered = function() {
   dragDropSetup(".wip .kanban.is-empty",
                 ".upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
+  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -154,7 +158,6 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
   var toColor   = portal.data("to-team");
   Kanbans.update(kanban.id(), { // push
     $set: {
-      ones:[ ],
       teamColor:toColor, // move it to downstream team's 
       at:"upstream"      // upstream portal
     }
@@ -173,6 +176,21 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
       at:"downstream"    // downstream portal
     }
   });  
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var doneKanbanDroppedOnWip = function(event, ui) {
+  var kanban = ui.draggable; 
+  var wip    = $(this);
+  var toColor = wip.team().color();
+  Kanbans.update(kanban.id(), { 
+    $set: {
+      ones: [ ],
+      color:toColor, 
+      at:"wip"    
+    }
+  });    
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
