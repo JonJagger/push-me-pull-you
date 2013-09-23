@@ -5,6 +5,8 @@
 .team
     .wip
         border-radius border_radius_width * 4
+        border-style  solid
+        border-width  drag_drop_border_width        
         display table-cell
         margin  inter-kanban-spacing
         padding inter-kanban-spacing        
@@ -12,11 +14,15 @@
         & .kanbans-column
             vertical-align top        
     &.red .wip
-        background lightest_red_color
+        background   lightest_red_color
+        border-color lightest_red_color                
     &.orange .wip
-        background lightest_orange_color
+        background   lightest_orange_color
+        border-color lightest_orange_color                
     &.blue .wip
-        background lightest_blue_color
+        background   lightest_blue_color
+        border-color lightest_blue_color                
     &.green .wip
-        background lightest_green_color
+        background   lightest_green_color
+        border-color lightest_green_color                
         

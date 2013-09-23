@@ -106,7 +106,7 @@ Template.team.rendered = function() {
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
   dragDropSetup(".upstream.portal .kanban.story-is-done",
-                ".wip",
+                ".wip", // TODO: weird z-index effect here
                 doneKanbanDroppedOnWip);
   
   // TODO Pulling[on]
