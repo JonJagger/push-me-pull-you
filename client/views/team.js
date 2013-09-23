@@ -151,6 +151,7 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
   var portal    = $(this);
   var fromColor = portal.team().color();
   var toColor   = portal.data("to-team");
+  // TODO: will this color check be needed?
   if (kanban.color() === fromColor) { // push
     Kanbans.update(kanban.id(), {
       $set: {
@@ -165,7 +166,9 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
-    
+  var kanban    = ui.draggable; 
+  var portal    = $(this);
+  // move it into downstream portal of upstream team    
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
