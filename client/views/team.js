@@ -94,7 +94,8 @@ Template.die.one = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.team.rendered = function() {  
+Template.team.rendered = function() {
+  // Play a [1] die
   dragDropSetup(".dice .die.one",
                 ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
@@ -149,18 +150,14 @@ var oneDroppedOnKanban = function(event,ui) {
 var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
   var kanban    = ui.draggable; 
   var portal    = $(this);
-  var fromColor = portal.team().color();
   var toColor   = portal.data("to-team");
-  // TODO: will this color check be needed?
-  if (kanban.color() === fromColor) { // push
-    Kanbans.update(kanban.id(), {
-      $set: {
-        ones:[ ],
-        teamColor:toColor,
-        color:toColor
-      }
-    });
-  }
+  Kanbans.update(kanban.id(), { // push
+    $set: {
+      ones:[ ],
+      teamColor:toColor, // move it to downstream team's 
+      at:"upstream"      // upstream portal
+    }
+  });
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,7 +165,13 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
 var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
   var kanban    = ui.draggable; 
   var portal    = $(this);
-  // move it into downstream portal of upstream team    
+  var toColor   = portal.data("to-team");
+  Kanbans.update(kanban.id(), { // pull-request
+    $set: {
+      teamColor:toColor, // move it to upstream team's
+      at:"downstream"    // downstream portal
+    }
+  });  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
