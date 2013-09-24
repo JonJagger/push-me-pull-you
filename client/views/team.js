@@ -205,10 +205,6 @@ var getKanbans = function(gid,teamColor,at,n) {
   return column;  
 };
 
-var getDice = function(gid, teamColor) {
-  return Dice.find({ gid:gid, teamColor:teamColor });    
-};
-
 var nOnes = function(n) { // eg 3
   return _(n).times(function() { return 1; });  // eg [1,1,1]
 };
