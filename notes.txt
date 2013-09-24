@@ -1,4 +1,32 @@
 
+o) just occured to me that since only the 1 is shown I don't really need to
+   limit the size of the kanban to 6. There's no reason I can't have kanban
+   of any size.
+
+o) suppose there is an empty kanban pull request in the downstream portal
+   of size 5. Can you drag a done kanban (from the wip area) of size 1
+   onto this? And then one of size 2. And then another one of size 2.
+   And then its fulfilled and the transfer happens?
+
+o) in Push mode dragging a done wip.kanban will higlight the downstream portal.
+   in Pull mode dragging a done wip.kanban will highlight any empty
+   pull-request kanbans in the downstream portal, but not the downstream portal
+   itself. This could be confusing. It leads me to think I would be better
+   having either push mode or pull mode but not both. I think this ties in
+   with the idea of the game being about learning. Playing first in push
+   mode and then in pull mode creates the greatest contrast.
+
+o) at the moment when the cursor hovers over a draggable item it is
+   CSS'd according to static CSS. For example
+      .wip .kanban.story-is-done:hover
+          border-color drag_drop_border_color
+          border-style solid
+          cursor move
+   However, suppose you are playing in pull mode and there is no
+   empty pull-request kanban in the downstream portal on which to
+   drag the done kanban. This suggests there might be a way of
+   deciding whether a dom element is draggable dynamically.
+
 o) can the crosshair cursor (drag/drop) be position right in the center
    of the die's dot?
    

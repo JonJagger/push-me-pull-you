@@ -116,6 +116,10 @@ Template.team.rendered = function() {
                 ".upstream.portal",
                 emptyKanbanDroppedOnUpstreamPortal);
   
+  // .wip .kanban.story-is-done
+  // .downstream.portal .kanban.is-empty
+  // AND the sizes match...
+  // how to check for that?
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
