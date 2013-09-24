@@ -1,12 +1,9 @@
 
-o) making the dashboard simply a concatentation of 4 teams has a downside
-   It means is is not easy to create the alignment layout I want. For example,
-   if the number of dice spills over two lines, then it will push the board
-   area for that team down relative to the other teams. In contrast, I could
-   do all the roll buttons on one table row, then all the dice on another
-   table row, then do all the boards in the last row. This should be doable
-   as long as the templates are well refactored and can be reused across
-   different files.
+o) drag-drop no longer works on dashboard. Make this a feature?
+   Nice for demos though... Not sure.
+
+o) when very few kanbans in portals and wip then dice can extend
+   the width of the team board so that the portals do not align.
 
 o) just occured to me that since only the 1 is shown I don't really need to
    limit the size of the kanban to 6. There's no reason I can't have kanban

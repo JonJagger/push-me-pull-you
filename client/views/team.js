@@ -198,7 +198,7 @@ var getKanbans = function(gid,teamColor,at,n) {
   var kanbans = Kanbans.find({ gid:gid, teamColor:teamColor, at:at }).fetch();
   var column = [ ];
   _.each(kanbans, function(kanban,index) {
-    if (index % 4 === n) {
+    if (index % 3 === n) {
       column.push(kanban);
     }
   });
