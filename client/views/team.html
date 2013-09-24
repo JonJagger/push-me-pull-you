@@ -2,16 +2,8 @@
 <template name="team">
   <div class="{{color}} team">    
       {{> roll}}
-      <div class="dice">
-        {{#each dice}}
-          {{> die}}
-        {{/each}}
-      </div>    
-      <div class="board">
-        {{> upstreamPortal}}
-        {{> wip}}
-        {{> downstreamPortal}}        
-      </div>    
+      {{> dice}}      
+      {{> board}}
     </div>    
   </div>
 </template>
@@ -20,13 +12,6 @@
   <input type="button"
          value="roll"
          id="roll">
-</template>
-
-<template name="die">
-  <div class="{{color}} die {{one}}"
-       data-id="{{_id}}">
-    <div class="dot"></div>    
-  </div>
 </template>
 
 <template name="wip">

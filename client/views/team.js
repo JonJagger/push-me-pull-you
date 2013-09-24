@@ -8,7 +8,7 @@ Template.team.events({"click #roll":function () {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.team.dice = function() {
+Template.dice.rolled = function() {
   return getDice(this.gid, this.color);
 };
 
@@ -61,6 +61,7 @@ Template.kanban.state = function() {
 // size is 5 then it has no holes.
 // If a kanban's size is 5 and it contains a story whose
 // size is 4 then it has one hole.
+// Experimental. Not sure if this is valuable enough to keep.
 // see {{#each holes}} in team.html
 //
 Template.kanban.holes = function() {
@@ -95,7 +96,7 @@ Template.die.one = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.team.rendered = function() {
-  // Play a [1] die
+  // Play a [1]
   dragDropSetup(".dice .die.one",
                 ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
@@ -106,7 +107,7 @@ Template.team.rendered = function() {
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
   dragDropSetup(".upstream.portal .kanban.story-is-done",
-                ".wip", // TODO: weird z-index effect here
+                ".wip", // TODO: fix weird z-index effect here
                 doneKanbanDroppedOnWip);
   
   // TODO Pulling[on]
@@ -157,13 +158,13 @@ var oneDroppedOnKanban = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
-  var kanban    = ui.draggable; 
-  var portal    = $(this);
-  var toColor   = portal.data("to-team");
+  var kanban = ui.draggable; 
+  var portal = $(this);
+  var downstreamColor = portal.data("to-team");
   Kanbans.update(kanban.id(), { // push
     $set: {
-      teamColor:toColor, // move it to downstream team's 
-      at:"upstream"      // upstream portal
+      teamColor:downstreamColor,
+      at:"upstream"
     }
   });
 };
@@ -171,13 +172,13 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
-  var kanban    = ui.draggable; 
-  var portal    = $(this);
-  var toColor   = portal.data("to-team");
+  var kanban = ui.draggable; 
+  var portal = $(this);
+  var upstreamColor = portal.data("to-team");
   Kanbans.update(kanban.id(), { // pull-request
     $set: {
-      teamColor:toColor, // move it to upstream team's
-      at:"downstream"    // downstream portal
+      teamColor:upstreamColor,
+      at:"downstream"
     }
   });  
 };
@@ -190,7 +191,7 @@ var doneKanbanDroppedOnWip = function(event, ui) {
   var toColor = wip.team().color();
   Kanbans.update(kanban.id(), { 
     $set: {
-      ones: [ ],
+      ones:[ ],
       color:toColor, 
       at:"wip"    
     }
@@ -200,7 +201,9 @@ var doneKanbanDroppedOnWip = function(event, ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var getKanbans = function(gid,teamColor,at,n) {
-  // Each column goes into a <td> so there are no horizontal gaps between kanbans 
+  // Each column goes into a <td> so there are no horizontal gaps between kanbans
+  // TODO: Kanbans.find() is called once per column - find a way to call it once
+  //       and pass the collection as an argument.
   var kanbans = Kanbans.find({ gid:gid, teamColor:teamColor, at:at }).fetch();
   var column = [ ];
   _.each(kanbans, function(kanban,index) {
@@ -247,35 +250,11 @@ $.fn.id = function() {
 };
 
 $.fn.color = function() {
-  var element = this;
+  var node = this;
   return _.find(teamColors(), function(color) {
-    return element.hasClass(color);
+    return node.hasClass(color);
   });
 };
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/*
-var emptyKanbanDroppedOnUpstreamPortal = function(kanban,portal) { // PULL
-  var story = kanban.story();
-  var toColor = $(portal).data('to');
-  if (story.size() === 0) {
-    if (kanban.team().color() === kanban.color()) {
-      Stories.update(story.id(), {
-        $set: {
-          teamColor:toColor
-        }
-      });      
-    }
-  }
-};
-
-var kanbanDroppedOnKanban = function(event,ui) {
-  // xfer full kanban to pull requested empty kanban
-  var from = $(ui.draggable);
-  var to = $(this);
-  alert("[full?] kanban dropped onto [empty?] kanban");
-};
-*/
 
 
 
