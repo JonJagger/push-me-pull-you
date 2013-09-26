@@ -1,26 +1,26 @@
 
 <template name="upstreamPortal">
   <div class="upstream portal"
-       data-to-team="{{toColor}}">
-    <table>
-      <tr>
-        <td class="kanbans-column">{{#each kanbansColumn 0}}{{> kanban}}{{/each}}</td>
-        <td class="kanbans-column">{{#each kanbansColumn 1}}{{> kanban}}{{/each}}</td>
-        <td class="kanbans-column">{{#each kanbansColumn 2}}{{> kanban}}{{/each}}</td>
-      </tr>
-    </table>
+       data-to-team="{{toColor}}">    
+    <ul class="sortable">
+      {{#each kanbans}}
+        <li>
+        {{> kanban}}
+        </li>
+      {{/each}}
+    </ul>
   </div>
 </template>
 
 <template name="downstreamPortal">
   <div class="downstream portal"
        data-to-team="{{toColor}}">      
-    <table>
-      <tr>
-        <td class="kanbans-column">{{#each kanbansColumn 0}}{{> kanban}}{{/each}}</td>
-        <td class="kanbans-column">{{#each kanbansColumn 1}}{{> kanban}}{{/each}}</td>
-        <td class="kanbans-column">{{#each kanbansColumn 2}}{{> kanban}}{{/each}}</td>
-      </tr>
-    </table>
+    <ul class="sortable">
+      {{#each kanbans}}
+        <li>
+        {{> kanban}}
+        </li>
+      {{/each}}
+    </ul>
   </div>
 </template>

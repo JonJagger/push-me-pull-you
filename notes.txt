@@ -1,4 +1,23 @@
 
+o) at the moment when the cursor hovers over a draggable item it is
+   CSS'd according to static CSS. For example
+      .wip .kanban.story-is-done:hover
+          border-color drag_drop_border_color
+          border-style solid
+          cursor move
+   However, suppose you are playing in pull mode and there is no
+   empty pull-request kanban in the downstream portal on which to
+   drag the done kanban. This suggests there might be a way of
+   deciding whether a dom element is draggable dynamically.
+   http://stackoverflow.com/questions/10618159/how-to-properly-bind-jquery-ui-behaviors-in-meteor
+   http://minitrello.meteor.com/
+   http://jqueryui.com/sortable/
+
+o) Perhaps just have a single list of elements in each wip/portal?
+o) Perhaps have the kanbans running horizontally?
+   If so, the [1] could drop into a specific gap rather than always
+   dropping down to the "botton" gap. Like this.
+
 o) drag-drop no longer works on dashboard. Make this a feature?
    Nice for demos though... Not sure.
 
@@ -21,17 +40,6 @@ o) in Push mode dragging a done wip.kanban will higlight the downstream portal.
    having either push mode or pull mode but not both. I think this ties in
    with the idea of the game being about learning. Playing first in push
    mode and then in pull mode creates the greatest contrast.
-
-o) at the moment when the cursor hovers over a draggable item it is
-   CSS'd according to static CSS. For example
-      .wip .kanban.story-is-done:hover
-          border-color drag_drop_border_color
-          border-style solid
-          cursor move
-   However, suppose you are playing in pull mode and there is no
-   empty pull-request kanban in the downstream portal on which to
-   drag the done kanban. This suggests there might be a way of
-   deciding whether a dom element is draggable dynamically.
 
 o) can the crosshair cursor (drag/drop) be position right in the center
    of the die's dot?

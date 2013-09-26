@@ -1,12 +1,12 @@
 
 <template name="wip">
   <div class="wip">
-    <table>
-      <tr>
-        <td class="kanbans-column">{{#each kanbansColumn 0}}{{> kanban}}{{/each}}</td>
-        <td class="kanbans-column">{{#each kanbansColumn 1}}{{> kanban}}{{/each}}</td>
-        <td class="kanbans-column">{{#each kanbansColumn 2}}{{> kanban}}{{/each}}</td>
-      </tr>
-    </table>
+    <ul class="sortable">
+      {{#each kanbans}}
+        <li>
+        {{> kanban}}
+        </li>
+      {{/each}}
+    </ul>
   </div>
 </template>

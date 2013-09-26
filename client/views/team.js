@@ -5,11 +5,19 @@ Template.dice.rolled = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.wip.kanbansColumn = function(n) {
-  return getKanbans(this.gid, this.color, "wip", n);  
+var getKanbansIn = function(gid,teamColor,where) {
+  return Kanbans.find({ gid:gid, teamColor:teamColor, at:where });    
+};
+
+Template.wip.kanbans = function() {
+  return getKanbansIn(this.gid, this.color, "wip");  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.upstreamPortal.kanbans = function() {
+  return getKanbansIn(this.gid, this.color, "upstream");  
+};
 
 Template.upstreamPortal.toColor = function() {
   if (this.color === "red"   ) return "backlog";
@@ -18,22 +26,17 @@ Template.upstreamPortal.toColor = function() {
   if (this.color === "green" ) return "blue";
 };
 
-
-Template.upstreamPortal.kanbansColumn = function(n) {
-  return getKanbans(this.gid, this.color, "upstream", n);    
-};
-
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.downstreamPortal.kanbans = function() {
+  return getKanbansIn(this.gid, this.color, "downstream");  
+};
 
 Template.downstreamPortal.toColor = function() {
   if (this.color === "red"   ) return "orange";
   if (this.color === "orange") return "blue";
   if (this.color === "blue"  ) return "green";
   if (this.color === "green" ) return "done";
-};
-
-Template.downstreamPortal.kanbansColumn = function(n) {
-  return getKanbans(this.gid, this.color, "downstream", n);      
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,6 +90,9 @@ Template.die.one = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.team.rendered = function() {
+  
+  $('.sortable').sortable();
+  
   // Play a [1]
   dragDropSetup(".dice .die.one",
                 ".wip .kanban.story-is-in-progress",
@@ -190,20 +196,6 @@ var doneKanbanDroppedOnWip = function(event, ui) {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var getKanbans = function(gid,teamColor,at,n) {
-  // Each column goes into a <td> so there are no horizontal gaps between kanbans
-  // TODO: Kanbans.find() is called once per column - find a way to call it once
-  //       and pass the collection as an argument.
-  var kanbans = Kanbans.find({ gid:gid, teamColor:teamColor, at:at }).fetch();
-  var column = [ ];
-  _.each(kanbans, function(kanban,index) {
-    if (index % 3 === n) {
-      column.push(kanban);
-    }
-  });
-  return column;  
-};
 
 var nOnes = function(n) { // eg 3
   return _(n).times(function() { return 1; });  // eg [1,1,1]

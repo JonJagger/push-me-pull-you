@@ -37,6 +37,10 @@ Template.home.events({"click #start":function () {
   page.dashboard().enable();
 }});
 
+Template.home.events({"mouseover #start":function() {
+  log("mouse over");
+}});
+
 // - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.home.events({"keyup #gid":function() {
