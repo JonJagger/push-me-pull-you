@@ -13,11 +13,6 @@ o) at the moment when the cursor hovers over a draggable item it is
    http://minitrello.meteor.com/
    http://jqueryui.com/sortable/
 
-o) Perhaps just have a single list of elements in each wip/portal?
-o) Perhaps have the kanbans running horizontally?
-   If so, the [1] could drop into a specific gap rather than always
-   dropping down to the "botton" gap. Like this.
-
 o) drag-drop no longer works on dashboard. Make this a feature?
    Nice for demos though... Not sure.
 
@@ -41,7 +36,7 @@ o) in Push mode dragging a done wip.kanban will higlight the downstream portal.
    with the idea of the game being about learning. Playing first in push
    mode and then in pull mode creates the greatest contrast.
 
-o) can the crosshair cursor (drag/drop) be position right in the center
+o) can the crosshair cursor (drag/drop) be positioned right in the center
    of the die's dot?
    
 o) Starting to get an idea of how pull mode will work end to end.

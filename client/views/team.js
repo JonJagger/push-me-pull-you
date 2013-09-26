@@ -104,7 +104,7 @@ Template.team.rendered = function() {
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
   dragDropSetup(".upstream.portal .kanban.story-is-done",
-                ".wip", // TODO: fix weird z-index effect here
+                ".wip",
                 doneKanbanDroppedOnWip);
   
   // TODO Pulling[on]
@@ -136,7 +136,8 @@ var dragDropSetup = function(from,to,handler) {
     },
     revert:true,
     revertDuration: 0,
-    opacity:0.75
+    opacity:0.75,
+    zIndex:100
   });  
 };
 
