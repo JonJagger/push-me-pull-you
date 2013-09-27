@@ -1,4 +1,15 @@
 
+o) start with initial columns having something in them. Simulates the situation
+   where kanban is being introduced to team that has too much work in progress.
+   This also seem to be the best option for both the push mode game and for a
+   pull mode game. I'm not quite clear in my head how a pull mode game would
+   progress if there is no work in the system at all to begin with. I think
+   it will only work if there are empty kanbans available to issue as pull
+   requests. 
+
+o) don't need anyone to be backlog or done. Don't need backlog to be on dashboard.
+   But would be nice to have done column on dashboard.
+
 o) at the moment when the cursor hovers over a draggable item it is
    CSS'd according to static CSS. For example
       .wip .kanban.story-is-done:hover
