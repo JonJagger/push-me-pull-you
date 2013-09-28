@@ -30,15 +30,11 @@ var page = {
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Template.home.events({"click #start":function () {
-  var game = { gid:newId(6) };
+  var game = { gid:newId(6), mode:"push" };
   Games.insert(game);
   page.gid(game.gid);
   page.join().enable();
   page.dashboard().enable();
-}});
-
-Template.home.events({"mouseover #start":function() {
-  log("mouse over");
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -

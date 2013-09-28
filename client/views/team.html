@@ -1,15 +1,10 @@
 
 <template name="team">
-  <div class="{{color}} team">    
+  <div class="{{color}} team"
+       data-gid="{{gid}}">
       {{> roll}}
       {{> dice}}      
       {{> board}}
     </div>    
   </div>
-</template>
-
-<template name="roll">
-  <input type="button"
-         value="roll"
-         id="roll">
 </template>

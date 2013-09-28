@@ -3,6 +3,7 @@ Games = new Meteor.Collection('games');
 /*
  * Games.insert({
  *     gid: "138ef8"   // game-id
+ *    mode: "push"     // or "pull"
  * });
  */    
 

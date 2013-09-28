@@ -1,4 +1,22 @@
 
+o) drag drop is dynamic
+o) playable at dashboard
+o) sortable again
+
+o) push pull split
+o) see done column
+o) automate backlog stories entering 1st column in push
+o) empty kanban upstream request in 1st column (to backlog) succeeds immediately
+o) split kanbans
+o) shareable dice
+o) start dashboard showing events
+o) start dashboard showing CFD like diagram
+
+
+
+
+-----------------------------------------------------------------------------
+
 o) start with initial columns having something in them. Simulates the situation
    where kanban is being introduced to team that has too much work in progress.
    This also seem to be the best option for both the push mode game and for a

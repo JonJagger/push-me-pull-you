@@ -89,30 +89,34 @@ Template.die.one = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+var gameMode = function(gid) {
+  return Games.findOne({ gid:""+gid }).mode;   
+}
+
 Template.team.rendered = function() {
-  
-  $('.sortable').sortable();
+
+  //$('.sortable').sortable();
+  var gid = $(".team").data("gid");
+  var mode = gameMode(gid); // gid is not available in rendered()?!
   
   // Play a [1]
   dragDropSetup(".dice .die.one",
                 ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
-  
-  // TODO: Pushing[on]
-  //
-  dragDropSetup(".wip .kanban.story-is-done",
-                ".downstream.portal",
-                doneKanbanDroppedOnDownstreamPortal);
-  dragDropSetup(".upstream.portal .kanban.story-is-done",
-                ".wip",
-                doneKanbanDroppedOnWip);
-  
-  // TODO Pulling[on]
-  //
-  
-  dragDropSetup(".wip .kanban.is-empty",
-                ".upstream.portal",
-                emptyKanbanDroppedOnUpstreamPortal);
+
+  if (mode === "push") {
+    dragDropSetup(".wip .kanban.story-is-done",
+                  ".downstream.portal",
+                  doneKanbanDroppedOnDownstreamPortal);
+    dragDropSetup(".upstream.portal .kanban.story-is-done",
+                  ".wip",
+                  doneKanbanDroppedOnWip);
+  }
+  if (mode === "pull") {    
+    dragDropSetup(".wip .kanban.is-empty",
+                  ".upstream.portal",
+                  emptyKanbanDroppedOnUpstreamPortal);
+  }
   
   // .wip .kanban.story-is-done
   // .downstream.portal .kanban.is-empty
@@ -125,7 +129,7 @@ Template.team.rendered = function() {
 var dragDropSetup = function(from,to,handler) {
   var droppables = function(event) {
       return $(to, $(event.target).team());
-  };
+  };  
   $(from).draggable({
     start:function(event,ui) {
       droppables(event).addClass("droppable")
@@ -135,10 +139,10 @@ var dragDropSetup = function(from,to,handler) {
       droppables(event).removeClass("droppable");
     },
     revert:true,
-    revertDuration: 0,
+    revertDuration:0,
     opacity:0.75,
     zIndex:100
-  });  
+  });
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
