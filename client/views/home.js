@@ -30,7 +30,7 @@ var page = {
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Template.home.events({"click #start":function () {
-  var game = { gid:newId(6), mode:"push" };
+  var game = { gid:newId(6) };
   Games.insert(game);
   page.gid(game.gid);
   page.join().enable();
@@ -67,7 +67,7 @@ Template.home.events({"click #join":function() {
   }
   Teams.insert({ gid:gid, color:color });
   setupTeam(gid,color);  
-  window.open("team/" + gid + "/" + color, "_blank");  
+  window.open("team/" + gid + "/" + color + "/push", "_blank");  
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -

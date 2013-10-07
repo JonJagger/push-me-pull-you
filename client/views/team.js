@@ -89,15 +89,9 @@ Template.die.one = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var gameMode = function(gid) {
-  return Games.findOne({ gid:""+gid }).mode;   
-}
-
 Template.team.rendered = function() {
-
-  //$('.sortable').sortable();
-  var gid = $(".team").data("gid");
-  var mode = gameMode(gid); // gid is not available in rendered()?!
+  
+  var mode = $(".team").data("mode");
   
   // Play a [1]
   dragDropSetup(".dice .die.one",

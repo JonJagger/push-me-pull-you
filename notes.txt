@@ -1,7 +1,7 @@
 
-o) drag drop is dynamic
+o) drag drop is dynamic?
 o) playable at dashboard
-o) sortable again
+o) sortable again (perhaps add outer div to kanbans?)
 
 o) push pull split
 o) see done column
@@ -16,6 +16,76 @@ o) start dashboard showing CFD like diagram
 
 
 -----------------------------------------------------------------------------
+o) Lean Kanban talk and game
+   Each person holds a clip. Coloured areas.
+   Boundary of two areas is where xfer takes place.
+   All stories are same size and don't need to be played with 1s
+   to complete then. Focus is entirely on xfer of work in push/pull
+   modes. Xfer story in clip to downstream team. This leaves you
+   with an empty clip. If you wish to reduce the wip, simply take
+   this person (and their clip) out of the game.
+   Have observers?
+   To simulate there being no wip limits you do not have to
+   xfer a story-card at the boundary so it is always in a clip.
+   Instead you can take the card out of its clip and leave it
+   lying on the boundary table.
+   Perhaps also have an incrementing count.
+   When story enters the system its card is marked with its start time.
+   When it leaves the system its story is marked with its end time.
+   Subtract the two to get its cycle time.
+   
+   There is something more...
+   With a true kanban (eg airport scanner tray, cherry park token)
+   you don't need to refer to a number written somewhere to know
+   whether or not there is spare capacity in the system. That
+   information is _not_ abstracted into a shared piece of knowledge
+   that all participants have to refer back to, and do math on to
+   figure out if there is spare capacity (count the wip, subtract
+   from the wip total).   
+   Instead, the limit is inherent in the system. If the limit
+   is 3 there are 3 kanban. If there is a spare kanban you can
+   use it and now it is not spare. As a participant, you never
+   have to count the overall number of the kanbans. There either
+   is a kanban or there isn't. If there isn't you stop.
+   
+   So how about simulating this too in the talk/game.
+   Have the wip limit (for each team) written on a card
+   and no kanban clips. See if the team can co-ordinate
+   together to adhere to the limit.
+   
+   There is more too.
+   In push you push a kanban of a size you choose.
+   In pull you fulfill a request of the size chosen by the downstream team.
+   
+   Also, in push there is no mechanism for feedback.
+   In pull, the downstream team can regulate the size and the times
+   when a pull-request is made. There is a communication mechanism.
+   In push there is not.
+   
+   Push has a very command and control feel to it.
+   Pull, much more of a service mentality.
+   
+
+o) in pull mode you make a pull request by dropping an empty kanban
+   into the upstream portal. It comes back with a story in it ready to
+   be worked on. You drag the kanban (still in your color) into the
+   wip area and start playing 1's on it. Would it be fairer to match this
+   as close as possible in push mode. Viz, if a full kanban (of the upstream
+   color) appears in your upstream portal, you cannot just drag it onto your wip area.
+   Instead you have to drag the full kanban onto an empty kanban (of your color)
+   in the wip area to xfer the story. Or perhaps simpler. You drag an empty
+   kanban of your color onto the full kanban (of the upstream color) in the
+   upstream portal. This results in the upstream color kanban returning
+   to the upstream teams downstream portal but it is now empty. At the
+   same time, the kanban of your own colour now contains a story but it
+   is still in your upstream portal. You can then drag it onto your wip
+   area and start playing 1s on it.
+   This makes the push/pull mode fairer. It means both operate with an
+   implicit wip limit based on the number of kanbans in play.
+   With luck this will help to emphasize that wip limits can apply in
+   both push and pull modes. And that, arguably, introducing wip limits
+   is more important than ensuring pull.
+   
 
 o) start with initial columns having something in them. Simulates the situation
    where kanban is being introduced to team that has too much work in progress.
