@@ -4,13 +4,6 @@ Template.dashboard.orange = function() { return { gid:this.gid, color:"orange" }
 Template.dashboard.blue   = function() { return { gid:this.gid, color:"blue"   }; };
 Template.dashboard.green  = function() { return { gid:this.gid, color:"green"  }; };
 
-Template.dashboard.rendered = function() {
-  _.each(teamColors(), function(color) {
-      setupDragDrop("push", color);    
-  });
-};
-
-
 /*
  * An alternative way to do this is as follows...
  *
@@ -24,6 +17,14 @@ Template.dashboard.rendered = function() {
  *    
  * you do this instead
  *
- *    {{readTeam}}
+ *    {{redTeam}}
  *    
  */
+
+Template.dashboard.rendered = function() {  
+  var mode = $(".dashboard").data("mode");
+  $(".sortable").sortable();    
+  _.each(teamColors(), function(color) {
+      setupDragDrop(mode, color);    
+  });
+};

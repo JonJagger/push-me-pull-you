@@ -132,7 +132,7 @@ var dragDropSetup = function(color,from,to,handler) {
   from = "."+color+".team "+from;
   to = "."+color+".team "+to;
   var droppables = function(event) {
-      return $(to); //, $(event.target).team());
+      return $(to);
   };  
   $(from).draggable({
     start:function(event,ui) {

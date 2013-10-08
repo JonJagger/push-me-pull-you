@@ -30,7 +30,10 @@ var page = {
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Template.home.events({"click #start":function () {
-  var game = { gid:newId(6) };
+  // TODO: setup page offering
+  //          push/pull choice
+  //          wip limits?
+  var game = { gid:newId(6), mode:"push" };
   Games.insert(game);
   page.gid(game.gid);
   page.join().enable();
@@ -66,14 +69,16 @@ Template.home.events({"click #join":function() {
     return;
   }
   Teams.insert({ gid:gid, color:color });
-  setupTeam(gid,color);  
-  window.open("team/" + gid + "/" + color + "/push", "_blank");  
+  setupTeam(gid,color);
+  window.open("team/" + gid + "/" + color + "/" + game.mode, "_blank");  
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.home.events({"click #dashboard":function() {
-  window.open("dashboard/" + page.gid(), "_blank");    
+  var gid = page.gid();
+  var game = Games.findOne({ gid:gid });
+  window.open("dashboard/" + gid + "/" + game.mode, "_blank");    
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 

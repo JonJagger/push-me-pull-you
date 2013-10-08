@@ -6,16 +6,21 @@ Router.map(function() {
     path: '/team/:gid/:color/:mode',
     data: function() {
       return {
-        gid: this.params.gid,
+          gid: this.params.gid,
         color: this.params.color,
-        mode: this.params.mode
+         mode: this.params.mode
       }
     }
   });
 
   this.route('dashboard', {
-    path: '/dashboard/:gid',
-    data: function() { return { gid: this.params.gid } }
+    path: '/dashboard/:gid/:mode',
+    data: function() {
+      return {
+         gid: this.params.gid,
+        mode: this.params.mode
+      }
+    }
   });
   
 });
