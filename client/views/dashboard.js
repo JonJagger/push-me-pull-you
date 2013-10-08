@@ -8,14 +8,14 @@ Template.dashboard.green  = function() { return { gid:this.gid, color:"green"  }
  * An alternative way to do this is as follows...
  *
  *    Template.dashboard.redTeam = function() {
- *      return Template["edge"]({ gid: gid, color: "red" });  
+ *      return Template["team"]({ gid: gid, color: "red" });  
  *    };
  *
- * and then instead of doing this in dashboard.html
+ * and then instead of doing this...
  * 
- *    {{> edge red}}
+ *    {{> team red}}
  *    
- * you do this instead
+ * you do this instead...
  *
  *    {{redTeam}}
  *    
