@@ -31,12 +31,13 @@ setupDragDrop = function(mode,color) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var dragDropSetup = function(color,from,to,handler) {
-  from = "."+color+".team "+from;
-  to = "."+color+".team "+to;
+  var teamify = function(css) {
+    return "."+color + ".team" + " " + css;
+  };
   var droppables = function(event) {
-      return $(to);
+      return $(teamify(to));
   };  
-  $(from).draggable({
+  $(teamify(from)).draggable({
     start:function(event,ui) {
       droppables(event).addClass("droppable")
                        .droppable({ drop:handler });      
