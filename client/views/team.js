@@ -91,6 +91,8 @@ Template.die.one = function() {
 
 Template.team.rendered = function() {
   
+  $(".sortable").sortable();
+  
   var mode = $(".team").data("mode");
   
   // Play a [1]

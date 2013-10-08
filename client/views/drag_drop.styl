@@ -11,12 +11,22 @@ drag_drop_border_style = dotted
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .one:hover
-    .wip .kanban.story-is-done:hover
-    .wip .kanban.is-empty:hover /* TODO: ONLY IN PULL MODE */
-    .upstream.portal .kanban.story-is-done:hover
         border-color drag_drop_border_color
         border-style solid
         cursor move
+    
+    &[data-mode='push']
+        & .wip .kanban.story-is-done:hover
+        & .upstream.portal .kanban.story-is-done:hover
+            border-color drag_drop_border_color
+            border-style solid
+            cursor move
+
+    &[data-mode='pull']
+        & .wip .kanban.is-empty:hover
+            border-color drag_drop_border_color
+            border-style solid
+            cursor move
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Once dragging starts
