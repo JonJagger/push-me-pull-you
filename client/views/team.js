@@ -90,21 +90,28 @@ Template.die.one = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.team.rendered = function() {
-  
-  $(".sortable").sortable();
-  
+  $(".sortable").sortable();  
   var mode = $(".team").data("mode");
-  
+  var color = $(".team").color();
+  setupDragDrop(mode, color);  
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+setupDragDrop = function(mode,color) {
   // Play a [1]
-  dragDropSetup(".dice .die.one",
+  dragDropSetup(color,
+                ".dice .die.one",
                 ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
 
   if (mode === "push") {
-    dragDropSetup(".wip .kanban.story-is-done",
+    dragDropSetup(color,
+                  ".wip .kanban.story-is-done",
                   ".downstream.portal",
                   doneKanbanDroppedOnDownstreamPortal);
-    dragDropSetup(".upstream.portal .kanban.story-is-done",
+    dragDropSetup(color,
+                  ".upstream.portal .kanban.story-is-done",
                   ".wip",
                   doneKanbanDroppedOnWip);
   }
@@ -113,18 +120,19 @@ Template.team.rendered = function() {
                   ".upstream.portal",
                   emptyKanbanDroppedOnUpstreamPortal);
   }
-  
   // .wip .kanban.story-is-done
   // .downstream.portal .kanban.is-empty
   // AND the sizes match...
-  // how to check for that?
+  // how to check for that?  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var dragDropSetup = function(from,to,handler) {
+var dragDropSetup = function(color,from,to,handler) {
+  from = "."+color+".team "+from;
+  to = "."+color+".team "+to;
   var droppables = function(event) {
-      return $(to, $(event.target).team());
+      return $(to); //, $(event.target).team());
   };  
   $(from).draggable({
     start:function(event,ui) {
