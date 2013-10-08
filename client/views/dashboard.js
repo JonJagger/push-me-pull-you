@@ -23,8 +23,8 @@ Template.dashboard.green  = function() { return { gid:this.gid, color:"green"  }
 
 Template.dashboard.rendered = function() {  
   var mode = $(".dashboard").data("mode");
-  $(".sortable").sortable();    
   _.each(teamColors(), function(color) {
       setupDragDrop(mode, color);    
   });
+  $(".sortable").sortable();    
 };

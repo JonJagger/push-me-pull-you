@@ -5,10 +5,6 @@ Template.dice.rolled = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var getKanbansIn = function(gid,teamColor,where) {
-  return Kanbans.find({ gid:gid, teamColor:teamColor, at:where });    
-};
-
 Template.wip.kanbans = function() {
   return getKanbansIn(this.gid, this.color, "wip");  
 };
@@ -90,13 +86,16 @@ Template.die.one = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.team.rendered = function() {
-  $(".sortable").sortable();  
-  var mode = $(".team").data("mode");
-  var color = $(".team").color();
-  setupDragDrop(mode, color);  
+  var team = $(".team");
+  setupDragDrop(team.data("mode"), team.color());  
+  $(".sortable").sortable();
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var getKanbansIn = function(gid,teamColor,where) {
+  return Kanbans.find({ gid:gid, teamColor:teamColor, at:where });    
+};
 
 var nOnes = function(n) { // eg 3
   return _(n).times(function() { return 1; });  // eg [1,1,1]
