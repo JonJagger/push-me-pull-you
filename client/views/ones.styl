@@ -26,18 +26,17 @@
     padding die-padding
     &.not-one
         background white
-        background white
     &.red.one
-        background red_color
+        background   red_color
         border-color red_color
     &.orange.one
-        background orange_color
+        background   orange_color
         border-color orange_color
     &.blue.one
-        background blue_color
+        background   blue_color
         border-color blue_color
     &.green.one
-        background green_color
+        background   green_color
         border-color green_color
     &.one:hover
         border-color black
@@ -58,10 +57,8 @@
     &.green
         background   green_color
         border-color green_color
-    
-    
+
 .die.hole-one
-    border-color white
     border-style dotted
     border-width die-one-border-width 
     padding die-one-padding
@@ -82,11 +79,37 @@
         & .dot
             border-color green_color
 
-.red.kanban .hole-one .dot
-    border-color lightest_red_color
-.orange.kanban .hole-one .dot
-    border-color lightest_orange_color
-.blue.kanban .hole-one .dot
-    border-color lightest_blue_color
-.green.kanban .hole-one .dot
-    border-color lightest_green_color
+.red.kanban .hole-one
+    border-color red_color
+    & .dot
+        border-color lightest_red_color
+.orange.kanban .hole-one
+    border-color orange_color
+    & .dot
+        border-color lightest_orange_color
+.blue.kanban .hole-one
+    border-color blue_color
+    & .dot
+        border-color lightest_blue_color
+.green.kanban .hole-one
+    border-color green_color
+    & .dot
+        border-color lightest_green_color
+
+.kanban .not-one
+    border-width die-one-border-width 
+    background white
+    border-style dotted
+    padding die-one-padding
+
+.red.kanban .not-one
+    border-color red_color
+.orange.kanban .not-one
+    border-color orange_color
+.blue.kanban .not-one
+    border-color blue_color
+.green.kanban .not-one
+    border-color green_color
+    
+
+    
