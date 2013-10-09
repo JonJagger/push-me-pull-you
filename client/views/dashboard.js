@@ -27,5 +27,6 @@ Template.dashboard.rendered = function() {
       setupDragDrop(mode, color);    
   });
   $(".sortable").sortable();
-  favIcon(document, 'http://www.jaggersoft.com/AllOnes.png'); // not working?!
+  // append ?v=N to force refresh and avoid browser cache
+  favIcon(document, 'http://www.jaggersoft.com/AllOnes.png?v=3');
 };
