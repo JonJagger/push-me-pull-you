@@ -26,5 +26,6 @@ Template.dashboard.rendered = function() {
   _.each(teamColors(), function(color) {
       setupDragDrop(mode, color);    
   });
-  $(".sortable").sortable();    
+  $(".sortable").sortable();
+  favIcon(document, 'http://www.jaggersoft.com/AllOnes.png'); // not working?!
 };

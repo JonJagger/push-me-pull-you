@@ -92,7 +92,7 @@ Template.team.rendered = function() {
   $(".sortable").sortable();
   
   color = color.charAt(0).toUpperCase() + color.slice(1);
-  favicon(document, 'http://www.jaggersoft.com/' + color + 'One.png');
+  favIcon(document, 'http://www.jaggersoft.com/' + color + 'One.png');
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
