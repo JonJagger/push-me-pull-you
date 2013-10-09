@@ -1,12 +1,8 @@
 
 <template name="wip">
   <div class="wip">
-    <ul class="sortable">
-      {{#each kanbans}}
-      <li>
-        {{> kanban}}
-      </li>
-      {{/each}}
-    </ul>
+    {{#each kanbans}}
+      {{> kanban}}
+    {{/each}}
   </div>
 </template>

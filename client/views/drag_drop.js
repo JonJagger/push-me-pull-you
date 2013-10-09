@@ -6,7 +6,7 @@ setupDragDrop = function(mode,color) {
                 ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
 
-  //if (mode === "push") {
+  if (mode === "push") {
     dragDropSetup(color,
                   ".wip .kanban.story-is-done",
                   ".downstream.portal",
@@ -15,19 +15,21 @@ setupDragDrop = function(mode,color) {
                   ".upstream.portal .kanban.story-is-done",
                   ".wip",
                   doneKanbanDroppedOnWip);
-  //}
-  //if (mode === "pull") {    
+  }
+  if (mode === "pull") {    
     dragDropSetup(color,
                   ".wip .kanban.is-empty",
                   ".upstream.portal",
                   emptyKanbanDroppedOnUpstreamPortal);
-  //}
-  
+    // Note that in mode==push there is also a drag for
+    //           .wip .kanban.story-is-done
+    //           which means you cannot have push and pull
+    //           active at the same time. The latter cancels the former.
     dragDropSetup(color,
                   ".wip .kanban.story-is-done",
                   ".downstream.portal .kanban.is-empty",
                   doneKanbanDroppedOnEmptyKanban);
-  
+  }
   // .wip .kanban.story-is-done
   // .downstream.portal .kanban.is-empty
   // AND the sizes match...

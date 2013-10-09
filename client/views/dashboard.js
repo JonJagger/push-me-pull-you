@@ -26,7 +26,6 @@ Template.dashboard.rendered = function() {
   _.each(teamColors(), function(color) {
       setupDragDrop(mode, color);    
   });
-  $(".sortable").sortable();
   // append ?v=N to force refresh and avoid browser cache
   favIcon(document, 'http://www.jaggersoft.com/AllOnes.png?v=3');
 };
