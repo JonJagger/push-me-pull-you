@@ -30,10 +30,6 @@ setupDragDrop = function(mode,color) {
                   ".downstream.portal .kanban.is-empty",
                   doneKanbanDroppedOnEmptyKanban);
   }
-  // .wip .kanban.story-is-done
-  // .downstream.portal .kanban.is-empty
-  // AND the sizes match...
-  // how to check for that?  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -118,7 +114,9 @@ var doneKanbanDroppedOnWip = function(event, ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
-  alert("PULL FULFIL");
+  log("Pull request fulfil...?");
+  // TODO: the sizes have to "match"
+  //       how to check for that?    
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
