@@ -52,7 +52,7 @@ Template.kanban.state = function() {
 // If a kanban's size is 5 and it contains a story whose
 // size is 4 then it has one hole.
 // Experimental. Not sure if this is valuable enough to keep.
-// see {{#each holes}} in team.html
+// see {{#each holes}} in kanban.html
 //
 Template.kanban.holes = function() {
   return nOnes(this.size - this.storySize);
@@ -63,7 +63,7 @@ Template.kanban.holes = function() {
 // on it then it has no gaps.
 // If a story's size is 4 and it has had 3 ones played
 // on it then it has one gap.
-// see {{#each gaps}} in team.html
+// see {{#each gaps}} in kanban.html
 //
 Template.kanban.gaps = function() {
   return nOnes(this.storySize - this.ones.length);
@@ -71,10 +71,15 @@ Template.kanban.gaps = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // The number of ones that have been played on a story.
-// see {{#each ones}} in team.html
+// see kanban.html
 //
-Template.kanban.ones = function() {
-  return this.ones; // eg ['red','red','blue']
+
+Template.kanban.onesColors = function() {
+  if (this.ones == "") {
+    return ","; // HACK, returning "" causes kanban.html to emit ...data-ones>
+  } else {      //                    rather than ...data-ones="">
+    return this.ones; //              and I don't know why
+  }
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -121,7 +126,8 @@ $.fn.team = function() {
 
 $.fn.ones = function(/*kanban*/) {  
   var ones = $(this).data("ones");
-  return (ones === "") ? [ ] : ones.split(",");  
+  // see Template.kanban.onesColors() HACK
+  return (ones === ",") ? [ ] : ones.split(",");
 };
 
 $.fn.storySize = function(/*kanban*/) {

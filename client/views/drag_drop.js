@@ -6,7 +6,7 @@ setupDragDrop = function(mode,color) {
                 ".wip .kanban.story-is-in-progress",
                 oneDroppedOnKanban);
 
-  if (mode === "push") {
+  //if (mode === "push") {
     dragDropSetup(color,
                   ".wip .kanban.story-is-done",
                   ".downstream.portal",
@@ -15,13 +15,19 @@ setupDragDrop = function(mode,color) {
                   ".upstream.portal .kanban.story-is-done",
                   ".wip",
                   doneKanbanDroppedOnWip);
-  }
-  if (mode === "pull") {    
+  //}
+  //if (mode === "pull") {    
     dragDropSetup(color,
                   ".wip .kanban.is-empty",
                   ".upstream.portal",
                   emptyKanbanDroppedOnUpstreamPortal);
-  }
+  //}
+  
+    dragDropSetup(color,
+                  ".wip .kanban.story-is-done",
+                  ".downstream.portal .kanban.is-empty",
+                  doneKanbanDroppedOnEmptyKanban);
+  
   // .wip .kanban.story-is-done
   // .downstream.portal .kanban.is-empty
   // AND the sizes match...
@@ -105,6 +111,12 @@ var doneKanbanDroppedOnWip = function(event, ui) {
       at:"wip"    
     }
   });    
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
+  alert("PULL FULFIL");
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
