@@ -33,7 +33,7 @@ Template.home.events({"click #start":function () {
   // TODO: setup page offering
   //          push/pull choice
   //          wip limits?
-  var game = { gid:newId(6), mode:"push" };
+  var game = { gid:newId(6), mode:"pull" };
   Games.insert(game);
   page.gid(game.gid);
   page.join().enable();
