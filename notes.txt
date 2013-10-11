@@ -1,7 +1,4 @@
 
-o) drag drop is dynamic?
-o) playable at dashboard
-o) sortable again (perhaps add outer div to kanbans?)
 
 o) push pull split
 o) see done column
@@ -12,7 +9,11 @@ o) shareable dice
 o) start dashboard showing events
 o) start dashboard showing CFD like diagram
 
-
+o) basic difference is with-wip-limits vs with no wip-limits.
+   When there are no wip-limits the kanban should simply be
+   something that exists which contains the spaces for the 1s.
+   Only when there are limits are these actually limited.
+   
 
 
 -----------------------------------------------------------------------------

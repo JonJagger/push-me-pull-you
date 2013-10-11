@@ -116,7 +116,16 @@ var doneKanbanDroppedOnWip = function(event, ui) {
 var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
   log("Pull request fulfil...?");
   // TODO: the sizes have to "match"
-  //       how to check for that?    
+  //       how to check for that?
+  // Or do they have to match?
+  // Suppose the 1's from the full-kanban are moved into
+  // the pull-request kanban. And that may not fill it up.
+  // So it stays in the downstream portal.
+  // But it means that it's not longer empty.
+  // Which in turn means I need to be able to drag onto
+  // empty or in-progress kanbans... viz not ones that are done.
+  
+  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
