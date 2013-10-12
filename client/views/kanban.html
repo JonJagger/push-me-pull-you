@@ -4,6 +4,15 @@
        data-id="{{_id}}"
        data-size="{{size}}"
        data-ones="{{onesColors}}">
+
+    {{#each voidGaps}}
+      <div class="one-container">      
+        <div class="die hole-one">
+          <div class="dot"></div>
+        </div>
+      </div>
+    {{/each}}
+    
     {{#each whiteGaps}}
       <div class="one-container">      
         <div class="die not-one">
@@ -11,6 +20,7 @@
         </div>
       </div>
     {{/each}}
+    
     {{#each ones}}
       <div class="one-container">            
         <div class="{{this}} die done-one">

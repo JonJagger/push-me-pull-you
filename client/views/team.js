@@ -47,6 +47,12 @@ Template.kanban.state = function() {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Template.kanban.voidGaps = function() {
+  return nOnes(0);
+};
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // If a story's size is 4 and it has had 4 ones played
 // on it then it has no white gaps.
 // If a story's size is 4 and it has had 3 ones played

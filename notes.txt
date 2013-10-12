@@ -37,8 +37,6 @@
 // Ok. Like this idea a lot.
 // But don't like the terminology hole->gap->done
 // hole and gap are too similar.
-// hole->blank->done?
-// void->white->done?
 // voidGap -> whiteGap -> done?
 //
 // Still not entirely clear what the difference between the two modes
@@ -66,6 +64,11 @@
    4-hole-kanban (which can only be used to signal a pull request)
    and the target kanban to teleport to the downstream teams
    upstream portal as a 4-gap-kanban.
+
+   kanban.no-story
+   kanban.story.is-empty
+   kanban.story.is-in-progress
+   kanban.story.is-done
 
 
 
