@@ -38,24 +38,12 @@ Template.downstreamPortal.toColor = function() {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Template.kanban.state = function() {
-  if (this.storySize === 0)
+  if (this.ones.length === 0)
     return "is-empty";
-  if (this.ones.length < this.storySize)
+  if (this.ones.length < this.size)
     return "story-is-in-progress";
-  if (this.ones.length === this.storySize)
+  if (this.ones.length === this.size)
     return "story-is-done";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// If a kanban's size is 5 and it contains a story whose
-// size is 5 then it has no holes.
-// If a kanban's size is 5 and it contains a story whose
-// size is 4 then it has one hole.
-// Experimental. Not sure if this is valuable enough to keep.
-// see {{#each holes}} in kanban.html
-//
-Template.kanban.holes = function() {
-  return nOnes(this.size - this.storySize);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,7 +54,7 @@ Template.kanban.holes = function() {
 // see {{#each gaps}} in kanban.html
 //
 Template.kanban.gaps = function() {
-  return nOnes(this.storySize - this.ones.length);
+  return nOnes(this.size - this.ones.length);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,8 +65,8 @@ Template.kanban.gaps = function() {
 Template.kanban.onesColors = function() {
   if (this.ones == "") {
     return ","; // HACK, returning "" causes kanban.html to emit ...data-ones>
-  } else {      //                    rather than ...data-ones="">
-    return this.ones; //              and I don't know why
+  } else {                         // rather than ...data-ones="">
+    return this.ones;              // and I don't know why
   }
 };
 
@@ -126,10 +114,6 @@ $.fn.ones = function(/*kanban*/) {
   var ones = $(this).data("ones");
   // see Template.kanban.onesColors() HACK
   return (ones === ",") ? [ ] : ones.split(",");
-};
-
-$.fn.storySize = function(/*kanban*/) {
-  return $(this).data("story-size");
 };
 
 $.fn.id = function() {

@@ -114,16 +114,25 @@ var doneKanbanDroppedOnWip = function(event, ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
+  var doneKanban = ui.draggable;
+  var emptyKanban = $(this);  
+  var ones = doneKanban.ones();
+  
+  Kanbans.update(doneKanban.id(), { $set: { ones:[ ] } });
+  
+  // TODO: what if number of ones being xferred is
+  //       greater than size of kanban being dropped on?
+  //       What happens to "left-over" 1s?
+  
+  Kanbans.update(emptyKanban.id(), { $set: { ones:ones } })
+  
+  // if emptyKanban is now done, move it downstream
+  
+  // TODO: have to be able to drop doneKanban onto
+  //       any kanban in the downstream portal, not just
+  //       empty ones (because they can fill up partially)
+  
   log("Pull request fulfil...?");
-  // TODO: the sizes have to "match"
-  //       how to check for that?
-  // Or do they have to match?
-  // Suppose the 1's from the full-kanban are moved into
-  // the pull-request kanban. And that may not fill it up.
-  // So it stays in the downstream portal.
-  // But it means that it's not longer empty.
-  // Which in turn means I need to be able to drag onto
-  // empty or in-progress kanbans... viz not ones that are done.
   
   
 };

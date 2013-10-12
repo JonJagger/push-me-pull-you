@@ -21,8 +21,7 @@ Kanbans = new Meteor.Collection('kanbans');
  *         gid: "138ef8",
  *   teamColor: "blue",
  *       color: "red",     // of the kanban
- *        size: "4",       // of the kanban
- *   storySize: "3",       // number of 1s in this story
+ *        size: "4",       // number of 1s in this story
  *        ones: "2"        // number of 1s played so far
  *          at: "wip"      // or "upstream" or "downstream"
  * });

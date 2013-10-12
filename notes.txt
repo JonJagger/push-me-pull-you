@@ -1,4 +1,23 @@
 
+o) lose the 3rd kanban category. empty or started. holes but no gaps
+
+o) basic difference is with-wip-limits vs with no wip-limits.
+   When there are no wip-limits the kanban should simply be
+   something that exists which contains the spaces for the 1s.
+   Only when there are limits are these actually limited.
+   No limits.
+     pull
+       kanban.done --> kanbans on downstream portal
+          ones xfer, if downstream portal is done it moves to
+                        upstream portal downstream
+                     kanban of kanban.done is thrown away.
+                     in fact it is always thrown away.
+                     that's not the issue.
+                     the issue is whether a kanban in a teams upstream portal
+                     can be xferred onto the wip area.
+                     When there is no wip-limit the answer is yes.
+                     When there is a wip-limit the answer is only
+                        within the limit.
 
 o) push pull split
 o) see done column
@@ -8,13 +27,6 @@ o) split kanbans
 o) shareable dice
 o) start dashboard showing events
 o) start dashboard showing CFD like diagram
-
-o) basic difference is with-wip-limits vs with no wip-limits.
-   When there are no wip-limits the kanban should simply be
-   something that exists which contains the spaces for the 1s.
-   Only when there are limits are these actually limited.
-   
-
 
 -----------------------------------------------------------------------------
 o) Lean Kanban talk and game
