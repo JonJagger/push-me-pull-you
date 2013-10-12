@@ -48,12 +48,12 @@ Template.kanban.state = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // If a story's size is 4 and it has had 4 ones played
-// on it then it has no gaps.
+// on it then it has no white gaps.
 // If a story's size is 4 and it has had 3 ones played
-// on it then it has one gap.
-// see {{#each gaps}} in kanban.html
+// on it then it has one white gap.
+// see {{#each whiteGaps}} in kanban.html
 //
-Template.kanban.gaps = function() {
+Template.kanban.whiteGaps = function() {
   return nOnes(this.size - this.ones.length);
 };
 

@@ -1,5 +1,73 @@
 
-o) lose the 3rd kanban category. empty or started. holes but no gaps
+
+// It is odd that a kanban goes through the following transition
+// 1. empty in wip area
+// 2. dragged into upstream portal (pull)
+// 3. teleports to upstream team's downstream portal
+// 4. comes back into this team's upstream portal
+// 5. is dragged back into the wip area where it started
+// What is to stop someone just working directly on the
+// kanban in the wip area and not bothering with the
+// pull request at all?
+// It seems like I do actually need a 3rd state.
+// A kanban (with size) that is full of holes
+// rather than full of gaps. In other words, a kanban
+// that does not have a story in it is used to issue a pull request
+// and when that request is fulfilled, it comes back as a kanban
+// with an empty story in it.
+// How about this idea...
+// For a pull-request, the empty 3-kanban is in the downstream portal
+// and appears as 3 holes. Now, as each 1 is xferred from a done-kanban
+// in the wip area, the hole changes into a gap, viz from a dashed outline
+// to a solid white square. When all the holes have changed into gaps
+// then the kanban comes back to the downstream teams upstream portal
+// as a kanban that has 3-gaps rather than 3-holes.
+// Follow this through...
+// Red team plays 3-kanban that is done, onto pull request 3-kanban-3-holes
+// The effect is that
+// 1. the 3-kanban in the portal changes to 3-kanban-3-gaps
+// 2. the 3-kanban in the portal xfers to the downstream teams upstream portal
+// 3. the dragged 3-kanban-done is now in the wip area but it is 3-kanban-3-holes
+//    viz, it is not 3-kanban-3-gaps (in which state it would be workable in the wip area)
+//         it is a 3-kanban-3-holes
+// 4. the only thing you can do with the 3-kanban-3-holes in the wip-area
+//    is to drag it onto the upstream portal, signalling a pull-request
+//    which will come back as a 3-kanban-3-gaps.
+//
+// Ok. Like this idea a lot.
+// But don't like the terminology hole->gap->done
+// hole and gap are too similar.
+// hole->blank->done?
+// void->white->done?
+// voidGap -> whiteGap -> done?
+//
+// Still not entirely clear what the difference between the two modes
+// with and without limits...
+// Perhaps not try to do everything. How about the following sequence
+// 1. Push no wip-limit.
+   How? story enters the system in a kanban. Can always do so.
+   kanban can always be dragged from upstream portal into wip-area.
+// 2. Push with wip-limit
+   How? limit per wip-area. If full, then kanban in upstream portal
+   cannot be dragged into wip-area until kanban from wip-area is
+   dragged into downstream portal thus freeing capacity.
+// 3. Pull with wip-limit
+   How? This involves the introduction of holes.
+   A kanban starts life in the wip-area but with no story in it.
+   Thus a 4-kanban is a 4-hole-kanban with 4 dashed non-white squares.
+   All you can do with these is drag them into the upstream portal
+   to signal a pull request.
+   For the first team this will be satisfied immediately and will
+   come back (in its upstream portal) as a 4-gap kanban.
+   This is then dragged onto the teams wip area and is worked on.
+   When it is done then it can be dragged onto a 4-holes-kanban
+   of the downstream teams color in its downstream portal.
+   This causes the dragged kanban to go back to being
+   4-hole-kanban (which can only be used to signal a pull request)
+   and the target kanban to teleport to the downstream teams
+   upstream portal as a 4-gap-kanban.
+
+
 
 o) basic difference is with-wip-limits vs with no wip-limits.
    When there are no wip-limits the kanban should simply be
