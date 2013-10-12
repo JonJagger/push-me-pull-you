@@ -23,11 +23,11 @@ setupDragDrop = function(mode,color) {
                   emptyKanbanDroppedOnUpstreamPortal);
     // Note that in mode==push there is also a drag for
     //           .wip .kanban.story-is-done
-    //           which means you cannot have push and pull
-    //           active at the same time. The latter cancels the former.
+    //           which means you cannot have push and pull active at
+    //           the same time as the latter drag cancels the former.
     dragDropSetup(color,
                   ".wip .kanban.story-is-done",
-                  ".downstream.portal .kanban.is-empty",
+                  ".downstream.portal .kanban",
                   doneKanbanDroppedOnEmptyKanban);
   }
 };
@@ -127,11 +127,7 @@ var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
   Kanbans.update(emptyKanban.id(), { $set: { ones:ones } })
   
   // if emptyKanban is now done, move it downstream
-  
-  // TODO: have to be able to drop doneKanban onto
-  //       any kanban in the downstream portal, not just
-  //       empty ones (because they can fill up partially)
-  
+    
   log("Pull request fulfil...?");
   
   
