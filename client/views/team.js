@@ -39,7 +39,7 @@ Template.downstreamPortal.toColor = function() {
 
 Template.kanban.state = function() {
   if (this.ones.length === 0)
-    return "is-empty";
+    return "is-empty is-in-progress";
   if (this.ones.length < this.size)
     return "is-in-progress";
   if (this.ones.length === this.size)
