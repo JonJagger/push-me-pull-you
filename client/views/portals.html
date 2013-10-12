@@ -2,25 +2,17 @@
 <template name="upstreamPortal">
   <div class="upstream portal"
        data-to-team="{{toColor}}">    
-    <ul class="sortable">
       {{#each kanbans}}
-      <li>
         {{> kanban}}
-      </li>
       {{/each}}
-    </ul>
   </div>
 </template>
 
 <template name="downstreamPortal">
   <div class="downstream portal"
        data-to-team="{{toColor}}">      
-    <ul class="sortable">
       {{#each kanbans}}
-      <li>
         {{> kanban}}
-      </li>
       {{/each}}
-    </ul>
   </div>
 </template>
