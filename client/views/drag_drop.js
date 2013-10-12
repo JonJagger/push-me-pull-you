@@ -123,9 +123,23 @@ var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
   //       greater than size of kanban being dropped on?
   //       What happens to "left-over" 1s?
   
+  
   if (emptyKanban.ones().length + ones.length === emptyKanban.size()) {
     newValues.teamColor = emptyKanban.color();
     newValues.at = "upstream";
+    // I think ones should be reset to [ ] so that
+    // when the kanban request is fulfilled it comes
+    // back as empty in the upstream portal.
+    // Then the empty kanban can be dragged into the wip area.
+    // But it is odd that a kanban goes through this transition
+    // 1. empty in wip area
+    // 2. dragged into upstream portal (pull)
+    // 3. teleports to upstream team's downstream portal
+    // 4. comes back into this team's upstream portal
+    // 5. is dragged back into the wip area where it started
+    // What is to stop someone just working directly on the
+    // kanban in the wip area and not bothering with the
+    // pull request at all?
   }
   Kanbans.update(emptyKanban.id(), { $set: newValues })
   
