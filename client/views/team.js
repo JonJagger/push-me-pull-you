@@ -41,9 +41,9 @@ Template.kanban.state = function() {
   if (this.ones.length === 0)
     return "is-empty";
   if (this.ones.length < this.size)
-    return "story-is-in-progress";
+    return "is-in-progress";
   if (this.ones.length === this.size)
-    return "story-is-done";
+    return "is-done";
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -

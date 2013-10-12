@@ -16,8 +16,8 @@ drag_drop_border_style = dotted
         cursor move
     
     &[data-mode='push']
-        & .wip .kanban.story-is-done:hover
-        & .upstream.portal .kanban.story-is-done:hover
+        & .wip .kanban.is-done:hover
+        & .upstream.portal .kanban.is-done:hover
             border-color drag_drop_border_color
             border-style solid
             cursor move
@@ -34,7 +34,7 @@ drag_drop_border_style = dotted
     //
     .ui-draggable-dragging.one    
     .ui-draggable-dragging.kanban.is-empty
-    .ui-draggable-dragging.kanban.story-is-done  
+    .ui-draggable-dragging.kanban.is-done  
         border-color drag_drop_border_color
         border-style drag_drop_border_style
         cursor crosshair
@@ -44,7 +44,7 @@ drag_drop_border_style = dotted
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
     .board .wip.droppable
-    .board .wip .kanban.story-is-in-progress.droppable
+    .board .wip .kanban.is-in-progress.droppable
     .board .downstream.portal.droppable
     .board .upstream.portal.droppable
     .board .downstream.portal .kanban.droppable

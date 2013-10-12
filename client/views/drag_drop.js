@@ -3,16 +3,16 @@ setupDragDrop = function(mode,color) {
   // Play a [1]
   dragDropSetup(color,
                 ".dice .die.one",
-                ".wip .kanban.story-is-in-progress",
+                ".wip .kanban.is-in-progress",
                 oneDroppedOnKanban);
 
   if (mode === "push") {
     dragDropSetup(color,
-                  ".wip .kanban.story-is-done",
+                  ".wip .kanban.is-done",
                   ".downstream.portal",
                   doneKanbanDroppedOnDownstreamPortal);
     dragDropSetup(color,
-                  ".upstream.portal .kanban.story-is-done",
+                  ".upstream.portal .kanban.is-done",
                   ".wip",
                   doneKanbanDroppedOnWip);
   }
@@ -26,7 +26,7 @@ setupDragDrop = function(mode,color) {
     //           which means you cannot have push and pull active at
     //           the same time as the latter drag cancels the former.
     dragDropSetup(color,
-                  ".wip .kanban.story-is-done",
+                  ".wip .kanban.is-done",
                   ".downstream.portal .kanban",
                   doneKanbanDroppedOnEmptyKanban);
   }
@@ -129,11 +129,7 @@ var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
   // if emptyKanban is now done, move it to downstream portal
   // which is the team color == kanban color
   
-  
-    
   log("Pull request fulfil...?");
-  
-  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
