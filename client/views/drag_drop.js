@@ -115,21 +115,21 @@ var doneKanbanDroppedOnWip = function(event, ui) {
 
 var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
   var doneKanban = ui.draggable;
-  var emptyKanban = $(this);  
+  var emptyKanban = $(this);
   var ones = doneKanban.ones();
-  
-  Kanbans.update(doneKanban.id(), { $set: { ones:[ ] } });
+  var newValues =  { ones:ones };
   
   // TODO: what if number of ones being xferred is
   //       greater than size of kanban being dropped on?
   //       What happens to "left-over" 1s?
   
-  Kanbans.update(emptyKanban.id(), { $set: { ones:ones } })
+  if (emptyKanban.ones().length + ones.length === emptyKanban.size()) {
+    newValues.teamColor = emptyKanban.color();
+    newValues.at = "upstream";
+  }
+  Kanbans.update(emptyKanban.id(), { $set: newValues })
   
-  // if emptyKanban is now done, move it to downstream portal
-  // which is the team color == kanban color
-  
-  log("Pull request fulfil...?");
+  Kanbans.update(doneKanban.id(), { $set: { ones:[ ] } });  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
