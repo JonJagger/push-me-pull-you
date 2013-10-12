@@ -126,7 +126,10 @@ var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
   
   Kanbans.update(emptyKanban.id(), { $set: { ones:ones } })
   
-  // if emptyKanban is now done, move it downstream
+  // if emptyKanban is now done, move it to downstream portal
+  // which is the team color == kanban color
+  
+  
     
   log("Pull request fulfil...?");
   
@@ -158,8 +161,8 @@ $.fn.ones = function(/*kanban*/) {
   return (ones === "") ? [ ] : ones.split(",");  
 };
 
-$.fn.storySize = function(/*kanban*/) {
-  return $(this).data("story-size");
+$.fn.size = function(/*kanban*/) {
+  return $(this).data("size");
 };
 
 $.fn.id = function() {
