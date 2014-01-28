@@ -1,3 +1,4 @@
 
-TODO: switch from ones to simply sized work-cards
+TODO: switch from ones to simple sized work-cards
+TODO: add pad gesture movement as alternative to mouse drag/drop
 TODO: start on CFD diagrams (use flot?)
