@@ -97,12 +97,9 @@ var setupTeam = function(gid,teamColor) {
   };
   makeKanban(1, [ ]);
   makeKanban(5, [oneColor,"orange"]);
-  makeKanban(3, [oneColor,oneColor]);
+  makeKanban(3, [oneColor,oneColor,oneColor]);
   makeKanban(4, [ ]);  
   makeKanban(1, [oneColor]);
   
-  _(6).times(function() {
-      Dice.insert({ gid:gid, teamColor:teamColor, color:teamColor, value:rollDie() });
-  });
 };
 

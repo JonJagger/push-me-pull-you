@@ -26,12 +26,3 @@ Kanbans = new Meteor.Collection('kanbans');
  * });
  */
 
-Dice = new Meteor.Collection('dice');
-/*
-  * Dice.insert({
- *         gid: "138ef8",
- *   teamColor: "blue",
- *       color: "red",
- *       value: "3"
- * });
- */
