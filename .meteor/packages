@@ -8,6 +8,6 @@ autopublish
 insecure
 preserve-inputs
 jquery
-iron-router
 jquery-ui
+iron-router
 stylus
