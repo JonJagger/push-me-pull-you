@@ -96,7 +96,7 @@ var setupTeam = function(gid,teamColor) {
                      ones:ones });    
   };
   makeKanban(1, [ ]);
-  makeKanban(5, [oneColor,"orange"]);
+  makeKanban(5, [oneColor,oneColor]);
   makeKanban(3, [oneColor,oneColor,oneColor]);
   makeKanban(4, [ ]);  
   makeKanban(1, [oneColor]);
