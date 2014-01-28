@@ -1,0 +1,6 @@
+
+From project home directory
+mrt uninstall --system
+mrt add iron-router
+mrt add stylus
+

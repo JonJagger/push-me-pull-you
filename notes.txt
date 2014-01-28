@@ -1,10 +1,4 @@
 
-mrt uninstall --system
-mrt add iron-router
-
-nib does not seem to be working...
-
-
 
 // It is odd that a kanban goes through the following transition
 // 1. empty in wip area
