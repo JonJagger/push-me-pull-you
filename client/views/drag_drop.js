@@ -1,10 +1,5 @@
 
 setupDragDrop = function(color) {
-  // Play a [1]
-  dragDropSetup(color,
-                ".dice .die.one",
-                ".wip .kanban.is-in-progress",
-                oneDroppedOnKanban);
 
   //if (mode === "push") {
     dragDropSetup(color,
@@ -56,18 +51,6 @@ var dragDropSetup = function(color,from,to,handler) {
     opacity:0.75,
     zIndex:100
   });
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var oneDroppedOnKanban = function(event,ui) {
-  var one    = ui.draggable;
-  var kanban = $(this);
-  var ones   = kanban.ones();
-  var anythingButOne = 6;
-  Dice.update(one.id(), { $set: { value:anythingButOne }});
-  ones.unshift(one.color());  
-  Kanbans.update(kanban.id(), { $set: { ones:ones } });  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
