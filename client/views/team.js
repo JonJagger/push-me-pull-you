@@ -1,10 +1,4 @@
 
-Template.dice.rolled = function() {
-  return getDice(this.gid, this.color);
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 Template.wip.kanbans = function() {
   return getKanbansIn(this.gid, this.color, "wip");  
 };
