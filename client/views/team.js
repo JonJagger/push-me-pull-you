@@ -72,12 +72,6 @@ Template.kanban.onesColors = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.die.one = function() {
-  return isOne(this) ? "one" : "not-one";  
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 Template.team.rendered = function() {
   var team = $(".team");
   var color = team.color();
