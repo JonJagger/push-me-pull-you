@@ -63,7 +63,7 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
   Kanbans.update(kanban.id(), { // push
     $set: {
       teamColor:downstreamColor,
-      at:"upstream"
+      at:"wip"
     }
   });
 };
