@@ -6,7 +6,8 @@
 .team
     & .portal 
         border-radius border_radius_width * 4
-        border-style  solid
+        border-style  solid 
+        border-color  Gray
         border-width  drag_drop_border_width
         vertical-align top
         width 6em
@@ -29,36 +30,19 @@
             border-right-width 0px
             border-top-right-radius 0px
             padding-right 0px
-    &.red .portal
-        border-color red_color        
-        &.upstream
+    &.red .portal.upstream
             background linear-gradient(top, backlog_color large_stripe_gap, light_red_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-        &.downstream
+    &.red .portal.downstream, &.orange .portal.upstream
             background linear-gradient(top, light_orange_color large_stripe_gap, light_red_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.orange .portal
-        border-color orange_color
-        &.upstream
-            background linear-gradient(top, light_red_color large_stripe_gap, light_orange_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
+            background-size portal_stripe_height portal_stripe_height            
+    &.orange .portal.downstream, &.blue .portal.upstream
             background linear-gradient(top, light_blue_color large_stripe_gap, light_orange_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-    &.blue .portal
-        border-color blue_color
-        &.upstream
-            background linear-gradient(top, light_orange_color large_stripe_gap, light_blue_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
+    &.blue .portal.downstream, &.green .portal.upstream
             background linear-gradient(top, light_green_color large_stripe_gap, light_blue_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
-    &.green .portal
-        border-color green_color
-        &.upstream
-            background linear-gradient(top, light_blue_color large_stripe_gap, light_green_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-        &.downstream
+    &.green .portal.downstream
             background linear-gradient(top, done_color large_stripe_gap, light_green_color small_stripe_gap)
             background-size portal_stripe_height portal_stripe_height
 
