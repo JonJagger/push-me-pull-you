@@ -1,4 +1,3 @@
 
-TODO: drop dice.
 TODO: switch from ones to simply sized work-cards
 TODO: start on CFD diagrams (use flot?)
