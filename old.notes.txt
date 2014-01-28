@@ -1,0 +1,528 @@
+
+// -------------------------------------------------------------
+// Notes here are all when I was planning to combine
+// the push-me-pull-you idea with my kanban-one-game.
+//
+// It is odd that a kanban goes through the following transition
+// 1. empty in wip area
+// 2. dragged into upstream portal (pull)
+// 3. teleports to upstream team's downstream portal
+// 4. comes back into this team's upstream portal
+// 5. is dragged back into the wip area where it started
+// What is to stop someone just working directly on the
+// kanban in the wip area and not bothering with the
+// pull request at all?
+// It seems like I do actually need a 3rd state.
+// A kanban (with size) that is full of holes
+// rather than full of gaps. In other words, a kanban
+// that does not have a story in it is used to issue a pull request
+// and when that request is fulfilled, it comes back as a kanban
+// with an empty story in it.
+// How about this idea...
+// For a pull-request, the empty 3-kanban is in the downstream portal
+// and appears as 3 holes. Now, as each 1 is xferred from a done-kanban
+// in the wip area, the hole changes into a gap, viz from a dashed outline
+// to a solid white square. When all the holes have changed into gaps
+// then the kanban comes back to the downstream teams upstream portal
+// as a kanban that has 3-gaps rather than 3-holes.
+// Follow this through...
+// Red team plays 3-kanban that is done, onto pull request 3-kanban-3-holes
+// The effect is that
+// 1. the 3-kanban in the portal changes to 3-kanban-3-gaps
+// 2. the 3-kanban in the portal xfers to the downstream teams upstream portal
+// 3. the dragged 3-kanban-done is now in the wip area but it is 3-kanban-3-holes
+//    viz, it is not 3-kanban-3-gaps (in which state it would be workable in the wip area)
+//         it is a 3-kanban-3-holes
+// 4. the only thing you can do with the 3-kanban-3-holes in the wip-area
+//    is to drag it onto the upstream portal, signalling a pull-request
+//    which will come back as a 3-kanban-3-gaps.
+//
+// Ok. Like this idea a lot.
+// But don't like the terminology hole->gap->done
+// hole and gap are too similar.
+// voidGap -> whiteGap -> done?
+//
+// Still not entirely clear what the difference between the two modes
+// with and without limits...
+// Perhaps not try to do everything. How about the following sequence
+// 1. Push no wip-limit.
+   How? story enters the system in a kanban. Can always do so.
+   kanban can always be dragged from upstream portal into wip-area.
+// 2. Push with wip-limit
+   How? limit per wip-area. If full, then kanban in upstream portal
+   cannot be dragged into wip-area until kanban from wip-area is
+   dragged into downstream portal thus freeing capacity.
+// 3. Pull with wip-limit
+   How? This involves the introduction of holes.
+   A kanban starts life in the wip-area but with no story in it.
+   Thus a 4-kanban is a 4-hole-kanban with 4 dashed non-white squares.
+   All you can do with these is drag them into the upstream portal
+   to signal a pull request.
+   For the first team this will be satisfied immediately and will
+   come back (in its upstream portal) as a 4-gap kanban.
+   This is then dragged onto the teams wip area and is worked on.
+   When it is done then it can be dragged onto a 4-holes-kanban
+   of the downstream teams color in its downstream portal.
+   This causes the dragged kanban to go back to being
+   4-hole-kanban (which can only be used to signal a pull request)
+   and the target kanban to teleport to the downstream teams
+   upstream portal as a 4-gap-kanban.
+
+   kanban.no-story
+   kanban.story.is-empty
+   kanban.story.is-in-progress
+   kanban.story.is-done
+
+
+
+o) basic difference is with-wip-limits vs with no wip-limits.
+   When there are no wip-limits the kanban should simply be
+   something that exists which contains the spaces for the 1s.
+   Only when there are limits are these actually limited.
+   No limits.
+     pull
+       kanban.done --> kanbans on downstream portal
+          ones xfer, if downstream portal is done it moves to
+                        upstream portal downstream
+                     kanban of kanban.done is thrown away.
+                     in fact it is always thrown away.
+                     that's not the issue.
+                     the issue is whether a kanban in a teams upstream portal
+                     can be xferred onto the wip area.
+                     When there is no wip-limit the answer is yes.
+                     When there is a wip-limit the answer is only
+                        within the limit.
+
+o) push pull split
+o) see done column
+o) automate backlog stories entering 1st column in push
+o) empty kanban upstream request in 1st column (to backlog) succeeds immediately
+o) split kanbans
+o) shareable dice
+o) start dashboard showing events
+o) start dashboard showing CFD like diagram
+
+-----------------------------------------------------------------------------
+o) Lean Kanban talk and game
+   Each person holds a clip. Coloured areas.
+   Boundary of two areas is where xfer takes place.
+   All stories are same size and don't need to be played with 1s
+   to complete then. Focus is entirely on xfer of work in push/pull
+   modes. Xfer story in clip to downstream team. This leaves you
+   with an empty clip. If you wish to reduce the wip, simply take
+   this person (and their clip) out of the game.
+   Have observers?
+   To simulate there being no wip limits you do not have to
+   xfer a story-card at the boundary so it is always in a clip.
+   Instead you can take the card out of its clip and leave it
+   lying on the boundary table.
+   Perhaps also have an incrementing count.
+   When story enters the system its card is marked with its start time.
+   When it leaves the system its story is marked with its end time.
+   Subtract the two to get its cycle time.
+   
+   There is something more...
+   With a true kanban (eg airport scanner tray, cherry park token)
+   you don't need to refer to a number written somewhere to know
+   whether or not there is spare capacity in the system. That
+   information is _not_ abstracted into a shared piece of knowledge
+   that all participants have to refer back to, and do math on to
+   figure out if there is spare capacity (count the wip, subtract
+   from the wip total).   
+   Instead, the limit is inherent in the system. If the limit
+   is 3 there are 3 kanban. If there is a spare kanban you can
+   use it and now it is not spare. As a participant, you never
+   have to count the overall number of the kanbans. There either
+   is a kanban or there isn't. If there isn't you stop.
+   
+   So how about simulating this too in the talk/game.
+   Have the wip limit (for each team) written on a card
+   and no kanban clips. See if the team can co-ordinate
+   together to adhere to the limit.
+   
+   There is more too.
+   In push you push a kanban of a size you choose.
+   In pull you fulfill a request of the size chosen by the downstream team.
+   
+   Also, in push there is no mechanism for feedback.
+   In pull, the downstream team can regulate the size and the times
+   when a pull-request is made. There is a communication mechanism.
+   In push there is not.
+   
+   Push has a very command and control feel to it.
+   Pull, much more of a service mentality.
+   
+
+o) in pull mode you make a pull request by dropping an empty kanban
+   into the upstream portal. It comes back with a story in it ready to
+   be worked on. You drag the kanban (still in your color) into the
+   wip area and start playing 1's on it. Would it be fairer to match this
+   as close as possible in push mode. Viz, if a full kanban (of the upstream
+   color) appears in your upstream portal, you cannot just drag it onto your wip area.
+   Instead you have to drag the full kanban onto an empty kanban (of your color)
+   in the wip area to xfer the story. Or perhaps simpler. You drag an empty
+   kanban of your color onto the full kanban (of the upstream color) in the
+   upstream portal. This results in the upstream color kanban returning
+   to the upstream teams downstream portal but it is now empty. At the
+   same time, the kanban of your own colour now contains a story but it
+   is still in your upstream portal. You can then drag it onto your wip
+   area and start playing 1s on it.
+   This makes the push/pull mode fairer. It means both operate with an
+   implicit wip limit based on the number of kanbans in play.
+   With luck this will help to emphasize that wip limits can apply in
+   both push and pull modes. And that, arguably, introducing wip limits
+   is more important than ensuring pull.
+   
+
+o) start with initial columns having something in them. Simulates the situation
+   where kanban is being introduced to team that has too much work in progress.
+   This also seem to be the best option for both the push mode game and for a
+   pull mode game. I'm not quite clear in my head how a pull mode game would
+   progress if there is no work in the system at all to begin with. I think
+   it will only work if there are empty kanbans available to issue as pull
+   requests. 
+
+o) don't need anyone to be backlog or done. Don't need backlog to be on dashboard.
+   But would be nice to have done column on dashboard.
+
+o) at the moment when the cursor hovers over a draggable item it is
+   CSS'd according to static CSS. For example
+      .wip .kanban.story-is-done:hover
+          border-color drag_drop_border_color
+          border-style solid
+          cursor move
+   However, suppose you are playing in pull mode and there is no
+   empty pull-request kanban in the downstream portal on which to
+   drag the done kanban. This suggests there might be a way of
+   deciding whether a dom element is draggable dynamically.
+   http://stackoverflow.com/questions/10618159/how-to-properly-bind-jquery-ui-behaviors-in-meteor
+   http://minitrello.meteor.com/
+   http://jqueryui.com/sortable/
+
+o) drag-drop no longer works on dashboard. Make this a feature?
+   Nice for demos though... Not sure.
+
+o) when very few kanbans in portals and wip then dice can extend
+   the width of the team board so that the portals do not align.
+
+o) just occured to me that since only the 1 is shown I don't really need to
+   limit the size of the kanban to 6. There's no reason I can't have kanban
+   of any size.
+
+o) suppose there is an empty kanban pull request in the downstream portal
+   of size 5. Can you drag a done kanban (from the wip area) of size 1
+   onto this? And then one of size 2. And then another one of size 2.
+   And then its fulfilled and the transfer happens?
+
+o) in Push mode dragging a done wip.kanban will higlight the downstream portal.
+   in Pull mode dragging a done wip.kanban will highlight any empty
+   pull-request kanbans in the downstream portal, but not the downstream portal
+   itself. This could be confusing. It leads me to think I would be better
+   having either push mode or pull mode but not both. I think this ties in
+   with the idea of the game being about learning. Playing first in push
+   mode and then in pull mode creates the greatest contrast.
+
+o) can the crosshair cursor (drag/drop) be positioned right in the center
+   of the die's dot?
+   
+o) Starting to get an idea of how pull mode will work end to end.
+   Each team has an allocation (limit) of _empty_ kanbans. They live in
+   the middle wip area. They can signal a pull request by dropping an
+   empty kanban into the upstream portal. When it comes back it will
+   be filled up with "holes", meaning it will have a story in it.
+   The kanban with its story can then be dragged onto the teams wip
+   area. There it can be worked on by dragging [1]s onto it.
+   When it is done. It cannot be dragged onto the downstream portal.
+   It can only be dragged on top of an empty kanban request from
+   the downstream team, waiting in this teams downstream portal.
+   On releasing the drag, the story is xferred onto the empty
+   kanban on the downstream portal, which then teleports to the
+   downstream teams upstream portal (and it is once again an empty story).
+   The emptied kanban is now in this teams dowstream portal. From there
+   it can be dragged back into this teams wip area, and from there back
+   onto this teams upstream portal to signal a pull.
+   Is there any scope for starting in a similar way in push mode?
+
+o) At first I thought that running droppables(event) inside
+   the start: (as opposed to drag:) would mean that if a kanban arrived
+   in the upstream portal while you are dragging a [1] then it would not
+   be highlit. However, it wouldn't anyway, since it (the kanban) needs to
+   be dragged onto the wip area before the [1] can be applied to it.
+   However, there could be another combination which has this concurrency
+   issue. And besides, it's not really an issue. It's what is actually
+   happening to the player!
+
+o) recoding historic events on a kanban is easy. I can add them in the
+   html but make it invisible. And it appears in a popup tooltip.
+   
+o) finding a bug. I can make the visual appearance of this using
+   a mini graphic which attaches to the bottom right of the story.
+   A bit like in LeanKit that Absolute are using.
+   
+o) age of a kanban can be shown using a colour-gradient in CSS.
+
+o) When a Kanban is moved downstream I don't want it to disrupt the
+   display of the downstream team too much. The code right now _does_
+   disrupt them because the new Kanban appears as the first entry.
+   This is because of the db.update() not having a sort option.
+   Think it through... A -> B -> C  all Stories have to start at
+   A (in theory anyway). So when A moves to B it's likely to be newer
+   than any Story already in B. So newer _ids appear before older _ids.
+   Reversing the order should help. Viz
+      _.each(stories.reverse(), function(story,index) {
+        if (index % 4 == n) {
+          quarters.push(story);
+        }
+      });
+   However, another option is that the xferred kanban could appear
+   _in_ the downstream team's upstream portal!
+   Quite like this. More more transparent. Nice symmetry with empty
+   kanban's going upstream to signal a pull.
+   In fact, when B drop an an empty kanban on B's upstream portal
+   it could appear in A's downstream portal.
+   Complete symmetry!
+   But is this just delaying... What about when the downstream team
+   drags the new kanban from their upstream portal onto the board?
+
+o) Looking at the dashboard, it would be nice if the appearance of
+   A's downstream portal matches B's upstream portal. How about
+   hatch shading them both in both colors?
+   See http://lea.verou.me/demos/css3-patterns.html
+   No. Too complicated. How about inside the portal just have a
+   ladder of divs than form rungs of opposite colours!
+   How would the kanbans appear on that? float:?
+
+o) How to do [split]
+   Have a split button that is enabled when a [1] is available.
+   This can be dragged over the kanban you would like to split!
+
+o) Don't have to give different numbers of dice to different teams.
+   Can bias the dice so later teams have slightly less chance of getting a [1]!
+
+o) Make the mini-logo that appears in the browser tab be a [o] via a dice 1
+   in the color of that team.
+   http://stackoverflow.com/questions/260857/changing-website-favicon-dynamically
+
+o) Put CSS entries inside a rule in alphaetical order?
+
+o) Will [start] button eventually need to go to a setup page?
+   eg push, pull defaults
+   eg initial allocation of dice
+   eg wip limits
+   eg allow splitting
+   eg allow dice sharing
+
+o) Nothing showing up in Opera
+
+o) I just figured out a nice way to do dice teleporting.
+   When a team teleports a dice, they also lose a dice.
+   When an incoming teleported dice is the same colour as
+   the team receiving it they get the dice back!
+   Now I can simply allow any [1] of any colour to be used
+   to do [1] unit of work on a story! Love it.
+   
+o) Extension to the above idea. Above the dice have a dice-pool.
+   The dice pool is visible to all Teams.
+   Dropping one of your dice into that pool means that you lose one of your dice.
+   Pulling one of your dice from the dice-pool means you get the lost dice back.
+   Thus dice have their own "teleport-pool" and kanbans have their own separate
+   teleports.
+   This would be interesting as it would create a shared resource that
+   all teams could see. Thus there could be concurrency issues.
+   Suppose two teams try to drag a dice into their playing area
+   at the same time.
+
+o) How about making the downstream portal have potentially two colours.
+   How... perhaps make both portals have the same background and use
+   a container div so I can effectively get two colors on the border.
+   In dashed style this should be quite visible.
+   Perhaps add someindication of which is upstream portal and which
+   is downstream portal if both have same background?
+   ...
+   If pushing is [on] for this team, the teams own color is present on their
+   downstream portal.
+   If the downstream team has pulling [on], their color is also present
+   on this teams portal.
+   What about the upstream portal?
+   If the upstream team has pushing [on], their colour is present on this
+   teams upstream portal.
+   If pulling is [on] for this team, the teams own color is present on their
+   upstream portal.
+   Does this mean that flow could be blocked in both direction at a portal?
+   I guess so! But that's ok. More self-organizing fodder.
+
+o) When a [1] is being dragged, instead of highlighting the target kanban
+   I could highlight they target _hole_ it will drop into. Or perhaps
+   highlight both.
+
+o) The act of pushing a done story through a portal could be the event
+   that causes automatic error [bug] checking to take place.
+
+o) What to do if one of the teams (egdes) has to retire?
+   Have a resume button.
+
+o) Use http://arunoda.github.io/laika/   test framework.
+
+o) Make done-one and todo-one have same fixed size as a dice-one
+   drop width of wip
+   
+o) Each game needs to somehow have [pull][push] options?
+   Or should I put that on _each_ Edge?!
+   I like that.
+   Does it creates a conflict? Suppose red feeds orange.
+   If orange cannot pull [cannot pass empty kanban of their color upstream]
+   and red cannot push [cannot pass full kanban of their color downstream]
+   Does this mean no stories will ever pass from red to orange?
+   I don't think so.
+   red pushing is not the exact mirror of orange pulling.
+   red pushing is about what red can do.
+   orange pulling is about what orange can do.
+   
+o) Simpler version of splitting (below).
+   When you split a kanban you
+   1. are in a controlled sandbox...
+   2. put all the kanban's done-one's back as dice
+      these dice do not go back to the top of the edge,
+      they remain inside the sandbox, usable only in the sandbox
+   3. split the empty kanban - much simpler - fewer choices
+   4. now the player can play the sandboxed 1s back onto
+      the split kanban in any combination they want.
+   
+o) Drop story onto a split-area to split it
+   this will offer selection of possibilities. click to select
+   eg story 4-7
+      options are
+          1-7 and 3-7
+          2-7 and 2-7
+      no that's not right because there is twice the amount of work
+      4-7 options are
+          1-1=done and 3-6       2-2=done  and  2-5
+          1-2 and 3-5            2-3       and  2-4
+          1-3 and 3-4            2-4       and  2-3=same as 2-3 2-4
+          1-4 and 3-3=done       2-5       and  2-2=same as 2-2 2-5
+          1-5 and 3-2=illegal    2-6       and  2-1=illegal
+          that's it for 4 since only splits are 1-3 and 2-2
+          
+   there is another possibility... split to create an empty tray!
+   (useful for a pull)
+      4-7
+          0-1 and 4-6
+          0-2 and 4-5
+          0-3 and 4-4
+   
+o) Is there a way to make the physical appearance of a story proportional
+   to its size? This would make a very effective visualization.
+   If the kanban were also proportional it would clearly visualize the idea
+   that only a story of the same (or smaller) size can be put into the kanban.
+   I like this idea. Tried it. Works ok, but it creates vertical space pressure.
+   So how about extending the width of the wip area so several kanban can appear
+   in a row.
+
+o) And wip limits can go on each Edge too.
+   Can have two kinds of wip constraint.
+      Number of trays.
+      Total of of tray sizes.
+   Very self-organizing!
+   This does not cater for an overall wip limit for the whole board though.
+   I was thinking this (overall wip limit for the whole board, conwip) would
+   be an option visible on a _separate_ single config page, shared by all the
+   edges. But how about the option being duplicated on _each_ edges
+   config page/tab! Simpler. More self-organizing too.
+   If a player uses this control to reduce the conwip what effect does this
+   actually have? Which kanbans jettisoned/abandoned/shrunk?
+   
+o) maybe have squares of red/orange/blue/green (in that order) below the
+   [start game] button so you can see how many teams have joined. And make it
+   a bit more colourful.
+
+o) create initial stories when game is created.
+   need to make a snapshot of the initial edge state. My idea is that events
+   will be stored in an events collection each with a timestamp. The original
+   board could then be used to replay the events in a review.
+   And the events could be used to create a dashboard.
+   Events are created on clients. How do I know their clocks are synchronized?
+   I don't. So don't use clocks. Use tick data that is held in collection.
+   How to update it? From the server. In which case it might as well be a
+   time stamp!
+   
+o) backlog as a team which have dice too?
+   They have no upstream.
+   And new stories are automatically added.
+   Or... they _do_ have an upstream, but when they pull from it, it always succeeds immediately.
+   But what if they are in push only mode?
+   How about they have dice and a [new story] button which they can use to create
+   a new story at any time (a [1] is not required). Size comes back at random.
+   They then need to do size lots of 1s on it before it can be sent downstream.
+   I like this. But how does it relate to kanban limits?
+   How about the backlog area does not behave like a portal. Instead it just has
+   a magically auto-updating collection of stories.
+   And the [new story] button becomes a [new kanban] button (which is only enabled
+   if the wip is below the limit). Clicking it creates a new _empty_ kanban (of a
+   certain size) which they can they use to drag stories from the backlog onto.
+   Could have different buttons for creating different sized kanbans.
+
+o) no done? except on dashboard? or last colour?
+
+o) drop [1] onto a story to do work on that story.
+   capture in jQuery and update the Meteor collection directly.
+
+o) drop [1] onto [unused] area to enable you to reroll the dice
+   I like this. If days are not tied edge to edge then a team with an unusable [1]
+   have a choice of losing the [1] or waiting for a story to arrive!
+          
+o) make maximum size of a story/tray 6 to match the sides on a dice
+   and to reduce the number of split options that need to be presented.
+   
+o) how does the tray it is in split?
+    size of story must be less than or equal to the size of the tray
+    so I can create a deterministic algorithm for this.
+    
+o) drop an empty tray onto split-area to split it
+   again this shows the options and you click on one of them to select it
+
+o) don't synchronize the 'days' ?
+   each edge can rethrow dice as often as it likes (but these are recorded).
+   In other words, the time periods would be real time periods. One minute say.
+   I like this idea. What would happen. Would the edges naturally "equalize"?
+   It would also mean that the dashboard could attempt to show the moment an
+   event took place by placing it at the relevant horizontal position.
+   If a 1 was worked, a 1 could appear in its colour.
+   It a story was finished. The story could appear in its kanban.
+   How to show portal movement?
+   How to show 1 being discarded?
+   How to show dice being rolled?
+   
+o) option to have a single tray colour!?
+
+o) crucial point is that different edges will have different numbers of dice.
+   make earlier teams have more dice, later teams have fewer dice.
+   
+o) allow dice to be dropped into portals too?
+
+o) make the kanban/stories get darker as they get older.
+
+o) make a cumulative-flow-diagram where the kanban from all edges
+   are stacked vertically on top of each other. Because each kanban's height
+   is proportional to their size the greater the wip the greater the height
+   of each 'column'. What is a column? What unit is that? I think if the
+   rolling of each team is not synchronized (other than via the natural flow
+   of work) then it has to be actual elapsed time.
+   
+o) tool-tip for a kanban shows its history in a graph.
+
+o) dashboard display can be live and reactive.
+   Just shows view of all the teams.
+   Since it is reactive can be used for demos too :-)
+   
+o) cumulative-flow-diagram
+   Different kind of dashboard.
+   Like cyber-dojo I will need some way to limit the horizontal space.
+   There are a couple of aspects/layouts for dashboard.
+   During the game I can just show all the edges without the portals.
+   For charts used in the retrospective I'd like a horizontal scroll-bar that
+   acts as a time-slider (perhaps with << < > >> controls for controlled movement).
+   Sliding the control jumps in time. The idea is that there isn't a diff-style
+   display, the difference is more that you're seeing the chart one moment and the
+   next you're seeing it an instant later and your memory of the previous one
+   allows your brain to form the diff. Much more qualitative than quantitative.
+

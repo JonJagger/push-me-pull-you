@@ -4,3 +4,10 @@ mrt uninstall --system
 mrt add iron-router
 mrt add stylus
 
+
+After updating meteor I had to
+o) lose the paths in the stylus @import directives
+   eg @import "client/views/colors"
+   -> @import "colors"
+   eg @import "nib/gradients"
+   -> @import "nib"
