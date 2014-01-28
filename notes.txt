@@ -1,4 +1,19 @@
 
-TODO: switch from ones to simple sized work-cards
+TODO: switch from ones to simple sized work-cards?
+
+TODO: Leave thin slice of each portal in the full colour to show team ordering.
+      Portal height can be fixed. Only need enough space to drop one kanban at a time.
+
+      Empty kanban sent upstream goes straight into upstream teams' work area?
+          At that point you have to select how much work you are requesting?
+      
+      Full kanban sent downstream goes straight into downstream teams' work area?
+          Stays full in the upstream team's colour.
+          Empty kanban can be dropped onto it to. The empty kanban then takes
+            on the size of the full kanban, and the emptied kanban goes
+            back upstream where it becomes a sizeless empty kanban again.
+            
+      
 TODO: add pad gesture movement as alternative to mouse drag/drop
+
 TODO: start on CFD diagrams (use flot?)
