@@ -31,9 +31,8 @@ var page = {
 
 Template.home.events({"click #start":function () {
   // TODO: setup page offering
-  //          push/pull choice
   //          wip limits?
-  var game = { gid:newId(6), mode:"pull" };
+  var game = { gid:newId(6) };
   Games.insert(game);
   page.gid(game.gid);
   page.join().enable();
@@ -70,7 +69,7 @@ Template.home.events({"click #join":function() {
   }
   Teams.insert({ gid:gid, color:color });
   setupTeam(gid,color);
-  window.open("team/" + gid + "/" + color + "/" + game.mode, "_blank");  
+  window.open("team/" + gid + "/" + color, "_blank");  
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -
@@ -78,7 +77,7 @@ Template.home.events({"click #join":function() {
 Template.home.events({"click #dashboard":function() {
   var gid = page.gid();
   var game = Games.findOne({ gid:gid });
-  window.open("dashboard/" + gid + "/" + game.mode, "_blank");    
+  window.open("dashboard/" + gid, "_blank");    
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 

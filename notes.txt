@@ -1,5 +1,4 @@
 
-TODO: drop push/pull state. Always allow both.
 TODO: switch from ones to simply sized work-cards
 TODO: drop dice.
 TODO: start on CFD diagrams (use flot?)

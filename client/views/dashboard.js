@@ -22,9 +22,8 @@ Template.dashboard.green  = function() { return { gid:this.gid, color:"green"  }
  */
 
 Template.dashboard.rendered = function() {  
-  var mode = $(".dashboard").data("mode");
   _.each(teamColors(), function(color) {
-      setupDragDrop(mode, color);    
+      setupDragDrop(color);    
   });
   // append ?v=N to force refresh and avoid browser cache
   favIcon(document, 'http://www.jaggersoft.com/AllOnes.png?v=3');
