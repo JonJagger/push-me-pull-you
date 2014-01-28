@@ -6,6 +6,7 @@ setupDragDrop = function(color) {
                   ".wip .kanban.is-done",
                   ".downstream.portal",
                   doneKanbanDroppedOnDownstreamPortal);
+    
     dragDropSetup(color,
                   ".upstream.portal .kanban.is-done",
                   ".wip",
@@ -76,7 +77,7 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
   Kanbans.update(kanban.id(), { // pull-request
     $set: {
       teamColor:upstreamColor,
-      at:"downstream"
+      at:"wip"
     }
   });  
 };
