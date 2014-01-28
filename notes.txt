@@ -1,19 +1,32 @@
 
+R  <-> G <-> B
+
+TODO: In green wip area (example)
+
+      o) empty-sizeless green kanban dropped into upstream portal:
+          Select how much work you are requesting.
+          Goes straight into upstream team (red) wip area as empty-sized green kanban.
+      
+      o) full (sized) green kanban dropped into downstream portal:
+          Stays full of green work; appears in downstream team (blue) wip area.
+          
+      o) empty-sizeless green kanban is dropped onto full kanban from upstream (red)
+           green kanban takes work items, (each reset to not-done-yet), now sized
+           emptied red kanban goes back upstream; appears as empty-sizeless in red wip area
+
+      o) full (sized) green kanban is dropped onto sized-empty kanban from downstream (blue)
+           blue kanban takes work items, (each reset to not-done-yet)
+           empied green kanban changes to empty-sizeless kanban.
+           full blue kanban moves to downstream (blue) wip area.
+           NEED TO CONSIDER RELATIVE SIZES
+             if size-green > size-blue
+                some green work is lost?
+             if size-green < size-blue
+                blue kanban takes work but it not filled, stays in green wip area
+           
+
 TODO: switch from ones to simple sized work-cards?
 
-TODO: Leave thin slice of each portal in the full colour to show team ordering.
-      Portal height can be fixed. Only need enough space to drop one kanban at a time.
-
-      Empty kanban sent upstream goes straight into upstream teams' work area?
-          At that point you have to select how much work you are requesting?
-      
-      Full kanban sent downstream goes straight into downstream teams' work area?
-          Stays full in the upstream team's colour.
-          Empty kanban can be dropped onto it to. The empty kanban then takes
-            on the size of the full kanban, and the emptied kanban goes
-            back upstream where it becomes a sizeless empty kanban again.
-            
-      
 TODO: add pad gesture movement as alternative to mouse drag/drop
 
 TODO: start on CFD diagrams (use flot?)
