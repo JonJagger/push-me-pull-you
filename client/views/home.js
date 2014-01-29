@@ -101,5 +101,6 @@ var setupTeam = function(gid,teamColor) {
   makeKanban(4, [ ]);  
   makeKanban(1, [oneColor]);
   
+  makeKanban(0, [ ]);
 };
 

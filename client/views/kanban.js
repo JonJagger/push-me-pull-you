@@ -12,8 +12,11 @@ Template.kanban.state = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Template.kanban.isEmpty = function() {
-  return this.size === 0;
+Template.kanban.emptyGaps = function() {
+  if (this.size === 0)
+    return [1,1]; // for width
+  else
+    return [ ];
 }
 
 Template.kanban.voidGaps = function() {
