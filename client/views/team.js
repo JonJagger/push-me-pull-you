@@ -75,7 +75,15 @@ Template.kanban.onesColors = function() {
 Template.team.rendered = function() {
   var team = $(".team");
   var color = team.color();
-  setupDragDrop(color);    
+  setupDragDrop(color);
+  
+  $('.die.not-one').bind('click keyup', function(event) {
+    var kanban = $(this).closest(".kanban");
+    var ones   = kanban.ones();
+    ones.unshift(kanban.color());  
+    Kanbans.update(kanban.id(), { $set: { ones:ones } });  
+  });
+  
   color = color.charAt(0).toUpperCase() + color.slice(1);
   favIcon(document, 'http://www.jaggersoft.com/' + color + 'One.png');
 };

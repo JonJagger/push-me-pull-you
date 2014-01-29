@@ -24,6 +24,11 @@ TODO: In green wip area (example)
              if size-green < size-blue
                 blue kanban takes work but it not filled, stays in green wip area
            
+TODO: when last column sends done work downstream the empty kanban
+      comes back immediately. Raises question of pull coming into
+      last column?
+TODO: when first column sends empty kanban upstream it comes back
+      filled with todo work immediately. 
 
 TODO: switch from ones to simple sized work-cards?
 

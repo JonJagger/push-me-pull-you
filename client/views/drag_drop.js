@@ -7,10 +7,10 @@ setupDragDrop = function(color) {
                   ".downstream.portal",
                   doneKanbanDroppedOnDownstreamPortal);
     
-    dragDropSetup(color,
-                  ".upstream.portal .kanban.is-done",
-                  ".wip",
-                  doneKanbanDroppedOnWip);
+    //dragDropSetup(color,
+    //              ".upstream.portal .kanban.is-done",
+    //              ".wip",
+    //              doneKanbanDroppedOnWip);
   //}
   //if (mode === "pull") {    
     dragDropSetup(color,
@@ -84,40 +84,39 @@ var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var doneKanbanDroppedOnWip = function(event, ui) {
-  var kanban = ui.draggable; 
-  var wip    = $(this);
-  var toColor = wip.team().color();
-  Kanbans.update(kanban.id(), { 
-    $set: {
-      ones:[ ],
-      color:toColor, 
-      at:"wip"    
-    }
-  });    
-};
+//var doneKanbanDroppedOnWip = function(event, ui) {
+//  var kanban = ui.draggable; 
+//  var wip    = $(this);
+//  var toColor = wip.team().color();
+//  Kanbans.update(kanban.id(), { 
+//    $set: {
+//      ones:[ ],
+//      color:toColor, 
+//      at:"wip"    
+//    }
+//  });    
+//};
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
-  var doneKanban = ui.draggable;
-  var emptyKanban = $(this);
-  var ones = doneKanban.ones();
-  var newValues =  { ones:ones };
-  
+//var doneKanbanDroppedOnEmptyKanban = function(event, ui) {
+//  var doneKanban = ui.draggable;
+//  var emptyKanban = $(this);
+//  var ones = doneKanban.ones();
+//  var newValues =  { ones:ones };
+//  
   // TODO: what if number of ones being xferred is
   //       greater than size of kanban being dropped on?
   //       What happens to "left-over" 1s?
-  
-  
-  if (emptyKanban.ones().length + ones.length === emptyKanban.size()) {
-    newValues.teamColor = emptyKanban.color();
-    newValues.at = "upstream";
-  }
-  Kanbans.update(emptyKanban.id(), { $set: newValues })
-  
-  Kanbans.update(doneKanban.id(), { $set: { ones:[ ] } });  
-};
+// 
+//  
+//  if (emptyKanban.ones().length + ones.length === emptyKanban.size()) {
+//    newValues.teamColor = emptyKanban.color();
+//    newValues.at = "upstream";
+//  }
+//  Kanbans.update(emptyKanban.id(), { $set: newValues })  
+//  Kanbans.update(doneKanban.id(), { $set: { ones:[ ] } });  
+//};
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
