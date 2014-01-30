@@ -15,6 +15,11 @@ setupDragDrop = function(color) {
                 ".kanban.pushed",
                 ".kanban.pullable",
                 pushedKanbanDroppedOnPullableKanban);
+
+  dragDropSetup(color,
+                ".kanban.pulled",
+                ".kanban.pushable",
+                pulledKanbanDroppedOnPushableKanban);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -82,6 +87,16 @@ var pushedKanbanDroppedOnPullableKanban = function(event,ui) {
       ones: [ ]
     }
   });
+
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var pulledKanbanDroppedOnPushableKanban = function(event,ui) {
+  var pulled = ui.draggable;
+  var pushable = $(this);
+  
+  //TODO
 
 }
 
