@@ -1,34 +1,15 @@
 
-R  <-> G <-> B
-
-TODO: In green wip area (example)
-
-      o) empty-sizeless green kanban dropped into upstream portal:
-          Select how much work you are requesting.
-          Goes straight into upstream team (red) wip area as empty-sized green kanban.
-      
-      o) full (sized) green kanban dropped into downstream portal:
-          Stays full of green work; appears in downstream team (blue) wip area.
-          
-      o) empty-sizeless green kanban is dropped onto full kanban from upstream (red)
-           green kanban takes work items, (each reset to not-done-yet), now sized
-           emptied red kanban goes back upstream; appears as empty-sizeless in red wip area
-
-      o) full (sized) green kanban is dropped onto sized-empty kanban from downstream (blue)
-           blue kanban takes work items, (each reset to not-done-yet)
-           empied green kanban changes to empty-sizeless kanban.
-           full blue kanban moves to downstream (blue) wip area.
-           NEED TO CONSIDER RELATIVE SIZES
-             if size-green > size-blue
-                some green work is lost?
-             if size-green < size-blue
-                blue kanban takes work but it not filled, stays in green wip area
-           
 TODO: when last column sends done work downstream the empty kanban
       comes back immediately. Raises question of pull coming into
       last column?
-TODO: when first column sends empty kanban upstream it comes back
-      filled with todo work immediately. 
+
+      R <-> B <-> G
+TODO: suppose B has sent all its pullable kanbans to R
+      and suppose R has sent all its pushable kanbans to B
+      this creates deadlock!
+      How to resolve?
+      Allow pushed kanban to go back upstream?
+      Allow pulled kanban to go back downstream?
 
 TODO: switch from ones to simple sized work-cards?
 
