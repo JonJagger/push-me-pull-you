@@ -1,17 +1,4 @@
 
-Template.kanban.Xstate = function() {
-  if (this.size === 0)
-    return "pullable";
-  if (this.ones.length === 0)
-    return "is-empty is-in-progress";
-  if (this.ones.length < this.size)
-    return "is-in-progress";
-  if (this.ones.length === this.size)
-    return "is-done";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 Template.kanban.emptyGaps = function() {
   if (this.size === 0)
     return nOnes(2); // for width
