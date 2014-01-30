@@ -1,33 +1,25 @@
 
 setupDragDrop = function(color) {
 
-  //if (mode === "push") {
-    dragDropSetup(color,
-                  ".kanban.is-done",
-                  ".downstream.portal",
-                  doneKanbanDroppedOnDownstreamPortal);
+  dragDropSetup(color,
+                ".kanban.pullable",
+                ".upstream.portal",
+                pullableKanbanDroppedOnUpstreamPortal);
+
+  dragDropSetup(color,
+                ".kanban.is-done",
+                ".downstream.portal",
+                doneKanbanDroppedOnDownstreamPortal);
     
-    //dragDropSetup(color,
-    //              ".upstream.portal .kanban.is-done",
-    //              ".wip",
-    //              doneKanbanDroppedOnWip);
-  //}
-  //if (mode === "pull") {    
-    dragDropSetup(color,
-                  ".kanban.pullable",
-                  ".upstream.portal",
-                  emptyKanbanDroppedOnUpstreamPortal);
-    // Note that in mode==push there is also a drag for
-    //           .wip .kanban.story-is-done
-    //           which means you cannot have push and pull active at
-    //           the same time as the latter drag cancels the former.
-    
-    //dragDropSetup(color,
-    //              ".wip .kanban.is-done",
-    //              ".downstream.portal .kanban",
-    //              doneKanbanDroppedOnEmptyKanban);
-    
-  //}
+  //dragDropSetup(color,
+  //              ".upstream.portal .kanban.is-done",
+  //              ".wip",
+  //              doneKanbanDroppedOnWip);
+  
+  //dragDropSetup(color,
+  //              ".kanban.is-done",
+  //              ".downstream.portal .kanban",
+  //              doneKanbanDroppedOnEmptyKanban);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,11 +62,11 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var emptyKanbanDroppedOnUpstreamPortal = function(event,ui) {
+var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
   var portal = $(this);
   var upstreamColor = portal.data("to-team");
-  Kanbans.update(kanban.id(), { // pull-request
+  Kanbans.update(kanban.id(), {
     $set: {
       teamColor:upstreamColor,
       at:"wip"
