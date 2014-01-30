@@ -36,7 +36,7 @@ Template.team.rendered = function() {
   var color = team.color();
   setupDragDrop(color);
   
-  $('.die.not-one').bind('click keyup', function(event) {
+  $('.not').bind('click keyup', function(event) {
     var kanban = $(this).closest(".kanban");
     var ones   = kanban.ones();
     ones.unshift(kanban.color());  
