@@ -1,6 +1,6 @@
 
 Template.wip.kanbans = function() {
-  return getKanbans(this.gid, this.color);  
+  return Kanbans.find({ gid:this.gid, teamColor:this.color });      
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -40,10 +40,6 @@ Template.team.rendered = function() {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var getKanbans = function(gid,teamColor) {
-  return Kanbans.find({ gid:gid, teamColor:teamColor });    
-};
 
 var isOne = function(die) {
   return die.value === 1;  
