@@ -8,16 +8,13 @@
     {{#each emptyGaps}}
       <div class="one-container">      
         <div class="die empty-one">
-          <div class="dot"></div>
         </div>
       </div>    
     {{/each}}
     
     {{#each voidGaps}}
       <div class="one-container">      
-        <div class="die hole-one">
-          <div class="dot"></div>
-        </div>
+        <div class="die hole-one"></div>
       </div>
     {{/each}}
     
@@ -27,9 +24,7 @@
     
     {{#each ones}}
       <div class="one-container">            
-        <div class="{{this}} die done-one">
-          <div class="dot"></div>
-        </div>
+        <div class="{{this}} die done-one"></div>
       </div>
     {{/each}}
   </div>
@@ -37,8 +32,6 @@
 
 <template name="notOne">
   <div class="one-container">      
-    <div class="die not-one">
-      <div class="dot"></div>
-    </div>
+    <div class="die not-one"></div>
   </div>
 </template>
