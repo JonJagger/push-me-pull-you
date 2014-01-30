@@ -83,23 +83,17 @@ Template.home.events({"click #dashboard":function() {
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 // slimed
 //
-var setupTeam = function(gid,teamColor) {
-  var kanbanColor = teamColor;
-  var oneColor    = teamColor;
-  
-  var makeKanban = function(size, ones) {
+var setupTeam = function(gid,color) {
+  var makeKanban = function() {
     Kanbans.insert({ gid:gid,
-                     teamColor:teamColor,
-                     color:kanbanColor,
-                     size:size,
-                     ones:ones });    
+                     teamColor:color,
+                     color:color,
+                     size:0,
+                     ones:[ ] });    
   };
-  makeKanban(1, [ ]);
-  makeKanban(5, [oneColor,oneColor]);
-  makeKanban(3, [oneColor,oneColor,oneColor]);
-  makeKanban(4, [ ]);  
-  makeKanban(1, [oneColor]);
   
-  makeKanban(0, [ ]);
+  makeKanban();
+  makeKanban();
+  makeKanban();
 };
 

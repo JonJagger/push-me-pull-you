@@ -28,6 +28,7 @@ Template.team.rendered = function() {
   var color = team.color();
   setupDragDrop(color);
   
+  //TODO: do not allow on pulled kanbans
   $('.not').bind('click keyup', function(event) {
     var kanban = $(this).closest(".kanban");
     var ones   = kanban.ones();
@@ -37,12 +38,6 @@ Template.team.rendered = function() {
   
   color = color.charAt(0).toUpperCase() + color.slice(1);
   favIcon(document, 'http://www.jaggersoft.com/' + color + 'One.png');
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var isOne = function(die) {
-  return die.value === 1;  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
