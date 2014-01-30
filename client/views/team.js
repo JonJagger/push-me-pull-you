@@ -28,8 +28,7 @@ Template.team.rendered = function() {
   var color = team.color();
   setupDragDrop(color);
   
-  //TODO: do not allow on pulled kanbans
-  $('.not').bind('click keyup', function(event) {
+  $('.in-progress.kanban .not').bind('click keyup', function(event) {
     var kanban = $(this).closest(".kanban");
     var ones   = kanban.ones();
     ones.unshift(kanban.color());  
