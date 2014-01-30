@@ -44,7 +44,8 @@ was_die()
         background   green_color
         border-color green_color
 
-.die.hole
+.hole
+    was_die()
     border-style dotted
     border-width die-one-border-width 
     padding die-one-padding
@@ -58,23 +59,28 @@ was_die()
         background green_color
 
 //---------------------------------------
-.red.kanban .die.empty
+
+.red.kanban .empty
+    was_die()
     background lightest_red_color
     border-color lightest_red_color
 
-.orange.kanban .die.empty
+.orange.kanban .empty
+    was_die()
     background lightest_orange_color
     border-color lightest_orange_color
 
-.blue.kanban .die.empty
+.blue.kanban .empty
+    was_die()
     background lightest_blue_color
     border-color lightest_blue_color
 
-.green.kanban .die.empty
+.green.kanban .empty
+    was_die()
     background lightest_green_color
     border-color lightest_green_color
+    
 //---------------------------------------
-
 
 .red.kanban .hole
     border-color red_color
@@ -85,7 +91,10 @@ was_die()
 .green.kanban .hole
     border-color green_color
 
+//---------------------------------------
+
 .kanban .not
+    was_die()
     border-width die-one-border-width 
     background white
     border-style dotted
