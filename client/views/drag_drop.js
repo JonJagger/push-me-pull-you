@@ -7,7 +7,7 @@ setupDragDrop = function(color) {
                 pullableKanbanDroppedOnUpstreamPortal);
 
   dragDropSetup(color,
-                ".kanban.is-done",
+                ".kanban.pushable",
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
 };
@@ -47,7 +47,8 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
   var downstreamColor = portal.data("to-team");
   Kanbans.update(kanban.id(), { // push
     $set: {
-      teamColor:downstreamColor
+      teamColor:downstreamColor,
+      state: 'pushed'
     }
   });
 };

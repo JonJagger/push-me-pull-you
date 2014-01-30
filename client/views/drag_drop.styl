@@ -15,13 +15,8 @@ drag_drop_border_style = dotted
         border-style solid
         cursor move
     
-    & .wip .kanban.is-done:hover
-    & .upstream.portal .kanban.is-done:hover
-        border-color drag_drop_border_color
-        border-style solid
-        cursor move
-
-    & .wip .kanban.pullable:hover
+    & .kanban.pushable:hover
+    & .kanban.pullable:hover
         border-color drag_drop_border_color
         border-style solid
         cursor move
@@ -30,8 +25,7 @@ drag_drop_border_style = dotted
     // Once dragging starts
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
-    .ui-draggable-dragging.kanban.is-empty
-    .ui-draggable-dragging.kanban.is-done  
+    .ui-draggable-dragging.kanban
         border-color drag_drop_border_color
         border-style drag_drop_border_style
         cursor crosshair
