@@ -20,7 +20,9 @@ var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
   var upstreamColor = portal.data("to-team");
   Kanbans.update(kanban.id(), {
     $set: {
-      teamColor:upstreamColor
+      teamColor:upstreamColor,
+      size: 3, //slimed
+      ones: [ ]
     }
   });  
 };
