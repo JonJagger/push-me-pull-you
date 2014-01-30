@@ -28,11 +28,17 @@ Template.team.rendered = function() {
   var color = team.color();
   setupDragDrop(color);
   
-  $('.in-progress.kanban .not').bind('click keyup', function(event) {
+  $('.in-progress.kanban').bind('click keyup', function(event) {
     var kanban = $(this).closest(".kanban");
     var ones   = kanban.ones();
-    ones.unshift(kanban.color());  
-    Kanbans.update(kanban.id(), { $set: { ones:ones } });  
+    ones.unshift(kanban.color());
+    var state = (ones.length === kanban.size()) ? 'pushable' : 'in-progress';
+    Kanbans.update(kanban.id(), {
+      $set: {
+        state: state,
+        ones:ones
+      }
+    });  
   });
   
   color = color.charAt(0).toUpperCase() + color.slice(1);
@@ -48,6 +54,10 @@ $.fn.hasClass = function(klass) {
 $.fn.team = function() {
   return this.closest(".team");
 };
+
+$.fn.size = function(/*kanban*/) {
+  return parseInt($(this).data('size'));
+}
 
 $.fn.ones = function(/*kanban*/) {  
   var ones = $(this).data("ones");
