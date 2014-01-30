@@ -10,6 +10,7 @@ TODO: suppose B has sent all its pullable kanbans to R
       How to resolve?
       Allow pushed kanban to go back upstream?
       Allow pulled kanban to go back downstream?
+      Or just let it resolve itself from further up/down stream?
 
 TODO: switch from ones to simple sized work-cards?
 

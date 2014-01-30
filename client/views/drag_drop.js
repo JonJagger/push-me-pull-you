@@ -51,18 +51,28 @@ var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
+var doneKanbanDroppedOnDownstreamPortal = function(event,ui) { // push
   var kanban = ui.draggable; 
   var portal = $(this);
   var downstreamColor = portal.data("to-team");
-  Kanbans.update(kanban.id(), { // push
-    $set: {
-      teamColor:downstreamColor,
-      state: 'pushed'
-    }
-  });
-  //TODO: if last team drops onto its downstream portal
-  //      then kanban comes back immediately
+  
+  if (kanban.team().color() === 'green') {
+    // DONE!
+    Kanbans.update(kanban.id(), {
+      $set: {
+        state: 'pullable',
+        size: 0,
+        ones: [ ]
+      }
+    });
+  } else {
+    Kanbans.update(kanban.id(), {
+      $set: {
+        teamColor:downstreamColor,
+        state: 'pushed'
+      }
+    });
+  }
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
