@@ -17,19 +17,26 @@ setupDragDrop = function(color) {
 var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
   var portal = $(this);
-  
-  // simulate instant response from infinite backlog
-  var teamColor = (kanban.team().color() === 'red') ?
-    'red' : portal.data("to-team");
     
-  Kanbans.update(kanban.id(), {
-    $set: {
-      teamColor: teamColor,
-      size: 3, //slimed
-      ones: [ ]
-    }
-  });
-  
+  if (kanban.team().color() === 'red') {
+    // simulate instant response from infinite backlog
+    Kanbans.update(kanban.id(), {
+      $set: {
+        state: 'in-progress',
+        size: 3, //slimed
+        ones: [ ]
+      }
+    });    
+  } else {
+    Kanbans.update(kanban.id(), {
+      $set: {
+        teamColor: portal.data('to-team'),
+        state: 'pulled',
+        size: 3, //slimed
+        ones: [ ]
+      }
+    });
+  }  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -

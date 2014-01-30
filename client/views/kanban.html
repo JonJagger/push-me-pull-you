@@ -19,7 +19,9 @@
     {{/each}}
     
     {{#each whiteGaps}}
-      {{> notOne}}
+      <div class="one-container">      
+        <div class="not"></div>
+      </div>
     {{/each}}
     
     {{#each ones}}
@@ -27,11 +29,5 @@
         <div class="{{this}} done"></div>
       </div>
     {{/each}}
-  </div>
-</template>
-
-<template name="notOne">
-  <div class="one-container">      
-    <div class="not"></div>
   </div>
 </template>

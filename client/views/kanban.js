@@ -1,5 +1,5 @@
 
-Template.kanban.state = function() {
+Template.kanban.Xstate = function() {
   if (this.size === 0)
     return "pullable";
   if (this.ones.length === 0)
@@ -14,9 +14,9 @@ Template.kanban.state = function() {
 
 Template.kanban.emptyGaps = function() {
   if (this.size === 0)
-    return [1,1]; // for width
+    return nOnes(2); // for width
   else
-    return [ ];
+    return nOnes(0);
 }
 
 Template.kanban.voidGaps = function() {
