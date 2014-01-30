@@ -2,7 +2,18 @@
 <template name="team">
   <div class="{{color}} team"
        data-gid="{{gid}}">
-      {{> board}}
-    </div>    
+    <table>
+      <tr>
+        <td>
+        {{> upstreamPortal}}
+        </td>
+        <td>
+        {{> wip}}
+        </td>
+        <td>
+        {{> downstreamPortal}}
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
