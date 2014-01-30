@@ -26,8 +26,7 @@ setupDragDrop = function(color) {
 
 var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
-  var portal = $(this);
-    
+  var portal = $(this);    
   if (kanban.team().color() === 'red') {
     // simulate instant response from infinite backlog
     Kanbans.update(kanban.id(), {
@@ -54,8 +53,7 @@ var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
 var doneKanbanDroppedOnDownstreamPortal = function(event,ui) { // push
   var kanban = ui.draggable; 
   var portal = $(this);
-  var downstreamColor = portal.data("to-team");
-  
+  var downstreamColor = portal.data("to-team");  
   if (kanban.team().color() === 'green') {
     // DONE!
     Kanbans.update(kanban.id(), {
@@ -79,16 +77,14 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) { // push
 
 var pushedKanbanDroppedOnPullableKanban = function(event,ui) {
   var pushed = ui.draggable;
-  var pullable = $(this);
-  
+  var pullable = $(this);  
   Kanbans.update(pullable.id(), {
     $set: {
       state: 'in-progress',
       size: pushed.size(),
       ones: [ ]
     }
-  });
-  
+  }); 
   Kanbans.update(pushed.id(), {
     $set: {
       teamColor: pushed.color(),
@@ -97,17 +93,30 @@ var pushedKanbanDroppedOnPullableKanban = function(event,ui) {
       ones: [ ]
     }
   });
-
 }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var pulledKanbanDroppedOnPushableKanban = function(event,ui) {
   var pulled = ui.draggable;
-  var pushable = $(this);
+  var pushable = $(this);  
   
-  //TODO check-sizes...
-  alert("pulled dropped on pushable");
+  if (pulled.size() === pushable.size()) {
+    Kanbans.update(pulled.id(), {
+      $set: {
+        teamColor: pulled.color(),
+        state: 'in-progress'
+      }
+    });
+    Kanbans.update(pushable.id(), {
+      $set: {
+        state: 'pullable',
+        size: 0,
+        ones: [ ]        
+      }
+    });
+  }
+  //TODO: < or >
 }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
