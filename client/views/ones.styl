@@ -9,6 +9,15 @@
     margin 0
     padding 0
 
+was_die()
+    border-color white
+    border-radius die-border-width * 3
+    border-style solid
+    border-width die-border-width
+    display inline-block
+    margin 0.1em
+    padding die-padding
+
 .die
     border-color white
     border-radius die-border-width * 3
@@ -17,25 +26,9 @@
     display inline-block
     margin 0.1em
     padding die-padding
-    &.not-one
-        background white
-    &.red.one
-        background   red_color
-        border-color red_color
-    &.orange.one
-        background   orange_color
-        border-color orange_color
-    &.blue.one
-        background   blue_color
-        border-color blue_color
-    &.green.one
-        background   green_color
-        border-color green_color
-    &.one:hover
-        border-color black
-        border-style solid
         
-.die.done
+.done
+    was_die()
     border-width die-one-border-width  
     padding die-one-padding
     &.red
