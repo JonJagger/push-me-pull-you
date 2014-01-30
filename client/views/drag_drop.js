@@ -14,7 +14,7 @@ setupDragDrop = function(color) {
   //}
   //if (mode === "pull") {    
     dragDropSetup(color,
-                  ".wip .kanban.is-Empty",
+                  ".wip .kanban.pullable",
                   ".upstream.portal",
                   emptyKanbanDroppedOnUpstreamPortal);
     // Note that in mode==push there is also a drag for

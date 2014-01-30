@@ -1,7 +1,7 @@
 
 Template.kanban.state = function() {
   if (this.size === 0)
-    return "is-Empty";
+    return "pullable";
   if (this.ones.length === 0)
     return "is-empty is-in-progress";
   if (this.ones.length < this.size)
