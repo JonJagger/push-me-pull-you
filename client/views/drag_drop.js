@@ -10,6 +10,11 @@ setupDragDrop = function(color) {
                 ".kanban.pushable",
                 ".downstream.portal",
                 doneKanbanDroppedOnDownstreamPortal);
+
+  dragDropSetup(color,
+                ".kanban.pushed",
+                ".kanban.pullable",
+                pushedKanbanDroppedOnPullableKanban);
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,7 +56,34 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) {
       state: 'pushed'
     }
   });
+  //TODO: if last team drops onto its downstream portal
+  //      then kanban comes back immediately
 };
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var pushedKanbanDroppedOnPullableKanban = function(event,ui) {
+  var pushed = ui.draggable;
+  var pullable = $(this);
+  
+  Kanbans.update(pullable.id(), {
+    $set: {
+      state: 'in-progress',
+      size: pushed.size(),
+      ones: [ ]
+    }
+  });
+  
+  Kanbans.update(pushed.id(), {
+    $set: {
+      teamColor: pushed.color(),
+      state: 'pullable',
+      size: 0,
+      ones: [ ]
+    }
+  });
+
+}
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

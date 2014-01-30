@@ -17,6 +17,7 @@ drag_drop_border_style = dotted
     
     & .kanban.pushable:hover
     & .kanban.pullable:hover
+    & .kanban.pushed:hover    
         border-color drag_drop_border_color
         border-style solid
         cursor move
@@ -34,8 +35,7 @@ drag_drop_border_style = dotted
     // Dynamically activated drop targets
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //
-    .board .wip.droppable
-    .board .wip .kanban.is-in-progress.droppable
+    .board .wip .kanban.droppable
     .board .downstream.portal.droppable
     .board .upstream.portal.droppable
     .board .downstream.portal .kanban.droppable
