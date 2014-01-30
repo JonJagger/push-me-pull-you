@@ -90,7 +90,6 @@ var setupTeam = function(gid,teamColor) {
   var makeKanban = function(size, ones) {
     Kanbans.insert({ gid:gid,
                      teamColor:teamColor,
-                     at:"wip",
                      color:kanbanColor,
                      size:size,
                      ones:ones });    

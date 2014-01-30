@@ -1,13 +1,9 @@
 
 Template.wip.kanbans = function() {
-  return getKanbansIn(this.gid, this.color, "wip");  
+  return getKanbans(this.gid, this.color);  
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.upstreamPortal.kanbans = function() {
-  return getKanbansIn(this.gid, this.color, "upstream");  
-};
 
 Template.upstreamPortal.toColor = function() {
   if (this.color === "red"   ) return "backlog";
@@ -17,10 +13,6 @@ Template.upstreamPortal.toColor = function() {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.downstreamPortal.kanbans = function() {
-  return getKanbansIn(this.gid, this.color, "downstream");  
-};
 
 Template.downstreamPortal.toColor = function() {
   if (this.color === "red"   ) return "orange";
@@ -49,8 +41,8 @@ Template.team.rendered = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-var getKanbansIn = function(gid,teamColor,where) {
-  return Kanbans.find({ gid:gid, teamColor:teamColor, at:where });    
+var getKanbans = function(gid,teamColor) {
+  return Kanbans.find({ gid:gid, teamColor:teamColor });    
 };
 
 var isOne = function(die) {
