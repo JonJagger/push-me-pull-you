@@ -125,9 +125,3 @@ var dragDropSetup = function(color,from,to,handler) {
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var nOnes = function(n) { // eg 3
-  return _(n).times(function() { return 1; });  // eg [1,1,1]
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
