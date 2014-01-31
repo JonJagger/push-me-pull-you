@@ -2,31 +2,30 @@
 drag_drop_border_color = Black
 drag_drop_border_style = dotted
 
-.team
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Initial selection of draggable
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
-    & .kanban.pullable:hover
-    & .kanban.pulled:hover
-    & .kanban.pushable:hover
-    & .kanban.pushed:hover    
-        border-color drag_drop_border_color
-        border-style solid
-        cursor move
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Initial selection of draggable
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
+.kanban.pullable:hover
+.kanban.pulled:hover
+.kanban.pushable:hover
+.kanban.pushed:hover    
+    border-color drag_drop_border_color !important
+    border-style solid !important
+    cursor move !important
 
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Once dragging starts
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
-    .ui-draggable-dragging.kanban
-        border-color drag_drop_border_color
-        border-style drag_drop_border_style
-        cursor crosshair
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Once dragging starts
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
+.ui-draggable-dragging.kanban
+    border-color drag_drop_border_color !important
+    border-style drag_drop_border_style !important
+    cursor crosshair !important
 
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Dynamically activated drop targets
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
-    .kanban.droppable
-    .portal.droppable
-        border-color drag_drop_border_color !important
-        border-style drag_drop_border_style !important
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Dynamically activated drop targets
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
+.kanban.droppable
+.portal.droppable
+    border-color drag_drop_border_color !important
+    border-style drag_drop_border_style !important
 
