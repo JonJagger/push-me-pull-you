@@ -1,5 +1,6 @@
 
 @import "colors"
+@import "variables"
 
 button_color = lighten(#996666, 20%)
 
@@ -30,10 +31,11 @@ button_color = lighten(#996666, 20%)
             font-size 0.5em
             vertical-align center
   
-    input[type=button] 
-        background button_color
+    input[type=button]
+        font-family fonts 
+        color button_color
+        background LightGray
         border-radius 10px
-        color LightGray
         cursor pointer
         font-size 2.5em 
         padding-bottom 0.2em        
@@ -50,9 +52,10 @@ button_color = lighten(#996666, 20%)
         font-size 1em
         margin 2px
   
-    input[id=gid] 
-        background LightGray
-        color button_color
+    input[id=gid]
+        font-family fonts     
+        background button_color
+        color LightGray
         font-size 2.5em
         text-align center
         width 4em
