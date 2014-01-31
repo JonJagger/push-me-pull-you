@@ -3,6 +3,9 @@ TODO: add pad gesture movement as alternative to mouse drag/drop
 
 TODO: start on CFD diagrams (use flot?)
 
+TODO: setup page offering wip limits?
+
 ????: when last column sends done work downstream the empty kanban
       comes back immediately. Raises question of pull coming into
       last column?
+

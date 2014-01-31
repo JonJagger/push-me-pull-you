@@ -30,27 +30,21 @@ var page = {
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Template.home.events({"click #start":function () {
-  // TODO: setup page offering
-  //          wip limits?
   var game = { gid:newId(6) };
   Games.insert(game);
-  page.gid(game.gid);
-  page.join().enable();
-  page.dashboard().enable();
+  Router.go('/' + game.gid);  
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -
 
+Template.home.rendered = function() {
+  enableDisableJoinDashboard();
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - -
+
 Template.home.events({"keyup #gid":function() {
-  var gid = page.gid();
-  if (!Games.findOne({ gid:gid })) {
-    page.join().disable();
-    page.dashboard().disable();
-  } else {
-    // TODO: if 4 teams already joined do not enable join
-    page.join().enable();
-    page.dashboard().enable();
-  }
+  enableDisableJoinDashboard();
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -69,7 +63,7 @@ Template.home.events({"click #join":function() {
   }
   Teams.insert({ gid:gid, color:color });
   setupTeam(gid,color);
-  window.open("team/" + gid + "/" + color, "_blank");  
+  window.open("team/" + gid + "/" + color, "_blank");
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,6 +73,20 @@ Template.home.events({"click #dashboard":function() {
   var game = Games.findOne({ gid:gid });
   window.open("dashboard/" + gid, "_blank");    
 }});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - 
+
+var enableDisableJoinDashboard = function() {
+  var gid = page.gid();
+  if (!Games.findOne({ gid:gid })) {
+    page.join().disable();
+    page.dashboard().disable();
+  } else {
+    // TODO: if 4 teams already joined do not enable join
+    page.join().enable();
+    page.dashboard().enable();
+  }    
+}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 // slimed
@@ -93,6 +101,7 @@ var setupTeam = function(gid,color) {
                      ones:[ ] });    
   };
   
+  makeKanban();
   makeKanban();
   makeKanban();
   makeKanban();
