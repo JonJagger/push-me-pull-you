@@ -3,45 +3,47 @@
 @import "variables"
 @import "nib"
 
-.team
-    & .portal 
-        border-radius border_radius_width * 4
-        border-style  solid 
-        border-color  Gray
-        border-width  drag_drop_border_width
-        width 3em
-        height 4em
-        &[data-to-team = backlog] 
-            background   backlog_color
-        &[data-to-team = done] 
-            background   done_color
-.team
-    & .portal
-        &.upstream
-            border-bottom-left-radius 0px
-            border-left-width 0px
-            border-top-left-radius 0px
-            padding-left 0px
-        &.downstream
-            border-bottom-right-radius 0px
-            border-right-width 0px
-            border-top-right-radius 0px
-            padding-right 0px
-    &.red .portal.upstream
-            background linear-gradient(top, backlog_color large_stripe_gap, light_red_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.red .portal.downstream, &.orange .portal.upstream
-            background linear-gradient(top, light_orange_color large_stripe_gap, light_red_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height            
-    &.orange .portal.downstream, &.blue .portal.upstream
-            background linear-gradient(top, light_blue_color large_stripe_gap, light_orange_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.blue .portal.downstream, &.green .portal.upstream
-            background linear-gradient(top, light_green_color large_stripe_gap, light_blue_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
-    &.green .portal.downstream
-            background linear-gradient(top, done_color large_stripe_gap, light_green_color small_stripe_gap)
-            background-size portal_stripe_height portal_stripe_height
+.portal 
+    border-radius border_radius_width * 4
+    border-style  solid 
+    border-color  Gray
+    border-width  drag_drop_border_width
+    width 3em
+    height 4em
+    &[data-to-team = backlog] 
+        background   backlog_color
+    &[data-to-team = done] 
+        background   done_color
+
+    &.upstream
+        border-bottom-left-radius 0px
+        border-left-width 0px
+        border-top-left-radius 0px
+        padding-left 0px
+    &.downstream
+        border-bottom-right-radius 0px
+        border-right-width 0px
+        border-top-right-radius 0px
+        padding-right 0px
+        
+.red .portal.upstream
+        background linear-gradient(top, backlog_color large_stripe_gap, light_red_color small_stripe_gap)
+        background-size portal_stripe_height portal_stripe_height
+.red .portal.downstream
+.orange .portal.upstream
+        background linear-gradient(top, light_orange_color large_stripe_gap, light_red_color small_stripe_gap)
+        background-size portal_stripe_height portal_stripe_height            
+.orange .portal.downstream
+.blue .portal.upstream
+        background linear-gradient(top, light_blue_color large_stripe_gap, light_orange_color small_stripe_gap)
+        background-size portal_stripe_height portal_stripe_height
+.blue .portal.downstream
+.green .portal.upstream
+        background linear-gradient(top, light_green_color large_stripe_gap, light_blue_color small_stripe_gap)
+        background-size portal_stripe_height portal_stripe_height
+.green .portal.downstream
+        background linear-gradient(top, done_color large_stripe_gap, light_green_color small_stripe_gap)
+        background-size portal_stripe_height portal_stripe_height
 
 
     
