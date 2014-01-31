@@ -3,18 +3,15 @@
     <div>
       <table class="greeting">
         <tr>
-          <td><span id="push">push</span></td>
-          <td>{{> leftRightArrow}}</td>
-          <td><span id="me">me</span></td>
-          <td>{{> leftRightArrow}}</td>
-          <td><span id="pull">pull</span></td>
-          <td>{{> leftRightArrow}}</td>
-          <td><span id="you">you</span></td>
+          <td><div id="push">push</div></td>
+          <td><div id="me">me</div></td>
+          <td><div id="pull">pull</div></td>
+          <td><div id="you">you</div></td>
         </tr>
       </table>      
       <table align="center" cellspacing="0" cellpadding="0">
         <tr align="center">
-          <td><input type="button" value="start" id="start"></td>
+          <td><input type="button" value="setup" id="setup"></td>
         </tr>
         <tr align="center">
           <td>{{> downArrow}}</td>
@@ -23,11 +20,16 @@
           <td><input type="text" id="gid" value="{{gid}}"></td>
         </tr>
         <tr align="center">
-          <td>{{> upArrow}}</td>
+          <td>
+            {{> downArrow}}
+            {{> downArrow}}
+            {{> downArrow}}
+            {{> downArrow}}
+          </td>
         </tr>
         <tr align="center">
           <td>
-            <div id="join_resume_review">
+            <div id="join-dashboard-container">
               <input type="button" value="join"      id="join"      disabled="disabled">
               <input type="button" value="dashboard" id="dashboard" disabled="disabled">                
             </div>
@@ -38,14 +40,7 @@
   </div>
 </template>
 
-<template name="leftRightArrow">
-  <div class="arrow">&harr;</div>
-</template>
-
 <template name="downArrow">
   <div class="arrow">&darr;</div>
 </template>
 
-<template name="upArrow">
-  <div class="arrow">&uarr;</div>
-</template>
