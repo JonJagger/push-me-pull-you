@@ -4,6 +4,11 @@
        data-gid="{{gid}}">
     <table>
       <tr>
+        <td colspan="3">
+          {{> newKanban}}
+        </td>
+      </tr>
+      <tr>
         <td>
         {{> upstreamPortal}}
         </td>
@@ -17,3 +22,10 @@
     </table>
   </div>
 </template>
+
+<template name="newKanban">
+  <div class="new-kanban">
+    <input type="button" value="{{count}}"/>
+  </div>
+</template>
+

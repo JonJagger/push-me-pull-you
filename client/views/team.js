@@ -1,4 +1,14 @@
 
+Template.newKanban.count = function() {
+  return "kanban"; 
+}
+
+Template.newKanban.events({"click input":function() {
+  newKanban(this.gid, this.color);
+}});
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 Template.wip.kanbans = function() {
   return Kanbans.find({ gid:this.gid, teamColor:this.color });      
 };

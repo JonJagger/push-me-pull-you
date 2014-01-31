@@ -89,21 +89,11 @@ var enableDisableJoinDashboard = function() {
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 
-// slimed
-//
+
 var setupTeam = function(gid,color) {
-  var makeKanban = function() {
-    Kanbans.insert({ gid:gid,
-                     teamColor:color,
-                     color:color,
-                     state: "pullable",
-                     size:0,
-                     ones:[ ] });    
-  };
-  
-  makeKanban();
-  makeKanban();
-  makeKanban();
-  makeKanban();
+  newKanban(gid,color);
+  newKanban(gid,color);
+  newKanban(gid,color);
+  newKanban(gid,color);
 };
 
