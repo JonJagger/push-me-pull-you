@@ -1,11 +1,4 @@
 
-Template.kanban.emptyGaps = function() {
-  if (this.size === 0)
-    return nOnes(2); // for width
-  else
-    return nOnes(0);
-}
-
 Template.kanban.voidGaps = function() {
   return nOnes(0);
 };
