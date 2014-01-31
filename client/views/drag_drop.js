@@ -24,28 +24,47 @@ setupDragDrop = function(color) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+var getSize = function(f) {
+  $('<div>').dialog({	  
+      title: "size?",
+      autoOpen: false,
+      width: 650,
+      modal: true,
+      buttons: {
+        1: function() { f(1); $(this).dialog('close'); },
+        2: function() { f(2); $(this).dialog('close'); },
+        3: function() { f(3); $(this).dialog('close'); },
+        4: function() { f(4); $(this).dialog('close'); },
+        5: function() { f(5); $(this).dialog('close'); },
+        6: function() { f(6); $(this).dialog('close'); }
+      }
+    }).dialog('open');
+}
+
 var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
   var kanban = ui.draggable; 
-  var portal = $(this);    
-  if (kanban.team().color() === 'red') {
-    // simulate instant response from infinite backlog
-    Kanbans.update(kanban.id(), {
-      $set: {
-        state: 'in-progress',
-        size: 3, //slimed
-        ones: [ ]
-      }
-    });    
-  } else {
-    Kanbans.update(kanban.id(), {
-      $set: {
-        teamColor: portal.data('to-team'),
-        state: 'pulled',
-        size: 3, //slimed
-        ones: [ ]
-      }
-    });
-  }  
+  var portal = $(this);
+  getSize(function(size) {
+    if (kanban.team().color() === 'red') {
+      // simulate instant response from infinite backlog
+      Kanbans.update(kanban.id(), {
+        $set: {
+          state: 'in-progress',
+          size: size,
+          ones: [ ]
+        }
+      });    
+    } else {
+      Kanbans.update(kanban.id(), {
+        $set: {
+          teamColor: portal.data('to-team'),
+          state: 'pulled',
+          size: size,
+          ones: [ ]
+        }
+      });
+    }
+  });
 };
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,8 +74,7 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) { // push
   var portal = $(this);
   var downstreamColor = portal.data("to-team");  
   if (kanban.team().color() === 'green') {
-    // DONE!
-    Kanbans.update(kanban.id(), {
+    Kanbans.update(kanban.id(), { // DONE!
       $set: {
         state: 'pullable',
         size: 0,
