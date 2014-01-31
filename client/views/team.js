@@ -1,6 +1,6 @@
 
 Template.newKanban.count = function() {
-  return "kanban"; 
+  return Kanbans.find({gid:this.gid, teamColor:this.color}).count();
 }
 
 Template.newKanban.events({"click input":function() {

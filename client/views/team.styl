@@ -1,4 +1,5 @@
 
+@import "centered"
 @import "colors"
 @import "variables"
 
@@ -13,13 +14,17 @@
     padding-right 0px
         
 .new-kanban
-    text-align center
+    centered()
 
 .red.team .new-kanban input
     background red_color
+    color lightest_red_color
 .orange.team .new-kanban input
     background orange_color
+    color lightest_orange_color
 .blue.team .new-kanban input
     background blue_color    
+    color lightest_blue_color
 .green.team .new-kanban input
     background green_color
+    color lightest_green_color
