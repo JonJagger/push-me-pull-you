@@ -1,9 +1,9 @@
 
-Template.newKanban.count = function() {
+Template.makeNewKanban.count = function() {
   return Kanbans.find({gid:this.gid, teamColor:this.color}).count();
 }
 
-Template.newKanban.events({"click input":function() {
+Template.makeNewKanban.events({"click input":function() {
   newKanban(this.gid, this.color);
 }});
 
@@ -40,9 +40,6 @@ Template.team.rendered = function() {
   
   $('.in-progress.kanban').bind('click keyup', function(event) {
     var kanban = $(this).closest(".kanban");
-    //var ones   = kanban.ones();
-    //ones.unshift(kanban.color());
-    //var state = (ones.length === kanban.size()) ? 'pushable' : 'in-progress';
     Kanbans.update(kanban.id(), {
       $set: {
         state: 'pushable'
@@ -56,10 +53,6 @@ Template.team.rendered = function() {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$.fn.hasClass = function(klass) {
-  return this.attr("class").indexOf(klass) !== -1;
-};
-
 $.fn.team = function() {
   return this.closest(".team");
 };
@@ -67,12 +60,6 @@ $.fn.team = function() {
 $.fn.size = function(/*kanban*/) {
   return parseInt($(this).data('size'));
 }
-
-$.fn.ones = function(/*kanban*/) {  
-  var ones = $(this).data("ones");
-  // see Template.kanban.onesColors() HACK
-  return (ones === ",") ? [ ] : ones.split(",");
-};
 
 $.fn.id = function() {
   return $(this).data("id");  
@@ -83,6 +70,10 @@ $.fn.color = function() {
   return _.find(teamColors(), function(color) {
     return node.hasClass(color);
   });
+};
+
+$.fn.hasClass = function(klass) {
+  return this.attr("class").indexOf(klass) !== -1;
 };
 
 

@@ -1,31 +1,8 @@
 
 <template name="kanban">
-  <div class="{{color}} kanban {{state}}"
+  <div class="{{color}} {{state}} kanban"
        data-id="{{_id}}"
-       data-size="{{size}}"
-       data-ones="{{onesColors}}">
-    
-      <div class="size">{{size}}</div>
-    
+       data-size="{{size}}">    
+      <div class="size">{{size}}</div>    
   </div>
-</template>
-
-<template name="cut">
-    {{#each voidGaps}}
-      <div class="one-container">      
-        <div class="hole"></div>
-      </div>
-    {{/each}}
-    
-    {{#each whiteGaps}}
-      <div class="one-container">      
-        <div class="not"></div>
-      </div>
-    {{/each}}
-    
-    {{#each ones}}
-      <div class="one-container">            
-        <div class="{{this}} done"></div>
-      </div>
-    {{/each}}
 </template>

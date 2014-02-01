@@ -18,11 +18,10 @@ Kanbans = new Meteor.Collection('kanbans');
 /*
  * Kanbans.insert({
  *         gid: "138ef8",
- *   teamColor: "red",
+ *   teamColor: "red",      // of the wip area kanban is in
  *       state: "pullable", // "pulled","in-progress","pushable","pushed"
  *       color: "red",      // of the kanban
- *        size: "4",        // of in-progress filled-kanban
- *        ones: "2"         // done (out of size)
+ *        size: "4",        // of the kanban's story
  * });
  */
 

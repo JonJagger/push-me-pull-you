@@ -1,4 +1,5 @@
 
+@import "centered"
 @import "colors"
 @import "variables"
 
@@ -47,30 +48,22 @@
         &.pushed .size        
             color green_color        
 
+.make-new-kanban
+    centered()
 
-    
-    
-    
-.Xkanban
-    border-radius border_radius_width * 2        
-    border-style  solid
-    border-width  drag_drop_border_width
-    display inline-block
-    line-height 0
-    margin inter-kanban-spacing
-    padding 0
-    &.red
-        background   lightest_red_color
-        border-color lightest_red_color
-    &.orange
-        background   lightest_orange_color
-        border-color lightest_orange_color
-    &.blue
-        background   lightest_blue_color
-        border-color lightest_blue_color
-    &.green
-        background   lightest_green_color
-        border-color lightest_green_color
-    &.Xpullable
-        width 2em
-        height 1.5em
+.red.team
+    .make-new-kanban input
+        background red_color
+        color lightest_red_color
+.orange.team
+    .make-new-kanban input
+        background orange_color
+        color lightest_orange_color
+.blue.team
+    .make-new-kanban input
+        background blue_color
+        color lightest_blue_color
+.green.team
+    .make-new-kanban input
+        background green_color
+        color lightest_green_color

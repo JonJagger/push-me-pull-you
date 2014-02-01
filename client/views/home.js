@@ -29,7 +29,7 @@ var page = {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - 
 
-Template.home.events({"click #start":function () {
+Template.home.events({"click #setup":function () {
   var game = { gid:newId(6) };
   Games.insert(game);
   Router.go('/' + game.gid);  
