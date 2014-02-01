@@ -4,6 +4,6 @@ newKanban = function(gid,color) {
                    teamColor:color,
                    color:color,
                    state: 'pullable',
-                   size:0,
-                   ones:[ ] });
+                   size:0
+                  });
 };
