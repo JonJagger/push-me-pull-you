@@ -5,6 +5,12 @@
        data-size="{{size}}"
        data-ones="{{onesColors}}">
     
+      <div class="size">{{size}}</div>
+    
+  </div>
+</template>
+
+<template name="cut">
     {{#each voidGaps}}
       <div class="one-container">      
         <div class="hole"></div>
@@ -22,5 +28,4 @@
         <div class="{{this}} done"></div>
       </div>
     {{/each}}
-  </div>
 </template>

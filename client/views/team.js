@@ -40,13 +40,12 @@ Template.team.rendered = function() {
   
   $('.in-progress.kanban').bind('click keyup', function(event) {
     var kanban = $(this).closest(".kanban");
-    var ones   = kanban.ones();
-    ones.unshift(kanban.color());
-    var state = (ones.length === kanban.size()) ? 'pushable' : 'in-progress';
+    //var ones   = kanban.ones();
+    //ones.unshift(kanban.color());
+    //var state = (ones.length === kanban.size()) ? 'pushable' : 'in-progress';
     Kanbans.update(kanban.id(), {
       $set: {
-        state: state,
-        ones:ones
+        state: 'pushable'
       }
     });  
   });
