@@ -154,5 +154,3 @@ var dragDropSetup = function(color,from,to,handler) {
     zIndex:100
   });
 };
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
