@@ -50,8 +50,7 @@ var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
       Kanbans.update(kanban.id(), {
         $set: {
           state: 'in-progress',
-          size: size,
-          ones: [ ]
+          size: size
         }
       });    
     } else {
@@ -59,8 +58,7 @@ var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
         $set: {
           teamColor: portal.data('to-team'),
           state: 'pulled',
-          size: size,
-          ones: [ ]
+          size: size
         }
       });
     }
@@ -77,8 +75,7 @@ var doneKanbanDroppedOnDownstreamPortal = function(event,ui) { // push
     Kanbans.update(kanban.id(), { // DONE!
       $set: {
         state: 'pullable',
-        size: 0,
-        ones: [ ]
+        size: 0
       }
     });
   } else {
@@ -99,16 +96,14 @@ var pushedKanbanDroppedOnPullableKanban = function(event,ui) {
   Kanbans.update(pullable.id(), {
     $set: {
       state: 'in-progress',
-      size: pushed.size(),
-      ones: [ ]
+      size: pushed.size()
     }
   }); 
   Kanbans.update(pushed.id(), {
     $set: {
       teamColor: pushed.color(),
       state: 'pullable',
-      size: 0,
-      ones: [ ]
+      size: 0
     }
   });
 }
@@ -129,8 +124,7 @@ var pulledKanbanDroppedOnPushableKanban = function(event,ui) {
     Kanbans.update(pushable.id(), {
       $set: {
         state: 'pullable',
-        size: 0,
-        ones: [ ]        
+        size: 0
       }
     });
   }

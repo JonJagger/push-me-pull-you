@@ -1,38 +1,4 @@
 
-Template.makeNewKanban.count = function() {
-  return Kanbans.find({gid:this.gid, teamColor:this.color}).count();
-}
-
-Template.makeNewKanban.events({"click input":function() {
-  newKanban(this.gid, this.color);
-}});
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.wip.kanbans = function() {
-  return Kanbans.find({ gid:this.gid, teamColor:this.color });      
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.upstreamPortal.toColor = function() {
-  if (this.color === "red"   ) return "backlog";
-  if (this.color === "orange") return "red";
-  if (this.color === "blue"  ) return "orange";
-  if (this.color === "green" ) return "blue";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Template.downstreamPortal.toColor = function() {
-  if (this.color === "red"   ) return "orange";
-  if (this.color === "orange") return "blue";
-  if (this.color === "blue"  ) return "green";
-  if (this.color === "green" ) return "done";
-};
-
-//- - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 Template.team.rendered = function() {
   var team = $(".team");
   var color = team.color();
