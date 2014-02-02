@@ -1,0 +1,24 @@
+
+<template name="workArea">
+  <div class="work-area">
+    <table>
+      <tr>
+        <td>
+          {{#each pushedKanbans}}
+            {{> kanban}}
+          {{/each}}
+        </td>
+        <td>
+          {{#each inProgressKanbans}}
+            {{> kanban}}
+          {{/each}}
+        </td>
+        <td>
+          {{#each pulledKanbans}}
+            {{> kanban}}
+          {{/each}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</template>
