@@ -2,8 +2,8 @@
 Template.workArea.inProgressKanbans = function() {
   return Kanbans.find({
     gid:this.gid,
-    color:this.color
-    //state: pullable|in-progress|pushable
+    teamColor:this.color,
+    state: { $in: [ 'pullable', 'in-progress', 'pushable'] }
   });
 }
 
