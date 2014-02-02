@@ -2,23 +2,23 @@
 setupDragDrop = function(color) {
 
   dragDropSetup(color,
-                ".kanban.pullable",
-                ".upstream.portal",
+                '.kanban.pullable',
+                '.upstream.portal',
                 pullableKanbanDroppedOnUpstreamPortal);
 
   dragDropSetup(color,
-                ".kanban.pushable",
-                ".downstream.portal",
+                '.kanban.pushable',
+                '.downstream.portal',
                 doneKanbanDroppedOnDownstreamPortal);
 
   dragDropSetup(color,
-                ".kanban.pushed",
-                ".kanban.pullable",
+                '.kanban.pushed',
+                '.kanban.pullable',
                 pushedKanbanDroppedOnPullableKanban);
 
-  dragDropSetup(color,
-                ".kanban.pulled",
-                ".kanban.pushable",
+  dragDropSetup2(color,
+                '.kanban.pulled',
+                '.kanban.pushable',
                 pulledKanbanDroppedOnPushableKanban);
 };
 
@@ -134,23 +134,52 @@ var pulledKanbanDroppedOnPushableKanban = function(event,ui) {
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var dragDropSetup = function(color,from,to,handler) {
-  var teamify = function(css) {
-    return "."+color + ".team" + " " + css;
+  var dragDrop = function(css) {
+    return $('.'+color + '.team' + " " + css);
   };
-  var droppables = function(event) {
-      return $(teamify(to));
-  };  
-  $(teamify(from)).draggable({
-    start:function(event,ui) {
-      droppables(event).addClass("droppable")
-                       .droppable({ drop:handler });      
+  var tos = dragDrop(to);
+  dragDrop(from).draggable({
+    start:function() {
+      tos.addClass('droppable')
+         .droppable({ drop:handler });      
     },
-    stop:function(event,ui) {
-      droppables(event).removeClass("droppable");
+    stop:function() {
+      tos.removeClass('droppable');
     },
     revert:true,
     revertDuration:0,
     opacity:0.75,
     zIndex:100
   });
+};
+
+var dragDropSetup2 = function(color,from,to,handler) {
+  
+  var dragDrop = function(css,size) {
+    return $('.'+color + '.team' + " " + css + '[data-size="' + size + '"]');
+  };  
+  var dragDropI = function(css,size,i) {    
+    var froms = dragDrop(from,i);
+    var tos = dragDrop(to,i);
+    if (froms.length > 0 && tos.length > 0) {
+      froms.draggable({
+        start:function() {
+          log("DDI:start");
+          tos.addClass('droppable')
+             .droppable({ drop:handler });      
+        },
+        stop:function() {
+          tos.removeClass('droppable');
+        },
+        revert:true,
+        revertDuration:0,
+        opacity:0.75,
+        zIndex:100
+      });
+    }    
+  };
+
+  for (var i = 1; i <= 6; i++) {
+    dragDropI(from,to,i);
+  }
 };
