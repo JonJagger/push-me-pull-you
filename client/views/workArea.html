@@ -4,21 +4,28 @@
     <table>
       <tr>
         <td>
+          <table>
           {{#each pushedKanbans}}
-            {{> kanban}}
+            <tr><td>{{> kanban}}</td></tr>
           {{/each}}
+          </table>
         </td>
         <td>
+          <table>
           {{#each inProgressKanbans}}
-            {{> kanban}}
+            <tr><td>{{> kanban}}</td></tr>
           {{/each}}
+          </table>
         </td>
-        <td>
+        <td class="pulled-kanbans">
+          <table>
           {{#each pulledKanbans}}
-            {{> kanban}}
+            <tr><td>{{> kanban}}</td></tr>
           {{/each}}
+          </table>
         </td>
       </tr>
     </table>
   </div>
 </template>
+

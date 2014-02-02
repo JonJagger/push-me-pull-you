@@ -1,7 +1,12 @@
 
-TODO: add pad gesture movement as alternative to mouse drag/drop
+TODO: newest incoming kanbans at top, oldest at bottom
 
 TODO: start on CFD diagrams (use flot?)
+
+TODO: think about setup config options
+         limit kanbans, pull only, push only
+
+TODO: add pad gesture movement as alternative to mouse drag/drop
 
 TODO: setup page offering wip limits?
 
