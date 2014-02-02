@@ -1,8 +1,6 @@
 
 ????: have empty-pullable kanbans in their own area at top of work-area
 
-????: drop in-progress category. No gray colored sizes?
-
 TODO: newest incoming kanbans at top, oldest at bottom
 
 TODO: start on CFD diagrams (use flot?)

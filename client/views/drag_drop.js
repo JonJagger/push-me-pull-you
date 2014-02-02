@@ -49,7 +49,7 @@ var pullableKanbanDroppedOnUpstreamPortal = function(event,ui) {
       // simulate instant response from infinite backlog
       Kanbans.update(kanban.id(), {
         $set: {
-          state: 'in-progress',
+          state: 'pushable',
           size: size
         }
       });    
@@ -95,7 +95,7 @@ var pushedKanbanDroppedOnPullableKanban = function(event,ui) {
   var pullable = $(this);  
   Kanbans.update(pullable.id(), {
     $set: {
-      state: 'in-progress',
+      state: 'pushable',
       size: pushed.size()
     }
   }); 
@@ -118,7 +118,7 @@ var pulledKanbanDroppedOnPushableKanban = function(event,ui) {
     Kanbans.update(pulled.id(), {
       $set: {
         teamColor: pulled.color(),
-        state: 'in-progress'
+        state: 'pushable'
       }
     });
     Kanbans.update(pushable.id(), {
