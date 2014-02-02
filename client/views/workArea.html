@@ -1,24 +1,24 @@
 
-<template name="workArea">
-  <div class="work-area">
+<template name="kanbans">
+  <div class="kanbans">
     <table>
       <tr>
         <td>
           <table>
-          {{#each pullableKanbans}}
+          {{#each pullable}}
             <tr><td>{{> kanban}}</td></tr>
           {{/each}}            
-          {{#each pushedKanbans}}
+          {{#each pushed}}
             <tr><td>{{> kanban}}</td></tr>
           {{/each}}
           </table>
         </td>
         <td>
           <table>
-          {{#each pushableKanbans}}
+          {{#each pushable}}
             <tr><td>{{> kanban}}</td></tr>
           {{/each}}
-          {{#each pulledKanbans}}
+          {{#each pulled}}
             <tr><td>{{> kanban}}</td></tr>
           {{/each}}
           </table>

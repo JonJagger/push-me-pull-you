@@ -1,33 +1,24 @@
 
-Template.workArea.pullableKanbans = function() {
-  return Kanbans.find({
-    gid: this.gid,
-    teamColor: this.color,
-    state: 'pullable'
-  });  
+Template.kanbans.pullable = function() {
+  return getKanbans(this.gid, this.color, 'pullable');
 }
 
-Template.workArea.pushedKanbans = function() {
-  return Kanbans.find({
-    gid: this.gid,
-    teamColor: this.color,
-    state: 'pushed'
-  });  
+Template.kanbans.pushed = function() {
+  return getKanbans(this.gid, this.color, 'pushed');
 }
 
-Template.workArea.pushableKanbans = function() {
-  return Kanbans.find({
-    gid: this.gid,
-    teamColor: this.color,
-    state: 'pushable'
-  });
+Template.kanbans.pushable = function() {
+  return getKanbans(this.gid, this.color, 'pushable');
 }
 
-Template.workArea.pulledKanbans = function() {
-  return Kanbans.find({
-    gid: this.gid,
-    teamColor: this.color,
-    state: 'pulled'
-  });  
+Template.kanbans.pulled = function() {
+  return getKanbans(this.gid, this.color, 'pulled');
 }
 
+var getKanbans = function(gid,color,state) {
+  return Kanbans.find({
+    gid: gid,
+    teamColor: color,
+    state: state
+  });    
+}
