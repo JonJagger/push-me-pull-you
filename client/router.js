@@ -15,14 +15,21 @@ Router.map(function() {
       }
     }
   });
-  
-  this.route('team', { path: '/team/:gid/:color',
-    data: function() {
-      return {
-          gid: this.params.gid,
-        color: this.params.color
-      }
-    }
+
+  this.route('team', { path: '/red/:gid',
+    data: function() { return { gid: this.params.gid, color: 'red' }}
+  });
+
+  this.route('team', { path: '/orange/:gid',
+    data: function() { return { gid: this.params.gid, color: 'orange' }}
+  });
+
+  this.route('team', { path: '/blue/:gid',
+    data: function() { return { gid: this.params.gid, color: 'blue' }}
+  });
+
+  this.route('team', { path: '/green/:gid',
+    data: function() { return { gid: this.params.gid, color: 'green' }}
   });
 
   this.route('dashboard', { path: '/dashboard/:gid',

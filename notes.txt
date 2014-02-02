@@ -12,8 +12,17 @@ TODO: think about setup config options
 
 TODO: add pad gesture movement as alternative to mouse drag/drop
 
-TODO: doesn't load in Firefox
-
 ????: when last column sends done work downstream the empty kanban
       comes back immediately. Raises question of pull coming into
       last column?
+
+NB: Wasn't loading in Firefox. Was getting strange diagnostics...
+    "Package is not defined"
+    Fixed it with
+    $ mrt update
+    $ mrt install
+    After this it loaded in Firefox ok, but bizarrely git diff/status
+    showed no difference.
+    Now works in Chrome, Firefox, Safari, Opera
+    
+

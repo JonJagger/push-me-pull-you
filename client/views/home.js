@@ -63,7 +63,7 @@ Template.home.events({"click #join":function() {
   }
   Teams.insert({ gid:gid, color:color });
   setupTeam(gid,color);
-  window.open("team/" + gid + "/" + color, "_blank");
+  window.open(color + '/' + gid, '_blank');
 }});
 
 // - - - - - - - - - - - - - - - - - - - - - - - -
