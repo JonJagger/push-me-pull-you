@@ -1,6 +1,5 @@
 
-TODO: drag-drop 3 only highlights 3 as match (same size)
-
+      
 TODO: dialog to select kanban size is in same size and style as board kanban
 
 TODO: newest incoming kanbans at top, oldest at bottom
@@ -15,6 +14,15 @@ TODO: add pad gesture movement as alternative to mouse drag/drop
 ????: when last column sends done work downstream the empty kanban
       comes back immediately. Raises question of pull coming into
       last column?
+
+NOTE: drag-drop 3 only highlights 3 as match (same size)
+      This now works, but 3 is also selected as draggable
+      even of there are no target droppables of size 3.
+      The reason for this is that pulled has a CSS rule
+       .kanban.pulled:hover
+      regardless of whether there is a suitable target.
+      However this is ok as it means every kanban can be hovered over
+      and trying to drag it will reveal its targets (if any)
 
 NB: Wasn't loading in Firefox. Was getting strange diagnostics...
     "Package is not defined"
