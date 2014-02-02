@@ -1,6 +1,8 @@
 
 TODO: drag-drop 3 only highlights 3 as match (same size)
 
+TODO: dialog to select kanban size is in same size and style as board kanban
+
 TODO: newest incoming kanbans at top, oldest at bottom
 
 TODO: start on CFD diagrams (use flot?)
@@ -10,10 +12,8 @@ TODO: think about setup config options
 
 TODO: add pad gesture movement as alternative to mouse drag/drop
 
-TODO: setup page offering wip limits?
+TODO: doesn't load in Firefox
 
 ????: when last column sends done work downstream the empty kanban
       comes back immediately. Raises question of pull coming into
       last column?
-
-
