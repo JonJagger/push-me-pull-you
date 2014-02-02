@@ -1,4 +1,12 @@
 
+Template.workArea.pullableKanbans = function() {
+  return Kanbans.find({
+    gid: this.gid,
+    teamColor: this.color,
+    state: 'pullable'
+  });  
+}
+
 Template.workArea.pushedKanbans = function() {
   return Kanbans.find({
     gid: this.gid,
@@ -7,11 +15,11 @@ Template.workArea.pushedKanbans = function() {
   });  
 }
 
-Template.workArea.inProgressKanbans = function() {
+Template.workArea.pushableKanbans = function() {
   return Kanbans.find({
     gid: this.gid,
     teamColor: this.color,
-    state: { $in: [ 'pullable', 'pushable'] }
+    state: 'pushable'
   });
 }
 

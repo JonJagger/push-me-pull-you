@@ -1,5 +1,5 @@
 
-????: have empty-pullable kanbans in their own area at top of work-area
+TODO: drag-drop 3 only highlights 3 as match (same size)
 
 TODO: newest incoming kanbans at top, oldest at bottom
 
@@ -16,5 +16,4 @@ TODO: setup page offering wip limits?
       comes back immediately. Raises question of pull coming into
       last column?
 
-NB: a pull movement (request or satisfy) should be leftwards
-    a push movement should be rightwards.
+
