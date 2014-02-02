@@ -32,5 +32,6 @@ NB: Wasn't loading in Firefox. Was getting strange diagnostics...
     After this it loaded in Firefox ok, but bizarrely git diff/status
     showed no difference.
     Now works in Chrome, Firefox, Safari, Opera
+    But had the same issue and again same fix.
     
 
